@@ -1,0 +1,36 @@
+{
+	"build_systems":
+	[
+		{
+			"cmd":  "sh db_build.sh",
+			"shell":true,
+			"name": "Build DB",
+			"working_dir": "${project_path:${folder}}"
+		},
+		{
+			"cmd":  "sh db_start.sh",
+			"shell":true,
+			"name": "Start DB",
+			"working_dir": "${project_path:${folder}}"
+		}
+	],
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"db"
+			],
+			"file_exclude_patterns":
+			[
+				"LICENSE"
+			],
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4,
+		"translate_tabs_to_spaces": false
+	}
+}
