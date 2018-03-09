@@ -6,12 +6,6 @@
 			"shell":true,
 			"name": "Build DB",
 			"working_dir": "${project_path:${folder}}"
-		},
-		{
-			"cmd":  "sh db_start.sh",
-			"shell":true,
-			"name": "Start DB",
-			"working_dir": "${project_path:${folder}}"
 		}
 	],
 	"folders":
