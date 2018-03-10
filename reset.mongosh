@@ -1,0 +1,3 @@
+use examsb
+db.dropDatabase()
+use exams
