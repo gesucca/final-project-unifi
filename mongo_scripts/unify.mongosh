@@ -1,0 +1,14 @@
+use exams
+
+// remove funny empty field caused by bad formed cvs
+// db.collection.update({"": ""},{$unset: {tags:1}},{multi: true});
+
+// course name shoul be unique id among records
+// no need to invent codes, a simple short name would do it
+//#db.inventory.updateMany(
+//#   { "qty": { $lt: 50 } }, #where
+//#   {
+//#     $set: { "size.uom": "in", status: "P" }
+//#   }
+//#)
+//# db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } )
