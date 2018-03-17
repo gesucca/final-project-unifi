@@ -24,5 +24,6 @@ rm temp
 mongoimport -d exams -c rawTeachingsEv1314 --type csv --headerline --file temp
 rm temp
 
-# update data to unify keys among them
-mongo < mongo_scripts/unify.mongosh
+# prova
+cd mongo_scripts
+python3 prova.py
