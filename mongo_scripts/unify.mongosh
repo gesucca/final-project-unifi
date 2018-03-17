@@ -1,14 +1,43 @@
 use exams
 
-// remove funny empty field caused by bad formed cvs
-// db.collection.update({"": ""},{$unset: {tags:1}},{multi: true});
+//db.createCollection("evaluation")
 
-// course name shoul be unique id among records
-// no need to invent codes, a simple short name would do it
-//#db.inventory.updateMany(
-//#   { "qty": { $lt: 50 } }, #where
-//#   {
-//#     $set: { "size.uom": "in", status: "P" }
-//#   }
-//#)
-//# db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } )
+//db.evaluation.aggregate([
+//  {"$match":{"title":{"$regex":/example/}}},
+//  {"$lookup":{
+//    "from":"rawTeachingsEV1011",
+//    "pipeline":[{"$match":{"all_category_id":8}}],
+//    "as":"categories"
+//  }},
+//  {"$match":{"categories":{"$ne":[]}}}
+//])*/
+/*db.teachingsEvaluation.aggregate([
+    {
+        $lookup: {
+            from: "rawTeachingsEV1011",
+            //localField: "userId",
+            //foreignField: "userId",
+            as: "userInfoData"
+        }
+    },
+    {
+        $lookup: {
+            from: "userrole",
+            localField: "userId",
+            foreignField: "userId",
+            as: "userRoleData"
+        }
+    },
+    { $unwind: { path: "$userInfoData", preserveNullAndEmptyArrays: true }},
+    { $unwind: { path: "$userRoleData", preserveNullAndEmptyArrays: true }}
+])
+// replace n.c. with null
+//db.update(
+//   { "P1": "n.c." },
+//   {
+//     $set: { "P1": null }
+//   }
+//)
+
+//db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } )
+*/
