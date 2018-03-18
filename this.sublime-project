@@ -2,10 +2,10 @@
 	"build_systems":
 	[
 		{
-			"cmd":  "sh db_build.sh",
+			"cmd":  "sh prepr.sh",
 			"shell":true,
-			"name": "Build DB",
-			"working_dir": "${project_path:${folder}}"
+			"name": "Do Whole PreProcessing Step",
+			"working_dir": "${project_path:${folder}}/prepr"
 		}
 	],
 	"folders":

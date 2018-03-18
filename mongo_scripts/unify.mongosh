@@ -1,3 +1,0 @@
-use exams
-
-db.rawTeachingsEv1011.find()
