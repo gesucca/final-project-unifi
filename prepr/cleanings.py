@@ -1,4 +1,5 @@
 """Preliminary filtering of the data with usefulness criteria."""
+import hashlib
 
 def clean_teach_eval(source, dest, year):
     """Cleaning of the teachings evaluation collections's documents.
@@ -9,33 +10,50 @@ def clean_teach_eval(source, dest, year):
     for doc in source.find():
         source.delete_many(doc)
 
-        del doc['']                 # little quirk by mongoimport
-        del doc['CID']              # useless as a key for this application
-        del doc['Corso']            # always 'INFORMATICA' since it is the object of this study
-        del doc['Tipo corso']       # as above, always 'INFORMATICA'
-
-        # simply clearer
-        doc['P<6'] = doc.pop('P1')
-        doc['P>=6'] = doc.pop('P2')
-
-        # clarify questions
-        if year == 2010:
-            doc = _clarify_questions_2010(doc)
-        if year == 2011:
-            doc = _clarify_questions_2011(doc)
-
-            # ...
-        #del doc['Q']
-        #del doc['Quesito']
-
-        # reference period for exam valuation
-        doc['Inizio Periodo di Riferimento'] = str(year+1)+'-01-01'
-        doc['Fine Periodo di Riferimento'] = str(year+2)+'-03-01'
-        doc['Dataset Provenienza'] = str(year) + '-' + str(year+1)
+        doc = _clarify_questions(doc, year)
+        doc = _time_ref(doc, year)
+        doc = _clean_and_polish(doc)
 
         dest.insert_one(doc)
 
-def _clarify_questions_2011(doc):
+
+def _clean_and_polish(doc):
+    del doc['']                 # little quirk by mongoimport
+    del doc['CID']              # useless as a key for this application
+    del doc['Corso']            # always 'INFORMATICA' since it is the object of this study
+    del doc['Tipo corso']       # as above, always 'INFORMATICA'
+
+    # simply clearer
+    doc['P<6'] = doc.pop('P1')
+    doc['P>=6'] = doc.pop('P2')
+
+    # hide teacher name
+    teacher_hash = hashlib.md5(doc['Docente/i'].encode('utf-8')).hexdigest()
+    del doc['Docente/i']
+    doc['Hash Docente/i'] = teacher_hash
+
+    return doc
+
+
+def _time_ref(doc, year):
+    # reference period for exam valuation
+    doc['Inizio Periodo di Riferimento'] = str(year+1)+'-01-01'
+    doc['Fine Periodo di Riferimento'] = str(year+2)+'-03-01'
+    doc['Dataset Provenienza'] = str(year) + '-' + str(year+1)
+    return doc
+
+
+def _clarify_questions(doc, year):
+    if year == 2010:
+        doc = _clarify_questions_2010(doc)
+    else:
+        doc = _clarify_questions_gen(doc)
+    del doc['Q']
+    del doc['Quesito']
+    return doc
+
+
+def _clarify_questions_gen(doc):
     if doc['Q'] == 'D4':
         doc['Oggetto Valutazione'] = 'Conoscenze preliminari sufficienti'
     if doc['Q'] == 'D5':
@@ -66,6 +84,8 @@ def _clarify_questions_2011(doc):
         doc['Oggetto Valutazione'] = 'Copertura programma a lezione'
     if doc['Q'] == 'D20':
         doc['Oggetto Valutazione'] = 'Prove intermedie utili'
+    if doc['Q'] == 'D21':
+        doc['Oggetto Valutazione'] = 'Prove intermedie danneggiano frequenza'
     return doc
 
 def _clarify_questions_2010(doc):
