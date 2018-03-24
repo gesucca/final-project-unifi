@@ -6,4 +6,7 @@ from cleanings import clean_teach_eval
 CLIENT = MongoClient()
 DB = CLIENT.exams
 
-clean_teach_eval(DB.rawTeachingsEv1011, DB.rawTeachingsEv1011, 2010)
+DB.create_collection("teachEval")
+clean_teach_eval(DB.rawTeachingsEv1011, DB.teachEval, 2010)
+
+DB.rawTeachingsEv1011.drop()
