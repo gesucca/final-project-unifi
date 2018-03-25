@@ -54,7 +54,7 @@ def _clean_and_polish(doc):
 def _time_ref(doc, year):
     # reference period for exam valuation
     doc['Inizio Periodo di Riferimento'] = str(year+1)+'-01-01'
-    doc['Fine Periodo di Riferimento'] = str(year+2)+'-03-01'
+    doc['Fine Periodo di Riferimento'] = str(year+1)+'-12-31'
     doc['Dataset Provenienza'] = str(year) + '-' + str(year+1)
     return doc
 

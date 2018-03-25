@@ -2,9 +2,11 @@
 
 from pymongo import MongoClient
 from cleanings import clean_teach_eval
-from aggregs import aggregate
+from aggregs import aggregate_prod
 
 CLIENT = MongoClient()
 DB = CLIENT.exams
 
-aggregate(DB, clean_teach_eval(DB, 'Y'), DB.rawStudentsPr1013)
+# use return values to feed the big aggreg procedure tbd
+clean_teach_eval(DB, 'Y')
+aggregate_prod(DB, DB.rawStudentsPr1013, 'N')
