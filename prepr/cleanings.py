@@ -1,12 +1,28 @@
 """Preliminary filtering of the data with usefulness criteria."""
 import hashlib
 
-def clean_teach_eval(source, dest, year):
+def clean_teach_eval(exams_db, drop):
     """Cleaning of the teachings evaluation collections's documents.
-    source: MongoDB collection
-    dest:   MongoDB collection too
-    year:   academic year of reference (start) """
+    input: MongoDB reference
+    output: collection cleaned"""
 
+    exams_db.create_collection("teachEval")
+
+    _clean_teach_eval(exams_db.rawTeachingsEv1011, exams_db.teachEval, 2010)
+    _clean_teach_eval(exams_db.rawTeachingsEv1112, exams_db.teachEval, 2011)
+    _clean_teach_eval(exams_db.rawTeachingsEv1213, exams_db.teachEval, 2012)
+    _clean_teach_eval(exams_db.rawTeachingsEv1314, exams_db.teachEval, 2013)
+
+    if drop == 'Y':
+        exams_db.rawTeachingsEv1011.drop()
+        exams_db.rawTeachingsEv1112.drop()
+        exams_db.rawTeachingsEv1213.drop()
+        exams_db.rawTeachingsEv1314.drop()
+
+    return exams_db.teachEval
+
+
+def _clean_teach_eval(source, dest, year):
     for doc in source.find():
         source.delete_many(doc)
 
@@ -52,7 +68,7 @@ def _clarify_questions(doc, year):
     del doc['Quesito']
     return doc
 
-
+# I know, those kinda sucks
 def _clarify_questions_gen(doc):
     if doc['Q'] == 'D4':
         doc['Oggetto Valutazione'] = 'Conoscenze preliminari sufficienti'
@@ -87,6 +103,7 @@ def _clarify_questions_gen(doc):
     if doc['Q'] == 'D21':
         doc['Oggetto Valutazione'] = 'Prove intermedie danneggiano frequenza'
     return doc
+
 
 def _clarify_questions_2010(doc):
     if doc['Q'] == 'D1':
