@@ -3,9 +3,11 @@
 from pymongo import MongoClient
 from cleanings import clean_teach_eval
 from aggregs import aggregate_prod
+from discretize import discretize
 
 CLIENT = MongoClient()
 DB = CLIENT.exams
 
-clean_teach_eval(DB, 'Y')
-aggregate_prod(DB, DB.rawStudentsPr1013, 'Y')
+EVAL = clean_teach_eval(DB, 'Y')
+PROD = aggregate_prod(DB, DB.rawStudentsPr1013, 'Y')
+discretize(EVAL, DB.create_collection("teval_discrete"))

@@ -1,6 +1,4 @@
-"""Data aggregation functions:
-    from students instances to aggregate data;
-    between teachings evaluation and students productivity."""
+"""Data aggregation functions from students instances to aggregate data."""
 
 from datetime import datetime
 
@@ -111,7 +109,6 @@ def _init_exam_docs():
     bdsi['Insegnamento'] = 'Basi di dati e sistemi informativi'
     an2 = {}
     an2['Insegnamento'] = 'Analisi 2: funzioni in piu variabili'
-
 
     cal = {}
     cal['Insegnamento'] = 'Calcolo numerico'
