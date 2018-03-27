@@ -1,4 +1,6 @@
-"""Preliminary filtering of the data with usefulness criteria."""
+"""Preliminary filtering of the data with usefulness criteria.
+WARNING: pretty bad code in this one"""
+
 import hashlib
 
 def clean_teach_eval(exams_db, drop):
@@ -68,7 +70,6 @@ def _clarify_questions(doc, year):
     del doc['Quesito']
     return doc
 
-# I know, those kinda sucks
 def _clarify_questions_gen(doc):
     if doc['Q'] == 'D4':
         doc['Oggetto Valutazione'] = 'Conoscenze preliminari sufficienti'
