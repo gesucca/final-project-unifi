@@ -7,6 +7,5 @@ from aggregs import aggregate_prod
 CLIENT = MongoClient()
 DB = CLIENT.exams
 
-# use return values to feed the big aggreg procedure tbd
 clean_teach_eval(DB, 'Y')
-aggregate_prod(DB, DB.rawStudentsPr1013, 'N')
+aggregate_prod(DB, DB.rawStudentsPr1013, 'Y')
