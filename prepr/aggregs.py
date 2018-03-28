@@ -13,7 +13,7 @@ def aggregate_prod(exams_db, raw_prod, drop):
     if drop == 'Y':
         raw_prod.drop()
 
-    return exams_db.productivity
+    return exams_db.productStud
 
 
 def _aggr_prod(source, dest, start, end):
@@ -75,6 +75,7 @@ def _aggr_prod(source, dest, start, end):
         if exams[i]['upd']:
             _avg(exams[i])
             _std_dev(exams[i])
+            _perc(exams[i])
             del exams[i]['Voti']
             del exams[i]['upd']
             dest.insert_one(exams[i])
@@ -150,6 +151,11 @@ def _std_dev(doc):
         doc['Deviazione standard'] = doc['Deviazione standard'] + pow((voto - doc['Media']), 2)
 
     doc['Deviazione standard'] = round(pow(doc['Deviazione standard'] / doc['N'], 0.5), 2)
+
+
+def _perc(doc):
+    doc['P<24'] = 100 * doc['P<24'] / doc['N']
+    doc['P>=24'] = 100 * doc['P>=24'] / doc['N']
 
 
 def _exam_done_in_ref_period(date_string, start, end):
