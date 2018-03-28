@@ -5,6 +5,7 @@ from cleanings import clean_teach_eval
 from aggregs import aggregate_prod
 from discretize import discretize
 from discretize import VAL_SCORE, STD_DEV, MARKS, ZERO_TO_HUND
+from merge import merge_teach
 
 CLIENT = MongoClient()
 DB = CLIENT.exams
@@ -21,3 +22,5 @@ discretize(PROD, DB.create_collection("sprod_discrete"),
            ['Media', 'Deviazione standard', 'N', 'P<24', 'P>=24'],
            [MARKS, STD_DEV, ZERO_TO_HUND, ZERO_TO_HUND, ZERO_TO_HUND],
            'Y')
+
+merge_teach(DB.teval_discrete)

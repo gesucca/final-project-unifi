@@ -2,6 +2,7 @@
 
 from datetime import datetime
 
+
 def aggregate_prod(exams_db, raw_prod, drop):
 
     exams_db.create_collection("productStud")

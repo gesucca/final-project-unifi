@@ -86,13 +86,13 @@ def _clarify_questions_gen(doc):
     if doc['Q'] == 'D10':
         doc['Oggetto Valutazione'] = 'Orari didattica rispettati'
     if doc['Q'] == 'D11':
-        doc['Oggetto Valutazione'] = 'Docente stimola interesse per la materia'
+        doc['Oggetto Valutazione'] = 'Docente stimola interesse'
     if doc['Q'] == 'D12':
         doc['Oggetto Valutazione'] = 'Docente chiaro'
     if doc['Q'] == 'D13':
-        doc['Oggetto Valutazione'] = 'Docente effettivamente reperibile per chiarimenti'
+        doc['Oggetto Valutazione'] = 'Docente reperibile'
     if doc['Q'] == 'D14':
-        doc['Oggetto Valutazione'] = 'Docente disponibile ed esauriente per chiarimenti'
+        doc['Oggetto Valutazione'] = 'Docente disponibile ed esauriente'
     if doc['Q'] == 'D17':
         doc['Oggetto Valutazione'] = 'Argomenti interessanti'
     if doc['Q'] == 'D18':
@@ -110,9 +110,9 @@ def _clarify_questions_2010(doc):
     if doc['Q'] == 'D1':
         doc['Oggetto Valutazione'] = 'Carico di lavoro accettabile'
     if doc['Q'] == 'D2':
-        doc['Oggetto Valutazione'] = 'Organizzazione corso (orario, intermedi, esami)'
+        doc['Oggetto Valutazione'] = 'Organizzazione corso'
     if doc['Q'] == 'D3':
-        doc['Oggetto Valutazione'] = 'Orario lezioni consente studio individuale'
+        doc['Oggetto Valutazione'] = 'Orario consente studio individuale'
     if doc['Q'] == 'D4':
         doc['Oggetto Valutazione'] = 'Carico di studio proporzionato a credti'
     if doc['Q'] == 'D5':
@@ -122,19 +122,19 @@ def _clarify_questions_2010(doc):
     if doc['Q'] == 'D7':
         doc['Oggetto Valutazione'] = 'Modalita esame chiare'
     if doc['Q'] == 'D8':
-        doc['Oggetto Valutazione'] = 'Orari didattica rispettati'
+        doc['Oggetto Valutazione'] = 'Orari rispettati'
     if doc['Q'] == 'D9':
-        doc['Oggetto Valutazione'] = 'Docente effettivamente reperibile per chiarimenti'
+        doc['Oggetto Valutazione'] = 'Docente reperibile'
     if doc['Q'] == 'D10':
-        doc['Oggetto Valutazione'] = 'Docente stimola interesse per la materia'
+        doc['Oggetto Valutazione'] = 'Docente stimola interesse'
     if doc['Q'] == 'D11':
         doc['Oggetto Valutazione'] = 'Docente chiaro'
     if doc['Q'] == 'D12':
-        doc['Oggetto Valutazione'] = 'Docente disponibile ed esauriente per chiarimenti'
+        doc['Oggetto Valutazione'] = 'Docente disponibile ed esauriente'
     if doc['Q'] == 'D13':
         doc['Oggetto Valutazione'] = 'Aule lezioni adeguate'
     if doc['Q'] == 'D14':
-        doc['Oggetto Valutazione'] = 'Aule e strumenti attivita integrative adeguati'
+        doc['Oggetto Valutazione'] = 'Strumenti e locali adeguati'
     if doc['Q'] == 'D15':
         doc['Oggetto Valutazione'] = 'Conoscenze preliminari sufficienti'
     if doc['Q'] == 'D16':
