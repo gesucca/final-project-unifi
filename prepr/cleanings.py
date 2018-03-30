@@ -1,5 +1,4 @@
-"""Preliminary filtering of the data with usefulness criteria.
-WARNING: pretty bad code in this one"""
+"""Preliminary filtering of the data with usefulness criteria."""
 
 import hashlib
 
@@ -15,7 +14,7 @@ def clean_teach_eval(exams_db, drop):
     _clean_teach_eval(exams_db.rawTeachingsEv1213, exams_db.teachEval, 2012)
     _clean_teach_eval(exams_db.rawTeachingsEv1314, exams_db.teachEval, 2013)
 
-    if drop == 'Y':
+    if drop:
         exams_db.rawTeachingsEv1011.drop()
         exams_db.rawTeachingsEv1112.drop()
         exams_db.rawTeachingsEv1213.drop()
@@ -46,7 +45,7 @@ def _clean_and_polish(doc):
     doc['P>=6'] = doc.pop('P2')
 
     # hide teacher name
-    teacher_hash = hashlib.md5(doc['Docente/i'].encode('utf-8')).hexdigest()
+    teacher_hash = hashlib.sha512(doc['Docente/i'].encode('utf-8')).hexdigest()[:32]
     del doc['Docente/i']
     doc['Hash Docente/i'] = teacher_hash
 

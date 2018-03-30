@@ -2,8 +2,8 @@
 
 from datetime import datetime
 
-
 def aggregate_prod(exams_db, raw_prod, drop):
+    """DModule signature function."""
 
     exams_db.create_collection("productStud")
     _aggr_prod(raw_prod, exams_db.productStud, datetime(2011, 1, 1), datetime(2011, 12, 31))
@@ -11,7 +11,7 @@ def aggregate_prod(exams_db, raw_prod, drop):
     _aggr_prod(raw_prod, exams_db.productStud, datetime(2013, 1, 1), datetime(2013, 12, 31))
     _aggr_prod(raw_prod, exams_db.productStud, datetime(2014, 1, 1), datetime(2014, 12, 31))
 
-    if drop == 'Y':
+    if drop:
         raw_prod.drop()
 
     return exams_db.productStud

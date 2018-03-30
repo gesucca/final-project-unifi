@@ -54,5 +54,5 @@ def discretize(source, dest, keys, ranges, drop):
 
         dest.insert_one(doc)
 
-    if drop == 'Y':
+    if drop:
         source.drop()
