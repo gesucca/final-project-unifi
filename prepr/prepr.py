@@ -25,4 +25,4 @@ discretize(PROD, DB.create_collection("sprod_discrete"),
 
 merge_teach(DB.teval_discrete)
 the_big_merge(DB.teval_discrete, DB.sprod_discrete,
-              DB.create_collection('minable'), True)
+              DB.create_collection('minable_01'), True)
