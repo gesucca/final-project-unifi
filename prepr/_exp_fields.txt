@@ -1,8 +1,6 @@
-_id
 Insegnamento
 Hash Docente/i
-Inizio Periodo di Riferimento
-Fine Periodo di Riferimento
+Dataset Provenienza
 Produttivita Studenti - N
 Produttivita Studenti - P>=24
 Produttivita Studenti - P<24

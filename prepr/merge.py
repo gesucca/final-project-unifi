@@ -41,9 +41,13 @@ def the_big_merge(eteach, sprod, merged, drop):
         for doc in sprod.find({key1: tdoc[key1], key2: tdoc[key2]}):
 
             if doc[key3].upper() == tdoc[key3].upper():
+
                 mrg = tdoc
-                del mrg['Dataset Provenienza']
+
                 del mrg['_id'] # I want it to be regenerated
+                del mrg['Inizio Periodo di Riferimento']
+                del mrg['Fine Periodo di Riferimento']
+
                 mrg['Insegnamento'] = mrg['Insegnamento'].upper()
                 mrg['Produttivita Studenti - N'] = doc['N']
                 mrg['Produttivita Studenti - P>=24'] = doc['P>=24']

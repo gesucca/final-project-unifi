@@ -11,11 +11,11 @@ class _DiscRange:
         return self._min <= value <= self._max
 
 
-VAL_SCORE = {_DiscRange(0, 4), _DiscRange(4, 6), _DiscRange(6, 7),
-             _DiscRange(7, 8), _DiscRange(8, 10)}
-STD_DEV = {_DiscRange(0, 1), _DiscRange(1, 2), _DiscRange(2, 3.5),
-           _DiscRange(3.5, 5), _DiscRange(5, 6.5)}
-MARKS = {_DiscRange(18, 22), _DiscRange(22, 24), _DiscRange(24, 26), _DiscRange(26, 28),
+VAL_SCORE = {_DiscRange(0, 4), _DiscRange(4, 6), _DiscRange(6, 8),
+             _DiscRange(8, 10)}
+STD_DEV = {_DiscRange(0, 1.5), _DiscRange(1.5, 3),
+           _DiscRange(3, 5), _DiscRange(5, 8)}
+MARKS = {_DiscRange(18, 22), _DiscRange(22, 25), _DiscRange(25, 28),
          _DiscRange(28, 31)}
 
 ZERO_TO_HUND = {_DiscRange(0, 20), _DiscRange(20, 40), _DiscRange(40, 60), _DiscRange(60, 80),

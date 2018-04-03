@@ -45,7 +45,7 @@ def _clean_and_polish(doc):
     doc['P>=6'] = doc.pop('P2')
 
     # hide teacher name
-    teacher_hash = hashlib.sha512(doc['Docente/i'].encode('utf-8')).hexdigest()[:32]
+    teacher_hash = hashlib.sha1(doc['Docente/i'].encode('utf-8')).hexdigest()[:8]
     del doc['Docente/i']
     doc['Hash Docente/i'] = teacher_hash
 

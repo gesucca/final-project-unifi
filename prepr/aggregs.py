@@ -3,7 +3,7 @@
 from datetime import datetime
 
 def aggregate_prod(exams_db, raw_prod, drop):
-    """DModule signature function."""
+    """Module signature function."""
 
     exams_db.create_collection("productStud")
     _aggr_prod(raw_prod, exams_db.productStud, datetime(2011, 1, 1), datetime(2011, 12, 31))
