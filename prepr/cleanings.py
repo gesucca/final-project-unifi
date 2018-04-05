@@ -1,40 +1,82 @@
 """Preliminary filtering of the data with usefulness criteria."""
-
 import hashlib
 
-def clean_teach_eval(exams_db, drop):
-    """Cleaning of the teachings evaluation collections's documents.
-    input: MongoDB reference
-    output: collection cleaned"""
+QSET_OLD = {'D1': 'Carico di lavoro accettabile',
+            'D2': 'Organizzazione corso',
+            'D3': 'Orario consente studio individuale',
+            'D4': 'Carico di studio proporzionato a credti',
+            'D5': 'Materiale didattico adeguato',
+            'D6': 'Attivita integrative utili',
+            'D7': 'Modalita esame chiare',
+            'D8': 'Orari rispettati',
+            'D9': 'Docente reperibile',
+            'D10': 'Docente stimola interesse',
+            'D11': 'Docente chiaro',
+            'D12': 'Docente disponibile ed esauriente',
+            'D13': 'Aule lezioni adeguate',
+            'D14': 'Strumenti e locali adeguati',
+            'D15': 'Conoscenze preliminari sufficienti',
+            'D16': 'Argomenti trattati nuovi o integrativi',
+            'D17': 'Argomenti interessanti',
+            'D18': 'Soddisfazione complessiva corso'
+           }
 
-    exams_db.create_collection("teachEval")
-
-    _clean_teach_eval(exams_db.rawTeachingsEv1011, exams_db.teachEval, 2010)
-    _clean_teach_eval(exams_db.rawTeachingsEv1112, exams_db.teachEval, 2011)
-    _clean_teach_eval(exams_db.rawTeachingsEv1213, exams_db.teachEval, 2012)
-    _clean_teach_eval(exams_db.rawTeachingsEv1314, exams_db.teachEval, 2013)
-
-    if drop:
-        exams_db.rawTeachingsEv1011.drop()
-        exams_db.rawTeachingsEv1112.drop()
-        exams_db.rawTeachingsEv1213.drop()
-        exams_db.rawTeachingsEv1314.drop()
-
-    return exams_db.teachEval
-
-
-def _clean_teach_eval(source, dest, year):
-    for doc in source.find():
-        source.delete_many(doc)
-
-        doc = _clarify_questions(doc, year)
-        doc = _time_ref(doc, year)
-        doc = _clean_and_polish(doc)
-
-        dest.insert_one(doc)
+QSET_GEN = {'D4': 'Conoscenze preliminari sufficienti',
+            'D5': 'Argomenti trattati nuovi o integrativi',
+            'D6': 'Carico di studio proporzionato a credti',
+            'D7': 'Materiale didattico adeguato',
+            'D8': 'Attivita integrative utili',
+            'D9': 'Modalita esame chiare',
+            'D10': 'Orari didattica rispettati',
+            'D11': 'Docente stimola interesse',
+            'D12': 'Docente chiaro',
+            'D13': 'Docente reperibile',
+            'D14': 'Docente disponibile ed esauriente',
+            'D17': 'Argomenti interessanti',
+            'D18': 'Soddisfazione complessiva corso',
+            'D19': 'Copertura programma a lezione',
+            'D20': 'Prove intermedie utili',
+            'D21': 'Prove intermedie danneggiano frequenza'
+           }
 
 
-def _clean_and_polish(doc):
+class Cleaner:
+    """Cleaning of the teachings evaluation collections's documents."""
+    _cleaned = list()
+
+    def __init__(self, destination):
+        self._dest = destination
+        self._qset = None
+
+    def set_qset(self, qset):
+        """Simple setter for the questions set. """
+        self._qset = qset
+
+    def drop(self):
+        """Drop the original collections that has been cleaned."""
+        for coll in self._cleaned:
+            coll.drop()
+
+    def clean(self, source, year, delete):
+        """Do the work and insert cleaned docs into destination collection."""
+        if self._qset is None:
+            raise Exception('Questions Set not set!')
+
+        for doc in source.find():
+            if delete:
+                source.delete_one(doc)
+
+            doc = _clarify_questions(doc, self._qset)
+            doc = _time_ref(doc, year)
+            doc = _polish(doc)
+
+            self._dest.insert_one(doc)
+
+        self._cleaned.append(source)
+
+
+def _polish(doc):
+
     del doc['']                 # little quirk by mongoimport
     del doc['CID']              # useless as a key for this application
     del doc['Corso']            # always 'INFORMATICA' since it is the object of this study
@@ -45,7 +87,7 @@ def _clean_and_polish(doc):
     doc['P>=6'] = doc.pop('P2')
 
     # hide teacher name
-    teacher_hash = hashlib.sha1(doc['Docente/i'].encode('utf-8')).hexdigest()[:8]
+    teacher_hash = hashlib.sha1(doc['Docente/i'].encode('utf-8')).hexdigest()[:12]
     del doc['Docente/i']
     doc['Hash Docente/i'] = teacher_hash
 
@@ -53,93 +95,20 @@ def _clean_and_polish(doc):
 
 
 def _time_ref(doc, year):
+
     # reference period for exam valuation
     doc['Inizio Periodo di Riferimento'] = str(year+1)+'-01-01'
     doc['Fine Periodo di Riferimento'] = str(year+1)+'-12-31'
     doc['Dataset Provenienza'] = str(year) + '-' + str(year+1)
+
     return doc
 
 
-def _clarify_questions(doc, year):
-    if year == 2010:
-        doc = _clarify_questions_2010(doc)
-    else:
-        doc = _clarify_questions_gen(doc)
+def _clarify_questions(doc, qset):
+
+    doc['Oggetto Valutazione'] = qset[doc['Q']]
+
     del doc['Q']
     del doc['Quesito']
-    return doc
 
-def _clarify_questions_gen(doc):
-    if doc['Q'] == 'D4':
-        doc['Oggetto Valutazione'] = 'Conoscenze preliminari sufficienti'
-    if doc['Q'] == 'D5':
-        doc['Oggetto Valutazione'] = 'Argomenti trattati nuovi o integrativi'
-    if doc['Q'] == 'D6':
-        doc['Oggetto Valutazione'] = 'Carico di studio proporzionato a credti'
-    if doc['Q'] == 'D7':
-        doc['Oggetto Valutazione'] = 'Materiale didattico adeguato'
-    if doc['Q'] == 'D8':
-        doc['Oggetto Valutazione'] = 'Attivita integrative utili'
-    if doc['Q'] == 'D9':
-        doc['Oggetto Valutazione'] = 'Modalita esame chiare'
-    if doc['Q'] == 'D10':
-        doc['Oggetto Valutazione'] = 'Orari didattica rispettati'
-    if doc['Q'] == 'D11':
-        doc['Oggetto Valutazione'] = 'Docente stimola interesse'
-    if doc['Q'] == 'D12':
-        doc['Oggetto Valutazione'] = 'Docente chiaro'
-    if doc['Q'] == 'D13':
-        doc['Oggetto Valutazione'] = 'Docente reperibile'
-    if doc['Q'] == 'D14':
-        doc['Oggetto Valutazione'] = 'Docente disponibile ed esauriente'
-    if doc['Q'] == 'D17':
-        doc['Oggetto Valutazione'] = 'Argomenti interessanti'
-    if doc['Q'] == 'D18':
-        doc['Oggetto Valutazione'] = 'Soddisfazione complessiva corso'
-    if doc['Q'] == 'D19':
-        doc['Oggetto Valutazione'] = 'Copertura programma a lezione'
-    if doc['Q'] == 'D20':
-        doc['Oggetto Valutazione'] = 'Prove intermedie utili'
-    if doc['Q'] == 'D21':
-        doc['Oggetto Valutazione'] = 'Prove intermedie danneggiano frequenza'
-    return doc
-
-
-def _clarify_questions_2010(doc):
-    if doc['Q'] == 'D1':
-        doc['Oggetto Valutazione'] = 'Carico di lavoro accettabile'
-    if doc['Q'] == 'D2':
-        doc['Oggetto Valutazione'] = 'Organizzazione corso'
-    if doc['Q'] == 'D3':
-        doc['Oggetto Valutazione'] = 'Orario consente studio individuale'
-    if doc['Q'] == 'D4':
-        doc['Oggetto Valutazione'] = 'Carico di studio proporzionato a credti'
-    if doc['Q'] == 'D5':
-        doc['Oggetto Valutazione'] = 'Materiale didattico adeguato'
-    if doc['Q'] == 'D6':
-        doc['Oggetto Valutazione'] = 'Attivita integrative utili'
-    if doc['Q'] == 'D7':
-        doc['Oggetto Valutazione'] = 'Modalita esame chiare'
-    if doc['Q'] == 'D8':
-        doc['Oggetto Valutazione'] = 'Orari rispettati'
-    if doc['Q'] == 'D9':
-        doc['Oggetto Valutazione'] = 'Docente reperibile'
-    if doc['Q'] == 'D10':
-        doc['Oggetto Valutazione'] = 'Docente stimola interesse'
-    if doc['Q'] == 'D11':
-        doc['Oggetto Valutazione'] = 'Docente chiaro'
-    if doc['Q'] == 'D12':
-        doc['Oggetto Valutazione'] = 'Docente disponibile ed esauriente'
-    if doc['Q'] == 'D13':
-        doc['Oggetto Valutazione'] = 'Aule lezioni adeguate'
-    if doc['Q'] == 'D14':
-        doc['Oggetto Valutazione'] = 'Strumenti e locali adeguati'
-    if doc['Q'] == 'D15':
-        doc['Oggetto Valutazione'] = 'Conoscenze preliminari sufficienti'
-    if doc['Q'] == 'D16':
-        doc['Oggetto Valutazione'] = 'Argomenti trattati nuovi o integrativi'
-    if doc['Q'] == 'D17':
-        doc['Oggetto Valutazione'] = 'Argomenti interessanti'
-    if doc['Q'] == 'D18':
-        doc['Oggetto Valutazione'] = 'Soddisfazione complessiva corso'
     return doc
