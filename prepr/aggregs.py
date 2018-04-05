@@ -1,88 +1,59 @@
-"""Data aggregation functions from students instances to aggregate data."""
-
+"""Data aggregation from students instances to aggregate data."""
 from datetime import datetime
 
-def aggregate_prod(exams_db, raw_prod, drop):
-    """Module signature function."""
-
-    exams_db.create_collection("productStud")
-    _aggr_prod(raw_prod, exams_db.productStud, datetime(2011, 1, 1), datetime(2011, 12, 31))
-    _aggr_prod(raw_prod, exams_db.productStud, datetime(2012, 1, 1), datetime(2012, 12, 31))
-    _aggr_prod(raw_prod, exams_db.productStud, datetime(2013, 1, 1), datetime(2013, 12, 31))
-    _aggr_prod(raw_prod, exams_db.productStud, datetime(2014, 1, 1), datetime(2014, 12, 31))
-
-    if drop:
-        raw_prod.drop()
-
-    return exams_db.productStud
-
-
-def _aggr_prod(source, dest, start, end):
-
-    exams = _init_exam_docs()
-
-    # init common fields
-    for i in exams:
-        exams[i]['N'] = 0
-        exams[i]['Voti'] = []
-        exams[i]['P>=24'] = 0
-        exams[i]['P<24'] = 0
-        exams[i]['Inizio Periodo di Riferimento'] = start.strftime("%Y-%m-%d")
-        exams[i]['Fine Periodo di Riferimento'] = end.strftime("%Y-%m-%d")
-        exams[i]['upd'] = False
-
-    for doc in source.find():
-
-        if _exam_done_in_ref_period(doc['data_ASD'], start, end):
-            _update_doc(doc, exams['ASD'], 'ASD')
-        if _exam_done_in_ref_period(doc['data_MDL'], start, end):
-            _update_doc(doc, exams['MDL'], 'MDL')
-        if _exam_done_in_ref_period(doc['data_PRG'], start, end):
-            _update_doc(doc, exams['PRG'], 'PRG')
-        if _exam_done_in_ref_period(doc['data_ANI'], start, end):
-            _update_doc(doc, exams['ANI'], 'ANI')
-        if _exam_done_in_ref_period(doc['data_ARC'], start, end):
-            _update_doc(doc, exams['ARC'], 'ARC')
-
-        if _exam_done_in_ref_period(doc['data_ALG'], start, end):
-            _update_doc(doc, exams['ALG'], 'ALG')
-        if _exam_done_in_ref_period(doc['data_CPS'], start, end):
-            _update_doc(doc, exams['CPS'], 'CPS')
-        if _exam_done_in_ref_period(doc['data_MP'], start, end):
-            _update_doc(doc, exams['MP'], 'MP')
-        if _exam_done_in_ref_period(doc['data_PC'], start, end):
-            _update_doc(doc, exams['PC'], 'PC')
-
-        if _exam_done_in_ref_period(doc['data_FIS'], start, end):
-            _update_doc(doc, exams['FIS'], 'FIS')
-        if _exam_done_in_ref_period(doc['data_BDSI'], start, end):
-            _update_doc(doc, exams['BDSI'], 'BDSI')
-        if _exam_done_in_ref_period(doc['data_SO'], start, end):
-            _update_doc(doc, exams['SO'], 'SO')
-        if _exam_done_in_ref_period(doc['data_ANII'], start, end):
-            _update_doc(doc, exams['ANII'], 'ANII')
-
-        if _exam_done_in_ref_period(doc['data_CAL'], start, end):
-            _update_doc(doc, exams['CAL'], 'CAL')
-        if _exam_done_in_ref_period(doc['data_IT'], start, end):
-            _update_doc(doc, exams['IT'], 'IT')
-        if _exam_done_in_ref_period(doc['data_RETI'], start, end):
-            _update_doc(doc, exams['RETI'], 'RETI')
-        if _exam_done_in_ref_period(doc['data_IUM'], start, end):
-            _update_doc(doc, exams['IUM'], 'IUM')
+_EXAMS = [{'date': 'data_ASD', 'name': 'ASD'},
+          {'date': 'data_MDL', 'name': 'MDL'},
+          {'date': 'data_PRG', 'name': 'PRG'},
+          {'date': 'data_ANI', 'name': 'ANI'},
+          {'date': 'data_ARC', 'name': 'ARC'},
+          {'date': 'data_ALG', 'name': 'ALG'},
+          {'date': 'data_CPS', 'name': 'CPS'},
+          {'date': 'data_MP', 'name': 'MP'},
+          {'date': 'data_PC', 'name': 'PC'},
+          {'date': 'data_FIS', 'name': 'FIS'},
+          {'date': 'data_BDSI', 'name': 'BDSI'},
+          {'date': 'data_SO', 'name': 'SO'},
+          {'date': 'data_ANII', 'name': 'ANII'},
+          {'date': 'data_CAL', 'name': 'CAL'},
+          {'date': 'data_IT', 'name': 'IT'},
+          {'date': 'data_RETI', 'name': 'RETI'},
+          {'date': 'data_IUM', 'name': 'IUM'}
+         ]
 
 
-    for i in exams:
-        if exams[i]['upd']:
-            _avg(exams[i])
-            _std_dev(exams[i])
-            _perc(exams[i])
-            del exams[i]['Voti']
-            del exams[i]['upd']
-            dest.insert_one(exams[i])
+class Aggregator:
+    """Data aggregation object from students instances to aggregate data."""
+
+    def __init__(self, source, destination):
+        self._source = source
+        self._dest = destination
+
+    def drop(self):
+        """Drop the original collection that has been aggregated."""
+        self._source.drop()
+
+    def aggregate(self, start, end, delete):
+        """Class signature function."""
+        exams = _init_exam_docs(start, end)
+
+        for doc in self._source.find():
+            for keys in _EXAMS:
+                if _exam_done_in_ref_period(doc[keys['date']], start, end):
+                    _update_doc(doc, exams[keys['name']], keys['name'])
+                    if delete:
+                        self._source.delete_one(doc)
+
+        for i in exams:
+            if exams[i]['upd']:
+                _avg(exams[i])
+                _std_dev(exams[i])
+                _perc(exams[i])
+                del exams[i]['Voti']
+                del exams[i]['upd']
+                self._dest.insert_one(exams[i])
 
 
-def _init_exam_docs():
+def _init_exam_docs(start, end):
     asd = {}
     asd['Insegnamento'] = 'Algoritmi e strutture dati'
     mdl = {}
@@ -121,9 +92,21 @@ def _init_exam_docs():
     ium = {}
     ium['Insegnamento'] = 'Interazione uomo macchina'
 
-    return {'ASD': asd, 'MDL': mdl, 'PRG': prg, 'ANI': an1, 'ARC': arc, 'ALG': alg, 'CPS': cps,
-            'MP': mdp, 'PC': p_c, 'FIS': f_g, 'BDSI': bdsi, 'SO': s_o, 'ANII': an2, 'CAL': cal,
-            'IT': i_t, 'RETI': reti, 'IUM': ium}
+    exams = {'ASD': asd, 'MDL': mdl, 'PRG': prg, 'ANI': an1, 'ARC': arc, 'ALG': alg, 'CPS': cps,
+             'MP': mdp, 'PC': p_c, 'FIS': f_g, 'BDSI': bdsi, 'SO': s_o, 'ANII': an2, 'CAL': cal,
+             'IT': i_t, 'RETI': reti, 'IUM': ium}
+
+    # init common fields
+    for i in exams:
+        exams[i]['N'] = 0
+        exams[i]['Voti'] = []
+        exams[i]['P>=24'] = 0
+        exams[i]['P<24'] = 0
+        exams[i]['Inizio Periodo di Riferimento'] = start.strftime("%Y-%m-%d")
+        exams[i]['Fine Periodo di Riferimento'] = end.strftime("%Y-%m-%d")
+        exams[i]['upd'] = False
+
+    return exams
 
 
 def _update_doc(old, new, field):
