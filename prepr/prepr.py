@@ -50,10 +50,10 @@ def _clean(scheme, dest):
 def _aggreg(source, dest):
     agg = Aggregator(source, dest)
 
-    agg.aggregate(datetime(2011, 1, 1), datetime(2011, 12, 31), True)
-    agg.aggregate(datetime(2012, 1, 1), datetime(2012, 12, 31), True)
-    agg.aggregate(datetime(2013, 1, 1), datetime(2013, 12, 31), True)
-    agg.aggregate(datetime(2014, 1, 1), datetime(2014, 12, 31), True)
+    agg.aggregate(datetime(2011, 1, 1), datetime(2011, 12, 31))
+    agg.aggregate(datetime(2012, 1, 1), datetime(2012, 12, 31))
+    agg.aggregate(datetime(2013, 1, 1), datetime(2013, 12, 31))
+    agg.aggregate(datetime(2014, 1, 1), datetime(2014, 12, 31))
 
     agg.drop()
 
