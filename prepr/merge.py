@@ -1,36 +1,62 @@
 """Attribute merging for producing a single binarizable collection."""
 
-def merge_teach(collection):
+class Merger:
+    """Attribute merging for producing a single binarizable collection."""
+    def __init__(self, keys, bounce_gen, bounce_spec):
+        if len(keys) > 2:
+            raise Exception('This is application specific: what are you trying to do?')
+        self._keys = keys
+        self._bounce_gen = bounce_gen
+        self._bounce_spec = bounce_spec
+
+    def merge(self, collection):
+        """aaa """
+        for k_0 in collection.distinct(self._keys[0]):
+            for k_1 in collection.distinct(self._keys[1], {self._keys[0]: k_0}):
+                teach_docs = collection.find({self._keys[1]: k_1, self._keys[0]: k_0})
+                newdoc = self._peek_generalities(teach_docs.next(), k_0, k_1)
+                teach_docs.rewind()
+
+                for doc in teach_docs:
+                    self._peek_specifics(doc, newdoc)
+
+            collection.delete_many(teach_docs)
+            collection.insert_one(newdoc)
+
+    def _peek_generalities(self, doc, k_0, k_1):
+        newdoc = {self._keys[1]: k_1, self._keys[0]: k_0}
+        for boing in self._bounce_gen:
+            newdoc[boing] = doc[boing]
+        return newdoc
+
+    def _peek_specifics(self, doc, newdoc):
+        pref = doc['Oggetto Valutazione']
+        for boing in self._bounce_spec:
+            newdoc[pref + ' - ' + boing] = doc[boing]
+        # newdoc[pref + ' - Media'] = doc['Media']
+        # newdoc[pref + ' - Std Dev'] = doc['Deviazione standard']
+        # newdoc[pref + ' - P<6'] = doc['P<6']
+        # newdoc[pref + ' - P>=6'] = doc['P>=6']
+        # newdoc[pref + ' - N'] = doc['N']
+
+def merge_teach(collection, key1, key2):
     """Merge the teaching evaluations instances as attributes."""
-    for year in collection.distinct('Dataset Provenienza'):
 
-        for teach in collection.distinct('Insegnamento', {'Dataset Provenienza': year}):
+    for year in collection.distinct(key1):
+        for teaching in collection.distinct(key2, {'Dataset Provenienza': year}):
 
-            teach_docs = collection.find({'Insegnamento': teach, 'Dataset Provenienza': year})
-            temp_doc = teach_docs.next()
-
-            aggr_doc = {'Insegnamento': teach, 'Dataset Provenienza': year}
-
-            aggr_doc['Hash Docente/i'] = temp_doc['Hash Docente/i']
-            aggr_doc['Inizio Periodo di Riferimento'] = temp_doc['Inizio Periodo di Riferimento']
-            aggr_doc['Fine Periodo di Riferimento'] = temp_doc['Fine Periodo di Riferimento']
-
+            teach_docs = collection.find({'Insegnamento': teaching, 'Dataset Provenienza': year})
+            newdoc = _peek_generalities(teach_docs.next(), year, teaching)
             teach_docs.rewind()
 
             for doc in teach_docs:
-                pref = doc['Oggetto Valutazione']
-                aggr_doc[pref + ' - Media'] = doc['Media']
-                aggr_doc[pref + ' - Std Dev'] = doc['Deviazione standard']
-                aggr_doc[pref + ' - P<6'] = doc['P<6']
-                aggr_doc[pref + ' - P>=6'] = doc['P>=6']
-                aggr_doc[pref + ' - N'] = doc['N']
+                _peek_specifics(doc, newdoc)
 
-                collection.delete_one(doc)
-
-            collection.insert_one(aggr_doc)
+            collection.delete_many(teach_docs)
+            collection.insert_one(newdoc)
 
 
-def the_big_merge(eteach, sprod, merged, drop):
+def gen_minable_01(eteach, sprod, merged, drop):
     """Finally merge the two dataset intoa single minable collection."""
 
     key1 = 'Inizio Periodo di Riferimento'
@@ -47,6 +73,9 @@ def the_big_merge(eteach, sprod, merged, drop):
                 del mrg['_id'] # I want it to be regenerated
                 del mrg['Inizio Periodo di Riferimento']
                 del mrg['Fine Periodo di Riferimento']
+
+                mrg['Anno Accademico'] = mrg['Dataset Provenienza']
+                del mrg['Dataset Provenienza']
 
                 mrg['Insegnamento'] = mrg['Insegnamento'].upper()
                 mrg['Produttivita Studenti - N'] = doc['N']
