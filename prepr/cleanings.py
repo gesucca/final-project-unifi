@@ -75,6 +75,39 @@ class Cleaner:
         self._cleaned.append(source)
 
 
+class FinalCleaner:
+    """Polish the final, minable collection before exporting."""
+    _cleaned = list()
+
+    def __init__(self, collection):
+        self._collection = collection
+
+    def clean(self, rename, remove, uppercase):
+        """Self explaining method."""
+        for doc in self._collection.find():
+
+            self._collection.delete_one(doc)
+            self._cleaned.append(doc)
+            newdoc = doc
+
+            for ren in rename:
+                for key in newdoc:
+                    if ren['old'] in key:
+                        newdoc[key.replace(ren['old'], ren['new'])] = newdoc.pop(key)
+
+            for rem in remove:
+                del newdoc[rem]
+
+            for upp in uppercase:
+                newdoc[upp] = newdoc[upp].upper()
+
+            self._collection.insert_one(newdoc)
+
+    def get_cleaned(self):
+        """For debug purposes."""
+        return self._cleaned
+
+
 def _polish(doc):
 
     del doc['']                 # little quirk by mongoimport
