@@ -41,7 +41,6 @@ class Merger:
                     coll.delete_many(self._get_filter(k_0, k_1))
                     coll.insert_one(newdoc)
 
-
     def merge_collections(self, coll1, coll2, label2, dest):
         """Finally merge two datasets intoa single (minable) collection."""
         for teach_doc in coll1.find():

@@ -47,7 +47,8 @@ def discretize(source, dest, keys, ranges, drop):
         raise Exception('Keys and ranges length are different!')
 
     for doc in source.find():
-        source.delete_one(doc)
+        if drop:
+            source.delete_one(doc)
 
         for i in range(len(keys)):
             doc[keys[i]] = _discretize(doc[keys[i]], ranges[i])
