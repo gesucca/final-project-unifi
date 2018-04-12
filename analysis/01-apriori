@@ -1,6 +1,6 @@
 === Run information ===
 
-Scheme:       weka.associations.Apriori -I -N 15 -T 1 -C 1.05 -D 0.001 -U 0.9 -M 0.4 -S -1.0 -V -c -1
+Scheme:       weka.associations.Apriori -I -N 15 -T 1 -C 1.05 -D 0.005 -U 1.0 -M 0.25 -S -1.0 -V -c -1
 Relation:     01
 Instances:    44
 Attributes:   98
@@ -108,55 +108,58 @@ Attributes:   98
 Apriori
 =======
 
-Minimum support: 0.71 (31 instances)
+Minimum support: 0.76 (33 instances)
 Minimum metric <lift>: 1.05
-Number of cycles performed: 285
+Number of cycles performed: 48
 
 Generated sets of large itemsets:
 
-Size of set of large itemsets L(1): 7
+Size of set of large itemsets L(1): 4
 
 Large Itemsets L(1):
-Carico di studio proporzionato a credti - Std Dev=1.5-3 31
-Materiale didattico adeguato - Std Dev=1.5-3 31
-Modalita esame chiare - P<6=0-20 33
-Docente reperibile - P<6=0-20 35
-Docente disponibile ed esauriente - P<6=0-20 34
-Argomenti trattati nuovi o integrativi - P<6=0-20 32
-Argomenti interessanti - P<6=0-20 33
+Docente reperibile - P<6=0-20 34
+Docente reperibile - P>=6=80-100 34
+Docente disponibile ed esauriente - P<6=0-20 33
+Docente disponibile ed esauriente - P>=6=80-100 33
 
-Size of set of large itemsets L(2): 7
+Size of set of large itemsets L(2): 6
 
 Large Itemsets L(2):
-Carico di studio proporzionato a credti - Std Dev=1.5-3 Docente reperibile - P<6=0-20 31
-Materiale didattico adeguato - Std Dev=1.5-3 Docente reperibile - P<6=0-20 31
-Modalita esame chiare - P<6=0-20 Docente reperibile - P<6=0-20 33
-Modalita esame chiare - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 32
-Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 34
-Docente reperibile - P<6=0-20 Argomenti trattati nuovi o integrativi - P<6=0-20 32
-Docente disponibile ed esauriente - P<6=0-20 Argomenti trattati nuovi o integrativi - P<6=0-20 31
+Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 34
+Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 33
+Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33
+Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33
+Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P>=6=80-100 33
+Docente disponibile ed esauriente - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33
 
-Size of set of large itemsets L(3): 2
+Size of set of large itemsets L(3): 4
 
 Large Itemsets L(3):
-Modalita esame chiare - P<6=0-20 Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 32
-Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 Argomenti trattati nuovi o integrativi - P<6=0-20 31
+Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33
+Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P>=6=80-100 33
+Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33
+Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33
+
+Size of set of large itemsets L(4): 1
+
+Large Itemsets L(4):
+Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33
 
 Best rules found:
 
- 1. Docente reperibile - P<6=0-20 35 ==> Docente disponibile ed esauriente - P<6=0-20 34    conf:(0.97) < lift:(1.26)> lev:(0.16) [6] conv:(3.98)
- 2. Docente disponibile ed esauriente - P<6=0-20 34 ==> Docente reperibile - P<6=0-20 34    conf:(1) < lift:(1.26)> lev:(0.16) [6] conv:(6.95)
- 3. Modalita esame chiare - P<6=0-20 33 ==> Docente reperibile - P<6=0-20 33    conf:(1) < lift:(1.26)> lev:(0.15) [6] conv:(6.75)
- 4. Docente reperibile - P<6=0-20 35 ==> Modalita esame chiare - P<6=0-20 33    conf:(0.94) < lift:(1.26)> lev:(0.15) [6] conv:(2.92)
- 5. Docente reperibile - P<6=0-20 35 ==> Argomenti trattati nuovi o integrativi - P<6=0-20 32    conf:(0.91) < lift:(1.26)> lev:(0.15) [6] conv:(2.39)
- 6. Argomenti trattati nuovi o integrativi - P<6=0-20 32 ==> Docente reperibile - P<6=0-20 32    conf:(1) < lift:(1.26)> lev:(0.15) [6] conv:(6.55)
- 7. Docente reperibile - P<6=0-20 35 ==> Modalita esame chiare - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 32    conf:(0.91) < lift:(1.26)> lev:(0.15) [6] conv:(2.39)
- 8. Modalita esame chiare - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 32 ==> Docente reperibile - P<6=0-20 32    conf:(1) < lift:(1.26)> lev:(0.15) [6] conv:(6.55)
- 9. Carico di studio proporzionato a credti - Std Dev=1.5-3 31 ==> Docente reperibile - P<6=0-20 31    conf:(1) < lift:(1.26)> lev:(0.14) [6] conv:(6.34)
-10. Docente reperibile - P<6=0-20 35 ==> Carico di studio proporzionato a credti - Std Dev=1.5-3 31    conf:(0.89) < lift:(1.26)> lev:(0.14) [6] conv:(2.07)
-11. Materiale didattico adeguato - Std Dev=1.5-3 31 ==> Docente reperibile - P<6=0-20 31    conf:(1) < lift:(1.26)> lev:(0.14) [6] conv:(6.34)
-12. Docente reperibile - P<6=0-20 35 ==> Materiale didattico adeguato - Std Dev=1.5-3 31    conf:(0.89) < lift:(1.26)> lev:(0.14) [6] conv:(2.07)
-13. Docente reperibile - P<6=0-20 35 ==> Docente disponibile ed esauriente - P<6=0-20 Argomenti trattati nuovi o integrativi - P<6=0-20 31    conf:(0.89) < lift:(1.26)> lev:(0.14) [6] conv:(2.07)
-14. Docente disponibile ed esauriente - P<6=0-20 Argomenti trattati nuovi o integrativi - P<6=0-20 31 ==> Docente reperibile - P<6=0-20 31    conf:(1) < lift:(1.26)> lev:(0.14) [6] conv:(6.34)
-15. Modalita esame chiare - P<6=0-20 33 ==> Docente disponibile ed esauriente - P<6=0-20 32    conf:(0.97) < lift:(1.25)> lev:(0.15) [6] conv:(3.75)
+ 1. Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 2. Docente disponibile ed esauriente - P>=6=80-100 33 ==> Docente disponibile ed esauriente - P<6=0-20 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 3. Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 4. Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 5. Docente disponibile ed esauriente - P>=6=80-100 33 ==> Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 6. Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33 ==> Docente disponibile ed esauriente - P<6=0-20 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 7. Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 8. Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+ 9. Docente disponibile ed esauriente - P>=6=80-100 33 ==> Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+10. Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P>=6=80-100 33 ==> Docente disponibile ed esauriente - P<6=0-20 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+11. Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+12. Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+13. Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente reperibile - P<6=0-20 Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+14. Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33 ==> Docente disponibile ed esauriente - P>=6=80-100 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
+15. Docente disponibile ed esauriente - P>=6=80-100 33 ==> Docente reperibile - P<6=0-20 Docente reperibile - P>=6=80-100 Docente disponibile ed esauriente - P<6=0-20 33    conf:(1) < lift:(1.33)> lev:(0.19) [8] conv:(8.25)
 
