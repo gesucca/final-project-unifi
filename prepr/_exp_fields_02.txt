@@ -1,0 +1,28 @@
+Insegnamento
+Hash Docente/i
+Docente - Media
+Docente - P<6
+Docente - P>=6
+Docente - N
+Organizzazione Insegnamento - Media
+Organizzazione Insegnamento - P<6
+Organizzazione Insegnamento - P>=6
+Organizzazione Insegnamento - N
+Soddisfazione - Media
+Soddisfazione - P<6
+Soddisfazione - P>=6
+Soddisfazione - N
+Aspetti specifici del Corso di Studi - Media
+Aspetti specifici del Corso di Studi - P<6
+Aspetti specifici del Corso di Studi - P>=6
+Aspetti specifici del Corso di Studi - N
+Produttivita Studenti - N
+Produttivita Studenti - P>=24
+Produttivita Studenti - P<24
+Produttivita Studenti - Media
+Anno Accademico
+Docente - Std Dev
+Organizzazione Insegnamento - Std Dev
+Soddisfazione - Std Dev
+Aspetti specifici del Corso di Studi - Std Dev
+Produttivita Studenti - Std Dev

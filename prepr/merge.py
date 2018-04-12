@@ -13,11 +13,13 @@ class Merger:
 
         self._bounce_gen = None
         self._bounce_spec = None
+        self._discriminant = None
 
 
-    def set_specific_keys(self, bounce_spec):
+    def set_specific_keys(self, bounce_spec, discriminant):
         """Self explaining method."""
         self._bounce_spec = bounce_spec
+        self._discriminant = discriminant
 
 
     def set_gen_keys(self, bounce_gen):
@@ -85,6 +87,6 @@ class Merger:
         if self._bounce_spec is None:
             raise Exception('Please set the specific attributes to be merged!')
 
-        pref = doc['Oggetto Valutazione']
+        pref = doc[self._discriminant]
         for boing in self._bounce_spec:
             newdoc[pref + ' - ' + boing] = doc[boing]
