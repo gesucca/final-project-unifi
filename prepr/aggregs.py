@@ -67,6 +67,7 @@ class StudAggregator(Aggregator):
         raise NotImplementedError('Wrong class!')
 
 
+# TODO: this is particularly ugly, refactor!
 class ParAggregator(Aggregator):
     """Aggregate teachings evaluation per paragraph."""
 

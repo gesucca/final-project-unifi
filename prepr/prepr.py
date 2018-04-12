@@ -21,6 +21,7 @@ def main(scheme):
 
     _spec_dataset_01(scheme, collections)
     _spec_dataset_02(scheme, collections)
+    _spec_dataset_03(scheme) # simple cleaning of 02
 
     for coll in scheme.collection_names():
         if 'minable' not in coll:
@@ -80,6 +81,34 @@ def _spec_dataset_02(scheme, collections):
 
     _merge_attr_teach(teach_d, 'Paragrafo')
     _gen_minable(teach_d, sprod_d, scheme.create_collection('minable_02'), True)
+
+
+def _spec_dataset_03(scheme):
+
+    minable = scheme.create_collection("minable_03")
+
+    # so silly I simply do it here
+    for doc in scheme.minable_02.find():
+        # save this
+        doc["N Studenti Produttivita"] = doc.pop("Produttivita Studenti - N")
+
+        try: # Ns are all the same, but eval scheme is different...
+            doc["temp"] = doc["Aspetti specifici del Corso di Studi - N"]
+        except KeyError:
+            doc["temp"] = doc["Organizzazione Insegnamento - N"]
+
+        keys = list(doc.keys())
+        for key in keys:
+            if " - N" in key:
+                del doc[key]
+        doc["N Valutazioni Didattica"] = doc.pop("temp")
+
+        # ulterior pruning: only precise matching values
+        if doc["N Valutazioni Didattica"] == doc["N Studenti Produttivita"]:
+            doc["Numero Studenti"] = doc["N Studenti Produttivita"]
+            del doc["N Studenti Produttivita"]
+            del doc["N Valutazioni Didattica"]
+            minable.insert_one(doc)
 
 
 def _pre_clean(scheme, dest):
