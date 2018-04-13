@@ -2,6 +2,7 @@
 
 from datetime import datetime
 from pymongo import MongoClient
+from bson import Code
 
 from cleanings import Cleaner, FinalCleaner
 from cleanings import QSET_OLD, QSET_GEN
@@ -9,9 +10,10 @@ from cleanings import QSET_OLD, QSET_GEN
 from aggregs import StudAggregator, ParAggregator
 
 from discretize import discretize
-from discretize import VAL_SCORE, STD_DEV, MARKS, ZERO_TO_HUND
 
 from merge import Merger
+
+import PREPR_PARAMS as pp
 
 
 def main(scheme):
@@ -27,9 +29,9 @@ def main(scheme):
 
     minable_discretized = scheme.create_collection("minable_discretized")
     discretize(minable, minable_discretized,
-               ["Media", 'Std dev', 'N', 'P<6', 'P>=6', 'P<24', 'P>=24', 'Voto Medio'],
-               [VAL_SCORE, STD_DEV, ZERO_TO_HUND, ZERO_TO_HUND, ZERO_TO_HUND,
-                ZERO_TO_HUND, ZERO_TO_HUND, MARKS],
+               ["Media", 'Std Dev', 'N', 'P<6', 'P>=6', 'P<24', 'P>=24', 'Voto Medio'],
+               [pp.VAL_SCORE, pp.STD_DEV, pp.STUDENTS, pp.PERCENT, pp.PERCENT,
+                pp.PERCENT, pp.PERCENT, pp.MARKS],
                False
               )
 
@@ -78,6 +80,8 @@ def _teach_attribute_pruning(scheme, collection, delete):
                 n_mean = n_mean + doc[key]
                 del doc[key]
                 n_n = n_n + 1
+            elif doc[key] == '<5':
+                del doc[key]
 
         if n_n != 0:
             doc['Val_ N'] = int(n_mean / n_n)
@@ -122,12 +126,22 @@ def _final_merge(dest, teval, sprod):
 def _number_instance_pruning(minable_coll):
 
     for doc in minable_coll.find():
+
+        delete = False
         try:
-            if abs(doc['Prd_ Studenti - N'] - doc['Val_ N']) > 20:
-                minable_coll.delete_one(doc)
+            if pp.aggregation_diff_pruning(doc['Prd_ Studenti - N'], doc['Val_ N']):
+                delete = True
         except TypeError:
             if doc['Prd_ Studenti - N'] != doc['Val_ N']:
-                minable_coll.delete_one(doc)
+                delete = True
+
+        if delete:
+            minable_coll.delete_one(doc)
+        else:
+            newdoc = doc
+            del newdoc['Val_ N'] # this is a mean of means, the other is a count of instances:
+                                 # I keep the more precise one
+            minable_coll.replace_one(doc, newdoc)
 
 
 # launch this on the global scope

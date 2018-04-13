@@ -101,6 +101,11 @@ class FinalCleaner:
             for upp in uppercase:
                 newdoc[upp] = newdoc[upp].upper()
 
+            # clean meaningless attributes
+            for key in list(newdoc.keys()):
+                if str(newdoc[key]).lower() == 'n.c.':
+                    del newdoc[key]
+
             self._collection.insert_one(newdoc)
 
     def get_cleaned(self):

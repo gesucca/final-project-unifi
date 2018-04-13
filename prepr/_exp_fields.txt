@@ -1,16 +1,36 @@
-Insegnamento
 Anno Accademico
-Numero Studenti
 Hash Docente/i
-Docente - Media
-Docente - Std Dev
-Docente - P<6
-Docente - P>=6
-Organizzazione Insegnamento - Media
-Organizzazione Insegnamento - P<6
-Organizzazione Insegnamento - P>=6
-Organizzazione Insegnamento - Std Dev
-Produttivita Studenti - P>=24
-Produttivita Studenti - P<24
-Produttivita Studenti - Media
-Produttivita Studenti - Std Dev
+Insegnamento
+Prd_ Studenti - N
+Prd_ Studenti - P<24
+Prd_ Studenti - P>=24
+Prd_ Studenti - Std Dev
+Prd_ Studenti - Voto Medio
+Val_ Aspetti specifici del Corso di Studi - Media
+Val_ Aspetti specifici del Corso di Studi - P<6
+Val_ Aspetti specifici del Corso di Studi - P>=6
+Val_ Aspetti specifici del Corso di Studi - Std Dev
+Val_ Aule ed attrezzature - Media
+Val_ Aule ed attrezzature - P<6
+Val_ Aule ed attrezzature - P>=6
+Val_ Aule ed attrezzature - Std Dev
+Val_ Docente - Media
+Val_ Docente - P<6
+Val_ Docente - P>=6
+Val_ Docente - Std Dev
+Val_ Informazioni aggiuntive - Media
+Val_ Informazioni aggiuntive - P<6
+Val_ Informazioni aggiuntive - P>=6
+Val_ Informazioni aggiuntive - Std Dev
+Val_ Organizzazione Corso di Studi - Media
+Val_ Organizzazione Corso di Studi - P<6
+Val_ Organizzazione Corso di Studi - P>=6
+Val_ Organizzazione Corso di Studi - Std Dev
+Val_ Organizzazione Insegnamento - Media
+Val_ Organizzazione Insegnamento - P<6
+Val_ Organizzazione Insegnamento - P>=6
+Val_ Organizzazione Insegnamento - Std Dev
+Val_ Soddisfazione - Media
+Val_ Soddisfazione - P<6
+Val_ Soddisfazione - P>=6
+Val_ Soddisfazione - Std Dev
