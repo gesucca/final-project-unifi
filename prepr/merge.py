@@ -14,12 +14,14 @@ class Merger:
         self._bounce_gen = None
         self._bounce_spec = None
         self._discriminant = None
+        self._pref = None
 
 
-    def set_specific_keys(self, bounce_spec, discriminant):
+    def set_specific_keys(self, bounce_spec, discriminant, pref):
         """Self explaining method."""
         self._bounce_spec = bounce_spec
         self._discriminant = discriminant
+        self._pref = pref
 
 
     def set_gen_keys(self, bounce_gen):
@@ -43,6 +45,7 @@ class Merger:
                     coll.delete_many(self._get_filter(k_0, k_1))
                     coll.insert_one(newdoc)
 
+
     def merge_collections(self, coll1, coll2, label2, dest):
         """Finally merge two datasets intoa single (minable) collection."""
         for teach_doc in coll1.find():
@@ -50,7 +53,6 @@ class Merger:
                                         self._keys[1]: teach_doc[self._keys[1]]}):
 
                 if prod_doc[self._keys[2]].upper() == teach_doc[self._keys[2]].upper():
-
                     newdoc = teach_doc
                     for key in self._bounce_spec:
                         newdoc[label2 + ' - ' + key] = prod_doc[key]
@@ -87,6 +89,6 @@ class Merger:
         if self._bounce_spec is None:
             raise Exception('Please set the specific attributes to be merged!')
 
-        pref = doc[self._discriminant]
+        pref = self._pref + doc[self._discriminant]
         for boing in self._bounce_spec:
             newdoc[pref + ' - ' + boing] = doc[boing]
