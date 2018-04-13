@@ -112,9 +112,10 @@ class ParAggregator(Aggregator):
             try:
                 newdoc['Media'] = round(aggr_attr[1] / aggr_attr[0], 2)
                 newdoc['Deviazione standard'] = round(aggr_attr[2] / aggr_attr[0], 2)
-                newdoc['N'] = round(aggr_attr[2] / aggr_attr[0], 2)
+                newdoc['N'] = round(aggr_attr[3] / aggr_attr[0], 2)
                 newdoc['P<6'] = round(aggr_attr[4] / aggr_attr[0], 2)
                 newdoc['P>=6'] = round(aggr_attr[5] / aggr_attr[0], 2)
+
             except ZeroDivisionError: # it means all values are missing
                 newdoc['Media'] = 'n.c.'
                 newdoc['Deviazione standard'] = 'n.c.'
@@ -175,28 +176,27 @@ def _update_doc(old, new, field):
 
 
 def _avg(doc):
-    doc['Media'] = 0
+    doc['Voto Medio'] = 0
     for voto in doc['Voti']:
-        doc['Media'] = doc['Media'] + voto
+        doc['Voto Medio'] = doc['Voto Medio'] + voto
 
-    doc['Media'] = round(doc['Media'] / doc['N'], 2)
+    doc['Voto Medio'] = round(doc['Voto Medio'] / doc['N'], 2)
 
 
 def _std_dev(doc):
     doc['Deviazione standard'] = 0
     for voto in doc['Voti']:
-        doc['Deviazione standard'] = doc['Deviazione standard'] + pow((voto - doc['Media']), 2)
+        doc['Deviazione standard'] = doc['Deviazione standard'] + pow((voto - doc['Voto Medio']), 2)
 
     doc['Deviazione standard'] = round(pow(doc['Deviazione standard'] / doc['N'], 0.5), 2)
 
 
 def _perc(doc):
-    doc['P<24'] = 100 * doc['P<24'] / doc['N']
-    doc['P>=24'] = 100 * doc['P>=24'] / doc['N']
+    doc['P<24'] = round(100 * doc['P<24'] / doc['N'], 2)
+    doc['P>=24'] = round(100 * doc['P>=24'] / doc['N'], 2)
 
 
 def _exam_done_in_ref_period(date_string, start, end):
-
     if date_string == 0 or date_string == '0' or date_string == '0000-00-00':
         return False
 

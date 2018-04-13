@@ -51,7 +51,9 @@ def discretize(source, dest, keys, ranges, drop):
             source.delete_one(doc)
 
         for i in range(len(keys)):
-            doc[keys[i]] = _discretize(doc[keys[i]], ranges[i])
+            for k in list(doc.keys()):
+                if keys[i] in k:
+                    doc[k] = _discretize(doc[k], ranges[i])
 
         dest.insert_one(doc)
 
