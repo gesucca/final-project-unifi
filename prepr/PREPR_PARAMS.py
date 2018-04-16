@@ -33,6 +33,12 @@ STUDENTS = {_DiscRange(0, 25),
             _DiscRange(100, 200)
            }
 
+YEARS = {_DiscRange(0, 0.5),
+         _DiscRange(0.5, 1),
+         _DiscRange(1, 1.5),
+         _DiscRange(1.5, 2)
+        }
+
 def aggregation_diff_pruning(n_1, n_2):
     """Returns if aggregated instance is to be pruned,
     based on number of single instnace considered for aggregation."""
