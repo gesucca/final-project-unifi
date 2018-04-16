@@ -2,7 +2,6 @@
 
 from datetime import datetime
 from pymongo import MongoClient
-from bson import Code
 
 from cleanings import Cleaner, FinalCleaner
 from cleanings import QSET_OLD, QSET_GEN
@@ -29,9 +28,10 @@ def main(scheme):
 
     minable_discretized = scheme.create_collection("minable_discretized")
     discretize(minable, minable_discretized,
-               ["Media", 'Std Dev', 'N', 'P<6', 'P>=6', 'P<24', 'P>=24', 'Voto Medio'],
+               ['Media', 'Std Dev', 'N', 'P<6', 'P>=6', 'P<24', 'P>=24',
+                'Voto Medio', 'Ritardo Medio', 'P>=1y', 'P<1y'],
                [pp.VAL_SCORE, pp.STD_DEV, pp.STUDENTS, pp.PERCENT, pp.PERCENT,
-                pp.PERCENT, pp.PERCENT, pp.MARKS],
+                pp.PERCENT, pp.PERCENT, pp.MARKS, pp.YEARS, pp.PERCENT, pp.PERCENT],
                False
               )
 
@@ -76,11 +76,11 @@ def _teach_attribute_pruning(scheme, collection, delete):
         n_mean = 0
         n_n = 0
         for key in list(doc.keys()):
-            if '- N' in key and doc[key] != '<5':
+            if '- N' in key and doc[key] != '<5' and doc[key] != 'n.c.':
                 n_mean = n_mean + doc[key]
                 del doc[key]
                 n_n = n_n + 1
-            elif doc[key] == '<5':
+            elif doc[key] == '<5' or doc[key] == 'n.c.':
                 del doc[key]
 
         if n_n != 0:
@@ -111,8 +111,10 @@ def _final_merge(dest, teval, sprod):
 
     mrg = Merger(['Inizio Periodo di Riferimento', 'Fine Periodo di Riferimento', 'Insegnamento'],
                  True)
-    mrg.set_specific_keys(['N', 'P>=24', 'P<24', 'Voto Medio', 'Deviazione standard'], None, None)
-    mrg.merge_collections(teval, sprod, 'Prd_ Studenti', dest)
+    mrg.set_specific_keys(['N', 'Voto P>=24', 'Voto P<24', 'Voto Medio',
+                           'Voto Deviazione standard', 'Ritardo Medio', 'Ritardo P>=1y',
+                           'Ritardo P<1y'], None, None)
+    mrg.merge_collections(teval, sprod, 'Prd_', dest)
 
     FinalCleaner(dest).clean([{'old': 'Dataset Provenienza',
                                'new': 'Anno Accademico'},
@@ -129,10 +131,10 @@ def _number_instance_pruning(minable_coll):
 
         delete = False
         try:
-            if pp.aggregation_diff_pruning(doc['Prd_ Studenti - N'], doc['Val_ N']):
+            if pp.aggregation_diff_pruning(doc['Prd_ - N'], doc['Val_ N']):
                 delete = True
         except TypeError:
-            if doc['Prd_ Studenti - N'] != doc['Val_ N']:
+            if doc['Prd_ - N'] != doc['Val_ N']:
                 delete = True
 
         if delete:
@@ -141,6 +143,7 @@ def _number_instance_pruning(minable_coll):
             newdoc = doc
             del newdoc['Val_ N'] # this is a mean of means, the other is a count of instances:
                                  # I keep the more precise one
+            newdoc['N instanze'] = newdoc.pop('Prd_ - N')
             minable_coll.replace_one(doc, newdoc)
 
 

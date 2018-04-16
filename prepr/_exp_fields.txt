@@ -1,11 +1,14 @@
 Anno Accademico
 Hash Docente/i
 Insegnamento
-Prd_ Studenti - N
-Prd_ Studenti - P<24
-Prd_ Studenti - P>=24
-Prd_ Studenti - Std Dev
-Prd_ Studenti - Voto Medio
+Prd_ - N
+Prd_ - Ritardo Medio
+Prd_ - Ritardo P<1y
+Prd_ - Ritardo P>=1y
+Prd_ - Voto Medio
+Prd_ - Voto P<24
+Prd_ - Voto P>=24
+Prd_ - Voto Std Dev
 Val_ Aspetti specifici del Corso di Studi - Media
 Val_ Aspetti specifici del Corso di Studi - P<6
 Val_ Aspetti specifici del Corso di Studi - P>=6
@@ -22,6 +25,7 @@ Val_ Informazioni aggiuntive - Media
 Val_ Informazioni aggiuntive - P<6
 Val_ Informazioni aggiuntive - P>=6
 Val_ Informazioni aggiuntive - Std Dev
+Val_ N
 Val_ Organizzazione Corso di Studi - Media
 Val_ Organizzazione Corso di Studi - P<6
 Val_ Organizzazione Corso di Studi - P>=6
