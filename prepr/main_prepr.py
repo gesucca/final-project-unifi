@@ -114,7 +114,7 @@ def _final_merge(dest, teval, sprod):
     mrg.set_specific_keys(['N', 'Voto P>=24', 'Voto P<24', 'Voto Medio',
                            'Voto Deviazione standard', 'Ritardo Medio', 'Ritardo P>=1y',
                            'Ritardo P<1y'], None, None)
-    mrg.merge_collections(teval, sprod, 'Prd_', dest)
+    mrg.merge_collections(teval, sprod, 'Produttivita', dest)
 
     FinalCleaner(dest).clean([{'old': 'Dataset Provenienza',
                                'new': 'Anno Accademico'},
@@ -128,23 +128,23 @@ def _final_merge(dest, teval, sprod):
 def _number_instance_pruning(minable_coll):
 
     for doc in minable_coll.find():
-
-        delete = False
+        deleted = False
         try:
-            if pp.aggregation_diff_pruning(doc['Prd_ - N'], doc['Val_ N']):
-                delete = True
+            if pp.aggregation_diff_pruning(doc['Produttivita - N'], doc['Val_ N']):
+                minable_coll.delete_one(doc)
+                deleted = True
         except TypeError:
-            if doc['Prd_ - N'] != doc['Val_ N']:
-                delete = True
+            if doc['Produttivita - N'] != doc['Val_ N']:
+                deleted = True
+                minable_coll.delete_one(doc)
 
-        if delete:
+        if not deleted:
             minable_coll.delete_one(doc)
-        else:
             newdoc = doc
-            del newdoc['Val_ N'] # this is a mean of means, the other is a count of instances:
-                                 # I keep the more precise one
-            newdoc['N instanze'] = newdoc.pop('Prd_ - N')
-            minable_coll.replace_one(doc, newdoc)
+            newdoc['N_ Instanze Considerate'] = doc['Produttivita - N']
+            del newdoc['Val_ N']
+            del newdoc['Produttivita - N']
+            minable_coll.insert_one(newdoc)
 
 
 # launch this on the global scope

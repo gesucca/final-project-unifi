@@ -36,7 +36,9 @@ STUDENTS = {_DiscRange(0, 25),
 YEARS = {_DiscRange(0, 0.5),
          _DiscRange(0.5, 1),
          _DiscRange(1, 1.5),
-         _DiscRange(1.5, 2)
+         _DiscRange(1.5, 2),
+         _DiscRange(2, 2.5),
+         _DiscRange(2.5, 3)
         }
 
 def aggregation_diff_pruning(n_1, n_2):
