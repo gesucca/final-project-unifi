@@ -1,0 +1,293 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -I -N 10 -T 1 -C 1.4 -D 0.01 -U 1.0 -M 0.33 -S -1.0 -V -c -1
+Relation:     minable_discretized
+Instances:    25
+Attributes:   30
+              Anno Accademico
+              Hash Docente/i
+              Insegnamento
+              N_ Instanze Considerate
+              Produttivita - Ritardo Medio
+              Produttivita - Ritardo P>=1y
+              Produttivita - Voto Medio
+              Produttivita - Voto P>=24
+              Produttivita - Voto Std Dev
+              Val_ Aspetti specifici del Corso di Studi - Media
+              Val_ Aspetti specifici del Corso di Studi - P>=6
+              Val_ Aspetti specifici del Corso di Studi - Std Dev
+              Val_ Aule ed attrezzature - Media
+              Val_ Aule ed attrezzature - P>=6
+              Val_ Aule ed attrezzature - Std Dev
+              Val_ Docente - Media
+              Val_ Docente - P>=6
+              Val_ Docente - Std Dev
+              Val_ Informazioni aggiuntive - Media
+              Val_ Informazioni aggiuntive - P>=6
+              Val_ Informazioni aggiuntive - Std Dev
+              Val_ Organizzazione Corso di Studi - Media
+              Val_ Organizzazione Corso di Studi - P>=6
+              Val_ Organizzazione Corso di Studi - Std Dev
+              Val_ Organizzazione Insegnamento - Media
+              Val_ Organizzazione Insegnamento - P>=6
+              Val_ Organizzazione Insegnamento - Std Dev
+              Val_ Soddisfazione - Media
+              Val_ Soddisfazione - P>=6
+              Val_ Soddisfazione - Std Dev
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.54 (13 instances)
+Minimum metric <lift>: 1.4
+Number of cycles performed: 46
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 12
+
+Large Itemsets L(1):
+Produttivita - Ritardo Medio=0-0.5 23
+Produttivita - Voto Medio=25-28 15
+Produttivita - Voto Std Dev=1.5-3 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 19
+Val_ Docente - Media=8-10 15
+Val_ Docente - P>=6=80-100 24
+Val_ Docente - Std Dev=1.5-3 15
+Val_ Organizzazione Insegnamento - Media=6-8 18
+Val_ Organizzazione Insegnamento - P>=6=80-100 22
+Val_ Organizzazione Insegnamento - Std Dev=1.5-3 23
+Val_ Soddisfazione - P>=6=80-100 22
+Val_ Soddisfazione - Std Dev=1.5-3 16
+
+Size of set of large itemsets L(2): 45
+
+Large Itemsets L(2):
+Produttivita - Ritardo Medio=0-0.5 Produttivita - Voto Medio=25-28 14
+Produttivita - Ritardo Medio=0-0.5 Produttivita - Voto Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 18
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - Media=8-10 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 22
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - Std Dev=1.5-3 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 17
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - P>=6=80-100 20
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 21
+Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - P>=6=80-100 20
+Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 14
+Produttivita - Voto Medio=25-28 Val_ Docente - P>=6=80-100 14
+Produttivita - Voto Medio=25-28 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Produttivita - Voto Medio=25-28 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Produttivita - Voto Medio=25-28 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 19
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 18
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 18
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Docente - Media=8-10 Val_ Docente - P>=6=80-100 15
+Val_ Docente - Media=8-10 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Val_ Docente - Media=8-10 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Docente - Media=8-10 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Docente - P>=6=80-100 Val_ Docente - Std Dev=1.5-3 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 17
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 22
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 22
+Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 22
+Val_ Docente - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 16
+Val_ Docente - Std Dev=1.5-3 Val_ Organizzazione Insegnamento - Media=6-8 13
+Val_ Docente - Std Dev=1.5-3 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Val_ Docente - Std Dev=1.5-3 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Docente - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 15
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 17
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 16
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 15
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 20
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 21
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 20
+Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 15
+Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 15
+
+Size of set of large itemsets L(3): 69
+
+Large Itemsets L(3):
+Produttivita - Ritardo Medio=0-0.5 Produttivita - Voto Medio=25-28 Val_ Docente - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Produttivita - Voto Medio=25-28 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 18
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 17
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 17
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - Media=8-10 Val_ Docente - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - Media=8-10 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Docente - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 20
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 20
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 20
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - Std Dev=1.5-3 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 18
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 19
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 18
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Voto Medio=25-28 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Produttivita - Voto Medio=25-28 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Voto Medio=25-28 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 18
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 18
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 14
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 16
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Docente - Media=8-10 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Val_ Docente - Media=8-10 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Docente - Media=8-10 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Docente - P>=6=80-100 Val_ Docente - Std Dev=1.5-3 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Val_ Docente - P>=6=80-100 Val_ Docente - Std Dev=1.5-3 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Val_ Docente - P>=6=80-100 Val_ Docente - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 15
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 16
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 16
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 15
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 20
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 21
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 20
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 15
+Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 15
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 15
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 15
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 19
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+
+Size of set of large itemsets L(4): 54
+
+Large Itemsets L(4):
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 17
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 17
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - Media=8-10 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 18
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 19
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 18
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 14
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 16
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 17
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 16
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 15
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 15
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 19
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 14
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+
+Size of set of large itemsets L(5): 24
+
+Large Itemsets L(5):
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 16
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 14
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 17
+Produttivita - Ritardo Medio=0-0.5 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 16
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 14
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13
+
+Size of set of large itemsets L(6): 4
+
+Large Itemsets L(6):
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Soddisfazione - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 15
+Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 Val_ Organizzazione Insegnamento - P>=6=80-100 Val_ Organizzazione Insegnamento - Std Dev=1.5-3 Val_ Soddisfazione - P>=6=80-100 13
+
+Best rules found:
+
+ 1. Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15 ==> Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 13    conf:(0.87) < lift:(1.55)> lev:(0.18) [4] conv:(2.2)
+ 2. Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 14 ==> Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 13    conf:(0.93) < lift:(1.55)> lev:(0.18) [4] conv:(2.8)
+ 3. Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15 ==> Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13    conf:(0.87) < lift:(1.55)> lev:(0.18) [4] conv:(2.2)
+ 4. Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 15 ==> Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 13    conf:(0.87) < lift:(1.55)> lev:(0.18) [4] conv:(2.2)
+ 5. Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 14 ==> Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 13    conf:(0.93) < lift:(1.55)> lev:(0.18) [4] conv:(2.8)
+ 6. Produttivita - Ritardo Medio=0-0.5 Val_ Docente - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 14 ==> Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 13    conf:(0.93) < lift:(1.55)> lev:(0.18) [4] conv:(2.8)
+ 7. Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 17 ==> Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 14    conf:(0.82) < lift:(1.47)> lev:(0.18) [4] conv:(1.87)
+ 8. Produttivita - Ritardo Medio=0-0.5 Val_ Soddisfazione - Std Dev=1.5-3 14 ==> Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 14    conf:(1) < lift:(1.47)> lev:(0.18) [4] conv:(4.48)
+ 9. Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 17 ==> Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13    conf:(0.76) < lift:(1.47)> lev:(0.17) [4] conv:(1.63)
+10. Produttivita - Ritardo Medio=0-0.5 Val_ Aspetti specifici del Corso di Studi - P>=6=80-100 Val_ Soddisfazione - Std Dev=1.5-3 13 ==> Val_ Docente - P>=6=80-100 Val_ Organizzazione Insegnamento - Media=6-8 13    conf:(1) < lift:(1.47)> lev:(0.17) [4] conv:(4.16)
+
