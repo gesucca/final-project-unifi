@@ -1,0 +1,157 @@
+=== Run information ===
+
+Scheme:       weka.clusterers.SimpleKMeans -init 0 -max-candidates 0 -periodic-pruning 0 -min-density 0.0 -t1 0.0 -t2 0.0 -V -N 3 -A "weka.core.EuclideanDistance -R first-last" -I 500 -num-slots 2 -S 4
+Relation:     minable
+Instances:    25
+Attributes:   30
+              N_ Instanze Considerate
+              Produttivita - Ritardo Medio
+              Produttivita - Ritardo P>=1y
+              Produttivita - Voto Medio
+              Produttivita - Voto P>=24
+              Produttivita - Voto Std Dev
+              Val_ Aspetti specifici del Corso di Studi - Media
+              Val_ Aspetti specifici del Corso di Studi - P>=6
+              Val_ Aspetti specifici del Corso di Studi - Std Dev
+              Val_ Aule ed attrezzature - Media
+              Val_ Aule ed attrezzature - P>=6
+              Val_ Aule ed attrezzature - Std Dev
+              Val_ Docente - Media
+              Val_ Docente - P>=6
+              Val_ Docente - Std Dev
+              Val_ Informazioni aggiuntive - Media
+              Val_ Informazioni aggiuntive - P>=6
+              Val_ Informazioni aggiuntive - Std Dev
+              Val_ Organizzazione Corso di Studi - Media
+              Val_ Organizzazione Corso di Studi - P>=6
+              Val_ Organizzazione Corso di Studi - Std Dev
+              Val_ Organizzazione Insegnamento - Media
+              Val_ Organizzazione Insegnamento - P>=6
+              Val_ Organizzazione Insegnamento - Std Dev
+              Val_ Soddisfazione - Media
+              Val_ Soddisfazione - P>=6
+              Val_ Soddisfazione - Std Dev
+Ignored:
+              Anno Accademico
+              Hash Docente/i
+              Insegnamento
+Test mode:    evaluate on training data
+
+
+=== Clustering model (full training set) ===
+
+
+kMeans
+======
+
+Number of iterations: 2
+Within cluster sum of squared errors: 24.957290988474607
+
+Initial starting points (random):
+
+Cluster 0: 14,0.29,29,25.86,92.86,2.64,8.46,95.45,1.45,8.14,95.285,1.63,8.03,88.22,1.77,7.33,74.715,2.185,7.78,84.51,1.86,7.6,85.77,1.88,8.53,93.28,1.49
+Cluster 1: 33,0.33,30,24.85,60.61,3.69,7.38,84.56,1.6,8.14,95.285,1.63,8.23,94.89,1.45,7.33,74.715,2.185,7.78,84.51,1.86,7.06,79.48,1.85,6.81,76.19,1.97
+Cluster 2: 44,0.27,25,26.09,81.82,2.8,7.21,80.88,2.03,8.14,95.285,1.63,8.23,92,1.76,7.33,74.715,2.185,7.78,84.51,1.86,7.55,84.26,2.12,8.41,96.66,1.59
+
+Missing values globally replaced with mean/mode
+
+Final cluster centroids:
+                                                                   Cluster#
+Attribute                                              Full Data          0          1          2
+                                                          (25.0)     (13.0)      (6.0)      (6.0)
+=================================================================================================
+N_ Instanze Considerate                                     30.8    21.4615    31.8333         50
+                                                      +/-18.0439 +/-13.5623  +/-13.106 +/-16.7093
+
+Produttivita - Ritardo Medio                              0.2692     0.1746     0.3833       0.36
+                                                       +/-0.2386  +/-0.1941  +/-0.1741  +/-0.3222
+
+Produttivita - Ritardo P>=1y                               23.72    17.1538       30.5    31.1667
+                                                      +/-20.0676 +/-19.3125 +/-12.7554 +/-25.3252
+
+Produttivita - Voto Medio                                25.4956    26.0823    24.0133    25.7067
+                                                       +/-1.3565  +/-1.2495  +/-1.0686  +/-0.5989
+
+Produttivita - Voto P>=24                                73.6564    81.3054    54.6733    76.0667
+                                                      +/-17.2479 +/-13.5538 +/-17.4737  +/-9.4977
+
+Produttivita - Voto Std Dev                               3.0836     2.8246      3.635     3.0933
+                                                       +/-0.5884  +/-0.5526  +/-0.5117  +/-0.3571
+
+Val_ Aspetti specifici del Corso di Studi - Media         7.9691     8.3259     7.8317     7.3333
+                                                       +/-0.5588  +/-0.3317  +/-0.5743  +/-0.2574
+
+Val_ Aspetti specifici del Corso di Studi - P>=6         89.7714    94.6326      88.28      80.73
+                                                       +/-7.4125  +/-4.5599  +/-6.3714   +/-3.321
+
+Val_ Aspetti specifici del Corso di Studi - Std Dev       1.6186     1.4458     1.6867      1.925
+                                                       +/-0.2856  +/-0.1641  +/-0.2902  +/-0.2167
+
+Val_ Aule ed attrezzature - Media                           8.14       8.14       8.14       8.14
+                                                       +/-0.0029  +/-0.0041       +/-0       +/-0
+
+Val_ Aule ed attrezzature - P>=6                          95.285     95.285     95.285     95.285
+                                                       +/-0.5124  +/-0.7246       +/-0       +/-0
+
+Val_ Aule ed attrezzature - Std Dev                         1.63       1.63       1.63       1.63
+                                                            +/-0       +/-0       +/-0       +/-0
+
+Val_ Docente - Media                                      8.1808       8.21     7.9967     8.3017
+                                                       +/-0.5715    +/-0.56  +/-0.6141  +/-0.6147
+
+Val_ Docente - P>=6                                      91.7688       91.8    90.7383    92.7317
+                                                       +/-6.6107  +/-7.0041  +/-7.1825  +/-6.1685
+
+Val_ Docente - Std Dev                                    1.5452     1.5254     1.5633       1.57
+                                                       +/-0.3152  +/-0.3099   +/-0.373   +/-0.324
+
+Val_ Informazioni aggiuntive - Media                        7.33       7.33       7.33       7.33
+                                                       +/-0.1472  +/-0.2082       +/-0       +/-0
+
+Val_ Informazioni aggiuntive - P>=6                       74.715     74.715     74.715     74.715
+                                                       +/-3.7917  +/-5.3623       +/-0       +/-0
+
+Val_ Informazioni aggiuntive - Std Dev                     2.185      2.185      2.185      2.185
+                                                       +/-0.0505  +/-0.0714       +/-0       +/-0
+
+Val_ Organizzazione Corso di Studi - Media                  7.78       7.78       7.78       7.78
+                                                       +/-0.0058  +/-0.0082       +/-0       +/-0
+
+Val_ Organizzazione Corso di Studi - P>=6                  84.51      84.51      84.51      84.51
+                                                       +/-1.0825  +/-1.5309       +/-0       +/-0
+
+Val_ Organizzazione Corso di Studi - Std Dev                1.86       1.86       1.86       1.86
+                                                       +/-0.0404  +/-0.0572       +/-0       +/-0
+
+Val_ Organizzazione Insegnamento - Media                  7.6576     7.7769       7.25     7.8067
+                                                        +/-0.397  +/-0.3599  +/-0.2167  +/-0.3684
+
+Val_ Organizzazione Insegnamento - P>=6                  87.3864    88.8869    82.3567     89.165
+                                                        +/-5.672  +/-5.9436  +/-3.0578  +/-4.5034
+
+Val_ Organizzazione Insegnamento - Std Dev                1.8364     1.7562     2.0083     1.8383
+                                                       +/-0.2402  +/-0.2093  +/-0.2078  +/-0.2765
+
+Val_ Soddisfazione - Media                                7.9296     8.2076      7.105     8.1517
+                                                        +/-0.604  +/-0.4412  +/-0.1667   +/-0.424
+
+Val_ Soddisfazione - P>=6                                91.7457    94.3316    84.2683      93.62
+                                                       +/-6.2343  +/-4.7422  +/-5.5091  +/-3.6798
+
+Val_ Soddisfazione - Std Dev                              1.6078     1.4843     1.9267     1.5567
+                                                        +/-0.298  +/-0.2764  +/-0.1899   +/-0.205
+
+
+
+
+
+Time taken to build model (full training data) : 0 seconds
+
+=== Model and evaluation on training set ===
+
+Clustered Instances
+
+0      13 ( 52%)
+1       6 ( 24%)
+2       6 ( 24%)
+
