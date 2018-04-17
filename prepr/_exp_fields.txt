@@ -3,37 +3,28 @@ Hash Docente/i
 Insegnamento
 N_ Instanze Considerate
 Produttivita - Ritardo Medio
-Produttivita - Ritardo P<1y
 Produttivita - Ritardo P>=1y
 Produttivita - Voto Medio
-Produttivita - Voto P<24
 Produttivita - Voto P>=24
 Produttivita - Voto Std Dev
 Val_ Aspetti specifici del Corso di Studi - Media
-Val_ Aspetti specifici del Corso di Studi - P<6
 Val_ Aspetti specifici del Corso di Studi - P>=6
 Val_ Aspetti specifici del Corso di Studi - Std Dev
 Val_ Aule ed attrezzature - Media
-Val_ Aule ed attrezzature - P<6
 Val_ Aule ed attrezzature - P>=6
 Val_ Aule ed attrezzature - Std Dev
 Val_ Docente - Media
-Val_ Docente - P<6
 Val_ Docente - P>=6
 Val_ Docente - Std Dev
 Val_ Informazioni aggiuntive - Media
-Val_ Informazioni aggiuntive - P<6
 Val_ Informazioni aggiuntive - P>=6
 Val_ Informazioni aggiuntive - Std Dev
 Val_ Organizzazione Corso di Studi - Media
-Val_ Organizzazione Corso di Studi - P<6
 Val_ Organizzazione Corso di Studi - P>=6
 Val_ Organizzazione Corso di Studi - Std Dev
 Val_ Organizzazione Insegnamento - Media
-Val_ Organizzazione Insegnamento - P<6
 Val_ Organizzazione Insegnamento - P>=6
 Val_ Organizzazione Insegnamento - Std Dev
 Val_ Soddisfazione - Media
-Val_ Soddisfazione - P<6
 Val_ Soddisfazione - P>=6
 Val_ Soddisfazione - Std Dev

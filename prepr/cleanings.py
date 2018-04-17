@@ -96,7 +96,9 @@ class FinalCleaner:
                         newdoc[key.replace(ren['old'], ren['new'])] = newdoc.pop(key)
 
             for rem in remove:
-                del newdoc[rem]
+                for key in list(newdoc.keys()):
+                    if rem in key:
+                        del newdoc[key]
 
             for upp in uppercase:
                 newdoc[upp] = newdoc[upp].upper()

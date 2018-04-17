@@ -28,10 +28,10 @@ def main(scheme):
 
     minable_discretized = scheme.create_collection("minable_discretized")
     discretize(minable, minable_discretized,
-               ['Media', 'Std Dev', 'N', 'P<6', 'P>=6', 'P<24', 'P>=24',
-                'Voto Medio', 'Ritardo Medio', 'P>=1y', 'P<1y'],
+               ['Media', 'Std Dev', 'N', 'P>=6', 'P>=24',
+                'Voto Medio', 'Ritardo Medio', 'P>=1y'],
                [pp.VAL_SCORE, pp.STD_DEV, pp.STUDENTS, pp.PERCENT, pp.PERCENT,
-                pp.PERCENT, pp.PERCENT, pp.MARKS, pp.YEARS, pp.PERCENT, pp.PERCENT],
+                pp.MARKS, pp.YEARS, pp.PERCENT],
                False
               )
 
@@ -121,7 +121,7 @@ def _final_merge(dest, teval, sprod):
                               {'old': 'Deviazione standard',
                                'new': 'Std Dev'}],
                              ['_id', 'Inizio Periodo di Riferimento',
-                              'Fine Periodo di Riferimento'],
+                              'Fine Periodo di Riferimento', 'P<6', 'P<24', 'P<1y'],
                              ['Insegnamento'])
 
 
