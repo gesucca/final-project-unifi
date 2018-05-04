@@ -1,0 +1,22 @@
+meno attrbuti nel clustering - partire da pochi e man mano aggiungerli
+meno attributi anche nelle regole associative
+non potare istanze con diversità di numero di valutazioni ma lasciare i due attributi dei due dataset
+dataset grande dopo preprocessing, poi potato ancora per mining
+media pesata sull'aggregazione paragrafi
+clustering gerarchico
+
+preprocessing generale / poi ulteriore pruning per analisi
+
+preprocessing:
+	non buttare via dati generali studente (test ingresso ecc)
+	numero istanze usate in ogni dataset, 
+	media pesata sull'aggregazione paragrafi
+	correlazione due dataset tenere conto coorte studente -> scheda valutazione
+
+clustering:
+	pochi attributi per volta
+	clustering gerarchico per isolare coorti 
+	dbscan?
+	
+regole associative:
+	meno informazioni per ogni cosa: P>=6 eccetera, basta il valore
