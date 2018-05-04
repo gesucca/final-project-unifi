@@ -3,5 +3,7 @@
 yes | rm -rf db
 mkdir db
 
-killall mongod
+# dunno who launch it and for what
+sudo killall mongod
+
 mongod --dbpath=./db
