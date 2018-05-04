@@ -36,7 +36,7 @@ def main(scheme):
               )
 
 
-def _teaching_evaluation(scheme):
+def teaching_evaluation(scheme):
 
     teval = scheme.create_collection("teachEval")
 
@@ -148,4 +148,4 @@ def _number_instance_pruning(minable_coll):
 
 
 # launch this on the global scope
-main(MongoClient().exams)
+# main(MongoClient().exams)

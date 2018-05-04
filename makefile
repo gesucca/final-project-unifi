@@ -1,4 +1,6 @@
 DB = exams
+SCHEME= MongoClient().exams
+PRDIR= cd prepr &&
 
 all: export
 
@@ -6,12 +8,18 @@ reset_db:
 	mongo $(DB) --eval "db.dropDatabase()"
 
 import: reset_db
-	cd prepr && sh import.sh
+	$(PRDIR) sh import.sh
 
-# here I can do fancy things...
-prepr: import
-	cd prepr && python3 main_prepr.py
+#
+# teaching evaluation recipes
+#
+teval_clean: import
+	$(PRDIR) python3 teval_clean.py
+
+teval_aggr: teval_clean
+	$(PRDIR) python3 teval_aggr.py	
+
 
 export: prepr
-	cd prepr && sh export.sh
+	$(PRDIR) sh export.sh
 
