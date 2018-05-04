@@ -19,6 +19,8 @@ teval_clean: import
 teval_aggr: teval_clean
 	$(PRDIR) python3 teval_aggr.py	
 
+teval_merge: teval_aggr
+	$(PRDIR) python3 teval_merge.py	
 
 export: prepr
 	$(PRDIR) sh export.sh
