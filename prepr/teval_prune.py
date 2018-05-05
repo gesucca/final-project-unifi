@@ -1,8 +1,8 @@
-""""
+"""
 Remove instances with N of students <5, since no aggregate data has been provided in these cases.
 
 Aggregate the other Ns doing a simple mean.
-""""
+"""
 
 from pymongo import MongoClient
 
