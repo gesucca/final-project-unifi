@@ -1,7 +1,7 @@
 Anno Accademico
 Hash Docente/i
 Insegnamento
-N_ Instanze Considerate
+Produttivita - N
 Produttivita - Ritardo Medio
 Produttivita - Ritardo P>=1y
 Produttivita - Voto Medio
@@ -19,6 +19,7 @@ Val_ Docente - Std Dev
 Val_ Informazioni aggiuntive - Media
 Val_ Informazioni aggiuntive - P>=6
 Val_ Informazioni aggiuntive - Std Dev
+Val_ N
 Val_ Organizzazione Corso di Studi - Media
 Val_ Organizzazione Corso di Studi - P>=6
 Val_ Organizzazione Corso di Studi - Std Dev

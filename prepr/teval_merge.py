@@ -1,7 +1,7 @@
 from pymongo import MongoClient
-from merge import Merger
+from mymodules import merge
 
-mrg = Merger(['Dataset Provenienza', 'Insegnamento'], True)
+mrg = merge.Merger(['Dataset Provenienza', 'Insegnamento'], True)
 
 mrg.set_gen_keys(['Hash Docente/i',
                   'Inizio Periodo di Riferimento',

@@ -7,6 +7,8 @@ clustering gerarchico
 
 preprocessing generale / poi ulteriore pruning per analisi
 
+le chiavi del dataset grande saranno AA/corso
+
 preprocessing:
 	non buttare via dati generali studente (test ingresso ecc)
 	numero istanze usate in ogni dataset, 

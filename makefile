@@ -1,6 +1,10 @@
 DB = exams
 SCHEME= MongoClient().exams
 PRDIR= cd prepr &&
+PY= python3
+
+# useful to spot bad coded modules
+TIME= /usr/bin/time --format=%e
 
 all: export
 
@@ -16,16 +20,16 @@ import: reset_db
 teval: teval_prune
 
 teval_clean: import
-	$(PRDIR) python3 teval_clean.py
+	$(PRDIR) $(TIME) $(PY) teval_clean.py
 
 teval_aggr: teval_clean
-	$(PRDIR) python3 teval_aggr.py	
+	$(PRDIR) $(TIME) $(PY) teval_aggr.py	
 
 teval_merge: teval_aggr
-	$(PRDIR) python3 teval_merge.py	
+	$(PRDIR) $(TIME) $(PY) teval_merge.py	
 
 teval_prune: teval_merge
-	$(PRDIR) python3 teval_prune.py	
+	$(PRDIR) $(TIME) $(PY) teval_prune.py	
 
 #
 # students productivity recipes
@@ -33,15 +37,20 @@ teval_prune: teval_merge
 stud: stud_aggr
 
 stud_aggr: import 
-	$(PRDIR) python3 stud_aggr.py	
+	$(PRDIR) $(TIME) $(PY) stud_aggr.py	
 
 #
-# merge and final stuff
+# finalize
 #
 merged: stud teval
-	$(PRDIR) python3 datasets_merge.py
+	$(PRDIR) $(TIME) $(PY) dataset_merge.py
 
+cleaned: merged
+	$(PRDIR) $(TIME) $(PY) dataset_clean.py
 
-export: merged
+discretized: cleaned
+	$(PRDIR) $(TIME) $(PY) dataset_discretize.py
+
+export: merged discretized
 	$(PRDIR) sh export.sh
 
