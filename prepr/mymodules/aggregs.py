@@ -98,11 +98,11 @@ def _init_exam_docs():
 
     # init other common fields
     for i in exams:
-        exams[i]['N'] = 0
+        exams[i]['N [istanze]'] = 0
         exams[i]['Voti'] = []
         exams[i]['Date'] = []
         exams[i]['Coorti'] = []
-        exams[i]['Voto P>=24'] = 0
+        exams[i]['Voto >= 24 [perc]'] = 0
         exams[i]['upd'] = False
 
     return exams
@@ -113,35 +113,35 @@ def _update_doc(old, new, field_mark, field_date):
     if int(old[field_mark]) > 0:
         new['upd'] = True
 
-        new['N'] = new['N'] + 1
+        new['N [istanze]'] = new['N [istanze]'] + 1
         new['Voti'].append(int(old[field_mark]))
 
         if int(old[field_mark]) >= 24:
-            new['Voto P>=24'] = new['Voto P>=24'] + 1
+            new['Voto >= 24 [perc]'] = new['Voto >= 24 [perc]'] + 1
 
         new['Date'].append(old[field_date])
         new['Coorti'].append(old['coorte'])
 
 
 def _avg(doc):
-    doc['Voto Medio'] = 0
+    doc['Voto [media]'] = 0
     for voto in doc['Voti']:
-        doc['Voto Medio'] = doc['Voto Medio'] + voto
+        doc['Voto [media]'] = doc['Voto [media]'] + voto
 
-    doc['Voto Medio'] = round(doc['Voto Medio'] / doc['N'], 2)
+    doc['Voto [media]'] = round(doc['Voto [media]'] / doc['N [istanze]'], 2)
 
 
 def _std_dev(doc):
-    key = 'Voto Std Dev'
+    key = 'Voto [std dev]'
     doc[key] = 0
     for voto in doc['Voti']:
-        doc[key] = doc[key] + pow((voto - doc['Voto Medio']), 2)
+        doc[key] = doc[key] + pow((voto - doc['Voto [media]']), 2)
 
-    doc[key] = round(pow(doc[key] / doc['N'], 0.5), 2)
+    doc[key] = round(pow(doc[key] / doc['N [istanze]'], 0.5), 2)
 
 
 def _perc(doc):
-    doc['Voto P>=24'] = round(100 * doc['Voto P>=24'] / doc['N'], 2)
+    doc['Voto >= 24 [perc]'] = round(100 * doc['Voto >= 24 [perc]'] / doc['N [istanze]'], 2)
 
 
 def _exam_done_in_ref_period(doc, coorte):
@@ -165,8 +165,8 @@ def _delay(stuff):
             p1year = p1year + 1
         instances = instances + 1
 
-    stuff['Ritardo Medio [sem]'] = round(avg_delay / instances, 2)
-    stuff['Ritardo P>=1sem'] = round((p1year / instances) * 100)
+    stuff['Ritardo [semestre, media]'] = round(avg_delay / instances, 2)
+    stuff['Ritardo >=1sem [percent]'] = round((p1year / instances) * 100)
 
 
 class ParAggregator(Aggregator):
@@ -236,9 +236,9 @@ class ParAggregator(Aggregator):
         for attr_gen in self._GEN:
             newdoc[attr_gen] = ref_lst_doc[attr_gen]
 
-        newdoc['Media'] = aggr_attr[0]
-        newdoc['Std Dev'] = aggr_attr[1]
-        newdoc['P>=6'] = aggr_attr[2]
-        newdoc['N'] = aggr_attr[3]
+        newdoc['Val [media pesata]'] = aggr_attr[0]
+        newdoc['Std Dev [media pesata]'] = aggr_attr[1]
+        newdoc['Val >= 6 [percent]'] = aggr_attr[2]
+        newdoc['N [istanze]'] = aggr_attr[3]
 
         return newdoc

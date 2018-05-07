@@ -1,57 +1,57 @@
-Anno Accademico,Hash Docente/i,Insegnamento,Prd_ Studenti  - N,Prd_ Studenti  - Ritardo Medio [sem,Prd_ Studenti  - Ritardo P>=1sem,Prd_ Studenti  - Voto Medio,Prd_ Studenti  - Voto P>=24,Prd_ Studenti  - Voto Std Dev,Val_ Aspetti specifici del Corso di Studi - Media,Val_ Aspetti specifici del Corso di Studi - N,Val_ Aspetti specifici del Corso di Studi - P>=6,Val_ Aspetti specifici del Corso di Studi - Std Dev,Val_ Aule ed attrezzature - Media,Val_ Aule ed attrezzature - N,Val_ Aule ed attrezzature - P>=6,Val_ Aule ed attrezzature - Std Dev,Val_ Docente - Media,Val_ Docente - N,Val_ Docente - P>=6,Val_ Docente - Std Dev,Val_ Informazioni aggiuntive - Media,Val_ Informazioni aggiuntive - N,Val_ Informazioni aggiuntive - P>=6,Val_ Informazioni aggiuntive - Std Dev,Val_ Organizzazione Corso di Studi - Media,Val_ Organizzazione Corso di Studi - N,Val_ Organizzazione Corso di Studi - P>=6,Val_ Organizzazione Corso di Studi - Std Dev,Val_ Organizzazione Insegnamento - Media,Val_ Organizzazione Insegnamento - N,Val_ Organizzazione Insegnamento - P>=6,Val_ Organizzazione Insegnamento - Std Dev,Val_ Soddisfazione - Media,Val_ Soddisfazione - N,Val_ Soddisfazione - P>=6,Val_ Soddisfazione - Std Dev
-2010-2011,e24a83c86583,BASI DI DATI E SISTEMI INFORMATIVI,0-25,,40-60,25-28,80-100,1.5-3,,,,,6-8,0-25,60-80,1.5-3,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,0-1.5,6-8,0-25,80-100,1.5-3,,,,
-2010-2011,e2afee673f6c,ALGORITMI E STRUTTURE DATI,25-50,,0-20,25-28,60-80,3-5,,,,,8-10,25-50,80-100,1.5-3,8-10,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3,8-10,25-50,80-100,1.5-3,,,,
-2010-2011,004dadc96b11,METODOLOGIE DI PROGRAMMAZIONE,0-25,,60-80,25-28,80-100,3-5,,,,,8-10,0-25,80-100,1.5-3,8-10,0-25,80-100,1.5-3,8-10,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3,8-10,0-25,80-100,1.5-3,,,,
-2010-2011,ebf305b5bf29,ARCHITETTURE DEGLI ELABORATORI,0-25,,60-80,25-28,80-100,1.5-3,,,,,8-10,25-50,80-100,1.5-3,6-8,25-50,60-80,1.5-3,6-8,25-50,60-80,1.5-3,6-8,25-50,80-100,1.5-3,6-8,25-50,60-80,1.5-3,,,,
-2010-2011,4f812cbf2546,SISTEMI OPERATIVI,0-25,,40-60,25-28,80-100,1.5-3,,,,,6-8,0-25,80-100,1.5-3,8-10,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3,,,,
-2010-2011,1f95a18256cd,CALCOLO NUMERICO,0-25,,20-40,25-28,60-80,3-5,,,,,6-8,0-25,60-80,1.5-3,8-10,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3,6-8,0-25,60-80,1.5-3,,,,
-2010-2011,abab2d838ed5,PROGRAMMAZIONE,0-25,,20-40,25-28,80-100,1.5-3,,,,,8-10,0-25,80-100,1.5-3,6-8,0-25,60-80,1.5-3,6-8,0-25,60-80,1.5-3,6-8,0-25,80-100,1.5-3,6-8,0-25,60-80,1.5-3,,,,
-2010-2011,44acacef1271,MATEMATICA DISCRETA E LOGICA,0-25,,40-60,22-25,40-60,3-5,,,,,6-8,0-25,80-100,1.5-3,6-8,25-50,60-80,1.5-3,6-8,25-50,60-80,1.5-3,6-8,25-50,60-80,1.5-3,6-8,25-50,40-60,1.5-3,,,,
-2010-2011,73c6aab4e2e2,PROGRAMMAZIONE CONCORRENTE,0-25,,60-80,25-28,60-80,3-5,,,,,8-10,25-50,80-100,1.5-3,8-10,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3,,,,
-2010-2011,7b1f4e0bdb33,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,0-25,,60-80,25-28,60-80,3-5,,,,,6-8,0-25,80-100,1.5-3,8-10,0-25,80-100,0-1.5,6-8,0-25,60-80,1.5-3,6-8,0-25,80-100,1.5-3,6-8,0-25,60-80,1.5-3,,,,
-2011-2012,fc2f8485971a,CALCOLO NUMERICO,0-25,,0-20,22-25,60-80,3-5,8-10,0-25,80-100,1.5-3,,,,,6-8,0-25,80-100,1.5-3,,,,,,,,,6-8,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3
-2011-2012,9000fdc450fb,INFORMATICA TEORICA,0-25,,60-80,22-25,40-60,3-5,8-10,25-50,80-100,0-1.5,,,,,8-10,25-50,80-100,0-1.5,,,,,,,,,8-10,25-50,80-100,1.5-3,8-10,25-50,80-100,0-1.5
-2011-2012,004dadc96b11,METODOLOGIE DI PROGRAMMAZIONE,0-25,,60-80,22-25,80-100,1.5-3,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,0-1.5,,,,,,,,,6-8,0-25,80-100,1.5-3,8-10,25-50,80-100,0-1.5
-2011-2012,2b1ffcc8eee2,PROGRAMMAZIONE CONCORRENTE,0-25,,60-80,22-25,40-60,3-5,8-10,0-25,80-100,1.5-3,,,,,6-8,0-25,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3
-2011-2012,c0d54a2cf1f7,MATEMATICA DISCRETA E LOGICA,0-25,,60-80,18-22,20-40,3-5,8-10,25-50,80-100,1.5-3,,,,,8-10,25-50,80-100,0-1.5,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3
-2011-2012,3cba32344644,ALGORITMI E STRUTTURE DATI,25-50,,0-20,25-28,80-100,1.5-3,8-10,25-50,80-100,0-1.5,,,,,8-10,25-50,80-100,0-1.5,,,,,,,,,8-10,50-100,80-100,1.5-3,8-10,50-100,80-100,0-1.5
-2011-2012,d5ea9d863079,SISTEMI OPERATIVI,0-25,,60-80,22-25,40-60,1.5-3,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,8-10,25-50,80-100,0-1.5
-2012-2013,9000fdc450fb,INFORMATICA TEORICA,0-25,,80-100,22-25,40-60,3-5,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,0-1.5,,,,,,,,,8-10,0-25,80-100,0-1.5,6-8,0-25,80-100,0-1.5
-2012-2013,d4b42520842d,ALGEBRA LINEARE,25-50,,60-80,22-25,60-80,3-5,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,0-1.5,,,,,,,,,6-8,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3
-2012-2013,ebf305b5bf29,PROGRAMMAZIONE CONCORRENTE,25-50,,20-40,22-25,40-60,3-5,6-8,25-50,80-100,1.5-3,,,,,6-8,25-50,80-100,1.5-3,,,,,,,,,6-8,50-100,80-100,1.5-3,6-8,50-100,80-100,1.5-3
-2012-2013,fc2f8485971a,CALCOLO NUMERICO,0-25,,0-20,22-25,60-80,1.5-3,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,0-1.5,,,,,,,,,6-8,0-25,60-80,1.5-3,6-8,0-25,60-80,1.5-3
-2012-2013,46a40e083cb3,PROGRAMMAZIONE,50-100,,20-40,25-28,60-80,3-5,8-10,25-50,80-100,0-1.5,,,,,8-10,50-100,80-100,1.5-3,,,,,,,,,6-8,50-100,80-100,1.5-3,8-10,50-100,80-100,1.5-3
-2012-2013,3cba32344644,ALGORITMI E STRUTTURE DATI,50-100,,0-20,25-28,80-100,3-5,8-10,50-100,80-100,0-1.5,,,,,8-10,50-100,80-100,0-1.5,,,,,,,,,8-10,50-100,80-100,1.5-3,8-10,50-100,80-100,0-1.5
-2012-2013,7acf3f684e24,RETI DI CALCOLATORI,25-50,,20-40,25-28,80-100,1.5-3,6-8,0-25,80-100,1.5-3,,,,,6-8,0-25,80-100,1.5-3,,,,,,,,,6-8,0-25,80-100,1.5-3,6-8,0-25,80-100,1.5-3
-2012-2013,73a131af52a0,ARCHITETTURE DEGLI ELABORATORI,25-50,,60-80,25-28,60-80,3-5,8-10,0-25,80-100,1.5-3,,,,,8-10,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,60-80,1.5-3,6-8,50-100,80-100,1.5-3
-2012-2013,074aa5f763ed,BASI DI DATI E SISTEMI INFORMATIVI,25-50,,20-40,22-25,40-60,3-5,8-10,0-25,80-100,0-1.5,,,,,6-8,0-25,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,8-10,25-50,80-100,1.5-3
-2012-2013,c0d54a2cf1f7,MATEMATICA DISCRETA E LOGICA,25-50,,40-60,22-25,40-60,3-5,8-10,25-50,80-100,0-1.5,,,,,8-10,25-50,80-100,0-1.5,,,,,,,,,6-8,50-100,80-100,1.5-3,6-8,50-100,80-100,1.5-3
-2012-2013,004dadc96b11,METODOLOGIE DI PROGRAMMAZIONE,25-50,,20-40,25-28,80-100,1.5-3,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,1.5-3,,,,,,,,,6-8,0-25,80-100,1.5-3,8-10,0-25,80-100,0-1.5
-2013-2014,ebf305b5bf29,PROGRAMMAZIONE CONCORRENTE,25-50,,40-60,25-28,60-80,3-5,6-8,25-50,80-100,1.5-3,,,,,6-8,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,50-100,80-100,1.5-3
-2013-2014,bfe4b3521c4f,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,50-100,,80-100,28-31,80-100,1.5-3,6-8,50-100,80-100,1.5-3,,,,,8-10,50-100,80-100,0-1.5,,,,,,,,,8-10,50-100,80-100,1.5-3,8-10,50-100,80-100,1.5-3
-2013-2014,7acf3f684e24,RETI DI CALCOLATORI,25-50,,40-60,25-28,80-100,1.5-3,6-8,0-25,80-100,1.5-3,,,,,8-10,25-50,80-100,0-1.5,,,,,,,,,8-10,25-50,80-100,1.5-3,8-10,25-50,80-100,0-1.5
-2013-2014,9000fdc450fb,INFORMATICA TEORICA,0-25,,20-40,22-25,20-40,3-5,6-8,25-50,80-100,0-1.5,,,,,6-8,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,25-50,60-80,1.5-3
-2013-2014,004dadc96b11,METODOLOGIE DI PROGRAMMAZIONE,25-50,,40-60,25-28,80-100,1.5-3,6-8,25-50,80-100,1.5-3,,,,,8-10,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,8-10,25-50,80-100,1.5-3
-2013-2014,3cba32344644,ALGORITMI E STRUTTURE DATI,50-100,,0-20,25-28,60-80,3-5,6-8,50-100,60-80,1.5-3,,,,,8-10,50-100,80-100,0-1.5,,,,,,,,,8-10,100-200,80-100,1.5-3,8-10,100-200,80-100,0-1.5
-2013-2014,074aa5f763ed,BASI DI DATI E SISTEMI INFORMATIVI,50-100,,20-40,22-25,40-60,3-5,6-8,25-50,80-100,1.5-3,,,,,8-10,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,50-100,80-100,1.5-3
-2013-2014,73a131af52a0,ARCHITETTURE DEGLI ELABORATORI,50-100,,40-60,22-25,40-60,3-5,6-8,25-50,80-100,1.5-3,,,,,6-8,50-100,80-100,1.5-3,,,,,,,,,6-8,50-100,80-100,1.5-3,6-8,50-100,80-100,1.5-3
-2013-2014,fc2f8485971a,CALCOLO NUMERICO,25-50,,0-20,22-25,40-60,3-5,8-10,0-25,80-100,0-1.5,,,,,8-10,0-25,80-100,0-1.5,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3
-2013-2014,02ec81a0c16a,SISTEMI OPERATIVI,25-50,,40-60,25-28,60-80,1.5-3,6-8,25-50,80-100,1.5-3,,,,,6-8,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,0-1.5,6-8,25-50,80-100,1.5-3
-2013-2014,ea586dede443,MATEMATICA DISCRETA E LOGICA,50-100,,40-60,22-25,40-60,3-5,6-8,50-100,60-80,1.5-3,,,,,8-10,50-100,80-100,0-1.5,,,,,,,,,6-8,50-100,80-100,1.5-3,6-8,50-100,80-100,1.5-3
-2010-2011,d84e35d81119,RETI DI CALCOLATORI,0-25,,20-40,28-31,80-100,1.5-3,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2010-2011,9000fdc450fb,INFORMATICA TEORICA,0-25,,60-80,28-31,80-100,3-5,,,,,,,,,8-10,0-25,80-100,0-1.5,6-8,0-25,80-100,1.5-3,8-10,0-25,80-100,1.5-3,8-10,0-25,80-100,0-1.5,,,,
-2010-2011,1e7e0a974aa6,ALGEBRA LINEARE,0-25,,20-40,22-25,40-60,3-5,,,,,,,,,8-10,0-25,80-100,1.5-3,6-8,0-25,80-100,0-1.5,8-10,0-25,80-100,0-1.5,8-10,0-25,80-100,0-1.5,,,,
-2010-2011,301787671164,FISICA GENERALE,0-25,,20-40,28-31,80-100,0-1.5,,,,,,,,,8-10,0-25,80-100,1.5-3,8-10,0-25,80-100,1.5-3,8-10,0-25,80-100,0-1.5,8-10,0-25,80-100,1.5-3,,,,
-2011-2012,46a40e083cb3,PROGRAMMAZIONE,25-50,,20-40,22-25,40-60,1.5-3,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2011-2012,074aa5f763ed,BASI DI DATI E SISTEMI INFORMATIVI,0-25,,40-60,22-25,40-60,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2011-2012,7acf3f684e24,RETI DI CALCOLATORI,0-25,,40-60,25-28,80-100,1.5-3,8-10,OUT_OF_RANGE,80-100,0-1.5,,,,,,,,,,,,,,,,,8-10,OUT_OF_RANGE,80-100,0-1.5,,,,
-2011-2012,b7322f753612,ALGEBRA LINEARE,0-25,,60-80,22-25,20-40,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2011-2012,d08ed5588630,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,25-50,,80-100,25-28,60-80,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2011-2012,73a131af52a0,ARCHITETTURE DEGLI ELABORATORI,0-25,,40-60,22-25,40-60,3-5,,,,,,,,,6-8,25-50,80-100,1.5-3,,,,,,,,,6-8,25-50,80-100,1.5-3,6-8,25-50,80-100,1.5-3
-2011-2012,d24b5c320402,FISICA GENERALE,0-25,,60-80,22-25,40-60,1.5-3,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2012-2013,d24b5c320402,FISICA GENERALE,0-25,,60-80,22-25,60-80,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2012-2013,d5ea9d863079,SISTEMI OPERATIVI,25-50,,40-60,25-28,60-80,1.5-3,,,,,,,,,8-10,OUT_OF_RANGE,80-100,0-1.5,,,,,,,,,8-10,0-25,80-100,0-1.5,8-10,0-25,80-100,0-1.5
-2012-2013,bfe4b3521c4f,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,25-50,,80-100,25-28,60-80,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2013-2014,46a40e083cb3,PROGRAMMAZIONE,50-100,,20-40,25-28,60-80,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2013-2014,d24b5c320402,FISICA GENERALE,0-25,,60-80,22-25,20-40,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-2013-2014,3f6c58133d64,ALGEBRA LINEARE,50-100,,20-40,22-25,40-60,3-5,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Anno Accademico,Aspetti specifici del Corso di Studi - N [istanze,Aspetti specifici del Corso di Studi - Std Dev [media pesata,Aspetti specifici del Corso di Studi - Val >= 6 [percent,Aspetti specifici del Corso di Studi - Val [media pesata,Aule ed attrezzature - N [istanze,Aule ed attrezzature - Std Dev [media pesata,Aule ed attrezzature - Val >= 6 [percent,Aule ed attrezzature - Val [media pesata,Docente - N [istanze,Docente - Std Dev [media pesata,Docente - Val >= 6 [percent,Docente - Val [media pesata,Hash Docente/i,Informazioni aggiuntive - N [istanze,Informazioni aggiuntive - Std Dev [media pesata,Informazioni aggiuntive - Val >= 6 [percent,Informazioni aggiuntive - Val [media pesata,Insegnamento,Organizzazione Corso di Studi - N [istanze,Organizzazione Corso di Studi - Std Dev [media pesata,Organizzazione Corso di Studi - Val >= 6 [percent,Organizzazione Corso di Studi - Val [media pesata,Organizzazione Insegnamento - N [istanze,Organizzazione Insegnamento - Std Dev [media pesata,Organizzazione Insegnamento - Val >= 6 [percent,Organizzazione Insegnamento - Val [media pesata,Produttivita Studenti - N [istanze,Produttivita Studenti - Ritardo >=1sem [percent,Produttivita Studenti - Ritardo [semestre media,Produttivita Studenti - Voto >= 24 [perc,Produttivita Studenti - Voto [media,Produttivita Studenti - Voto [std dev,Soddisfazione - N [istanze,Soddisfazione - Std Dev [media pesata,Soddisfazione - Val >= 6 [percent,Soddisfazione - Val [media pesata
+2010-2011,,,,,,,,,,,,,e24a83c86583,,,,,BASI DI DATI E SISTEMI INFORMATIVI,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,e2afee673f6c,,,,,ALGORITMI E STRUTTURE DATI,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,004dadc96b11,,,,,METODOLOGIE DI PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,ebf305b5bf29,,,,,ARCHITETTURE DEGLI ELABORATORI,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,4f812cbf2546,,,,,SISTEMI OPERATIVI,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,1f95a18256cd,,,,,CALCOLO NUMERICO,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,abab2d838ed5,,,,,PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,44acacef1271,,,,,MATEMATICA DISCRETA E LOGICA,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,73c6aab4e2e2,,,,,PROGRAMMAZIONE CONCORRENTE,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,7b1f4e0bdb33,,,,,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,fc2f8485971a,,,,,CALCOLO NUMERICO,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,9000fdc450fb,,,,,INFORMATICA TEORICA,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,004dadc96b11,,,,,METODOLOGIE DI PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,2b1ffcc8eee2,,,,,PROGRAMMAZIONE CONCORRENTE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,c0d54a2cf1f7,,,,,MATEMATICA DISCRETA E LOGICA,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,3cba32344644,,,,,ALGORITMI E STRUTTURE DATI,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,d5ea9d863079,,,,,SISTEMI OPERATIVI,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,9000fdc450fb,,,,,INFORMATICA TEORICA,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,d4b42520842d,,,,,ALGEBRA LINEARE,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,ebf305b5bf29,,,,,PROGRAMMAZIONE CONCORRENTE,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,fc2f8485971a,,,,,CALCOLO NUMERICO,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,46a40e083cb3,,,,,PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,3cba32344644,,,,,ALGORITMI E STRUTTURE DATI,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,7acf3f684e24,,,,,RETI DI CALCOLATORI,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,73a131af52a0,,,,,ARCHITETTURE DEGLI ELABORATORI,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,074aa5f763ed,,,,,BASI DI DATI E SISTEMI INFORMATIVI,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,c0d54a2cf1f7,,,,,MATEMATICA DISCRETA E LOGICA,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,004dadc96b11,,,,,METODOLOGIE DI PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,ebf305b5bf29,,,,,PROGRAMMAZIONE CONCORRENTE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,bfe4b3521c4f,,,,,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,7acf3f684e24,,,,,RETI DI CALCOLATORI,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,9000fdc450fb,,,,,INFORMATICA TEORICA,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,004dadc96b11,,,,,METODOLOGIE DI PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,074aa5f763ed,,,,,BASI DI DATI E SISTEMI INFORMATIVI,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,73a131af52a0,,,,,ARCHITETTURE DEGLI ELABORATORI,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,fc2f8485971a,,,,,CALCOLO NUMERICO,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,3cba32344644,,,,,ALGORITMI E STRUTTURE DATI,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,02ec81a0c16a,,,,,SISTEMI OPERATIVI,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,ea586dede443,,,,,MATEMATICA DISCRETA E LOGICA,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,d84e35d81119,,,,,RETI DI CALCOLATORI,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,9000fdc450fb,,,,,INFORMATICA TEORICA,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,1e7e0a974aa6,,,,,ALGEBRA LINEARE,,,,,,,,,,,,,,,,,,
+2010-2011,,,,,,,,,,,,,301787671164,,,,,FISICA GENERALE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,46a40e083cb3,,,,,PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,074aa5f763ed,,,,,BASI DI DATI E SISTEMI INFORMATIVI,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,7acf3f684e24,,,,,RETI DI CALCOLATORI,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,b7322f753612,,,,,ALGEBRA LINEARE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,d08ed5588630,,,,,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,73a131af52a0,,,,,ARCHITETTURE DEGLI ELABORATORI,,,,,,,,,,,,,,,,,,
+2011-2012,,,,,,,,,,,,,d24b5c320402,,,,,FISICA GENERALE,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,d24b5c320402,,,,,FISICA GENERALE,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,d5ea9d863079,,,,,SISTEMI OPERATIVI,,,,,,,,,,,,,,,,,,
+2012-2013,,,,,,,,,,,,,bfe4b3521c4f,,,,,ANALISI I: CALCOLO DIFFERENZIALE ED INTEGRALE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,b3d82fea348c,,,,,PROGRAMMAZIONE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,d24b5c320402,,,,,FISICA GENERALE,,,,,,,,,,,,,,,,,,
+2013-2014,,,,,,,,,,,,,b7322f753612,,,,,ALGEBRA LINEARE,,,,,,,,,,,,,,,,,,

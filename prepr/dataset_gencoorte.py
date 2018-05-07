@@ -22,16 +22,16 @@ for group in prod.aggregate([{"$group": {"_id": {'coorte': '$coorte'}}}]):
 
     # media pesata
     aggr['Voto [media pesata]'] = 0
-    aggr['Ritardo [media pesata]'] = 0
+    aggr['Ritardo [semestre, media]'] = 0
     n = 0
 
     a_a = str(group['_id']['coorte']) + '-' + str(group['_id']['coorte'] + 1)
     for doc in stud.find({'Anno Accademico': a_a}):
-        aggr['Voto [media pesata]'] = aggr['Voto [media pesata]'] + doc['Voto Medio'] * doc['N']
-        aggr['Ritardo [media pesata]'] = aggr['Ritardo [media pesata]'] + doc['Ritardo Medio [sem]'] * doc['N']
-        n = n + doc['N']
+        aggr['Voto [media pesata]'] = aggr['Voto [media pesata]'] + doc['Voto [media]'] * doc['N [istanze]']
+        aggr['Ritardo [semestre, media]'] = aggr['Ritardo [semestre, media]'] + doc['Ritardo [semestre, media]'] * doc['N [istanze]']
+        n = n + doc['N [istanze]']
 
     aggr['Voto [media pesata]'] = round(aggr['Voto [media pesata]'] / n, 2)
-    aggr['Ritardo [media pesata]'] = round(aggr['Ritardo [media pesata]'] / n, 2)
+    aggr['Ritardo [semestre, media]'] = round(aggr['Ritardo [semestre, media]'] / n, 2)
 
     minable_gen.insert_one(aggr)

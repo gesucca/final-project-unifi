@@ -9,9 +9,9 @@ dest = scheme.create_collection("minable")
 
 mrg = merge.Merger(['Anno Accademico', 'Insegnamento'], False)
 
-mrg.set_specific_keys(['N', 'Voto P>=24', 'Voto Medio',
-                       'Voto Std Dev', 'Ritardo Medio [sem]', 'Ritardo P>=1sem',
+mrg.set_specific_keys(['N [istanze]', 'Voto >= 24 [perc]', 'Voto [media]',
+                       'Voto [std dev]', 'Ritardo [semestre, media]', 'Ritardo >=1sem [percent]',
                        ], None, None)
 
-mrg.merge_collections(teval, sprod, 'Prd_ Studenti ', dest)
+mrg.merge_collections(teval, sprod, 'Produttivita Studenti', dest)
 

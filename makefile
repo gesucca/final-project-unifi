@@ -54,6 +54,6 @@ cleaned: merged
 discretized: cleaned
 	$(PRDIR) $(TIME) $(PY) dataset_discretize.py
 
-export: gen merged discretized
+export: gen cleaned discretized
 	$(PRDIR) sh export.sh
 
