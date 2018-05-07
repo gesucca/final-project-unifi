@@ -51,7 +51,10 @@ merged: stud teval
 cleaned: merged
 	$(PRDIR) $(TIME) $(PY) dataset_clean.py
 
-discretized: cleaned
+minified: cleaned
+	$(PRDIR) $(TIME) $(PY) dataset_min.py
+
+discretized: minified
 	$(PRDIR) $(TIME) $(PY) dataset_discretize.py
 
 export: gen cleaned discretized

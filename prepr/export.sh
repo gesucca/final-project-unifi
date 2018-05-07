@@ -12,6 +12,9 @@ sed -i -e '/^\s*$/d' _exp_fields.txt # empty lines
 yes | rm -rf datasets
 mkdir datasets
 
-mongoexport --db exams --collection minable --type=csv --fieldFile=_exp_fields.txt > datasets/teachings.csv
-mongoexport --db exams --collection minable_discretized --type=csv --fieldFile=_exp_fields.txt > datasets/teachings_disc.csv
 mongoexport --db exams --collection minable_gen --type=csv --fieldFile=_exp_fields_gen.txt > datasets/gen.csv
+
+#mongoexport --db exams --collection minable_min --type=csv --fieldFile=_exp_fields.txt > datasets/teachings_min.csv
+
+mongoexport --db exams --collection minable --type=csv --fieldFile=_exp_fields.txt > datasets/teachings_full.csv
+mongoexport --db exams --collection minable_discretized --type=csv --fieldFile=_exp_fields.txt > datasets/teachings_full_d.csv
