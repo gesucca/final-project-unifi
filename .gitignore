@@ -1,5 +1,9 @@
+# mongodb folder
 db/
+
 prepr/__pycache__/
 prepr/mymodules/__pycache__/
+
+# various ide stuff
 *.sublime-workspace
 .idea/
