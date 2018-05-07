@@ -3,16 +3,15 @@ from pymongo import MongoClient
 from mymodules import merge
 
 scheme = MongoClient().exams
-teval = scheme['teachEval_pruned']
+teval = scheme['teachEval_aggr']
 sprod = scheme['sprod']
 dest = scheme.create_collection("minable")
 
-mrg = merge.Merger(['Inizio Periodo di Riferimento', 'Fine Periodo di Riferimento', 'Insegnamento'],
-                   True)
+mrg = merge.Merger(['Anno Accademico', 'Insegnamento'], True)
 
-mrg.set_specific_keys(['N', 'Voto P>=24', 'Voto P<24', 'Voto Medio',
-                       'Voto Deviazione standard', 'Ritardo Medio', 'Ritardo P>=1y',
-                       'Ritardo P<1y'], None, None)
+mrg.set_specific_keys(['N', 'Voto P>=24', 'Voto Medio',
+                       'Voto Std Dev', 'Ritardo Medio [sem]', 'Ritardo P>=1sem',
+                       ], None, None)
 
-mrg.merge_collections(teval, sprod, 'Produttivita', dest)
+mrg.merge_collections(teval, sprod, 'Prd_ ', dest)
 

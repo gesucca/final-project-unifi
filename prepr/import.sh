@@ -19,3 +19,15 @@ rm temp
 < ../raw/val_didattica_13-14.csv tr "\"" " " | tr "," "." | tr ";" "," > temp
 mongoimport -d exams -c rawTeachingsEv1314 --type csv --headerline --file temp
 rm temp
+
+< ../raw/val_didattica_14-15.csv tr "\"" " " | tr "," "." | tr ";" "," > temp
+mongoimport -d exams -c rawTeachingsEv1415 --type csv --headerline --file temp
+rm temp
+
+< ../raw/val_didattica_15-16.csv tr "\"" " " | tr "," "." | tr ";" "," > temp
+mongoimport -d exams -c rawTeachingsEv1516 --type csv --headerline --file temp
+rm temp
+
+< ../raw/val_didattica_16-17.csv tr "\"" " " | tr "," "." | tr ";" "," > temp
+mongoimport -d exams -c rawTeachingsEv1617 --type csv --headerline --file temp
+rm temp

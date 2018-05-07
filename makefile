@@ -17,7 +17,7 @@ import: reset_db
 #
 # teaching evaluation recipes
 #
-teval: teval_prune
+teval: teval_merge
 
 teval_clean: import
 	$(PRDIR) $(TIME) $(PY) teval_clean.py
@@ -26,10 +26,7 @@ teval_aggr: teval_clean
 	$(PRDIR) $(TIME) $(PY) teval_aggr.py	
 
 teval_merge: teval_aggr
-	$(PRDIR) $(TIME) $(PY) teval_merge.py	
-
-teval_prune: teval_merge
-	$(PRDIR) $(TIME) $(PY) teval_prune.py	
+	$(PRDIR) $(TIME) $(PY) teval_merge.py
 
 #
 # students productivity recipes
@@ -37,7 +34,13 @@ teval_prune: teval_merge
 stud: stud_aggr
 
 stud_aggr: import 
-	$(PRDIR) $(TIME) $(PY) stud_aggr.py	
+	$(PRDIR) $(TIME) $(PY) stud_aggr.py
+
+#
+# general students performances
+#
+gen: stud
+	$(PRDIR) $(TIME) $(PY) dataset_gencoorte.py
 
 #
 # finalize
@@ -51,6 +54,6 @@ cleaned: merged
 discretized: cleaned
 	$(PRDIR) $(TIME) $(PY) dataset_discretize.py
 
-export: merged discretized
+export: merged discretized gen
 	$(PRDIR) sh export.sh
 

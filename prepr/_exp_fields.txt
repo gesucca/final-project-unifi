@@ -1,31 +1,37 @@
 Anno Accademico
 Hash Docente/i
 Insegnamento
-Produttivita - N
-Produttivita - Ritardo Medio
-Produttivita - Ritardo P>=1y
-Produttivita - Voto Medio
-Produttivita - Voto P>=24
-Produttivita - Voto Std Dev
+Prd_  - N
+Prd_  - Ritardo Medio [sem
+Prd_  - Ritardo P>=1sem
+Prd_  - Voto Medio
+Prd_  - Voto P>=24
+Prd_  - Voto Std Dev
 Val_ Aspetti specifici del Corso di Studi - Media
+Val_ Aspetti specifici del Corso di Studi - N
 Val_ Aspetti specifici del Corso di Studi - P>=6
 Val_ Aspetti specifici del Corso di Studi - Std Dev
 Val_ Aule ed attrezzature - Media
+Val_ Aule ed attrezzature - N
 Val_ Aule ed attrezzature - P>=6
 Val_ Aule ed attrezzature - Std Dev
 Val_ Docente - Media
+Val_ Docente - N
 Val_ Docente - P>=6
 Val_ Docente - Std Dev
 Val_ Informazioni aggiuntive - Media
+Val_ Informazioni aggiuntive - N
 Val_ Informazioni aggiuntive - P>=6
 Val_ Informazioni aggiuntive - Std Dev
-Val_ N
 Val_ Organizzazione Corso di Studi - Media
+Val_ Organizzazione Corso di Studi - N
 Val_ Organizzazione Corso di Studi - P>=6
 Val_ Organizzazione Corso di Studi - Std Dev
 Val_ Organizzazione Insegnamento - Media
+Val_ Organizzazione Insegnamento - N
 Val_ Organizzazione Insegnamento - P>=6
 Val_ Organizzazione Insegnamento - Std Dev
 Val_ Soddisfazione - Media
+Val_ Soddisfazione - N
 Val_ Soddisfazione - P>=6
 Val_ Soddisfazione - Std Dev

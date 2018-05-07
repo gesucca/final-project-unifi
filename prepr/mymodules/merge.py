@@ -1,5 +1,6 @@
 """Attribute merging for producing a single binarizable collection."""
 
+
 class Merger:
     """Attribute merging for producing a single binarizable collection."""
 
@@ -16,18 +17,15 @@ class Merger:
         self._discriminant = None
         self._pref = None
 
-
     def set_specific_keys(self, bounce_spec, discriminant, pref):
         """Self explaining method."""
         self._bounce_spec = bounce_spec
         self._discriminant = discriminant
         self._pref = pref
 
-
     def set_gen_keys(self, bounce_gen):
         """Self explaining method."""
         self._bounce_gen = bounce_gen
-
 
     def merge_attributes(self, coll):
         """Self explaining method."""
@@ -45,14 +43,12 @@ class Merger:
                     coll.delete_many(self._get_filter(k_0, k_1))
                     coll.insert_one(newdoc)
 
-
     def merge_collections(self, coll1, coll2, label2, dest):
-        """Finally merge two datasets intoa single (minable) collection."""
+        """Finally merge two datasets into a single (minable) collection."""
         for teach_doc in coll1.find():
-            for prod_doc in coll2.find({self._keys[0]: teach_doc[self._keys[0]],
-                                        self._keys[1]: teach_doc[self._keys[1]]}):
+            for prod_doc in coll2.find({self._keys[0]: teach_doc[self._keys[0]]}):
 
-                if prod_doc[self._keys[2]].upper() == teach_doc[self._keys[2]].upper():
+                if prod_doc[self._keys[1]].upper() == teach_doc[self._keys[1]].upper():
                     newdoc = teach_doc
                     for key in self._bounce_spec:
                         newdoc[label2 + ' - ' + key] = prod_doc[key]
@@ -70,10 +66,8 @@ class Merger:
             coll1.drop()
             coll2.drop()
 
-
     def _get_filter(self, k_0, k_1):
         return {self._keys[1]: k_1, self._keys[0]: k_0}
-
 
     def _peek_generalities(self, doc, k_0, k_1):
         if self._bounce_gen is None:
@@ -83,7 +77,6 @@ class Merger:
         for boing in self._bounce_gen:
             newdoc[boing] = doc[boing]
         return newdoc
-
 
     def _peek_specifics(self, doc, newdoc):
         if self._bounce_spec is None:
