@@ -1,3 +1,4 @@
 db/
 prepr/__pycache__/
 *.sublime-workspace
+.idea/
