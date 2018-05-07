@@ -1,0 +1,6 @@
+Coorte Immatricolazione
+N [istanze]
+Studenti Laureati [percent]
+Valutazione Test Incresso [media]
+Voto [media pesata]
+Ritardo [media pesata]

@@ -19,3 +19,7 @@ for doc in coll.find():
         coll.insert_one(doc)
 
 cleanings.FinalCleaner(coll).clean([], [], ['Insegnamento'])
+
+MongoClient().exams['rawStudentsPr1013'].drop()
+MongoClient().exams['teachEval_aggr'].drop()
+MongoClient().exams['sprod'].drop()
