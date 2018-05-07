@@ -203,6 +203,10 @@ class ParAggregator(Aggregator):
 
             for doc in self._source.find(group['_id']):
                 last_doc_ref = doc
+                
+                if doc['N'] != '<5' and int(doc['N']) < 0:
+                    print(doc)
+                    raise Exception('negative stuff')
 
                 try:
                     mean = mean + (doc['Media'] * doc['N'])
@@ -211,26 +215,32 @@ class ParAggregator(Aggregator):
 
                     n = n + doc['N']
                     i = i + 1
+
                 except TypeError:  # do not count missing values for means
-                    i = i - 1
+                    pass
 
             try:
                 mean = round(mean / n, 2)
                 stdev = round(stdev / n, 2)
                 p6 = round(p6 / n, 2)
-                n = int(round(n / i, 0))
+                n = int(n / i)
             except ZeroDivisionError:  # it means all values are missing
                 mean = 'n.c.'
                 stdev = 'n.c.'
                 p6 = 'n.c.'
                 n = 'n.c.'
+            
+            if n != 'n.c.' and n < 0:
+                print('n' + str(n))
+                print('i' + str(i))
+                raise Exception('negative stuff')
 
             self._dest.insert_one(self._construct_doc(group['_id'], last_doc_ref, [mean, stdev, p6, n]))
 
     def aggregate_stud(self, coorte):
         raise NotImplementedError('Wrong class!')
 
-    def _construct_doc(self, skel, ref_lst_doc, aggr_attr):
+    def _construct_doc(self, skel,  ref_lst_doc, aggr_attr):
         newdoc = skel
 
         for attr_gen in self._GEN:
@@ -240,5 +250,11 @@ class ParAggregator(Aggregator):
         newdoc['Std Dev [media pesata]'] = aggr_attr[1]
         newdoc['Val >= 6 [percent]'] = aggr_attr[2]
         newdoc['N [istanze]'] = aggr_attr[3]
+        
+        if newdoc['N [istanze]'] != 'n.c.' and int(newdoc['N [istanze]']) < 0:
+            print(newdoc)
+            print(aggr_attr[3])
+            raise Exception('negative stuff')
 
         return newdoc
+
