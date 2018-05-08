@@ -1,8 +1,7 @@
 from pymongo import MongoClient
 
 scheme = MongoClient().exams
-scheme.create_collection('minable_gen')
-minable_gen = scheme['minable_gen']
+stud_gen = scheme.create_collection('stud_gen')
 
 prod = scheme.rawStudentsPr1013
 stud = scheme.sprod
@@ -34,4 +33,4 @@ for group in prod.aggregate([{"$group": {"_id": {'coorte': '$coorte'}}}]):
     aggr['Voto [media pesata]'] = round(aggr['Voto [media pesata]'] / n, 2)
     aggr['Ritardo [semestre, media pesata]'] = round(aggr['Ritardo [semestre, media pesata]'] / n, 2)
 
-    minable_gen.insert_one(aggr)
+    stud_gen.insert_one(aggr)
