@@ -1,5 +1,6 @@
 """Discretization of countinous attributes in datasets."""
 
+
 class _DiscRange:
     def __init__(self, minimum, maximum):
         self._label = str(minimum) + '-' + str(maximum)

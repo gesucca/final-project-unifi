@@ -53,7 +53,7 @@ class StudAggregator(Aggregator):
 
                 if _exam_done_in_ref_period(doc, coorte):
                     new_doc = exams[keys['name']]
-                    new_doc['Anno Accademico'] = coorte + '-' + str(int(coorte)+1)
+                    new_doc['Anno Accademico'] = coorte + '-' + str(int(coorte) + 1)
                     _update_doc(doc, new_doc, keys['name'], keys['date'])
 
         for i in exams:
@@ -109,7 +109,6 @@ def _init_exam_docs():
 
 
 def _update_doc(old, new, field_mark, field_date):
-
     if int(old[field_mark]) > 0:
         new['upd'] = True
 
@@ -158,7 +157,7 @@ def _delay(stuff):
     for i in range(len(stuff['Date'])):
         correct_time = datetime(stuff['Coorti'][i] + stuff['Anno'], stuff['Sem'], 1)
         exam_time = datetime.strptime(stuff['Date'][i], '%Y-%m-%d')
-        delay_sem = int((exam_time - correct_time).days / (30*6))
+        delay_sem = int((exam_time - correct_time).days / (30 * 6))
 
         avg_delay = avg_delay + delay_sem
         if delay_sem >= 1:
@@ -203,7 +202,7 @@ class ParAggregator(Aggregator):
 
             for doc in self._source.find(group['_id']):
                 last_doc_ref = doc
-                
+
                 if doc['N'] != '<5' and int(doc['N']) < 0:
                     print(doc)
                     raise Exception('negative stuff')
@@ -229,7 +228,7 @@ class ParAggregator(Aggregator):
                 stdev = 'n.c.'
                 p6 = 'n.c.'
                 n = 'n.c.'
-            
+
             if n != 'n.c.' and n < 0:
                 print('n' + str(n))
                 print('i' + str(i))
@@ -240,7 +239,7 @@ class ParAggregator(Aggregator):
     def aggregate_stud(self, coorte):
         raise NotImplementedError('Wrong class!')
 
-    def _construct_doc(self, skel,  ref_lst_doc, aggr_attr):
+    def _construct_doc(self, skel, ref_lst_doc, aggr_attr):
         newdoc = skel
 
         for attr_gen in self._GEN:
@@ -250,11 +249,10 @@ class ParAggregator(Aggregator):
         newdoc['Std Dev [media pesata]'] = aggr_attr[1]
         newdoc['Val >= 6 [percent]'] = aggr_attr[2]
         newdoc['N [istanze]'] = aggr_attr[3]
-        
+
         if newdoc['N [istanze]'] != 'n.c.' and int(newdoc['N [istanze]']) < 0:
             print(newdoc)
             print(aggr_attr[3])
             raise Exception('negative stuff')
 
         return newdoc
-

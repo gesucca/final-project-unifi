@@ -5,7 +5,12 @@ mrg = merge.Merger(['Anno Accademico', 'Insegnamento'], True)
 
 mrg.set_gen_keys(['Hash Docente/i'])
 
-mrg.set_specific_keys(['Val [media pesata]', 'Std Dev [media pesata]', 'Val >= 6 [percent]', 'N [istanze]'],
-                      'Paragrafo', 'Valutazione Insegnamento - ')
+mrg.set_specific_keys(['Val [media pesata]',
+                       'Std Dev [media pesata]',
+                       'Val >= 6 [percent]',
+                       'N [istanze]'],
+
+                      'Paragrafo',
+                      'Valutazione Insegnamento - ')
 
 mrg.merge_attributes(MongoClient().exams['teachEval_aggr'])

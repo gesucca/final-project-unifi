@@ -4,6 +4,8 @@ scheme = MongoClient().exams
 new_coll = scheme.create_collection('minable_min')
 coll = scheme['minable']
 
+v = 'Valutazione Insegnamento'
+
 for doc in coll.find():
     n = 0
     val = 0
@@ -11,7 +13,7 @@ for doc in coll.find():
     p6 = 0
     i = 0
     for key in list(doc.keys()):
-        if 'Valutazione Insegnamento' in key:
+        if v in key:
             if 'Val [media pesata]' in key:
                 val = val + doc[key]
             if 'Std Dev [' in key:
@@ -25,8 +27,9 @@ for doc in coll.find():
             del doc[key]
 
     if i != 0:
-        doc['Valutazione Insegnamento - N [media, istanze]'] = int(round(n / i, 0))
-        doc['Valutazione Insegnamento - Std Dev [media pesata]'] = round(std / i, 2)
-        doc['Valutazione Insegnamento - Val >= 6 [media, percent]'] = round(p6 / i, 2)
-        doc['Valutazione Insegnamento - Val [media pesata]'] = round(val / i, 2)
+        doc[v + ' - N [media, istanze]'] = int(round(n / i, 0))
+        doc[v + ' - Std Dev [media pesata]'] = round(std / i, 2)
+        doc[v + ' - Val >= 6 [media, percent]'] = round(p6 / i, 2)
+        doc[v + ' - Val [media pesata]'] = round(val / i, 2)
+
         new_coll.insert_one(doc)

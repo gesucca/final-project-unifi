@@ -11,5 +11,3 @@ agg.aggregate_stud('2010')
 agg.aggregate_stud('2011')
 agg.aggregate_stud('2012')
 agg.aggregate_stud('2013')
-
-# agg.drop()

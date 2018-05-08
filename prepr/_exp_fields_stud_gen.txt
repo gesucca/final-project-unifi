@@ -1,6 +1,6 @@
 Coorte Immatricolazione
 N [istanze]
 Studenti Laureati [percent]
-Valutazione Test Incresso [media]
+Valutazione Test Ingresso [media]
 Voto [media pesata]
 Ritardo [semestre, media pesata]

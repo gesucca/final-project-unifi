@@ -4,23 +4,28 @@ scheme = MongoClient().exams
 eval_gen = scheme.create_collection('eval_gen')
 teval = scheme['teachEval_aggr']
 
+val = 'Valutazione Complessiva [media pesata]'
+sdv = 'Deviazione Standard Complessiva [media pesata]'
+prc = 'Percentuale Valutazioni Sufficienti [media pesata]'
+n = 'Numero Valutazioni [media]'
+
 for group in teval.aggregate([{"$group": {"_id": {'Anno Accademico': '$Anno Accademico'}}}]):
 
-    aggr = {'Valutazione Complessiva [media pesata]': 0, 'Deviazione Standard Complessiva [media pesata]': 0,
-            'Percentuale Valutazioni Sufficienti [media pesata]': 0, 'Numero Valutazioni [media]': 0}
+    aggr = {val: 0, sdv: 0, prc: 0, n: 0}
+
     i = 0
     for doc in teval.find(group['_id']):
         if doc['Val [media pesata]'] != 'n.c.':
-            aggr['Valutazione Complessiva [media pesata]'] = aggr['Valutazione Complessiva [media pesata]'] + doc['Val [media pesata]'] * doc['N [istanze]']
-            aggr['Deviazione Standard Complessiva [media pesata]'] = aggr['Deviazione Standard Complessiva [media pesata]'] + doc['Std Dev [media pesata]'] * doc['N [istanze]']
-            aggr['Percentuale Valutazioni Sufficienti [media pesata]'] = aggr['Percentuale Valutazioni Sufficienti [media pesata]'] + doc['Val >= 6 [percent]'] * doc['N [istanze]']
-            aggr['Numero Valutazioni [media]'] = aggr['Numero Valutazioni [media]'] + doc['N [istanze]']
+            aggr[val] = aggr[val] + doc['Val [media pesata]'] * doc['N [istanze]']
+            aggr[sdv] = aggr[sdv] + doc['Std Dev [media pesata]'] * doc['N [istanze]']
+            aggr[prc] = aggr[prc] + doc['Val >= 6 [percent]'] * doc['N [istanze]']
+            aggr[n] = aggr[n] + doc['N [istanze]']
             i = i + 1
 
-    aggr['Valutazione Complessiva [media pesata]'] = round(aggr['Valutazione Complessiva [media pesata]'] / aggr['Numero Valutazioni [media]'], 2)
-    aggr['Deviazione Standard Complessiva [media pesata]'] = round(aggr['Deviazione Standard Complessiva [media pesata]'] / aggr['Numero Valutazioni [media]'], 2)
-    aggr['Percentuale Valutazioni Sufficienti [media pesata]'] = round(aggr['Percentuale Valutazioni Sufficienti [media pesata]'] / aggr['Numero Valutazioni [media]'], 2)
-    aggr['Numero Valutazioni [media]'] = int(round(aggr['Numero Valutazioni [media]'] / i, 0))
+    aggr[val] = round(aggr[val] / aggr[n], 2)
+    aggr[sdv] = round(aggr[sdv] / aggr[n], 2)
+    aggr[prc] = round(aggr[prc] / aggr[n], 2)
+    aggr[n] = int(round(aggr[n] / i, 0))
 
     aggr['Anno Accademico'] = group['_id']['Anno Accademico']
 

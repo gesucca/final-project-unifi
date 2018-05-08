@@ -19,7 +19,7 @@ QSET_OLD = {'D1': 'Carico di lavoro accettabile',
             'D16': 'Argomenti trattati nuovi o integrativi',
             'D17': 'Argomenti interessanti',
             'D18': 'Soddisfazione complessiva corso'
-           }
+            }
 
 QSET_GEN = {'D4': 'Conoscenze preliminari sufficienti',
             'D5': 'Argomenti trattati nuovi o integrativi',
@@ -37,7 +37,7 @@ QSET_GEN = {'D4': 'Conoscenze preliminari sufficienti',
             'D19': 'Copertura programma a lezione',
             'D20': 'Prove intermedie utili',
             'D21': 'Prove intermedie danneggiano frequenza'
-           }
+            }
 
 
 class Cleaner:
@@ -116,11 +116,10 @@ class FinalCleaner:
 
 
 def _polish(doc):
-
-    del doc['']                 # little quirk by mongoimport
-    del doc['CID']              # useless as a key for this application
-    del doc['Corso']            # always 'INFORMATICA' since it is the object of this study
-    del doc['Tipo corso']       # as above, always 'INFORMATICA'
+    del doc['']  # little quirk by mongoimport
+    del doc['CID']  # useless as a key for this application
+    del doc['Corso']  # always 'INFORMATICA' since it is the object of this study
+    del doc['Tipo corso']  # as above, always 'INFORMATICA'
 
     # simply clearer
     doc['P<6'] = doc.pop('P1')
@@ -135,12 +134,11 @@ def _polish(doc):
 
 
 def _time_ref(doc, year):
-    doc['Anno Accademico'] = str(year) + '-' + str(year+1)
+    doc['Anno Accademico'] = str(year) + '-' + str(year + 1)
     return doc
 
 
 def _clarify_questions(doc, qset):
-
     doc['Oggetto Valutazione'] = qset[doc['Q']]
 
     del doc['Q']
