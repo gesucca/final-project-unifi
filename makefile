@@ -6,7 +6,8 @@ PY= python3
 # useful to spot bad coded modules
 TIME= /usr/bin/time --format=%e
 
-all: export
+.DEFAULT= all
+all: exp_eval_gen exp_stud_gen exp_full exp_min exp_d
 
 reset_db:
 	mongo $(DB) --eval "db.dropDatabase()"
@@ -23,12 +24,12 @@ teval_clean: import
 	$(PRDIR) $(TIME) $(PY) teval_clean.py
 
 teval_aggr: teval_clean
-	$(PRDIR) $(TIME) $(PY) teval_aggr.py	
+	$(PRDIR) $(TIME) $(PY) teval_aggr.py
 
 teval_merge: teval_aggr
 	$(PRDIR) $(TIME) $(PY) teval_merge.py
 
-teval_gen: teval
+teval_gen: teval_aggr
 	$(PRDIR) $(TIME) $(PY) dataset_eval_gen.py
 
 #
@@ -36,10 +37,10 @@ teval_gen: teval
 #
 stud: stud_aggr
 
-stud_aggr: import 
+stud_aggr: import
 	$(PRDIR) $(TIME) $(PY) stud_aggr.py
 
-stud_gen: stud
+stud_gen: stud_aggr
 	$(PRDIR) $(TIME) $(PY) dataset_stud_gen.py
 
 #
@@ -62,19 +63,29 @@ discretized: minified
 #
 EXP= mongoexport
 FIELDS_FULL= --type=csv --fieldFile=prepr/_exp_fields.txt
+FIELDS_MIN=  --type=csv --fieldFile=prepr/_exp_fields_min.txt
 FIELDS_STUD= --type=csv --fieldFile=prepr/_exp_fields_stud_gen.txt
 FIELDS_EVAL= --type=csv --fieldFile=prepr/_exp_fields_eval_gen.txt
 
-export: exp_stud_gen exp_merged_full exp_merged_full_d
+# out of recipes tree, run it manually when needed
+list_fields:
+	$(PRDIR) sh list_fields.sh
 
-prep_exp: cleaned
-	$(PRDIR) sh export.sh
+prep_exp:
+	yes | rm -rf datasets && mkdir datasets
 
 exp_stud_gen: stud_gen prep_exp
-	$(EXP) --db $(DB) --collection stud_gen $(FIELDS_STUD) > datasets/stud_gen.csv
+	$(EXP) --db $(DB) --collection stud_gen $(FIELDS_STUD) > datasets/gen_stud.csv
 
-exp_merged_full: cleaned prep_exp
+exp_eval_gen: teval_gen prep_exp
+	$(EXP) --db $(DB) --collection eval_gen $(FIELDS_EVAL) > datasets/gen_eval.csv
+
+exp_full: cleaned prep_exp
 	$(EXP) --db $(DB) --collection minable $(FIELDS_FULL) > datasets/full.csv
 
-exp_merged_full_d: discretized prep_exp
+exp_min: minified prep_exp
+	$(EXP) --db $(DB) --collection minable_min $(FIELDS_MIN) > datasets/min.csv
+
+exp_d: discretized prep_exp
 	$(EXP) --db $(DB) --collection minable_discretized $(FIELDS_FULL) > datasets/full_d.csv
+	$(EXP) --db $(DB) --collection minable_min_discretized $(FIELDS_MIN) > datasets/min_d.csv

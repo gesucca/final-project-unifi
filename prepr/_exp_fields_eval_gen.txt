@@ -1,0 +1,5 @@
+Anno Accademico
+Valutazione Complessiva [media pesata]
+Deviazione Standard Complessiva [media pesata]
+Percentuale Valutazioni Sufficienti [media pesata]
+Numero Valutazioni [media]

@@ -1,38 +1,27 @@
 from pymongo import MongoClient
 
 scheme = MongoClient().exams
-stud_gen = scheme.create_collection('eval_gen')
+eval_gen = scheme.create_collection('eval_gen')
+teval = scheme['teachEval_aggr']
 
-prod = scheme.rawStudentsPr1013
-stud = scheme.sprod
+for group in teval.aggregate([{"$group": {"_id": {'Anno Accademico': '$Anno Accademico'}}}]):
 
-print('to be done')
+    aggr = {'Valutazione Complessiva [media pesata]': 0, 'Deviazione Standard Complessiva [media pesata]': 0,
+            'Percentuale Valutazioni Sufficienti [media pesata]': 0, 'Numero Valutazioni [media]': 0}
+    i = 0
+    for doc in teval.find(group['_id']):
+        if doc['Val [media pesata]'] != 'n.c.':
+            aggr['Valutazione Complessiva [media pesata]'] = aggr['Valutazione Complessiva [media pesata]'] + doc['Val [media pesata]'] * doc['N [istanze]']
+            aggr['Deviazione Standard Complessiva [media pesata]'] = aggr['Deviazione Standard Complessiva [media pesata]'] + doc['Std Dev [media pesata]'] * doc['N [istanze]']
+            aggr['Percentuale Valutazioni Sufficienti [media pesata]'] = aggr['Percentuale Valutazioni Sufficienti [media pesata]'] + doc['Val >= 6 [percent]'] * doc['N [istanze]']
+            aggr['Numero Valutazioni [media]'] = aggr['Numero Valutazioni [media]'] + doc['N [istanze]']
+            i = i + 1
 
-# for group in prod.aggregate([{"$group": {"_id": {'coorte': '$coorte'}}}]):
-#
-#     aggr = {'Valutazione Test Incresso [media]': 0, 'Studenti Laureati [percent]': 0, 'N [istanze]': 0, 'Coorte Immatricolazione': group['_id']['coorte']}
-#
-#     for doc in prod.find(group['_id']):
-#         aggr['N [istanze]'] = aggr['N [istanze]'] + 1
-#         aggr['Valutazione Test Incresso [media]'] = aggr['Valutazione Test Incresso [media]'] + doc['test']
-#         if doc['crediti_totali'] == 180:
-#             aggr['Studenti Laureati [percent]'] = aggr['Studenti Laureati [percent]'] + 1
-#
-#     aggr['Valutazione Test Incresso [media]'] = round(aggr['Valutazione Test Incresso [media]'] / aggr['N [istanze]'], 2)
-#     aggr['Studenti Laureati [percent]'] = round((aggr['Studenti Laureati [percent]'] / aggr['N [istanze]']) * 100, 2)
-#
-#     # media pesata
-#     aggr['Voto [media pesata]'] = 0
-#     aggr['Ritardo [semestre, media pesata]'] = 0
-#     n = 0
-#
-#     a_a = str(group['_id']['coorte']) + '-' + str(group['_id']['coorte'] + 1)
-#     for doc in stud.find({'Anno Accademico': a_a}):
-#         aggr['Voto [media pesata]'] = aggr['Voto [media pesata]'] + doc['Voto [media]'] * doc['N [istanze]']
-#         aggr['Ritardo [semestre, media pesata]'] = aggr['Ritardo [semestre, media pesata]'] + doc['Ritardo [semestre, media]'] * doc['N [istanze]']
-#         n = n + doc['N [istanze]']
-#
-#     aggr['Voto [media pesata]'] = round(aggr['Voto [media pesata]'] / n, 2)
-#     aggr['Ritardo [semestre, media pesata]'] = round(aggr['Ritardo [semestre, media pesata]'] / n, 2)
-#
-#     stud_gen.insert_one(aggr)
+    aggr['Valutazione Complessiva [media pesata]'] = round(aggr['Valutazione Complessiva [media pesata]'] / aggr['Numero Valutazioni [media]'], 2)
+    aggr['Deviazione Standard Complessiva [media pesata]'] = round(aggr['Deviazione Standard Complessiva [media pesata]'] / aggr['Numero Valutazioni [media]'], 2)
+    aggr['Percentuale Valutazioni Sufficienti [media pesata]'] = round(aggr['Percentuale Valutazioni Sufficienti [media pesata]'] / aggr['Numero Valutazioni [media]'], 2)
+    aggr['Numero Valutazioni [media]'] = int(round(aggr['Numero Valutazioni [media]'] / i, 0))
+
+    aggr['Anno Accademico'] = group['_id']['Anno Accademico']
+
+    eval_gen.insert_one(aggr)
