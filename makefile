@@ -1,13 +1,28 @@
 DB = exams
 SCHEME= MongoClient().exams
 PRDIR= cd prepr &&
+TDIR= cd thesis &&
 PY= python3
+TEX= pdflatex -shell-escape -interaction=nonstopmode -file-line-error
 
 # useful to spot bad coded modules
 TIME= /usr/bin/time --format=%e
 
 .DEFAULT= all
-all: exp_eval_gen exp_stud_gen exp_full exp_min exp_d
+all: prepr pdf
+
+
+################
+# LATEX THESIS #
+################
+pdf:
+	$(TDIR) $(TEX) thesis.tex
+
+######################
+# PREPROCESSING STEP #
+######################
+
+prep: exp_eval_gen exp_stud_gen exp_full exp_min exp_d
 
 reset_db:
 	mongo $(DB) --eval "db.dropDatabase()"
