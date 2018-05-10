@@ -16,7 +16,7 @@ all: prepr pdf
 # LATEX THESIS #
 ################
 pdf:
-	$(TDIR) $(TEX) thesis.tex
+	$(TDIR) $(TEX) Thesis.tex
 
 ######################
 # PREPROCESSING STEP #
