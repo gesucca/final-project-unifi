@@ -1,33 +1,15 @@
-%--------------------------------------------------------------
-% thesis.tex 
-%--------------------------------------------------------------
-% Corso di Laurea in Informatica 
-% http://if.dsi.unifi.it/
-% @Facolt\`a di Scienze Matematiche, Fisiche e Naturali
-% @Universit\`a degli Studi di Firenze
-%--------------------------------------------------------------
-% - template for the main file of Informatica@Unifi Thesis 
-% - based on Classic Thesis Style Copyright (C) 2008 
-%   Andr\'e Miede http://www.miede.de   
-%--------------------------------------------------------------
 \documentclass[twoside,openright,titlepage,fleqn,
-	headinclude,12pt,a4paper,BCOR5mm,footinclude]{scrbook}
+	headinclude,12pt,a4paper,footinclude]{scrbook}
 %--------------------------------------------------------------
 \newcommand{\myItalianTitle}{Titolo italiano\xspace}
 \newcommand{\myEnglishTitle}{Titolo inglese\xspace}
-% use the right myDegree option
 \newcommand{\myDegree}{Corso di Laurea in Informatica\xspace}
-%\newcommand{\myDegree}{
-	%Corso di Laurea Specialistica in Scienze e Tecnologie 
-	%dell'Informazione\xspace}
 \newcommand{\myName}{Nome candidato\xspace}
 \newcommand{\myProf}{Relatore\xspace}
 \newcommand{\myOtherProf}{Correlatore\xspace}
 \newcommand{\mySupervisor}{Nome Cognome\xspace}
-\newcommand{\myFaculty}{
-	Scuola di Scienze Matematiche, Fisiche e Naturali\xspace}
-\newcommand{\myUni}{\protect{
-	Universit\`a degli Studi di Firenze}\xspace}
+\newcommand{\myFaculty}{Scuola di Scienze Matematiche, Fisiche e Naturali\xspace}
+\newcommand{\myUni}{\protect{Universit\`a degli Studi di Firenze}\xspace}
 \newcommand{\myLocation}{Firenze\xspace}
 \newcommand{\myTime}{Anno Accademico 2014-2015\xspace}
 \newcommand{\myVersion}{Version 0.1\xspace}
@@ -44,22 +26,13 @@
 \usepackage{appendix}
 \usepackage{siunitx}
 %--------------------------------------------------------------
-\usepackage{dia-classicthesis-ldpkg}
+\usepackage{mod-classicthesis-ldpkg}
+\usepackage[eulerchapternumbers,linedheaders,subfig,beramono,eulermath,parts]{classicthesis}
 %--------------------------------------------------------------
-% Options for classicthesis.sty:
-% tocaligned eulerchapternumbers drafting linedheaders 
-% listsseparated subfig nochapters beramono eulermath parts 
-% minionpro pdfspacing
-\usepackage[eulerchapternumbers,linedheaders,subfig,beramono,eulermath,
-parts]{classicthesis}
-%--------------------------------------------------------------
-\newlength{\abcd} % for ab..z string length calculation
-% how all the floats will be aligned
+\newlength{\abcd} 
 \newcommand{\myfloatalign}{\centering} 
-\setlength{\extrarowheight}{3pt} % increase table row height
+\setlength{\extrarowheight}{3pt} 
 \captionsetup{format=hang,font=small}
-%--------------------------------------------------------------
-% Layout setting
 %--------------------------------------------------------------
 \usepackage{geometry}
 \geometry{
@@ -68,10 +41,9 @@ parts]{classicthesis}
 	bindingoffset = 1cm, 
 	textwidth     = 13.5cm,
 	textheight    = 21.5cm,
-	lmargin       = 3.5cm, % left margin
-	tmargin       = 4cm    % top margin 
+	lmargin       = 3.5cm, 
+	tmargin       = 4cm    
 }
-
 \lstset{
   	frame=tb,
 	language=Matlab,
@@ -92,16 +64,10 @@ parts]{classicthesis}
 \pagenumbering{roman}
 \pagestyle{plain}
 %--------------------------------------------------------------
-% Frontmatter
-%--------------------------------------------------------------
 \include{src/titlePage}
 \pagestyle{scrheadings}
 %--------------------------------------------------------------
-% Mainmatter
-%--------------------------------------------------------------
 \pagenumbering{arabic}
-% use \cleardoublepage here to avoid problems with pdfbookmark
-%\include{intro} % use \myChapter command instead of \chapter
 \tableofcontents
 \listoffigures
 \cleardoublepage
@@ -116,4 +82,4 @@ parts]{classicthesis}
 \include{src/bibl}
 %--------------------------------------------------------------
 \end{document}
-%--------------------------------------------------------------
+
