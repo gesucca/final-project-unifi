@@ -42,7 +42,7 @@ class StudAggregator(Aggregator):
                 {'date': 'data_CAL', 'name': 'CAL'},
                 {'date': 'data_IT', 'name': 'IT'},
                 {'date': 'data_RETI', 'name': 'RETI'},
-                {'date': 'data_IUM', 'name': 'IUM'}
+                {'date': 'data_IntC', 'name': 'IntC'}
                 ]
 
     def aggregate_stud(self, coorte):
@@ -53,7 +53,8 @@ class StudAggregator(Aggregator):
 
                 if _exam_done_in_ref_period(doc, coorte):
                     new_doc = exams[keys['name']]
-                    new_doc['Anno Accademico'] = coorte + '-' + str(int(coorte) + 1)
+                    a_a = int(coorte) + new_doc['Anno'] - 1
+                    new_doc['Anno Accademico'] = str(a_a) + '-' + str(int(a_a) + 1)
                     _update_doc(doc, new_doc, keys['name'], keys['date'])
 
         for i in exams:
@@ -65,8 +66,8 @@ class StudAggregator(Aggregator):
 
                 del exams[i]['Voti']
                 del exams[i]['Date']
-                del exams[i]['Coorti']
                 del exams[i]['Anno']
+                del exams[i]['Coorti']
                 del exams[i]['Sem']
                 del exams[i]['upd']
 
@@ -93,7 +94,7 @@ def _init_exam_docs():
              'CAL': {'Insegnamento': 'Calcolo numerico', 'Anno': 3, 'Sem': 6},
              'IT': {'Insegnamento': 'Informatica teorica', 'Anno': 3, 'Sem': 1},
              'RETI': {'Insegnamento': 'Reti di calcolatori', 'Anno': 3, 'Sem': 1},
-             'IUM': {'Insegnamento': 'Interazione uomo macchina', 'Anno': 3, 'Sem': 6}
+             'IntC': {'Insegnamento': 'Interpreti e compilatori', 'Anno': 3, 'Sem': 1}
              }
 
     # init other common fields
