@@ -1,0 +1,85 @@
+=== Run information ===
+
+Scheme:       weka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -V -M -N 6 -A "weka.core.EuclideanDistance -R first-last" -I 5000 -num-slots 1 -S 2
+Relation:     min-weka.filters.unsupervised.attribute.Remove-R4,10-weka.filters.unsupervised.attribute.Remove-R4,6,8,10-11-weka.filters.unsupervised.attribute.Remove-R2
+Instances:    54
+Attributes:   5
+              Produttivita Studenti - Ritardo [semestre, media]
+              Produttivita Studenti - Voto [media]
+              Valutazione Insegnamento - Val [media pesata]
+Ignored:
+              Anno Accademico
+              Insegnamento
+Test mode:    Classes to clusters evaluation on training data
+
+=== Clustering model (full training set) ===
+
+
+kMeans
+======
+
+Number of iterations: 6
+Within cluster sum of squared errors: 2.654730736454078
+
+Initial starting points (random):
+
+Cluster 0: 0.97,24.64,8.46
+Cluster 1: 1.62,26.44,7.34
+Cluster 2: 0.36,26.16,8.25
+Cluster 3: 1.72,25.06,7.63
+Cluster 4: 1.24,23.76,6.88
+Cluster 5: 0.4,25.49,8.49
+
+
+Final cluster centroids:
+                                                                 Cluster#
+Attribute                                            Full Data          0          1          2          3          4          5
+                                                        (54.0)      (8.0)      (8.0)     (14.0)      (9.0)      (6.0)      (9.0)
+================================================================================================================================
+Produttivita Studenti - Ritardo [semestre, media]       0.8811     1.0537      1.165     0.5443     1.6556     0.8067     0.2744
+                                                     +/-0.5344  +/-0.2143  +/-0.2372  +/-0.2111  +/-0.2997  +/-0.5578  +/-0.2098
+
+Produttivita Studenti - Voto [media]                   25.1394     23.715    26.4963    26.6607    23.8656    24.0417    24.8389
+                                                     +/-1.5681  +/-0.6033  +/-1.1348  +/-0.8107  +/-1.3466  +/-0.9732  +/-0.7877
+
+Valutazione Insegnamento - Val [media pesata]           7.8141     7.9737       7.93     8.0657     7.7078     6.6167     8.0822
+                                                     +/-0.5734  +/-0.3911  +/-0.4024  +/-0.4134  +/-0.2759  +/-0.4867   +/-0.286
+
+
+
+
+
+Time taken to build model (full training data) : 0 seconds
+
+=== Model and evaluation on training set ===
+
+Clustered Instances
+
+0       8 ( 15%)
+1       8 ( 15%)
+2      14 ( 26%)
+3       9 ( 17%)
+4       6 ( 11%)
+5       9 ( 17%)
+
+
+Class attribute: Anno Accademico
+Classes to Clusters:
+
+ 0 1 2 3 4 5  <-- assigned to cluster
+ 0 1 1 0 2 0 | 2015-2016
+ 1 1 3 0 2 2 | 2014-2015
+ 3 2 1 2 0 2 | 2011-2012
+ 1 1 4 3 1 3 | 2013-2014
+ 0 2 1 0 1 1 | 2010-2011
+ 3 1 4 4 0 1 | 2012-2013
+
+Cluster 0 <-- 2011-2012
+Cluster 1 <-- 2010-2011
+Cluster 2 <-- 2014-2015
+Cluster 3 <-- 2012-2013
+Cluster 4 <-- 2015-2016
+Cluster 5 <-- 2013-2014
+
+Incorrectly clustered instances :	37.0	 68.5185 %
+
