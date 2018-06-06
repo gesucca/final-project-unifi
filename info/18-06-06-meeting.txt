@@ -1,0 +1,13 @@
+Vedere quali corsi sono nella parte migliore k-means 2 cluster
+    andare a vedere cosa sono quei punti sul grafico - a che corso appartengono??
+Buono solo due cluster!
+
+Minare sequenze con GSP (weka) su dataset studenti:
+    ordine in cui gli studenti hanno dato gli esami
+    considerare solo l'ordine, non il gap o la valutazione
+    costruire una sequenza ideale tipo
+    ASD: 1, MDL: 2, .... IT: 18
+    e considerare i pattern sequenziali minati che sovvertono quest'ordine
+
+scrivere la tesi di paripasso alle analisi
+struttura tesi va bene come me la immaginavo
