@@ -1,0 +1,3 @@
+Visto che sono presenti pochi attributi, ci si aspetterebbe che un algoritmo basato sulla densità possa esibire delle buone performance. Per facilitare ulteriormente l'esecuzione di DBSCAN, è stato scartato l'attributo relativo al ritardo degli studenti. Così facendo, si è ottenuto uno spazio bidimensionale in cui l'algoritmo può facilmente operare - e che si presta bene a una interpretazione visiva. 
+
+Invece, non è stato possibile ottenere nessun risultato diverso da un cluster unico, per qualunque valore di epsilon e per qualsiasi numero di punti minimi richiesti. Questo perché evidentemente i punti nel nostro piano di analisi sono addensati tutti in un'unica regione, fatto che possiamo agilmente verificare osservandone un grafico.
