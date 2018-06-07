@@ -1,7 +1,39 @@
-\chapter{Dati Grezzi a disposizione}
+\chapter{Dati Iniziali}
 
-\section{Produttivita' degli Studenti} % 'à' causes problems with uppercase conversion...
-	Lorem ipsum bla bla bla
+In questa sezione ci si soffermerà in quella che è una preliminare analisi dei dati iniziali a disposizione. Questi dati rappresentano il materiale grezzo dal quale \textit{estrarre} --- fare del \textit{mining}, come appunto il nome dell'attività suggerisce --- delle informazioni. \\
+
+Usando come metafora una lavorazione meccanica, avere ben chiara la natura del materiale grezzo a disposizione consente di scegliere opportunamente gli utensili adatti per il lavoro da fare. Nel nostro caso, poter vantare di una comprensione generale di ciò che si ha a disposizione, potrà consentirci di scegliere le tecniche migliori per trarre il meglio dai dati iniziali. \\
+
+\section{Carriera degli Studenti}
+
+Parte fondamentale dell'analisi descritta in questo lavoro è basata su questo dataset, rappresentante i dati riguardanti la produttività di tre coorti d'immatricolazione di studenti in un periodo di quattro anni. Più nel dettaglio, il dataset si compone di:
+
+\begin{itemize}
+	\item studenti immatricolati nell'anno 2010, carriera registrata fino all'A.A. 2013-2014 compreso
+	\item studenti immatricolati nell'anno 2011, carriera registrata fino all'A.A. 2014-2015 compreso
+	\item studenti immatricolati nell'anno 2012, carriera registrata fino all'A.A. 2015-2016 compreso
+	\item studenti immatricolati nell'anno 2013, carriera registrata fino all'A.A. 2016-2017 compreso
+\end{itemize}
+
+Quindi, si ha a disposizione una finestra temporale di risultati ottenuti nei corsi così composta:
+
+\begin{center}
+	\includegraphics[scale=0.7]{../raw/stud_comp.png}
+\end{center}
+
+Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente informazioni riguardanti tutte le materie del C.d.L. solo nell'Anno Accademico 2013-2014. Questo aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
+
+\subsection{Formato e Rappresentazione}
+
+Il dataset è stato fornito in un unico file CSV, un formato \textit{plain text} facilmente manipolabile e interpretabile da un'ampia gamma di software. Esso si compone di una unica tabella, nella quale ogni tupla identifica uno studente, per il quale sono presenti attributi che descrivono la sua carriera universitaria nel periodo preso in esame. Oltre alle informazioni generali, quali ad esempio i risultati conseguiti nel test d'ingresso e il numero di crediti totali ottenuti nella finestra temporale esaminata, sono presenti attributi relativi alla data e al voto ottenuto in ciascun esame sostenuto.
+
+\subsection{Campione del Dataset}
+
+Di seguito si mostra un campione del dataset, al fine unico di esibirne la struttura generale. Si noti che, per ragioni evidenti di spazio, sono state omesse le colonne rappresentanti gli attributi di tutti gli esami.
+
+\begin{center}
+	\includegraphics[scale=0.5]{../raw/stud_sample.png}
+\end{center}
 
 \section{Valutazione degli Insegnamenti}
 	Lorem ispsum bla bla bla
