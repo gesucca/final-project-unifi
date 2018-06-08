@@ -22,7 +22,7 @@ pdf:
 # PREPROCESSING STEP #
 ######################
 
-prep: exp_eval_gen exp_stud_gen exp_full exp_min exp_d
+prep: stud_seq exp_eval_gen exp_stud_gen exp_full exp_min exp_d
 
 reset_db:
 	mongo $(DB) --eval "db.dropDatabase()"
@@ -57,6 +57,9 @@ stud_aggr: import
 
 stud_gen: stud_aggr
 	$(PRDIR) $(TIME) $(PY) dataset_stud_gen.py
+
+stud_seq: import
+	$(PRDIR) $(TIME) $(PY) dataset_stud_seq.py
 
 #
 # finalize
