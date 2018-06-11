@@ -89,7 +89,7 @@ with open('seq_stud_2010_ist_tecn.arff', 'w') as the_file:
 with open('seq_stud_2011_liceo.arff', 'w') as the_file:
     the_file.write('@relation students_career\n')
     the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 13, 17, 18, 19, 20, 21, 22, 23}\n')
+    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23}\n')
     the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
     the_file.write('\n')
     the_file.write('@data\n')
@@ -105,7 +105,7 @@ with open('seq_stud_2011_ist_tecn.arff', 'w') as the_file:
 with open('seq_stud_2012_liceo.arff', 'w') as the_file:
     the_file.write('@relation students_career\n')
     the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 13, 17, 18, 19, 20, 21, 22}\n')
+    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22}\n')
     the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
     the_file.write('\n')
     the_file.write('@data\n')
@@ -113,7 +113,7 @@ with open('seq_stud_2012_liceo.arff', 'w') as the_file:
 with open('seq_stud_2012_ist_tecn.arff', 'w') as the_file:
     the_file.write('@relation students_career\n')
     the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 13, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}\n')
+    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}\n')
     the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
     the_file.write('\n')
     the_file.write('@data\n')
@@ -121,7 +121,7 @@ with open('seq_stud_2012_ist_tecn.arff', 'w') as the_file:
 with open('seq_stud_2013_liceo.arff', 'w') as the_file:
     the_file.write('@relation students_career\n')
     the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 13, 17, 18, 19, 20, 21, 22, 23}\n')
+    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23}\n')
     the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
     the_file.write('\n')
     the_file.write('@data\n')
@@ -129,7 +129,7 @@ with open('seq_stud_2013_liceo.arff', 'w') as the_file:
 with open('seq_stud_2013_ist_tecn.arff', 'w') as the_file:
     the_file.write('@relation students_career\n')
     the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 13, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45}\n')
+    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45}\n')
     the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
     the_file.write('\n')
     the_file.write('@data\n')
