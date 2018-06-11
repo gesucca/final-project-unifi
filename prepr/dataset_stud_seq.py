@@ -227,7 +227,7 @@ for doc in coll.find():
 
         studentID['laureati'] = studentID['laureati'] + 1
 
-    if crediti <= 55:
+    if crediti <= 50:
         for exam in lst:
             with open('seq_stud_worst.arff', 'a') as the_file:
                 the_file.write(str(studentID['peggiori']) + ',' + exam + '\n')
