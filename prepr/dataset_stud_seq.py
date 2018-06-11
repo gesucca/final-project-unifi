@@ -63,7 +63,7 @@ def fix_names(filename):
     filedata = filedata.replace('data_IT', '3_2_ITE')
     filedata = filedata.replace('data_CS', '3_2_CES')
 
-    with open('filename.arff', 'w') as file:
+    with open(filename, 'w') as file:
         file.write(filedata)
 
 # BEWARE: bad code follows (and bad code preceeded, but whatever)
