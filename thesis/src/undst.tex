@@ -25,12 +25,12 @@ Gli strumenti più adatti per poter ottenere una visione d'insieme sull'intera m
 
 \lstset{language=R,
     basicstyle=\small\ttfamily,
-    stringstyle=\color{yellow},
+    stringstyle=\color{gray},
     otherkeywords={0,1,2,3,4,5,6,7,8,9},
     morekeywords={TRUE,FALSE},
     deletekeywords={data,frame,length,as,character},
     keywordstyle=\color{blue},
-    commentstyle=\color{green},
+    commentstyle=\color{gray},
 }
 
 Senza ombra di dubbio questa porzione di dati rappresenta la più significativa dell'intero lotto a disposizione per questa analisi. \\
@@ -58,7 +58,7 @@ str(students)
 summary(students)
 \end{lstlisting}
 
-In ogni caso, dato l’elevato numero degli attributi del dataset, è stato necessario fare delle scelte relative a cosa visualizzare – e con quale tecnica. Le scelte sono state ovviamente compiute su base intuitiva, a seguito di un’analisi sommaria delle caratteristiche del dataset. \\
+In ogni caso, dato l’elevato numero degli attributi del dataset, è stato necessario prendere delle decisioni relative a cosa visualizzare – e con quale tecnica. Le scelte sono state ovviamente compiute su base intuitiva, a seguito di un’analisi sommaria delle caratteristiche del dataset. \\
 
 È stato quindi deciso di effettuare una ricerca visiva di correlazioni fra valori di attributi relativi a:
 \begin{itemize}
@@ -69,14 +69,13 @@ In ogni caso, dato l’elevato numero degli attributi del dataset, è stato nece
 
 \subsection{Prestazioni Generali degli Studenti}
 
-Lo script \textbf{R} che segue plotta dei grafci di dispersione su coppie di attributi relativi alle prestazioni generali degli studenti. \\
+Lo script \textbf{R} che segue plotta dei grafci di dispersione su coppie di attributi relativi alle prestazioni generali degli studenti. Lo scopo è quello di individuare visivamente delle correlazioni significative fra questi attributi.\\
 
 \begin{lstlisting}
 colors <- c("blue","red", "green", "orange")
 coorte_labels <- students[,1]
 coorte_colors <- colors[as.numeric(coorte_labels)]
 library(seriation)
-
 
 # general attributes
 students_subset1 <- students[,-c(1, 6 : 45)]
@@ -86,8 +85,65 @@ legend(x = 0.05, y = 0.4, cex = 1,legend = 	as.character(levels(coorte_labels)),
 par(xpd = NA)
 \end{lstlisting}
 
-Lo scopo è quello di individuare visivamente delle correlazioni significative fra questi attributi. Come si può infatti vedere sul grafico generato dallo script, esistono varie correlazioni fra gli attributi considerati. Nel merito, la correlazione fra le quantità \textit{crediti totali} e \textit{crediti con voto} è tanto palese quanto banale: il primo ammontare contiene il secondo, e la loro differenza è minima. 
-
-\begin{center}
+\begin{figure}
+    \centering
+    \caption{grafico di dispersione su attributi generali}
+    \label{fig1}
 	\includegraphics[scale=0.32]{img/scatter_plot_1_gen.png}
-\end{center}
+\end{figure}
+
+Come si può vedere sul grafico generato dallo script --- mostrato in \ref{fig1} --- esistono varie correlazioni fra gli attributi considerati. Nel merito, la relazione fra le quantità \textit{crediti totali} e \textit{crediti con voto} è tanto palese quanto banale: il primo ammontare contiene il secondo, e la loro differenza è minima. Appare invece più interessante quello che accade fra altre coppie di attributi:
+
+\begin{itemize}
+    \item punteggio del test di ingresso e valore atteso del voto 
+    \item quantità di crediti ottenuti e valore atteso del voto
+\end{itemize}
+
+Si ritiene quindi opportuno realizzare dei grafici che abbiano un maggior livello di dettaglio su questi aspetti.
+
+\begin{figure}
+    \centering
+    \caption{grafico di dispersione su voto medio e test di ingresso}
+    \label{fig2}
+	\includegraphics[scale=0.5]{img/scatter_plot_2.png}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \caption{grafico di dispersione su voto medio e C.F.U. ottenuti}
+    \label{fig3}
+	\includegraphics[scale=0.40]{img/scatter_plot_3.png}
+\end{figure}
+
+A seguito di una analisi visiva di \ref{fig2}, si potrebbe speculare che esista una correlazione lineare fra i due attributi: gli studenti che conseguono un punteggio alto nel test di ingresso sono più propensi ad ottenere voti alti negli esami. \\
+
+Per quanto riguarda invece \ref{fig3}, fra gli studenti che hanno conseguiti tutti i crediti si può notare una consistente densità nella fascia che va circa dal 22 al 29. Si può anche notare una assenza di voti medi inferiori al 22 fra coloro che hanno conseguito più di 100 CFU. Un altro aspetto che potrebbe rivelarsi interessante è che, fra la coorte di studenti del 2013, vari studenti hanno conseguito un solo esame con un voto superiore al 20. \\
+
+Viste le possibili informazioni che sembra possibile estrarre, si è deciso di insistere sull’analisi visiva degli attributi \textit{voto medio} e \textit{numero totale di crediti}. Sono stati quindi realizzati dei diagrammi a scatola e baffi con il seguente script \textbf{R}: 
+
+\begin{lstlisting}
+boxplot(students[,4]~students[,1],data = students,xlab="Total Marked CFU",col=colors)
+boxplot(students[,5]~students[,1],data = students,xlab="Avg. Exam Score",col=colors)
+\end{lstlisting}
+
+\begin{figure}
+    \centering
+    \caption{diagramma a scatole e baffi sull'attributo \textit{numero totale di crediti}}
+    \label{boxplot1}
+	\includegraphics[scale=0.5]{img/box_plot_1.png}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \caption{diagramma a scatole e baffi sull'attributo \textit{voto medio}}
+    \label{boxplot2}
+	\includegraphics[scale=0.5]{img/scatter_plot_3.png}
+\end{figure}
+
+Riguardo al diagramma in \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili (non si ignorino però le istanze considerate outliers dall’algoritmo di plotting), mentre gli studenti immatricolati nel 2013 sono stati i meno performanti.
+
+Nel caso invece del voto medio, rappresentato in \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due outliers nella coorte 2013. 
+
+\subsection{Prestazioni degli Studenti su Gruppi di Esami}
+
+Lorem ipsum eccetera
