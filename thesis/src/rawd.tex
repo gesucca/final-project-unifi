@@ -15,13 +15,18 @@ Una parte fondamentale dell'analisi descritta in questo lavoro è basata su ques
 	\item \textbf{Coorte 2013}: studenti immatricolati nel 2013, carriera registrata fino all'\textbf{A.A. 2016-2017} compreso
 \end{itemize}
 
-Quindi, si ha a disposizione una finestra temporale di risultati ottenuti nei corsi così composta:
+Quindi, si ha a disposizione una finestra temporale di risultati ottenuti nei corsi composta così come indicato in \ref{1}. \\
 
-\begin{center}
+\begin{figure}
+    \centering
+    \caption{coorti di immatricolazione coperte dal dataset degli studenti}
+    \label{1}
 	\includegraphics[scale=0.7]{../raw/stud_comp.png}
-\end{center}
+\end{figure}
 
-Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti tutte le materie del C.d.L. solo nell'Anno Accademico 2013-2014. Questo aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
+Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti tutte le materie del C.d.L. solo nell'Anno Accademico 2013-2014. \\
+
+Tale aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
 
 \subsection{Formato e Rappresentazione}
 
@@ -67,7 +72,7 @@ Come si può facilmente notare, la finestra temporale coperta da questi dati va 
 
 \subsection{Formato e Rappresentazione}
 
-Il dataset è stato fornito in sette diversi file CSV, uno per ogni anno accademico per il quale sono state espresse valutazioni dei relativi corsi. In ogni file si rappresenta una tabella le cui tuple identificano una valutazione relativa a un particolare aspetto di un corso, riportata ovviamente in forma aggregata.
+Il dataset è stato fornito in sette diversi file CSV, uno per ogni anno accademico per il quale sono state espresse valutazioni dei relativi corsi. In ogni file si rappresenta una tabella le cui tuple identificano una valutazione relativa a un particolare aspetto di un corso, riportata ovviamente in forma aggregata. \\
 
 \noindent Nel particolare, ogni record di questo tipo di tabelle è identificato dai seguenti campi, che agiscono come chiave:
 
@@ -96,11 +101,12 @@ Come è possibile intuire, molti di questi attributi sono inutili o ridondanti. 
 \subsection{Mole di dati}
 
 I sette file forniti contengono complessivamente 2594 record, ognuno dei quali ha 13 attributi. Anche riguardo a questo dataset, non si può usare propriamente la denominazione \textit{big data}.\\
+
 In ogni caso, visto che le quantità in gioco non sono comunque piccole, in una eventuale \textit{join} con il dataset precedente occorrerà fare particolare attenzione a non moltiplicare la quantità di record generando ridondanze, in quanto un simile errore potrebbe facilmente rendere l'insieme di dati risultante intrattabile.
 
 \section{Conclusioni dell'Analisi dei Dati Iniziali}
 
-Dopo aver esaminato attentamente i due dataset a disposizione, si può immediatamente affermare che il focus principale dell'analisi dovrà essere posto sui singoli corsi, per i quali si hanno molte informazioni di vario genere.
+Dopo aver esaminato attentamente i due dataset a disposizione, si può immediatamente affermare che il focus principale dell'analisi dovrà essere posto sui singoli corsi, per i quali si hanno molte informazioni di vario genere. \\
 
 Volendo quindi sintetizzare quanto è stato possibile capire dall'analisi presentata in questa sezione, elaborandolo nell'ottica appena acquisita, si può riassumere la descrizione del materiale a nostra disposizione in due semplici punti:
 
@@ -109,6 +115,6 @@ Volendo quindi sintetizzare quanto è stato possibile capire dall'analisi presen
 	\item aggregazioni delle risposte ai questionari di valutazione dei corsi
 \end{itemize}
 
-Oltre a effettuare analisi sui singoli insiemi di dati, si potrà immaginare di doverli in qualche modo unire per incrociarne le informazione e trovare, possibilmente, correlazioni interessanti. Si può quindi dire che la sfida più impegnativa della prossima fase, il \textit{preprocessing}, riguardi la messa in relazione di dati aventi natura diversa.
+Oltre a effettuare analisi sui singoli insiemi di dati, si potrà immaginare di doverli in qualche modo unire per incrociarne le informazione e trovare, possibilmente, correlazioni interessanti. Si può quindi dire che la sfida più impegnativa della prossima fase, il \textit{preprocessing}, riguardi la messa in relazione di dati aventi natura diversa. \\
 
 Di pari passo a essa, sarà portata avanti una fase di \textit{data understanding}. Sarà utile per affinare la comprensione di quanto si è appena mostrato e per decidere il tipo di tecniche di \textit{data mining} da utilizzare sulla mole di dati a disposizione.
