@@ -20,6 +20,13 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
 \section{Data Base Management System: MongoDB}
 
+    \begin{figure}
+        \centering
+        \caption{logo del DBMS MongoDB}
+        \label{mongodb_logo}
+    	\includegraphics[scale=0.70]{img/mongodb.png}
+    \end{figure}
+
     La scelta del Data Base Management System è stata quella che ha impattato più di tutte il tipo di lavoro che è stato necessario fare.
 
     \subsection{La scelta di MongoDB}
@@ -41,16 +48,45 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
         
         "\textbf{MongoDB} \textit{(da "humongous", enorme)} è un DBMS non relazionale, orientato ai documenti. Classificato come un database di tipo \textbf{NoSQL}, MongoDB si allontana dalla struttura tradizionale basata su tabelle dei database relazionali in favore di \textbf{documenti in stile JSON} con schema dinamico (MongoDB chiama il formato BSON), rendendo l'integrazione di dati di alcuni tipi di applicazioni più facile e veloce." \\
 
+        La società MongoDB Inc mette a disposizione liberamente e gratuitamente una buona documentazione in \cite{mongodb}, la quale contiene tutte le informazioni necessarie per utilizzare almeglio il DBMS da loro sviluppato. 
+
         Oltre alla sua \textit{shell}, MongoDB espone delle \textit{API} per i principali linguaggi di programmazione. Questo aspetto è tornato molto utile per specificare le operazioni di \textit{preprocessing} in un linguaggio familiare e più facilmente gestibile del dialetto di Javascript nativo di MongoDB.
 
 \section{Interazione col DBMS: Python}
 
+    \begin{figure}
+        \centering
+        \caption{logo del linguaggio di programmazione Python}
+        \label{python_logo}
+    	\includegraphics[scale=0.1]{img/python.png}
+    \end{figure}
+
     A proposito di quando detto alla fine della sezione precedente, il linguaggio scelto è stato \textbf{Python}. Come si può leggere direttamente da \cite{pywiki}:\\
 
-    "Python è un linguaggio multi-paradigma, che ha tra i principali obiettivi dinamicità, semplicità e flessibilità. Supporta il paradigma object oriented, la programmazione strutturata e molte caratteristiche di programmazione funzionale e riflessione. \\
+    "\textit{Python} è un linguaggio multi-paradigma, che ha tra i principali obiettivi \textit{dinamicità}, \textit{semplicità} e \textit{flessibilità}. Supporta il paradigma object oriented, la programmazione strutturata e molte caratteristiche di programmazione funzionale e riflessione." \\
 
-    Le caratteristiche più immediatamente riconoscibili di Python sono le variabili non tipizzate e l'uso dell'indentazione per la definizione delle specifiche. Altre caratteristiche distintive sono l'overloading di operatori e funzioni tramite delegation, la presenza di un ricco assortimento di tipi e funzioni di base e librerie standard, sintassi avanzate quali slicing e list comprehension. \\
+    Il linguaggio Python ha una estesa e approfondita documentazione, messa a disposizione direttamente dalla Python Software Foundation in \cite{python}.
 
-    Il controllo dei tipi è comunque forte (strong typing) e viene eseguito a runtime (dynamic typing). In altre parole, una variabile è un contenitore al quale viene associata un'etichetta (il nome) che può essere associata a diversi contenitori anche di tipo diverso durante il suo tempo di vita. Usa un garbage collector per la liberazione automatica della memoria." \\
+    \subsection{API per MongoDB: pymongo}
+
+        \begin{figure}
+            \centering
+            \caption{schema riassuntivo del modello di lavoro con \textbf{pymongo}}
+            \label{pymongo_logo}
+    	    \includegraphics[scale=0.75]{img/pymongo.png}
+        \end{figure}
+
+        Una sintetica ma tremendamente efficace descrizione di che cosa è \textbf{pymongo} si può trovare direttamente nella sua documentazione, in \cite{pymongo}:\\
+
+        "PyMongo is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python." \\
+
+        Ovvero: \\
+
+        "PyMongo è una distribuzione di Python che contiene degli strumenti per lavorare con MongoDB, ed è la maniera raccomandata per avere a che fare con MongoDB da Python." \\
+
+
+
+
+
 
 
