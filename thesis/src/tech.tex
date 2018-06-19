@@ -88,13 +88,47 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
 \section{Algoritmi di Data Mining: Weka}
 
-    
+        \begin{figure}
+            \centering
+            \caption{logo di Weka}
+            \label{weka}
+    	    \includegraphics[scale=0.75]{img/weka.png}
+        \end{figure}
+
+    Come si può leggere direttamente da \cite{wekawiki}, "\textbf{Weka}, acronimo di \textbf{W}aikato \textbf{E}nvironment for \textbf{K}nowledge \textbf{A}nalysis, è un software per l'apprendimento automatico sviluppato nell'università di Waikato in Nuova Zelanda. È open source e viene distribuito con licenza \textit{GNU General Public License}. Curiosamente la sigla corrisponde al nome di un simpatico animale simile al Kiwi, presente solo nelle isole della Nuova Zelanda." \\
+
+    Sempre secondo \cite{wekawiki}, "Weka è un ambiente software interamente scritto in Java. Un semplice metodo per utilizzare questo software consiste nell'applicare dei metodi di apprendimento automatici (learning methods) ad un set di dati (dataset), e analizzarne il risultato". \\
+
+    Nel merito del nostro lavoro, Weka è una \textit{suite} di sottoprogrammi molto potente, che permetterebbe di effetturare ogni aspetto del processo di \textit{data mining}, dal \textit{preprocessing} al \textit{postprocessing}. Ai fini de nostro scopo, questo software verrà utilizzato principalmente come ambiente per lanciare gli algoritmi implementati dalle sue librerie. Come si può vedere consultando la sua estesa documentazione in \cite{weka}, Weka può essere integrato in un gran numero di ambienti; tuttavia, per questa applicazione è stato scelto di utilizzarlo in forma \textit{stand alone}, preferendo concentrarsi sul merito delle analisi da fare e lasciando perdere il lavoro di programazione che sarebbe seguito da scelte diverse.\\
 
 \section{Tecniche di Visualizzazione}
 
     \subsection{Linguaggio R}
 
+        \begin{figure}
+            \centering
+            \caption{logo di R}
+            \label{R}
+    	    \includegraphics[scale=0.75]{img/R.png}
+        \end{figure}
+
+        Direttamente dalla pagina Wikipedia relativa al sotware R (in \cite{Rwiki}), "R è un linguaggio di programmazione e un ambiente di sviluppo specifico per l'analisi statistica dei dati. [...] È un software libero in quanto viene distribuito con la licenza GNU GPL, ed è disponibile per diversi sistemi operativi (ad esempio Unix, GNU/Linux, macOS, Microsoft Windows). Il suo linguaggio orientato agli oggetti deriva direttamente dal pacchetto S [...]." \\
+
+        Un'estesa ed approfondita documentazione può essere trovata in \cite{R}. Come si può notare consultandola, le potenzialità di questo software sono molto vaste; nel merito di questo studio è stato usato solamente una minuscola frazione delle funzioni offerte --- ovvero la realizzazione di grafici a partire da un set di dati --- perciò, analogamente a quanto osservato riguardo a Weka, è stato scelto di non spendere troppo tempo nell'integrazione di questo strumento in un flusso di automazione ma di usarlo soltanto in forma a sé stante.\\
+
     \subsection{Fogli di Calcolo}
+
+    Per quanto banale possa sembrare, per alcuni dati molto semplici può essere utile non andare a scomodare strumenti troppo complessi, impiegando invece attrezzi dall'utilizzo estremamente semplice, come un foglio di calcolo. \\
+
+    A questo proposito, è stato scelto di utilizzare Calc (\cite{calc}), facente parte della \textit{suite da ufficio} LibreOffice, un progetto open source che is pone come alternativa a Microsoft Office. \\
+
+    Con esso è stato possibile realizzare semplici grafici di data set dalla mole ridotta, senza incorrere nell'\textit{overhead} --- inteso come carico di lavoro necessario a raggiungere un risultato simile --- che avrebbe comportato l'utilizzo di R.
+
+\section{Redazione di questo documento}
+
+    Per quanto scontato e irrilevante possa sembrare, una parte integrante del lavoro svolto è stato quello di redarre questo documento. Vista in quest'ottica, appare chiaro che la scelta di uno strumento adatto possa condizionare in positivo la chiarezza e l'efficacia di questa produzione scritta. \\
+
+    Dato che lo standard accademico impone l'utilizzo del \LaTeX per questo genere di lavori, è stata scelta una distribuzione aggiornata e supportata di esso, \textbf{TeX Live}, ottenuta direttamente dalle repository di Arch Linux.
 
 \section{Conclusioni}
 
@@ -106,12 +140,8 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
         \item MongoDB come DBMS
         \item Python (pymongo) per manipolare i dati su MongoDB
         \item R e LibreOffice Calc per le tecniche di visualizzazione
-        \item ...
+        \item Weka per gli algoritmi di data mining
+        \item TeX Live su Arch Linux come distribuzione \LaTeX
     \end{itemize}
 
-
-
-
-
-
-
+    Ora che è ben chiaro cosa verrà utilizzato e a che scopo, si è in grado di cominciare finalmente il lavoro sui dati.
