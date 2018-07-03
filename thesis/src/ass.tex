@@ -1,1 +1,21 @@
 \chapter{Analisi Associativa}
+
+Di seguito verrà descritto il lavoor svolto nell'ambito della ricerca di regole associative esistenti fra i dati che abbiamo appositamente processato. \\
+
+Come è già stato accennato in precedenza, questo tipo di analisi è stata messa in atto sulle versioni discretizzate dei data set. Il motivo di questo requisito apparirà chiaro andando a descrivere nel dettaglio il funzionamento delle tecniche di analisi associativa.
+
+\section{Introduzione all'analisi associativa}
+
+    \subsection{Regole Associative}
+
+        Una regola associativa è una implicazione del tipo $A \rightarrow B$, con $A$ e $B$ insiemi di item (detti, appunto \textit{itemset}). Il significato di ciò dovrebbe essere palese: data la presenza di $A$ in una istanza del data set, è \textit{fortemente probaible} la presenza di $B$. \\
+
+        Portando un esempio sul dataset oggetto di questa analisi, una tanto probabile quanto banale regola associativa che ci si aspetta di trovare potrà essere del tipo \textit{"Valutazione del corso: ALTA"} $\rightarrow$ \textit{"Voto conseguito: ALTO"}. \\
+        
+        Quello a cui si mira, però, è il riuscire a scoprire qualche altra regola che trascenda il limite dell'ovvio, aprendo così le porte a interpretazioni non immediate dell'insieme di dati su cui si sta lavorando. Per questo motivo, oltre all'aiuto di criteri algoritmici di potatura, occorrerà comunque prevedere un \textit{intervento umano} nel \textit{post processing} delle regole generate.
+
+    \subsection{Il principio Apriori}
+
+        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}.
+ 
+
