@@ -1,0 +1,56 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -I -N 10 -T 1 -C 1.15 -D 0.001 -U 1.0 -M 0.1 -S -1.0 -c 1
+Relation:     full_d-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.Remove-R2-weka.filters.unsupervised.attribute.Remove-R2-3,5,7-weka.filters.unsupervised.attribute.Remove-R4-11-weka.filters.unsupervised.attribute.Remove-R4-weka.filters.unsupervised.attribute.Remove-R4-weka.filters.unsupervised.attribute.Remove-R4-weka.filters.unsupervised.attribute.Remove-R5-20
+Instances:    57
+Attributes:   4
+              Hash Docente/i
+              Produttivita Studenti - Ritardo [semestre, media]
+              Produttivita Studenti - Voto [media]
+              Valutazione Insegnamento - Docente - Val [media pesata]
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.18 (10 instances)
+Minimum metric <lift>: 1.15
+Number of cycles performed: 816
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 7
+
+Large Itemsets L(1):
+Produttivita Studenti - Ritardo [semestre, media]=0-0.5 18
+Produttivita Studenti - Ritardo [semestre, media]=0.5-1 14
+Produttivita Studenti - Ritardo [semestre, media]=1-1.5 16
+Produttivita Studenti - Voto [media]=25-28 27
+Produttivita Studenti - Voto [media]=22-25 26
+Valutazione Insegnamento - Docente - Val [media pesata]=8-10 30
+Valutazione Insegnamento - Docente - Val [media pesata]=6-8 23
+
+Size of set of large itemsets L(2): 6
+
+Large Itemsets L(2):
+Produttivita Studenti - Ritardo [semestre, media]=0-0.5 Produttivita Studenti - Voto [media]=25-28 10
+Produttivita Studenti - Ritardo [semestre, media]=0-0.5 Valutazione Insegnamento - Docente - Val [media pesata]=8-10 12
+Produttivita Studenti - Ritardo [semestre, media]=1-1.5 Produttivita Studenti - Voto [media]=22-25 10
+Produttivita Studenti - Voto [media]=25-28 Valutazione Insegnamento - Docente - Val [media pesata]=8-10 18
+Produttivita Studenti - Voto [media]=22-25 Valutazione Insegnamento - Docente - Val [media pesata]=8-10 10
+Produttivita Studenti - Voto [media]=22-25 Valutazione Insegnamento - Docente - Val [media pesata]=6-8 14
+
+Best rules found:
+
+ 1. Produttivita Studenti - Ritardo [semestre, media]=1-1.5 16 ==> Produttivita Studenti - Voto [media]=22-25 10    conf:(0.63) < lift:(1.37)> lev:(0.05) [2] conv:(1.24)
+ 2. Produttivita Studenti - Voto [media]=22-25 26 ==> Produttivita Studenti - Ritardo [semestre, media]=1-1.5 10    conf:(0.38) < lift:(1.37)> lev:(0.05) [2] conv:(1.1)
+ 3. Produttivita Studenti - Voto [media]=22-25 26 ==> Valutazione Insegnamento - Docente - Val [media pesata]=6-8 14    conf:(0.54) < lift:(1.33)> lev:(0.06) [3] conv:(1.19)
+ 4. Valutazione Insegnamento - Docente - Val [media pesata]=6-8 23 ==> Produttivita Studenti - Voto [media]=22-25 14    conf:(0.61) < lift:(1.33)> lev:(0.06) [3] conv:(1.25)
+ 5. Produttivita Studenti - Voto [media]=25-28 27 ==> Valutazione Insegnamento - Docente - Val [media pesata]=8-10 18    conf:(0.67) < lift:(1.27)> lev:(0.07) [3] conv:(1.28)
+ 6. Valutazione Insegnamento - Docente - Val [media pesata]=8-10 30 ==> Produttivita Studenti - Voto [media]=25-28 18    conf:(0.6) < lift:(1.27)> lev:(0.07) [3] conv:(1.21)
+ 7. Produttivita Studenti - Ritardo [semestre, media]=0-0.5 18 ==> Valutazione Insegnamento - Docente - Val [media pesata]=8-10 12    conf:(0.67) < lift:(1.27)> lev:(0.04) [2] conv:(1.22)
+ 8. Valutazione Insegnamento - Docente - Val [media pesata]=8-10 30 ==> Produttivita Studenti - Ritardo [semestre, media]=0-0.5 12    conf:(0.4) < lift:(1.27)> lev:(0.04) [2] conv:(1.08)
+ 9. Produttivita Studenti - Ritardo [semestre, media]=0-0.5 18 ==> Produttivita Studenti - Voto [media]=25-28 10    conf:(0.56) < lift:(1.17)> lev:(0.03) [1] conv:(1.05)
+10. Produttivita Studenti - Voto [media]=25-28 27 ==> Produttivita Studenti - Ritardo [semestre, media]=0-0.5 10    conf:(0.37) < lift:(1.17)> lev:(0.03) [1] conv:(1.03)
+
