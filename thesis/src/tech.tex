@@ -99,7 +99,10 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
     Sempre secondo \cite{wekawiki}, "Weka è un ambiente software interamente scritto in Java. Un semplice metodo per utilizzare questo software consiste nell'applicare dei metodi di apprendimento automatici (learning methods) ad un set di dati (dataset), e analizzarne il risultato". \\
 
-    Nel merito del nostro lavoro, Weka è una \textit{suite} di sottoprogrammi molto potente, che permetterebbe di effetturare ogni aspetto del processo di \textit{data mining}, dal \textit{preprocessing} al \textit{postprocessing}. Ai fini de nostro scopo, questo software verrà utilizzato principalmente come ambiente per lanciare gli algoritmi implementati dalle sue librerie. Come si può vedere consultando la sua estesa documentazione in \cite{weka}, Weka può essere integrato in un gran numero di ambienti; tuttavia, per questa applicazione è stato scelto di utilizzarlo in forma \textit{stand alone}, preferendo concentrarsi sul merito delle analisi da fare e lasciando perdere il lavoro di programazione che sarebbe seguito da scelte diverse.\\
+    Data la natura \textit{I/O intensive} dell'attività di data mining, è da notare il fatto che l'implementazione di Weka in un linguaggio con un discreto \textit{overhead} come Java non è da considerarsi rilevante nell'impatto sulla effettiva velocità degli algoritmi lanciabili su questa suite.\\
+
+    Nel merito del nostro lavoro, Weka è una \textit{suite} di sottoprogrammi molto potente, che permetterebbe di effetturare ogni aspetto del processo di \textit{data mining}, dal \textit{preprocessing} al \textit{postprocessing}. Ai fini del nostro scopo, questo software verrà utilizzato principalmente come ambiente per lanciare gli algoritmi implementati dalle sue librerie. Come si può vedere consultando la sua estesa documentazione in \cite{weka}, Weka può essere integrato in un gran numero di ambienti; tuttavia, per questa applicazione è stato scelto di utilizzarlo in forma \textit{stand alone}, preferendo concentrarsi sul merito delle analisi da fare e lasciando perdere il lavoro di programazione che sarebbe seguito da scelte diverse.\\
+
 
 \section{Tecniche di Visualizzazione}
 
