@@ -1,15 +1,15 @@
 === Run information ===
 
 Scheme:       weka.associations.Apriori -I -N 10 -T 1 -C 1.15 -D 0.001 -U 1.0 -M 0.1 -S -1.0 -c 1
-Relation:     min_d-weka.filters.unsupervised.attribute.Remove-R10-weka.filters.unsupervised.attribute.Remove-R1-2,4-weka.filters.unsupervised.attribute.Remove-R2-weka.filters.unsupervised.attribute.Remove-R3-weka.filters.unsupervised.attribute.Remove-R4-weka.filters.unsupervised.attribute.Remove-R5-weka.filters.unsupervised.attribute.Remove-R5
+Relation:     [...]
 Instances:    54
 Attributes:   4
               Insegnamento
               Produttivita Studenti - Ritardo [semestre, media]
               Produttivita Studenti - Voto [media]
               Valutazione Insegnamento - Val [media pesata]
-=== Associator model (full training set) ===
 
+=== Associator model (full training set) ===
 
 Apriori
 =======
@@ -34,13 +34,26 @@ Valutazione Insegnamento - Val [media pesata]=6-8 33
 Size of set of large itemsets L(2): 7
 
 Large Itemsets L(2):
-Produttivita Studenti - Ritardo [semestre, media]=0-0.5 Produttivita Studenti - Voto [media]=25-28 10
-Produttivita Studenti - Ritardo [semestre, media]=0-0.5 Valutazione Insegnamento - Val [media pesata]=8-10 10
-Produttivita Studenti - Ritardo [semestre, media]=1-1.5 Produttivita Studenti - Voto [media]=22-25 10
-Produttivita Studenti - Ritardo [semestre, media]=1-1.5 Valutazione Insegnamento - Val [media pesata]=6-8 12
-Produttivita Studenti - Voto [media]=25-28 Valutazione Insegnamento - Val [media pesata]=8-10 14
-Produttivita Studenti - Voto [media]=25-28 Valutazione Insegnamento - Val [media pesata]=6-8 13
-Produttivita Studenti - Voto [media]=22-25 Valutazione Insegnamento - Val [media pesata]=6-8 18
+Produttivita Studenti - Ritardo [semestre, media]=0-0.5 
+Produttivita Studenti - Voto [media]=25-28 10
+
+Produttivita Studenti - Ritardo [semestre, media]=0-0.5
+Valutazione Insegnamento - Val [media pesata]=8-10 10
+
+Produttivita Studenti - Ritardo [semestre, media]=1-1.5
+Produttivita Studenti - Voto [media]=22-25 10
+
+Produttivita Studenti - Ritardo [semestre, media]=1-1.5
+Valutazione Insegnamento - Val [media pesata]=6-8 12
+
+Produttivita Studenti - Voto [media]=25-28
+Valutazione Insegnamento - Val [media pesata]=8-10 14
+
+Produttivita Studenti - Voto [media]=25-28 
+Valutazione Insegnamento - Val [media pesata]=6-8 13
+
+Produttivita Studenti - Voto [media]=22-25 
+Valutazione Insegnamento - Val [media pesata]=6-8 18
 
 Best rules found:
 
