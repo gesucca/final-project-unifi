@@ -1,10 +1,12 @@
 \chapter{Analisi Associativa}
 
-Di seguito verrà descritto il lavoor svolto nell'ambito della ricerca di regole associative esistenti fra i dati che abbiamo appositamente processato. \\
+Di seguito verrà descritto il lavoro svolto nell'ambito della ricerca di regole associative. \\
 
-Come è già stato accennato in precedenza, questo tipo di analisi è stata messa in atto sulle versioni discretizzate dei data set. Il motivo di questo requisito apparirà chiaro andando a descrivere nel dettaglio il funzionamento delle tecniche di analisi associativa, ed è comunque spiegato egregiamente in \cite{dispense}. 
+Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto l'impiego delle versioni discretizzate dei data set provenienti dalla fase di \textit{preprocessing}. Il motivo di questo requisito apparirà chiaro andando a descrivere brevemente il funzionamento delle tecniche di analisi associativa.
 
 \section{Introduzione all'analisi associativa}
+
+    Questa introduzione vuole essere solo un breve riassunto dei concetti fondamentali seguiti per realizzare all'atto pratico l'analisi. Una trattazione più approfondita --- che trascenderebbe  ampiamente lo scopo di questa tesi di laurea --- può essere trovata in \cite{dispense}, ed è propri oquella che è stata consultata per realizzare quanto segue.
 
     \subsection{Regole Associative}
 
@@ -114,7 +116,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi è stata mess
                 \item Voto medio-basso $\leftarrow \rightarrow$ Valutazione del corso sufficiente
             \end{itemize}
 
-            Quelle trovate sono \underline{tutte} implicazioni doppie, il che significa che fra gli attributi esiste una forte correlazione. Messa da parte l'attesa e apparente proporzionalità diretta fra la valutazione del corso e il voto ottenuto all'esame, si può notare l'esistenza di una analoga correlazione fra il ritardo con cui gli studenti hanno superato l'esame e la valutazione del corso. Si potrebbe intanto speculare che un corso che agli studenti è in qualche modo piaciuto, abbia avuto maggior successo nel fornire gli strumenti necessari per il superamento dell'esame, ma delle conclusioni verrà trattato più avanti.
+            Quelle trovate sono \underline{tutte} implicazioni doppie, il che significa che fra gli attributi esiste una forte correlazione. Messa da parte l'attesa e apparente proporzionalità diretta fra la valutazione del corso e il voto ottenuto all'esame, si può notare l'esistenza di una analoga correlazione fra il ritardo con cui gli studenti hanno superato l'esame e la valutazione del corso.
 
         \subsection{Focus sul docente}
 
@@ -141,13 +143,39 @@ Come è già stato accennato in precedenza, questo tipo di analisi è stata mess
             Scartando immediatamente le regole già ottenute nell'analisi precedente --- quelle relative alle correlazioni fra il ritardo nel superamento e il voto all'esame --- si consideri la seguente sintesi delle regole trovate:
 
             \begin{itemize}
-                \item Voto medio-basso  $\leftarrow \rightarrow$ Valutazione docente sufficiente
-                \item Voto medio-alto  $\leftarrow \rightarrow$ Valutazione docente ottima
-                \item Ritardo basso  $\leftarrow \rightarrow$ Valutazione docente ottima
+                \item Voto medio-basso $\leftarrow \rightarrow$ Valutazione docente sufficiente
+                \item Voto medio-alto $\leftarrow \rightarrow$ Valutazione docente ottima
+                \item Ritardo basso $\leftarrow \rightarrow$ Valutazione docente ottima
             \end{itemize}
 
-            La correlazione fra la valutazione del docente e i risultati ottenuti appare molto forte, ma purtroppo è anche del tutto analoga a quella fra i risultati e la valutazione generale del corso. Si può concludere quindi che questo aspetto non è di particolare interesse, rispetto all'analisi più generale fatta precedentemente.
+            La correlazione fra la valutazione del docente e i risultati ottenuti appare molto forte, ma purtroppo è anche del tutto analoga a quella fra i risultati e la valutazione generale del corso.
 
         \subsection{Focus sulla Deviazione Standard}
 
+        Nel data set \texttt{min\_d.csv} sono state mantenute informazioni complementari rispetto alle medie pesate dei valori che hanno composto l'aggregazione, quali ad esempio lo scarto quadratico medio di un certo attributo. Gli attributi contenenti questi dati sono stati ignorati nelle due precedenti analisi associative, pertanto è sembrato interessante andate a vedere se esiste una qualche regola fra i seguenti parametri:
+
+            \begin{itemize}
+                \item Hash del docente
+                \item Identificativo dell'insegnamento
+                \item Percentuale di studenti il cui ritardo nel dare un certo esame supera il semestre
+                \item Percentuale di studenti il cui voto conseguito in un dato esame supera il 24
+                \item Deviazione standard dei voti ottenuti dagli studenti in quell'esame
+                \item Media delle deviazioni standard delle valutazioni dell'insegnamento nei vari paragrafi
+                \item Media delle percentuali di valutazioni dell'insegnamento sufficienti  
+            \end{itemize}
+
             \lstinputlisting{../ass/apriori_min_3.txt}
+
+            Non ci si aspettava di trovare niente di particolarmente significativo riguardo qusti aspetti del data set. Invece, sono comparse due regole associative che possiamo riassumere in una implicazione doppia come segue:
+
+            \begin{center}
+                \textbf{R1}: Deviazione standard del voto: MOLTO GRANDE $\leftarrow \rightarrow$ Deviazione standard della valutazione dell'insegnamento: GRANDE
+            \end{center}
+
+            Si tratta di una associazione forte, in quanto le due regole che la compongono hanno entrambe una confidenza abbastanza elevata --- R1: 0.8, R2: 0.68 --- ed un valore del lift sì minimo, ma comunque positivo. \\
+
+\section{Conclusioni}
+
+    Volendo riassumere quanto notato dai risultati delle analisi effettuate, si può affermare quanto segue:
+
+    eh

@@ -1,7 +1,7 @@
 === Run information ===
 
 Scheme:       weka.associations.Apriori -I -N 5 -T 1 -C 1.05 -D 0.001 -U 0.75 -M 0.4 -S -1.0 -V -c -1
-Relation:     min_d-weka.filters.unsupervised.attribute.Remove-R4,10-weka.filters.unsupervised.attribute.Remove-R1,7,9-weka.filters.unsupervised.attribute.Remove-R4
+Relation:     [...]
 Instances:    54
 Attributes:   7
               Hash Docente/i
