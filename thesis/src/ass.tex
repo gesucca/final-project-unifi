@@ -2,7 +2,7 @@
 
 Di seguito verrà descritto il lavoor svolto nell'ambito della ricerca di regole associative esistenti fra i dati che abbiamo appositamente processato. \\
 
-Come è già stato accennato in precedenza, questo tipo di analisi è stata messa in atto sulle versioni discretizzate dei data set. Il motivo di questo requisito apparirà chiaro andando a descrivere nel dettaglio il funzionamento delle tecniche di analisi associativa.
+Come è già stato accennato in precedenza, questo tipo di analisi è stata messa in atto sulle versioni discretizzate dei data set. Il motivo di questo requisito apparirà chiaro andando a descrivere nel dettaglio il funzionamento delle tecniche di analisi associativa, ed è comunque spiegato egregiamente in \cite{dispense}. 
 
 \section{Introduzione all'analisi associativa}
 
@@ -20,12 +20,12 @@ Come è già stato accennato in precedenza, questo tipo di analisi è stata mess
         \centering
         \caption{pannello di scelta delle impostazioni per l'algoritmo Apriori di Weka}
         \label{apriori_weka}
-	    \includegraphics[scale=0.7]{img/apriori_weka.png}
+	    \includegraphics[scale=1.0]{img/apriori_weka.png}
     \end{figure}
 
-        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato da una regola non è altro che una implicazione fra due itemset che compaiono frequentemente insieme, e che quindi compaiono co una certa frequenza anche da soli, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
+        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato da una regola non è altro che una implicazione generata da un partizionamento binario di un itemset frequente, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
         
-        In estrema sintesi, l'idea generale è quella di generare una lista di \textit{candidati} semplici --- cioè di itemset che potrebbero essere frequenti --- verificarne il \textit{supporto} e usare quelli frequenti per generare altri candidati più complessi. Il principio Apriori, infatti, stabilisce che se un itemset con pochi elementi è infrequente, lo saranno anche tutti gli itemset che lo comprendono. Questo fatto, detto \textit{anti-motonia} del supporto, ci consente di evitare di generare e calcolare la frequenza di ogni possibile itemset, rendendo trattabile quello che sarebbe invece un problema $NP-Completo$. \\
+        In estrema sintesi, l'idea generale è quella di generare una lista di \textit{candidati} semplici --- cioè di itemset che potrebbero essere frequenti --- verificarne il \textit{supporto} e usare quelli idonei per generare altri candidati più complessi. Il principio Apriori, infatti, stabilisce che se un itemset con pochi elementi è infrequente, lo saranno anche tutti gli itemset che lo comprendono. Questo fatto, detto \textit{anti-motonia} del supporto, ci consente di evitare di generare e calcolare la frequenza di ogni possibile itemset, rendendo trattabile quello che sarebbe invece un problema $NP-Completo$. \\
 
         Nel dettaglio dell'analisi da effettuare, l'algoritmo Apriori messo a disposizione dal software Weka accetta in input diversi parametri, che consentono di specificarne il comportamento dell'algoritmo, adattandolo agli scopi che ci si è prefissi. Si veda adesso una configurazione di esempio:\\
 
@@ -48,29 +48,105 @@ Come è già stato accennato in precedenza, questo tipo di analisi è stata mess
             \item \texttt{-M}: limite inferiore del supporto minimo richiesto 
         \end{itemize}
 
-        Ovviamente, come si può vedere in \ref{apriori_weka}, sono possibili molte altre personalizzazioni e impostazioni, fatto che rende l'implementazione di Weka dell'algoritmo Apriori estremamente flessibile ed adattabile a molte esigenze.
+        Ovviamente, come si può vedere in \ref{apriori_weka}, sono possibili molte altre personalizzazioni e impostazioni, fatto che rende l'implementazione di Weka dell'algoritmo Apriori estremamente flessibile ed adattabile a molte esigenze. \\
  
 \section{Apriori su dataset aggregato}
 
-    Lorem ipsum ecc
+    Decidere a priori i parametri ottimali per l'algoritmo Apriori --- \footnotesize{gioco di parole non intenzionale }\normalsize --- è da considerarsi impossibile. Pertanto, anche in questo caso l'iter più adatto per ottenere dei risultati che possono essere giudicati interessanti è il banale ma efficace \textit{trial-and-error}. \\
+
+    La conseguenza immediata di questo è che, similarmente a quanto fatto per la descrizione di altri tipi di analisi sui dati, in questa sezione verranno riportati solo gli output giudicati in qualche senso significativi. \\
+
+    In ogni caso, alcune scelte sono state comuni a tutte le analisi:
+
+    \begin{itemize}
+        \item Come \textit{metrica} è stato scelto il \textbf{Lift}, un cui valore positivo indica una correlazione effettiva --- cosa che non è affatto garantita da un alto valore di \textit{confidenza}
+        \item Non è stata usata la valutazione per classe, né il pruning per livello di significato
+        \item Sono stati sempre stampati gli itemset frequenti, in quanto utili per capire l'andamento del 
+        \item Come \textit{delta} è stato scelto un valore il più piccolo possibile, ma compatibile con dei tempi macchina "umani"
+    \end{itemize}
 
         \subsection{Focus sul corso}
 
-            Lorem ipsum ecc sui campi analizzati
+            L'analisi che viene presentata nel'immediato seguito è stata ottenuta cercando correlazioni fra gli attributi relativi all'andamento generale dei corsi d'esame. In particolare, oltre che verificare, come ipotizzato, la presenza di regole del tipo \textit{"Valutazione del corso: ALTA"} $\rightarrow$ \textit{"Voto conseguito: ALTO"}, andare a vedere se esistono legami fra questi due aspetti e il ritardo con cui uno studente supera un esame. \\
+
+            L'algoritmo è stato lanciato sul data set \texttt{min\_d.csv}, ulteriormente semplificato grazie alla considerazione di questi soli attributi:
 
             \begin{itemize}
-                \item attributi
+                \item Identificativo dell'insegnamento
+                \item Ritardo medio del superamento dell'esame (rispetto al primo appello disponibile, contato in semestri)
+                \item Voto medio ottenuto all'esame dagli studenti
+                \item Valutazione media del corso d'insegnamento
             \end{itemize}
+
+            Il miglior risultato che si è ottenuto in quest'ottica è il seguente:
 
             \lstinputlisting{../ass/apriori_min_1.txt}
 
+            \begin{figure}
+                \centering
+                \caption{visualizzazione 3D delle regole assciative trovate con focus sul corso}
+                \label{apriori_min_1}
+	            \includegraphics[scale=0.5]{../ass/apriori_min_1.png}
+            \end{figure}
+
+            Semplificando la \textit{naming convention} a favore della leggibilità, le regole trovate sono queste:
+
             \begin{itemize}
-                \item Ritardo basso $\leftarrow \rightarrow$ Valutazione del corso alta
+                \item \textbf{R1}: Ritardo basso $\rightarrow$ Valutazione insegnamento alta
+                \item \textbf{R2}: Valutazione insegnamento alta $\rightarrow$ Ritardo basso
+                \item \textbf{R3}: Ritardo alto $\rightarrow$ Voto medio-basso
+                \item \textbf{R4}: Voto medio-basso $\rightarrow$ Ritardo alto
+                \item \textbf{R5}: Voto medio-alto $\rightarrow$ Valutazione insegnamento alta
+                \item \textbf{R6}: Valutazione insegnamento alta $\rightarrow$ Voto medio-alto
+                \item \textbf{R7}: Voto medio-basso $\rightarrow$ Valutazione insegnamenti sufficiente
+                \item \textbf{R8}: Valutazione insegnamenti sufficiente $\rightarrow$ Voto medio-basso
+                \item \textbf{R9}: Ritardo alto $\rightarrow$ Valutazione insegnamenti sufficiente
+                \item \textbf{R10}: Valutazione insegnamenti sufficiente $\rightarrow$ Ritardo alto
             \end{itemize}
+
+            Andando ad analizzare le regole minate, eliminando ridondanze ed effettuando una sorta di \textit{post processing} manualmente, le informazioni chiave che si sono ottenute risultano essere le seguenti:
+
+            \begin{itemize}
+                \item Ritardo basso $\leftarrow \rightarrow$ Valutazione del corso ottima
+                \item Ritardo alto $\leftarrow \rightarrow$ Voto medio-basso
+                \item Ritardo alto $\leftarrow \rightarrow$ Valutazione del corso sufficiente
+                \item Voto medio-alto $\leftarrow \rightarrow$ Valutazione del corso ottima
+                \item Voto medio-basso $\leftarrow \rightarrow$ Valutazione del corso sufficiente
+            \end{itemize}
+
+            Quelle trovate sono \underline{tutte} implicazioni doppie, il che significa che fra gli attributi esiste una forte correlazione. Messa da parte l'attesa e apparente proporzionalità diretta fra la valutazione del corso e il voto ottenuto all'esame, si può notare l'esistenza di una analoga correlazione fra il ritardo con cui gli studenti hanno superato l'esame e la valutazione del corso. Si potrebbe intanto speculare che un corso che agli studenti è in qualche modo piaciuto, abbia avuto maggior successo nel fornire gli strumenti necessari per il superamento dell'esame, ma delle conclusioni verrà trattato più avanti.
 
         \subsection{Focus sul docente}
 
+            Facendo uso di alcuni, specifici attributi del dataset \texttt{full\_d.csv}, si è tentato di scoprire correlazioni fra la produttività degli studenti e l'aspetto della valutazione del corso relativo al docente. Nel particolare, sono stati considerati questi attributi:
+
+            \begin{itemize}
+                \item Identificativo del docente
+                \item Ritardo medio del superamento dell'esame
+                \item Voto medio ottenuto all'esame dagli studenti
+                \item Valutazione media del paragrafo relativo al docente
+            \end{itemize}
+
+            Il miglior risultato che si è ottenuto, a seguito di iterazioni volte a proseguire nella direzione sopra descritta, è il seguente:
+
             \lstinputlisting{../ass/apriori_min_2.txt}
+
+            \begin{figure}
+                \centering
+                \caption{visualizzazione 3D delle regole assciative trovate con focus sul docente}
+                \label{apriori_min_2}
+	            \includegraphics[scale=0.5]{../ass/apriori_min_2.png}
+            \end{figure}
+
+            Scartando immediatamente le regole già ottenute nell'analisi precedente --- quelle relative alle correlazioni fra il ritardo nel superamento e il voto all'esame --- si consideri la seguente sintesi delle regole trovate:
+
+            \begin{itemize}
+                \item Voto medio-basso  $\leftarrow \rightarrow$ Valutazione docente sufficiente
+                \item Voto medio-alto  $\leftarrow \rightarrow$ Valutazione docente ottima
+                \item Ritardo basso  $\leftarrow \rightarrow$ Valutazione docente ottima
+            \end{itemize}
+
+            La correlazione fra la valutazione del docente e i risultati ottenuti appare molto forte, ma purtroppo è anche del tutto analoga a quella fra i risultati e la valutazione generale del corso. Si può concludere quindi che questo aspetto non è di particolare interesse, rispetto all'analisi più generale fatta precedentemente.
 
         \subsection{Focus sulla Deviazione Standard}
 
