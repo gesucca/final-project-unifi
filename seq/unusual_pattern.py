@@ -3,6 +3,8 @@ import os
 
 from collections import deque
 
+from out_of_place import prepare_list
+
 
 def unusual_pattern(filename):
 
@@ -12,10 +14,7 @@ def unusual_pattern(filename):
     with open(filename) as fileobj:
         for line in fileobj:
             if '{' in line:
-                seq = line.split('{')
-                seq = deque(seq)
-                seq.popleft()
-                seq.pop()
+                seq = prepare_list(line)
 
                 clean_seq = []
                 for token in seq:
@@ -23,7 +22,6 @@ def unusual_pattern(filename):
                     clean_seq.append(token[:index])
 
                 sortedSeq = sorted(clean_seq)
-
                 if sortedSeq != clean_seq:
                     with open('unusual_pattern.res', 'a') as the_file:
                         the_file.write(line + '\n')

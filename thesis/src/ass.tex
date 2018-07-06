@@ -80,7 +80,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \item Valutazione media del corso d'insegnamento
             \end{itemize}
 
-            Il miglior risultato che si è ottenuto in quest'ottica è il seguente:
+            Il miglior risultato che si è ottenuto in quest'ottica è il seguente: \\
 
             \lstinputlisting{../ass/apriori_min_1.txt}
 
@@ -88,32 +88,32 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \centering
                 \caption{visualizzazione 3D delle regole assciative trovate con focus sul corso}
                 \label{apriori_min_1}
-	            \includegraphics[scale=0.5]{../ass/apriori_min_1.png}
+	            \includegraphics[scale=0.48]{../ass/apriori_min_1.png}
             \end{figure}
 
             Semplificando la \textit{naming convention} a favore della leggibilità, le regole trovate sono queste:
 
             \begin{itemize}
-                \item \textbf{R1}: Ritardo basso $\rightarrow$ Valutazione insegnamento alta
-                \item \textbf{R2}: Valutazione insegnamento alta $\rightarrow$ Ritardo basso
-                \item \textbf{R3}: Ritardo alto $\rightarrow$ Voto medio-basso
-                \item \textbf{R4}: Voto medio-basso $\rightarrow$ Ritardo alto
-                \item \textbf{R5}: Voto medio-alto $\rightarrow$ Valutazione insegnamento alta
-                \item \textbf{R6}: Valutazione insegnamento alta $\rightarrow$ Voto medio-alto
-                \item \textbf{R7}: Voto medio-basso $\rightarrow$ Valutazione insegnamenti sufficiente
-                \item \textbf{R8}: Valutazione insegnamenti sufficiente $\rightarrow$ Voto medio-basso
-                \item \textbf{R9}: Ritardo alto $\rightarrow$ Valutazione insegnamenti sufficiente
-                \item \textbf{R10}: Valutazione insegnamenti sufficiente $\rightarrow$ Ritardo alto
+                \item \textbf{R1}: Ritardo: $BASSO$ $\rightarrow$ Valutazione insegnamento: $OTTIMA$
+                \item \textbf{R2}: Valutazione insegnamento: $OTTIMA$ $\rightarrow$ Ritardo: $BASSO$
+                \item \textbf{R3}: Ritardo: $ALTO$ $\rightarrow$ Voto: $MEDIO-BASSO$
+                \item \textbf{R4}: Voto: $MEDIO-BASSO$ $\rightarrow$ Ritardo: $ALTO$
+                \item \textbf{R5}: Voto: $MEDIO-ALTO$ $\rightarrow$ Valutazione insegnamento: $OTTIMA$
+                \item \textbf{R6}: Valutazione insegnamento: $OTTIMA$ $\rightarrow$ Voto: $MEDIO-ALTO$
+                \item \textbf{R7}: Voto: $MEDIO-BASSO$ $\rightarrow$ Valutazione insegnamenti: $SUFF.$
+                \item \textbf{R8}: Valutazione insegnamenti: $SUFF.$ $\rightarrow$ Voto: $MEDIO-BASSO$
+                \item \textbf{R9}: Ritardo: $ALTO$ $\rightarrow$ Valutazione insegnamenti: $SUFF.$
+                \item \textbf{R10}: Valutazione insegnamenti: $SUFF.$ $\rightarrow$ Ritardo: $ALTO$
             \end{itemize}
 
             Andando ad analizzare le regole minate, eliminando ridondanze ed effettuando una sorta di \textit{post processing} manualmente, le informazioni chiave che si sono ottenute risultano essere le seguenti:
 
             \begin{itemize}
-                \item Ritardo basso $\leftarrow \rightarrow$ Valutazione del corso ottima
-                \item Ritardo alto $\leftarrow \rightarrow$ Voto medio-basso
-                \item Ritardo alto $\leftarrow \rightarrow$ Valutazione del corso sufficiente
-                \item Voto medio-alto $\leftarrow \rightarrow$ Valutazione del corso ottima
-                \item Voto medio-basso $\leftarrow \rightarrow$ Valutazione del corso sufficiente
+                \item Ritardo: $BASSO$ $\leftarrow \rightarrow$ Valutazione insegnamento: $OTTIMA$
+                \item Ritardo: $ALTO$ $\leftarrow \rightarrow$ Voto: $MEDIO-BASSO$
+                \item Ritardo: $ALTO$ $\leftarrow \rightarrow$ Valutazione insegnamenti: $SUFF.$
+                \item Voto: $MEDIO-ALTO$ $\leftarrow \rightarrow$ Valutazione insegnamento: $OTTIMA$
+                \item Voto: $MEDIO-BASSO$ $\leftarrow \rightarrow$ Valutazione insegnamenti: $SUFF.$
             \end{itemize}
 
             Quelle trovate sono \underline{tutte} implicazioni doppie, il che significa che fra gli attributi esiste una forte correlazione. Messa da parte l'attesa e apparente proporzionalità diretta fra la valutazione del corso e il voto ottenuto all'esame, si può notare l'esistenza di una analoga correlazione fra il ritardo con cui gli studenti hanno superato l'esame e la valutazione del corso.
@@ -129,7 +129,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \item Valutazione media del paragrafo relativo al docente
             \end{itemize}
 
-            Il miglior risultato che si è ottenuto, a seguito di iterazioni volte a proseguire nella direzione sopra descritta, è il seguente:
+            Il miglior risultato che si è ottenuto, a seguito di iterazioni volte a proseguire nella direzione sopra descritta, è il seguente: \\
 
             \lstinputlisting{../ass/apriori_min_2.txt}
 
@@ -137,7 +137,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \centering
                 \caption{visualizzazione 3D delle regole assciative trovate con focus sul docente}
                 \label{apriori_min_2}
-	            \includegraphics[scale=0.5]{../ass/apriori_min_2.png}
+	            \includegraphics[scale=0.4]{../ass/apriori_min_2.png}
             \end{figure}
 
             Scartando immediatamente le regole già ottenute nell'analisi precedente --- quelle relative alle correlazioni fra il ritardo nel superamento e il voto all'esame --- si consideri la seguente sintesi delle regole trovate:
@@ -178,4 +178,4 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 
     Volendo riassumere quanto notato dai risultati delle analisi effettuate, si può affermare quanto segue:
 
-    eh
+    eh, tbd
