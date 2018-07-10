@@ -6,16 +6,16 @@ Usando come metafora una lavorazione meccanica, avere ben chiara la natura del m
 
 \section{Carriera degli Studenti}
 
-Una parte fondamentale dell'analisi descritta in questo lavoro è basata su questo dataset, rappresentante i dati riguardanti la produttività di tre coorti d'immatricolazione di studenti in un periodo di quattro anni. Più nel dettaglio, il dataset si compone di:
+Una parte fondamentale dell'analisi descritta in questo lavoro è basata sul seguente data set, che contiene i dati riguardanti la produttività di tre coorti d'immatricolazione di studenti in un periodo di quattro anni. Più nel dettaglio, il dataset si compone di:
 
 \begin{itemize}
-	\item \textbf{Coorte 2010}: studenti immatricolati nel 2010, carriera registrata fino all'\textbf{A.A. 2013-2014} compreso
-	\item \textbf{Coorte 2011}: studenti immatricolati nel 2011, carriera registrata fino all'\textbf{A.A. 2014-2015} compreso
-	\item \textbf{Coorte 2012}: studenti immatricolati nel 2012, carriera registrata fino all'\textbf{A.A. 2015-2016} compreso
-	\item \textbf{Coorte 2013}: studenti immatricolati nel 2013, carriera registrata fino all'\textbf{A.A. 2016-2017} compreso
+	\item \textbf{coorte 2010}: studenti immatricolati nel 2010, carriera registrata fino agli appelli di \textbf{febbraio 2014}
+	\item \textbf{coorte 2011}: studenti immatricolati nel 2011, carriera registrata fino agli appelli di \textbf{febbraio 2015}
+	\item \textbf{coorte 2012}: studenti immatricolati nel 2012, carriera registrata fino agli appelli di \textbf{febbraio 2016}
+	\item \textbf{coorte 2013}: studenti immatricolati nel 2013, carriera registrata fino agli appelli di \textbf{febbraio 2017}
 \end{itemize}
 
-Quindi, si ha a disposizione una finestra temporale di risultati ottenuti nei corsi composta così come indicato in \ref{1}. \\
+Quindi, si ha a disposizione una finestra temporale di risultati ottenuti negli esami composta approssimativamente come indicato in Figura \ref{1}. \\
 
 \begin{figure}
     \centering
@@ -24,7 +24,7 @@ Quindi, si ha a disposizione una finestra temporale di risultati ottenuti nei co
 	\includegraphics[scale=0.7]{../raw/stud_comp.png}
 \end{figure}
 
-Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti tutte le materie del C.d.L. solo nell'Anno Accademico 2013-2014. \\
+Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti gli esiti del maggior numero di corsi possibili solo nell'Anno Accademico 2013-2014. \\
 
 Tale aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
 
@@ -38,7 +38,7 @@ Nel dettaglio, per ogni tupla rappresentante uno studente sono presenti le segue
 	\item \textbf{Coorte} di immatricolazione: $$ \{2010, 2011, 2012, 2013\} $$
 	\item Voto conseguito nel \textbf{test di ingresso}: $$ \{ x \in \mathbb{N} \text{ tale che } 0 \leq x \leq 25\} $$
 	\item Voto ottenuto all'\textbf{esame di maturità}: $$ \{ x \in \mathbb{N} \text{ tale che } 60 \leq x \leq 100\} $$
-	\item Tipo di \textbf{scuola superiore} frequentata: $$ \{LS, LC, IT, TC, IP, AL \} $$ che rappresentano rispettivamente le seguenti cateogrie di scuola superiore: Liceo Scientifico, Liceo Classico, Istituto Tecnico, Istituto Commerciale, Istituto Professionale, Altro
+	\item Tipo di \textbf{scuola superiore} frequentata: $$ \{LS, LC, IT, TC, IP, AL \} $$ che rappresentano rispettivamente le seguenti categorie di scuola superiore: Liceo Scientifico, Liceo Classico, Istituto Tecnico, Istituto Commerciale, Istituto Professionale, Altro
 	\item \textbf{Crediti totali} ottenuti: $$ \{ x \in \mathbb{N} \text{ tale che } 0 \leq x \leq 180\} $$
 	\item \textbf{Crediti} ottenuti da esami \textbf{con voto}: $$ \{ x \in \mathbb{N} \text{ tale che } 0 \leq x \leq 159\} $$
 	\item \textbf{Voto medio} ottenuto negli esami: $$ \{ x \in \mathbb{N} \text{ tale che } 18 \leq x \leq 31 \text { con 31 indicante il 30 con lode}\} $$
@@ -54,7 +54,7 @@ Il dataset si compone di 208 record, ognuno dei quali ha 47 attributi. Il file c
 
 \section{Valutazione degli Insegnamenti}
 
-Al fine d'integrare i dati precedenti ponendo l'attenzione sui vari corsi che compongono il C.d.L, sono stati forniti i dati relativi alla valutazione dei corsi di studi da parte degli studenti. Questi dati sono ottenuti da questionari anonimi, che devono essere obbligatoriamente compilati prima di potersi prenotare per un esame. I risultati sono poi divulgati in forma aggregata, garantendo così l'anonimato dello studente. A ogni domanda lo studente ha potuto rispondere indicando un valore compreso fra zero e dieco, con zero a indicare una risposta totalmente negativa e dieci a indicare invece una risposta totalmente positiva.\\
+Al fine d'integrare i dati precedenti ponendo l'attenzione sui vari corsi che compongono il Corso di Laurea, sono stati forniti i dati relativi alla valutazione dei corsi di studi da parte degli studenti. Questi dati sono ottenuti da questionari anonimi, che devono essere obbligatoriamente compilati prima di potersi prenotare per un esame. I risultati sono poi divulgati in forma aggregata, garantendo così l'anonimato dello studente. A ogni domanda lo studente ha potuto rispondere indicando un valore compreso fra zero e dieci, con zero a indicare una risposta totalmente negativa e dieci a indicare invece una risposta totalmente positiva.\\
 
 Volendo scendere in un maggior dettaglio, sono stati forniti i dati riguardanti i seguenti anni accademici:
 
@@ -68,7 +68,7 @@ Volendo scendere in un maggior dettaglio, sono stati forniti i dati riguardanti 
 	\item 2016-2017
 \end{itemize}
 
-Come si può facilmente notare, la finestra temporale coperta da questi dati va a combaciare con quella trattata dal dataset relativo alla carriera degli studenti. Questo aspetto fondamentale ha permesso di effettuare una operazione di \textit{join} di qualche sorta fra i due dataset a disposizione, che verrà in seguito descritta nella sezione dedicata al \textit{preprocessing}.
+Come si può facilmente notare, la finestra temporale coperta da questi dati va a combaciare con quella trattata dal dataset relativo alla carriera degli studenti. Questo aspetto fondamentale ha permesso di effettuare una operazione di \textit{join} fra i due dataset a disposizione, che verrà in seguito descritta nella sezione dedicata al \textit{preprocessing}.
 
 \subsection{Formato e Rappresentazione}
 

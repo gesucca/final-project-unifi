@@ -18,7 +18,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
             Perché occorre spendere del tempo per perpetrare un'estesa fase di \textit{data understanding}? \\
 
-            Banalmente, l'obiettivo principale che ci si prefigge è quello di ottenere una chiara visione d'insieme sui dati che si hanno a disposizione. In questo modo, si sarà in grado di prendere decisioni oculate per quanto riguarda il da farsi nei successivi passi di questa analisi. Si prenda ad esempio l'attività di \textit{preprocessing}: sintetizzando al massimo, possiamo dire che si tratta di lavorare dei dati grezzi al fine di renderli a essere processati da certi algoritmi. L'ovvia implicazione è che occorre avere ben chiaro in anticipo quali algoritmi sarà opportuno lanciare, fatto che a sua volta implica la necessità di conoscere quali informazioni si intende estrarre dai dati grezzi a disposizione. \\
+            Banalmente, l'obiettivo principale che ci si prefigge è quello di ottenere una chiara visione d'insieme sui dati che si hanno a disposizione. In questo modo, si sarà in grado di prendere decisioni oculate per quanto riguarda il da farsi nei successivi passi di questa analisi. Si prenda ad esempio l'attività di \textit{preprocessing}: sintetizzando al massimo, possiamo dire che si tratta di lavorare dei dati grezzi al fine di renderli adatti a essere processati da certi algoritmi. L'ovvia implicazione è che occorre avere ben chiaro in anticipo quali algoritmi sarà opportuno lanciare, fatto che a sua volta implica la necessità di conoscere quali informazioni si intende estrarre dai dati grezzi a disposizione. \\
 
             Questo aspetto rende necessario far precedere a quello che è, usando una metafora nell'ambito meccanico, l'attività di sgrossatura dei dati grezzi una fase di \textit{data understanding}. \\
 
@@ -69,7 +69,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
         \subsection{Prestazioni Generali degli Studenti}
 
-            Lo script \textbf{R} che segue plotta dei grafci di dispersione su coppie di attributi relativi alle prestazioni generali degli studenti. Lo scopo è quello di individuare visivamente delle correlazioni significative fra questi attributi.\\
+            Lo script \textbf{R} che segue disegna dei grafci di dispersione su coppie di attributi relativi alle prestazioni generali degli studenti. Lo scopo è quello di individuare visivamente delle correlazioni significative fra questi attributi.\\
 
             \begin{lstlisting}
             colors <- c("blue","red", "green", "orange")
@@ -115,9 +115,9 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             	\includegraphics[scale=0.40]{img/scatter_plot_3.png}
             \end{figure}
 
-            A seguito di una analisi visiva di \ref{fig2}, si potrebbe speculare che esista una correlazione lineare fra i due attributi: gli studenti che conseguono un punteggio alto nel test di ingresso sono più propensi ad ottenere voti alti negli esami. \\
+            Come risulta dalla Figura \ref{fig2}, si potrebbe speculare che esista una correlazione lineare fra i due attributi: gli studenti che conseguono un punteggio alto nel test di ingresso sono più propensi ad ottenere voti alti negli esami. \\
 
-            Per quanto riguarda invece \ref{fig3}, fra gli studenti che hanno conseguiti tutti i crediti si può notare una consistente densità nella fascia che va circa dal ventidue al ventinove. Si può anche notare una assenza di voti medi inferiori al 22 fra coloro che hanno conseguito più di 100 CFU. Un altro aspetto che potrebbe rivelarsi interessante è che, fra la coorte di studenti del 2013, vari studenti hanno conseguito un solo esame con un voto superiore al 20. \\
+            Per quanto riguarda invece la Figura \ref{fig3}, fra gli studenti che hanno conseguiti tutti i crediti si può notare una consistente densità nella fascia che va circa dal ventidue al ventinove. Si può anche notare una assenza di voti medi inferiori al 22 fra coloro che hanno conseguito più di 100 CFU. Un altro aspetto che potrebbe rivelarsi interessante è che, fra la coorte di studenti del 2013, vari studenti hanno conseguito un solo esame con un voto superiore al 20. \\
 
             Viste le possibili informazioni che sembra possibile estrarre, si è deciso d'insistere sull’analisi visiva degli attributi \textit{voto medio} e \textit{numero totale di crediti}. Sono stati quindi realizzati dei diagrammi a scatola e baffi con il seguente script \textbf{R}: 
 
@@ -140,9 +140,9 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             	\includegraphics[scale=0.5]{img/scatter_plot_3.png}
             \end{figure}
 
-            Riguardo al diagramma in \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo di plotting!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti.
+            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo di plotting!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti.
 
-            Nel caso invece del voto medio, rappresentato in \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
+            Nel caso invece del voto medio, rappresentato in Figura \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
 
         \subsection{Prestazioni degli Studenti su Gruppi di Esami}
 
@@ -183,7 +183,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.32]{img/scatter_plot_4_gen.png}
                 \end{figure}
 
-                Dall’analisi visiva del grafico di dispersione in \ref{esami1anno_sp} non si è stati in grado di concludere molto di concreto. Eppure si ritiene possibile che qualche informazione interessante si possa nascondere dentro l’insieme di dati degli esami del primo anno; occorre scendere nel dettaglio. A questo proposito, sono state realizzate le matrici mostrate in \ref{esami1anno_corr} e \ref{esami1anno_stddev}.
+                Dall’analisi visiva del grafico di dispersione in Figura \ref{esami1anno_sp} non si è stati in grado di concludere molto di concreto. Eppure si ritiene possibile che qualche informazione interessante si possa nascondere dentro l’insieme di dati degli esami del primo anno; occorre scendere nel dettaglio. A questo proposito, sono state realizzate le matrici mostrate in Figura \ref{esami1anno_corr} e \ref{esami1anno_stddev}.
 
                 \begin{figure}
                     \centering
@@ -199,9 +199,9 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.5]{img/std_dev_matrix_1.png}
                 \end{figure}
 
-                Per quanto riguarda \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}.
+                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}.
 
-                Osservando invece  \ref{esami1anno_stddev}, si può evidenziare che i colori più tiepidi della deviazione standard per gli esami di \textit{Matematica Discreta e Logica} e \textit{Architetture degli Elaboratori} stanno ad indicare una minore tendenza a discostarsi dal voto medio. Perché studenti di vari anni tendono a convergere verso lo stesso voto in quei due esami? Per rispondere a questa domanda, si veda in \ref{1annosommario} un sommario dell'attributo \textit{data}.
+                Osservando invece la Figura \ref{esami1anno_stddev}, si può evidenziare che i colori più tiepidi della deviazione standard per gli esami di \textit{Matematica Discreta e Logica} e \textit{Architetture degli Elaboratori} stanno ad indicare una minore tendenza a discostarsi dal voto medio. Perché studenti di vari anni tendono a convergere verso lo stesso voto in quei due esami? Per rispondere a questa domanda, si veda in Figura \ref{1annosommario} un sommario dell'attributo \textit{data}.
 
                 \begin{figure}
                     \centering
@@ -210,7 +210,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.8]{img/sommario_1_anno.png}
                 \end{figure}
 
-                Gli esami che non sono stati superati dal maggior numero di istanze dell’intero data set --- e che quindi hanno creato maggiore difficoltà agli studenti --- sono, \footnote{piuttosto comprensibilmente,} Matematica Discreta e Logica e Architetture degli Elaboratori. Si è inoltre notato nella matrice della derivazione standard mostrata in \ref{esami1anno_stddev} che quei due esami presentano una differenza rispetto agli altri. Vale la pena d'indagare oltre.
+                Gli esami che non sono stati superati dal maggior numero di istanze dell’intero data set --- e che quindi hanno creato maggiore difficoltà agli studenti --- sono, \footnote{piuttosto comprensibilmente,} Matematica Discreta e Logica e Architetture degli Elaboratori. Si è inoltre notato nella matrice della derivazione standard mostrata in Figura \ref{esami1anno_stddev} che quei due esami presentano una differenza rispetto agli altri. Vale la pena di indagare oltre.
 
                 \begin{figure}
                     \centering
@@ -233,14 +233,16 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.5]{img/scatter_plot_6.png}
                 \end{figure}
 
-                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in \ref{mdl}: si riesce a notare una blanda tendenza ad aumentare dei CFU al crescere del voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- ottenendo comunque altri C.F.U. tendendo a ignorare totalmente questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda \ref{mdl_2}), si riescono a notare due aspetti:
+                % TODO: spiegare meglio
+                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza ad aumentare dei CFU al crescere del voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- ottenendo comunque altri C.F.U. tendendo a ignorare totalmente questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
 
                 \begin{itemize}
                     \item chi ha dato l’esame al primo appello del suo anno, ha conseguito un voto alto (si vedano ad esempio gli studenti dell’annata 2010)
                     \item la maggioranza degli studenti ha superato Matematica Discreta e Logica qualche anno dopo il suo anno di immatricolazione (comportamento estremizzato dagli studenti di coorte 2012)
                 \end{itemize}
 
-                Nel caso di Architetture degli Elaboratori, della quale possiamo vedere un grafico di dispersione dettagliato in \ref{ade}, le tendenze evidenziate prima sono mitigate. Rimane comunque importante la quantità di studenti che hanno conseguito molti crediti senza superare l’esame: si potrebbe speculare che l’ignorare esami difficili sia una pratica comune nel pool di studenti descritti dal data set.
+                Nel caso di Architetture degli Elaboratori, della quale possiamo vedere un grafico di dispersione dettagliato in Figura \ref{ade}, le tendenze evidenziate prima sono mitigate. Rimane comunque importante la quantità di studenti che hanno conseguito molti crediti senza superare l’esame: si potrebbe speculare che l’ignorare esami difficili sia una pratica comune nel pool di studenti descritti dal data set.
+                % TODO: ha segnato "difficili", perché? Spiegare meglio?
 
             \subsubsection{Esami su argomenti informatici}
 
@@ -272,7 +274,8 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.8]{img/it.png}
                 \end{figure}
 
-                Riguardo agli esami a contenuto prevalentemente informartico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in \ref{esami_inf} e dalla matrice di correlazione in \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno –-- eccezione fatta per Architetture degli Elaboratori –-- si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. Nel particolare di Informatica Teorica mostrato in \ref{it}, notoriamente l'esame più ostico dell'intero Corso di Laurea, i pochi studenti che lo superano risultano ampiamente sopra la media. \\
+                Riguardo agli esami a contenuto prevalentemente informartico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno –-- eccezione fatta per Architetture degli Elaboratori –-- si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. Nel particolare di Informatica Teorica mostrato in Figura \ref{it}, notoriamente l'esame più ostico dell'intero Corso di Laurea, i pochi studenti che lo superano risultano ampiamente sopra la media. \\
+                % TODO: non va bene un commento di questo genere? alla fine ha senso
 
                 In ogni caso, non appare interessante proseguire sul'analisi con tecniche di \textit{data mining} su questa suddivisione.
 
@@ -299,13 +302,13 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.32]{img/std_dev_matrix_3.png}
                 \end{figure}
 
-                Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Data la natura del corso, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.
+                Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in Figura \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Data la natura del corso, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.
 
-                Sulla matrice di correlazione in \ref{esami_mat_corr}, si notano due aspetti interessanti: una fascia di studenti con correlazione nulla e una «casella» di forti correlazioni all’incirca nel centro della matrice. Dei due, il primo è sicuramente il più inusuale. Quale aspetto reale potrebbe generare una osservazione come questa?
+                Sulla matrice di correlazione in Figura \ref{esami_mat_corr}, si notano due aspetti interessanti: una fascia di studenti con correlazione nulla e una «casella» di forti correlazioni all’incirca nel centro della matrice. Dei due, il primo è sicuramente il più inusuale. Quale aspetto reale potrebbe generare una osservazione come questa?
 
-                Riguardo alla matrice della deviazione standard in \ref{esami_mat_stddev}, si possono notare le stesse caratteristiche evidenziate per quanto riguarda gli esami a tema principalmente informatico. In questo caso, il ruolo del cattivo non lo interpreta più Informatica Teorica ma è condiviso da Fisica Generale e Calcolo Numerico\footnote{Calcolo Numerico tratta argomenti che trascendono i confini fra l’informatica e la matematica. Si è scelto d'inserirlo in questa partizione, ma è stata una decisione puramente arbitraria.}.
+                Riguardo alla matrice della deviazione standard in Figura \ref{esami_mat_stddev}, si possono notare le stesse caratteristiche evidenziate per quanto riguarda gli esami a tema principalmente informatico. In questo caso, il ruolo del cattivo non lo interpreta più Informatica Teorica ma è condiviso da Fisica Generale e Calcolo Numerico\footnote{Calcolo Numerico tratta argomenti che trascendono i confini fra l’informatica e la matematica. Si è scelto d'inserirlo in questa partizione, ma è stata una decisione puramente arbitraria.}.
 
-                Analogamente alla suddivisione precedente, anche per qusta partizione di esami non appare interessante proseguire l'analisi con tecniche di \textit{data mining}.
+                Analogamente alla suddivisione precedente, anche per questa partizione di esami non appare interessante proseguire l'analisi con tecniche di \textit{data mining}.
 
         \subsection{Conclusioni}
 
@@ -328,21 +331,21 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
         Si prevede di impiegare queste tecniche:
 
         \begin{itemize}
-            \item \textit{tecniche di visualizzazione} con focus sulle \textit{classi di record} dei due data set
-            \item \textit{cluster analysys} sulle prestazioni generali degli studenti
-            \item individuazione dei \textit{pattern sequenziali frequenti} nell'ordine di superamento degli esami
-            \item \textit{cluster analysys} sulla relazione fra prestazioni degli studenti e valutazioni dei corsi
-            \item ricerca di \textit{regole associative} fra i risultati conseguiti in un dato esame e la valutazione del suo corso
+            \item \textit{tecniche di visualizzazione} con focus sulle \textit{classi di record} dei due data set;
+            \item \textit{cluster analysys} sulle prestazioni generali degli studenti;
+            \item individuazione dei \textit{pattern sequenziali frequenti} nell'ordine di superamento degli esami;
+            \item \textit{cluster analysys} sulla relazione fra prestazioni degli studenti e valutazioni dei corsi;
+            \item ricerca di \textit{regole associative} fra i risultati conseguiti in un dato esame e la valutazione del suo corso.
         \end{itemize}
 
         Al fine di utilizzarle al meglio, occorre preparare nella fase di \textit{preprocessing} i seguenti data set:
 
         \begin{itemize}
-            \item prestazioni generali degli studenti aggregate per coorte di immatricolazione --- \textit{visualizzazione}
-            \item valutazione degli insegnamenti aggregate per Anno Accademico --- \textit{visualizzazione}
-            \item join dei due insiemi di dati con attributi continui --- \textit{clustering}
-            \item join dei due insiemi di dati con attributi discreti --- \textit{analisi associativa}
-            \item sequenze ordinate di esami superati --- \textit{pattern sequenziali}
+            \item prestazioni generali degli studenti aggregate per coorte di immatricolazione --- \textit{visualizzazione};
+            \item valutazione degli insegnamenti aggregate per Anno Accademico --- \textit{visualizzazione};
+            \item join dei due insiemi di dati con attributi continui --- \textit{clustering};
+            \item join dei due insiemi di dati con attributi discreti --- \textit{analisi associativa};
+            \item sequenze ordinate di esami superati --- \textit{pattern sequenziali}.
         \end{itemize}
 
         Altre \textit{cluster analysys} sono poi state effettuate direttamente sul dataset della carriera degli studenti con minima preparazione, essendo esso già predisposto all'utilizzo con questo tipo di algoritmi.
