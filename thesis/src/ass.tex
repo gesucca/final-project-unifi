@@ -6,15 +6,15 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 
 \section{Introduzione all'analisi associativa}
 
-    Questa introduzione vuole essere solo un breve riassunto dei concetti fondamentali seguiti per realizzare all'atto pratico l'analisi. Una trattazione più approfondita --- che trascenderebbe  ampiamente lo scopo di questa tesi di laurea --- può essere trovata in \cite{dispense}, ed è propri oquella che è stata consultata per realizzare quanto segue.
+    Questa introduzione vuole essere solo un breve riassunto dei concetti fondamentali seguiti per realizzare all'atto pratico l'analisi. Una trattazione più approfondita --- che trascenderebbe  ampiamente lo scopo di questa tesi di laurea --- può essere trovata in \cite{dispense}, ed è proprio quella che è stata consultata per realizzare quanto segue.
 
     \subsection{Regole Associative}
 
-        Una regola associativa è una implicazione del tipo $A \rightarrow B$, con $A$ e $B$ insiemi di item (detti, appunto \textit{itemset}). Il significato di ciò dovrebbe essere palese: data la presenza di $A$ in una istanza del data set, è \textit{fortemente probaible} la presenza di $B$. La valutazione di questa probaiblità avviene considerando alcune metriche particolari quali, ad esempio, la \textit{confidenza} o il \textit{lift}. \\
+        Una regola associativa è una implicazione del tipo $A \rightarrow B$, con $A$ e $B$ insiemi di item (detti, appunto \textit{itemset}). Il significato di ciò dovrebbe essere palese: data la presenza di $A$ in una istanza del data set, è \textit{fortemente probabile} la presenza di $B$. La valutazione di questa probabilità avviene considerando alcune metriche particolari quali, ad esempio, la \textit{confidenza} o il \textit{lift}. \\
 
-        Portando un esempio sul dataset oggetto di questa analisi, una tanto probabile quanto banale regola associativa che ci si aspetta di trovare potrà essere del tipo \textit{"Valutazione del corso: ALTA"} $\rightarrow$ \textit{"Voto conseguito: ALTO"}. \\
+        Portando un esempio sul data set oggetto di questa analisi, una tanto probabile quanto banale regola associativa che ci si aspetta di trovare potrà essere del tipo \textit{"Valutazione del corso: ALTA"} $\rightarrow$ \textit{"Voto conseguito: ALTO"}. \\
         
-        Quello a cui si mira, però, è il riuscire a scoprire qualche altra regola che trascenda il limite dell'ovvio, aprendo così le porte a interpretazioni non immediate dell'insieme di dati su cui si sta lavorando. Per questo motivo, oltre all'aiuto di criteri algoritmici di potatura, occorrerà comunque prevedere un \textit{intervento umano} nel \textit{post processing} delle regole generate.
+        Quello a cui si mira, però, è riuscire a scoprire qualche altra regola che trascenda il limite dell'ovvio, aprendo così le porte a interpretazioni non immediate dell'insieme di dati su cui si sta lavorando. Per questo motivo, oltre all'aiuto di criteri algoritmici di potatura, occorrerà comunque prevedere un \textit{intervento umano} nel \textit{post processing} delle regole generate.
 
     \subsection{L'algoritmo Apriori di Weka}
 
@@ -25,7 +25,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 	    \includegraphics[scale=1.0]{img/apriori_weka.png}
     \end{figure}
 
-        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato da una regola non è altro che una implicazione generata da un partizionamento binario di un itemset frequente, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
+        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato che una regola non è altro che una implicazione generata da un partizionamento binario di un itemset frequente, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
         
         In estrema sintesi, l'idea generale è quella di generare una lista di \textit{candidati} semplici --- cioè di itemset che potrebbero essere frequenti --- verificarne il \textit{supporto} e usare quelli idonei per generare altri candidati più complessi. Il principio Apriori, infatti, stabilisce che se un itemset con pochi elementi è infrequente, lo saranno anche tutti gli itemset che lo comprendono. Questo fatto, detto \textit{anti-motonia} del supporto, ci consente di evitare di generare e calcolare la frequenza di ogni possibile itemset, rendendo trattabile quello che sarebbe invece un problema $NP-Completo$. \\
 
@@ -38,19 +38,19 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
         I vari \textit{flags} da passare come argomenti vanno a regolare questi parametri della computazione:
 
         \begin{itemize}
-            \item \texttt{-N}: numero di regole associative da trovare
-            \item \texttt{-T}: tipo di metrica utilizzata per la valutazione degli itemset.
+            \item \texttt{-N}: numero di regole associative da trovare;
+            \item \texttt{-T}: tipo di metrica utilizzata per la valutazione degli itemset
                 \subitem 0 - \textit{confidence}
                 \subitem 1 - \textit{lift}
                 \subitem 2 - \textit{leverage}
-                \subitem 3 - \textit{convction}
-            \item \texttt{-C}: valore minimo della metrica indicata per considerare frequente un itemset
-            \item \texttt{-D}: valore che viene usato per diminuire il supporto ad ogni iterazione dell'algoritmo
-            \item \texttt{-U}: limite superiore del supporto minimo richiesto
-            \item \texttt{-M}: limite inferiore del supporto minimo richiesto 
+                \subitem 3 - \textit{convction};
+            \item \texttt{-C}: valore minimo della metrica indicata per considerare frequente un itemset;
+            \item \texttt{-D}: valore che viene usato per diminuire il supporto ad ogni iterazione dell'algoritmo;
+            \item \texttt{-U}: limite superiore del supporto minimo richiesto;
+            \item \texttt{-M}: limite inferiore del supporto minimo richiesto.
         \end{itemize}
 
-        Ovviamente, come si può vedere in \ref{apriori_weka}, sono possibili molte altre personalizzazioni e impostazioni, fatto che rende l'implementazione di Weka dell'algoritmo Apriori estremamente flessibile ed adattabile a molte esigenze. \\
+        Ovviamente, come si può vedere in Figura \ref{apriori_weka}, sono possibili molte altre personalizzazioni e impostazioni, fatto che rende l'implementazione di Weka dell'algoritmo Apriori estremamente flessibile ed adattabile a molte esigenze. \\
  
 \section{Apriori su dataset aggregato}
 
@@ -61,10 +61,10 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
     In ogni caso, alcune scelte sono state comuni a tutte le analisi:
 
     \begin{itemize}
-        \item Come \textit{metrica} è stato scelto il \textbf{Lift}, un cui valore positivo indica una correlazione effettiva --- cosa che non è affatto garantita da un alto valore di \textit{confidenza}
-        \item Non è stata usata la valutazione per classe, né il pruning per livello di significato
-        \item Sono stati sempre stampati gli itemset frequenti, in quanto utili per capire l'andamento del 
-        \item Come \textit{delta} è stato scelto un valore il più piccolo possibile, ma compatibile con dei tempi macchina "umani"
+        \item come \textit{metrica} è stato scelto il \textbf{Lift}, un cui valore positivo indica una correlazione effettiva --- cosa che non è affatto garantita da un alto valore di \textit{confidenza};
+        \item non è stata usata la valutazione per classe, né il pruning per livello di significato;
+        \item sono stati sempre stampati gli itemset frequenti, in quanto utili per capire l'andamento della generazione delle regole;
+        \item come \textit{delta} è stato scelto un valore il più piccolo possibile, ma compatibile con dei tempi macchina "umani".
     \end{itemize}
 
         \subsection{Focus sul corso}
@@ -74,10 +74,10 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
             L'algoritmo è stato lanciato sul data set \texttt{min\_d.csv}, ulteriormente semplificato grazie alla considerazione di questi soli attributi:
 
             \begin{itemize}
-                \item Identificativo dell'insegnamento
-                \item Ritardo medio del superamento dell'esame (rispetto al primo appello disponibile, contato in semestri)
-                \item Voto medio ottenuto all'esame dagli studenti
-                \item Valutazione media del corso d'insegnamento
+                \item identificativo dell'insegnamento;
+                \item ritardo medio del superamento dell'esame (rispetto al primo appello disponibile, contato in semestri);
+                \item voto medio ottenuto all'esame dagli studenti;
+                \item valutazione media del corso d'insegnamento.
             \end{itemize}
 
             Il miglior risultato che si è ottenuto in quest'ottica è il seguente: \\
@@ -106,7 +106,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \item \textbf{R10}: Valutazione insegnamenti: $SUFF.$ $\rightarrow$ Ritardo: $ALTO$
             \end{itemize}
 
-            Andando ad analizzare le regole minate, eliminando ridondanze ed effettuando una sorta di \textit{post processing} manualmente, le informazioni chiave che si sono ottenute risultano essere le seguenti:
+            Andando ad analizzare le regole trovate, eliminando ridondanze ed effettuando una sorta di \textit{post processing} manualmente, le informazioni chiave che si sono ottenute risultano essere le seguenti:
 
             \begin{itemize}
                 \item Ritardo: $BASSO$ $\leftarrow \rightarrow$ Valutazione insegnamento: $OTTIMA$

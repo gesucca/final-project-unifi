@@ -92,7 +92,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             	\includegraphics[scale=0.32]{img/scatter_plot_1_gen.png}
             \end{figure}
 
-            Come si può vedere sul grafico generato dallo script --- mostrato in \ref{fig1} --- esistono varie correlazioni fra gli attributi considerati. Nel merito, la relazione fra le quantità \textit{crediti totali} e \textit{crediti con voto} è tanto palese quanto banale: il primo ammontare contiene il secondo, e la loro differenza è minima. Appare invece più interessante quello che accade fra altre coppie di attributi:
+            Come si può vedere sul grafico generato dallo script --- mostrato in Figura \ref{fig1} --- esistono varie correlazioni fra gli attributi considerati. Nel merito, la relazione fra le quantità \textit{crediti totali} e \textit{crediti con voto} è tanto palese quanto banale: il primo ammontare contiene il secondo, e la loro differenza è minima. Appare invece più interessante quello che accade fra altre coppie di attributi:
 
             \begin{itemize}
                 \item punteggio del test di ingresso e valore atteso del voto 
@@ -140,7 +140,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             	\includegraphics[scale=0.5]{img/scatter_plot_3.png}
             \end{figure}
 
-            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo di plotting!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti.
+            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti.
 
             Nel caso invece del voto medio, rappresentato in Figura \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
 
@@ -183,7 +183,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.32]{img/scatter_plot_4_gen.png}
                 \end{figure}
 
-                Dall’analisi visiva del grafico di dispersione in Figura \ref{esami1anno_sp} non si è stati in grado di concludere molto di concreto. Eppure si ritiene possibile che qualche informazione interessante si possa nascondere dentro l’insieme di dati degli esami del primo anno; occorre scendere nel dettaglio. A questo proposito, sono state realizzate le matrici mostrate in Figura \ref{esami1anno_corr} e \ref{esami1anno_stddev}.
+                Dall’analisi visiva del grafico di dispersione in Figura \ref{esami1anno_sp} non si è stati in grado di concludere molto di concreto. Eppure si ritiene possibile che qualche informazione interessante si possa nascondere dentro l’insieme di dati degli esami del primo anno; occorre scendere nel dettaglio. A questo proposito, sono state realizzate le matrici mostrate nelle Figure \ref{esami1anno_corr} e \ref{esami1anno_stddev}.
 
                 \begin{figure}
                     \centering
@@ -233,16 +233,14 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.5]{img/scatter_plot_6.png}
                 \end{figure}
 
-                % TODO: spiegare meglio
-                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza ad aumentare dei CFU al crescere del voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- ottenendo comunque altri C.F.U. tendendo a ignorare totalmente questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
+                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza dei Credti Formativi Unitari ottenuti in totale dallo studente ad aumentare proporzionalmente al voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- hanno ottenuto comunque molti C.F.U. senza superare questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
 
                 \begin{itemize}
                     \item chi ha dato l’esame al primo appello del suo anno, ha conseguito un voto alto (si vedano ad esempio gli studenti dell’annata 2010)
                     \item la maggioranza degli studenti ha superato Matematica Discreta e Logica qualche anno dopo il suo anno di immatricolazione (comportamento estremizzato dagli studenti di coorte 2012)
                 \end{itemize}
 
-                Nel caso di Architetture degli Elaboratori, della quale possiamo vedere un grafico di dispersione dettagliato in Figura \ref{ade}, le tendenze evidenziate prima sono mitigate. Rimane comunque importante la quantità di studenti che hanno conseguito molti crediti senza superare l’esame: si potrebbe speculare che l’ignorare esami difficili sia una pratica comune nel pool di studenti descritti dal data set.
-                % TODO: ha segnato "difficili", perché? Spiegare meglio?
+                Nel caso di Architetture degli Elaboratori, della quale possiamo vedere un grafico di dispersione dettagliato in Figura \ref{ade}, le tendenze evidenziate prima sono mitigate. Rimane comunque importante la quantità di studenti che hanno conseguito molti crediti senza superare l’esame: si potrebbe speculare che l’ignorare certi esami sia una pratica comune nel pool di studenti descritti dal data set.
 
             \subsubsection{Esami su argomenti informatici}
 
@@ -274,8 +272,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 	\includegraphics[scale=0.8]{img/it.png}
                 \end{figure}
 
-                Riguardo agli esami a contenuto prevalentemente informartico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno –-- eccezione fatta per Architetture degli Elaboratori –-- si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. Nel particolare di Informatica Teorica mostrato in Figura \ref{it}, notoriamente l'esame più ostico dell'intero Corso di Laurea, i pochi studenti che lo superano risultano ampiamente sopra la media. \\
-                % TODO: non va bene un commento di questo genere? alla fine ha senso
+                Riguardo agli esami a contenuto prevalentemente informartico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno –-- eccezione fatta per Architetture degli Elaboratori –-- si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. Nel particolare di Informatica Teorica mostrato in Figura \ref{it}, i pochi studenti che lo superano risultano ampiamente sopra la media. \\
 
                 In ogni caso, non appare interessante proseguire sul'analisi con tecniche di \textit{data mining} su questa suddivisione.
 

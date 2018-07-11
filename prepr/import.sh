@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # students productivity csv is already well formatted, I can simply import it
 mongoimport -d exams -c rawStudentsPr1013 --type csv --file ../raw/prod_stud_10-11-12-13.csv --headerline
 
