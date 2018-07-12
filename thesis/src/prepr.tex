@@ -40,17 +40,45 @@ Nell'illustrare le varie operazioni svolte, per favorire una spiegazione lineare
 			mongod --dbpath=/mnt/ramdisk/db
 		\end{lstlisting}
 
-	A questo punto, nella \textit{shell} con cui è stato lanciato questo script vedremo lo \textit{standard output} del processo \texttt{mongod}. Significa che MongoDB è attivo ed invocabile tramite gli strumenti a nostra disposizione.
+	Nella \textit{shell} con cui è stato lanciato questo script si può vedere lo \textit{standard output} del processo \texttt{mongod}. Significa che MongoDB è attivo ed invocabile tramite gli strumenti a nostra disposizione.
 
 	\subsection{Importazione dei Dati Grezzi}
+
+	A questo punto, gli utensili sono pronti: occorre posizionare il pezzo grezzo da lavorare, ovvero importare i dati grezzi in MongoDB. \\
+
+	Come visto nel capitolo precedente, i dati a disposizioni sono contenuti in sette file \texttt{csv}: si manterrà questa struttura --- almeno inizialmente --- importando quindi ogni file in una sua \textit{collection}. Come is può vedere di seguito, questa operazione è stata descritta nel \texttt{makefile} con l'etichetta \texttt{import}:
 
 	\begin{center}
 		\includegraphics[scale=0.7]{img/import.png}
 	\end{center}
 
-	\lstinputlisting[language=bash,caption={script per importare i dati grezzi in MongoDB}, numbers=left, stepnumber=1]{../prepr/import.sh}
+	Le variabili \texttt{\$(DB)} e \texttt{\$(PRDIR)} sono specifiche dell'ambiente predisposto\footnote{per un esempio pratico, si consulti l'intero \texttt{makefile} riportato in \ref{appendix:makefile}.}. Essa si può lanciare con il seguente semplice comando di \texttt{shell}:
 
-\section{Valutazioni degli Insegnamenti aggregate per Anno Accademico}
+	\begin{lstlisting}[language=bash,caption={importazione dei dati in MongoDB}]
+		make import
+	\end{lstlisting}
+
+	La vera e propria invocazione del comando necessario all'import dei file nel database --- \texttt{mongoimport}, del pacchetti \texttt{mongodb-tools} --- è stata delegata in un file esterno al \texttt{makefile}, per preservare la compattezza e la brevità di quest'ultimo. Si veda comunque di seguito il comando per l'import di uno dei sette file: 
+
+	\begin{lstlisting}[language=bash,caption={dettaglio dell'importazione dei dati in MongoDB}]
+		mongoimport -d exams -c rawStudentsPr1013 --type csv --file ../raw/prod_stud_10-11-12-13.csv --headerline
+	\end{lstlisting}
+
+	Il comando, come ogni chiamata da \texttt{shell}, ha degli argomenti che ne specificano il comportamento. In questo caso, sono:
+
+	\begin{itemize}
+		\item \texttt{-d}: il database nel quale importare i dati;
+		\item \texttt{-c}: la collection nella quale inserire i dati;
+		\item \texttt{-type}: il tipo del file da leggere;
+		\item \texttt{-file}: il riferimento al file;
+		\item \texttt{-headerline}: indica che gli attributi delle istanze sono specificati nella prima riga del file.
+	\end{itemize}
+
+	A questo punto, nel database \texttt{exams} di MongoDB ci sono otto \textit{collections}, contenenti i \textit{documenti} che rappresentano le istanze dei dati a disposizione.
+
+\section{Aggregazione per Anno Accademico: dati degli studenti}
+
+\section{Aggregazione per Anno Accademico: valutazioni dei corsi}
 
 \section{Join dei due insiemi di dati con attributi continui}
 

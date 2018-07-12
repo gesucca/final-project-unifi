@@ -71,12 +71,12 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
         \begin{figure}
             \centering
-            \caption{schema riassuntivo del modello di lavoro con \textbf{pymongo}}
+            \caption{schema riassuntivo del modello di lavoro con \texttt{pymongo}}
             \label{pymongo_logo}
     	    \includegraphics[scale=0.75]{img/pymongo.png}
         \end{figure}
 
-        Una sintetica ma tremendamente efficace descrizione di che cosa è \textbf{pymongo} si può trovare direttamente nella sua documentazione, in \cite{pymongo}:\\
+        Una sintetica ma tremendamente efficace descrizione di che cosa è \texttt{pymongo} si può trovare direttamente nella sua documentazione, in \cite{pymongo}:\\
 
         "PyMongo is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python." \\
 
@@ -85,6 +85,29 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
         "PyMongo è una distribuzione di Python che contiene degli strumenti per lavorare con MongoDB, ed è la maniera raccomandata per avere a che fare con MongoDB da Python." \\
 
         In altre parole, \textbf{pymongo} è una libreria per python che fornisce oggetti e metodi per lanciare istruzioni di \textit{Data Definiion}\footnote{Data Definition Language: sottoinsieme di un linguaggio comprendente le istruzioni per definire e manipolare le strutture (in un DBMS relazionale, le \textit{tabelle}, in MongoDB le \textit{collezioni} di documenti). Ad esmepio, in \textbf{SQL} comprende le istruzioni \textbf{create table}, \textbf{alter table}, \ldots} e \textit{Data Manipulation}\footnote{Data Manipulation Language: sottoinsieme di un linguaggio comprendente le istruzioni per manipolare i dati. Ad esmepio, in \textbf{SQL} sono ad esempio \textbf{insert}, \textbf{update}, \ldots}.
+
+\section{Organizzazione: GNU Make}
+
+    \begin{figure}
+        \centering
+        \caption{logo della famiglia di software GNU}
+        \label{make}
+        \includegraphics[scale=0.15]{img/gnu.png}
+    \end{figure}
+
+    Data la complessità delle operazioni da eseguire, occorre un modo per dare e mantenere una struttura chiara nel lancio degli script necessari a manipolareopportunamente i dati. A questo proposito, è stato scelto il software \texttt{Make}, un'antica \textit{utility} GNU eccezionalmente solida. \\
+
+    Citando direttamente da \cite{make}, "GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.", che in italiano significa: "GNU Make è uno strumento che controlla la generazione di eseguibi ed altri file non sorgenti a partire da del codice sorgente."\\
+
+    Sebbene lo scopo più comune di Make sia la compilazione di programmi, è perfettamente malleabile per adattarsi a qualunque tipo di applicazione. Sempre da \cite{make} si può leggere qulcosa proprio a questo riguardo: \\
+
+    "Make is not limited to building a package. You can also use Make to control installing or deinstalling a package, generate tags tables for it, or anything else you want to do often enough to make it worth while writing down how to do it." \\
+
+    Ovvero, traducendo e parafrasando:\\
+
+    "Make non è limitato alla compilazione di un programma. Si può usare Make per controllare l'installazione o la disinstallazione di un paccehtto software, generare tabelle di tag, o qualunque altra cosa ci sia bisogno di fare spesso abbastanza da far valere la pena di automatizzarla." \\
+
+    Pertanto, è stato scritto un \texttt{makefile} per automatizzare il lancio dei vari script necessari a realizzare le operazioni di \textit{preprocessing}.
 
 \section{Algoritmi di Data Mining: Weka}
 
@@ -102,7 +125,6 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
     Data la natura \textit{I/O intensive} dell'attività di data mining, è da notare il fatto che l'implementazione di Weka in un linguaggio con un discreto \textit{overhead} come Java non è da considerarsi rilevante nell'impatto sulla effettiva velocità degli algoritmi lanciabili su questa suite.\\
 
     Nel merito del nostro lavoro, Weka è una \textit{suite} di sottoprogrammi molto potente, che permetterebbe di effetturare ogni aspetto del processo di \textit{data mining}, dal \textit{preprocessing} al \textit{postprocessing}. Ai fini del nostro scopo, questo software verrà utilizzato principalmente come ambiente per lanciare gli algoritmi implementati dalle sue librerie. Come si può vedere consultando la sua estesa documentazione in \cite{weka}, Weka può essere integrato in un gran numero di ambienti; tuttavia, per questa applicazione è stato scelto di utilizzarlo in forma \textit{stand alone}, preferendo concentrarsi sul merito delle analisi da fare e lasciando perdere il lavoro di programazione che sarebbe seguito da scelte diverse.\\
-
 
 \section{Tecniche di Visualizzazione}
 
