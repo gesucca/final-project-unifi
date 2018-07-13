@@ -22,7 +22,7 @@
 \usepackage{listings}
 \usepackage{subfig}
 \usepackage{caption}
-\usepackage{appendix}
+\usepackage[toc, page]{appendix}
 \usepackage{siunitx}
 \usepackage{dtk-logos} % just cause it's cool
 %--------------------------------------------------------------
@@ -82,8 +82,9 @@
 \include{src/seq}
 \include{src/ass}
 \include{src/fine}
-\include{src/appendix}
 \include{src/bibl}
+\appendix
+\include{src/appendix}
 %--------------------------------------------------------------
 \end{document}
 

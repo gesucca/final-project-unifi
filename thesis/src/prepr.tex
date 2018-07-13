@@ -1,14 +1,14 @@
 \chapter{Preprocessing}
 
-Quella che sarà descritta in questo capitolo è sicuramente la fase più impegnativa e delicata. Vista quindi l'importanza che l'attività di preprocessing ha rivestito nella riuscita dell'intero lavoro, è stato scelto di descriverla con un elevato livello di dettaglio, evidenziando passaggio per passaggio le varie operazioni svolte per trasformare la forma dell'insieme di dati grezzi in una adeguata al tipo di analisi che ci si è prefissati di fare. \\
+Quella che sarà descritta in questo capitolo è sicuramente la fase più impegnativa e delicata dell'intero lavoro. Vista quindi l'importanza che l'attività di \textit{preprocessing} ha rivestito, è stato scelto di descriverla con un elevato livello di dettaglio, evidenziando passaggio per passaggio le operazioni necessarie per dare all'insieme di dati grezzi una forma adeguata al tipo di analisi che ci si è prefissati di fare. \\
 
-Nell'illustrare le varie operazioni svolte, per favorire una spiegazione lineare e il più possibile comprensibile, si impiegherà talvolta la metafora della lavorazione meccanica, intesa in questo caso come una sgrossatura volta ad ottenere un semilavorato --- il data set \textit{preprocessato}, pronto per essere ulteriormente lavorato con le tecniche di \textit{data mining}. Ricordando quanto affermato l'introduzione della sezioni precedenti, i dati iniziali rappresentano il pezzo grezzo da lavorare, e le tecnologie scelte gli utensili da impiegare nella sgrossatura.
+Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il più possibile comprensibile, si impiegherà ancora la metafora della lavorazione meccanica, intesa in questo caso come una sgrossatura volta ad ottenere un semilavorato --- il data set \textit{preprocessato}, pronto per essere ulteriormente lavorato con le tecniche di \textit{data mining}. Ricordando quanto affermato nell'introduzione della sezioni precedenti, i dati iniziali rappresentano il pezzo grezzo da lavorare, mentre le tecnologie scelte gli utensili da impiegare nella sgrossatura.
 
 \section{Preparazione dell'Ambiente di Lavoro}
 
 	\subsection{Ottenere gli strumenti necessari}
 
-		Innanzitutto, è necessario predisporre gli utensili necessari al lavoro da svolgere --- fuor di metafora, si tratta di installare i programmi necessari al \textit{preprocessing}. Come abbiamo detto nella sezione dedicata alla \textit{technology stack}, abbiamo bisogno del \textit{d.b.m.s.} MongoDB e del suo \textit{driver}\footnote{il termine \textit{driver} non è perfettamente proprio per descrivere quella che in realtà è una semplice implementazione in Python delle \textit{A.P.I.} di MongoDB, ma colloquialmente rende bene l'idea della funzione di \texttt{pymongo}.}.
+		Innanzitutto è necessario predisporre gli utensili necessari al lavoro da svolgere --- fuor di metafora, si tratta di installare i programmi necessari al \textit{preprocessing}. Come abbiamo detto nella sezione dedicata alla \textit{technology stack}, abbiamo bisogno del \textit{d.b.m.s.} MongoDB e del suo \textit{driver}\footnote{il termine \textit{driver} non è perfettamente proprio per descrivere quella che in realtà è una semplice implementazione in Python delle \textit{A.P.I.} di MongoDB, ma colloquialmente rende bene l'idea della funzione di \texttt{pymongo}.}.
 
 		La piattaforma impiegata è un personal computer con sistema operativo Arch Linux, perciò occorrerà installare MongoDB su di essa. Questo può essere fatto in modo estremamente agile, scaricando i pacchetti \texttt{mongodb} e \texttt{mongodb-tools} dalle repository ufficiali con il seguente comando:
 
@@ -16,37 +16,43 @@ Nell'illustrare le varie operazioni svolte, per favorire una spiegazione lineare
 			sudo pacman -S mongodb mongodb-tools --noconfirm
 		\end{lstlisting}
 
+		\vspace{0.3cm}
+
 		Per ottenere \texttt{pymongo}, invece, occorre utilizzare il \textit{package manager} di Python, \texttt{pip}, invocandolo semplicemente come segue:
 
 		\begin{lstlisting}[language=bash,caption={installazione di pymongo}]
 			pip install pymongo
 		\end{lstlisting}
 
+		\vspace{0.3cm}
+
 		A questo punto disponiamo degli utensili necessari per la nostra lavorazione.
 
 	\subsection{Inizializzazione di un server MongoDB}
 
-	Occorre adesso avviare la macchina e montare il pezzo --- in una \textit{vera} lavorazione meccanica, ovviamente \textit{prima} si monta l'utensile e si posiziona il pezzo, \textit{poi} si avvia la macchina; in questo caso occorre avviare prima un processo di MongoDB affinché si possano importare i dati grezzi in uno \textit{schema} ed organizzarli in \textit{collections}, per poi lavorarli tramite \texttt{pymongo}. \\
+		Predisposti gli utensili, occorre adesso avviare la macchina e montare il pezzo --- in una \textit{vera} lavorazione meccanica, ovviamente \textit{prima} si monta l'utensile e si posiziona il pezzo, \textit{poi} si avvia la macchina; in questo caso, occorre avviare prima un processo di MongoDB affinché si possano importare i dati grezzi in uno \textit{schema} ed organizzarli in \textit{collections}, per poi lavorarli tramite \texttt{pymongo}. \\
 
-	MongoDB fornisce un database estremamente veloce, e di default utilizza come supporto fisico di memorizzazione una cartella sul disco di installazione. La macchina utilizzata dispone di un disco a stato solido come supporto di memoria non volatile, perciò le velocità di lettura e scrittura nel database di MongoDB risulterebbero ottime anche nella configurazione standard. Tuttavia, sia per migliorare ulteriormente le performances delle operazioni che per preservare la vita del disco\footnote{le celle di memoria degli SSD, o dischi a stato solido, possono sopportare un numero limitato di scritture prima di rovinarsi.}, è stato scelto di creare un \textit{ramdisk}\footnote{\textit{filesystem} implementato in un'area di RAM; è una tecnica per velocizzare estremamente le operazioni di lettura e scrittura, ma dato che il \textit{filesystem} è implementato su memoria volatile, i dati scritti in esso vengono persi dopo lo spegnimento della macchina.} da far utilizzare a MongoDB come supporto fisico di memoria. \\
+	MongoDB fornisce un database estremamente veloce, e di default utilizza come supporto fisico di memorizzazione una cartella sul disco di installazione. La macchina utilizzata dispone di un disco a stato solido come unità di memoria non volatile, perciò le velocità di lettura e scrittura nel database di MongoDB risulterebbero ottime anche nella configurazione standard. Tuttavia, sia per migliorare ulteriormente le performances delle operazioni che per preservare la vita del disco\footnote{le celle di memoria degli SSD, o dischi a stato solido, possono sopportare un numero limitato di scritture prima di rovinarsi.}, è stato scelto di creare un \textit{ramdisk}\footnote{\textit{filesystem} implementato in un'area di RAM; è una tecnica per velocizzare estremamente le operazioni di lettura e scrittura, ma dato che il \textit{filesystem} è implementato su memoria volatile, i dati scritti in esso vengono persi dopo lo spegnimento della macchina.} da far utilizzare a MongoDB. \\
 
 	Per pura comodità, le operazioni necessarie per realizzare quanto appena descritto sono state delegate ad uno script:
 
-		\begin{lstlisting}[language=bash,caption={script di lancio di un server MongoDB}, numbers=left, stepnumber=1]
-			#!/bin/zsh
-			sudo killall mongod
-			yes | rm -rf /mnt/ramdisk/db
-			mkdir db /mnt/ramdisk/db
-			mongod --dbpath=/mnt/ramdisk/db
-		\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={script di lancio di un server MongoDB}, numbers=left, stepnumber=1]
+		#!/bin/zsh
+		sudo killall mongod
+		yes | rm -rf /mnt/ramdisk/db
+		mkdir db /mnt/ramdisk/db
+		mongod --dbpath=/mnt/ramdisk/db
+	\end{lstlisting}
 
-	Nella \textit{shell} con cui è stato lanciato questo script si può vedere lo \textit{standard output} del processo \texttt{mongod}. Significa che MongoDB è attivo ed invocabile tramite gli strumenti a nostra disposizione.
+	\vspace{0.3cm}
+
+	Nella \textit{shell} con cui è stato lanciato, si può vedere lo \textit{standard output} del processo \texttt{mongod}. Significa che MongoDB è attivo ed invocabile tramite gli strumenti a nostra disposizione.
 
 	\subsection{Importazione dei Dati Grezzi}
 
-	A questo punto, gli utensili sono pronti: occorre posizionare il pezzo grezzo da lavorare, ovvero importare i dati grezzi in MongoDB. \\
+	A questo punto, sia la macchina che gli utensili sono pronti: occorre posizionare il pezzo grezzo da lavorare, ovvero importare i dati in MongoDB. \\
 
-	Come visto nel capitolo precedente, i dati a disposizioni sono contenuti in sette file \texttt{csv}: si manterrà questa struttura --- almeno inizialmente --- importando quindi ogni file in una sua \textit{collection}. Come is può vedere di seguito, questa operazione è stata descritta nel \texttt{makefile} con l'etichetta \texttt{import}:
+	Come visto nel capitolo precedente, i dati a disposizione sono contenuti in otto file \texttt{csv}: si manterrà questa struttura --- almeno inizialmente --- importando quindi ogni file in una sua \textit{collection}. Come si può vedere di seguito, questa operazione è stata descritta nel \texttt{makefile} con l'etichetta \texttt{import}:
 
 	\begin{center}
 		\includegraphics[scale=0.7]{img/import.png}
@@ -58,11 +64,15 @@ Nell'illustrare le varie operazioni svolte, per favorire una spiegazione lineare
 		make import
 	\end{lstlisting}
 
-	La vera e propria invocazione del comando necessario all'import dei file nel database --- \texttt{mongoimport}, del pacchetti \texttt{mongodb-tools} --- è stata delegata in un file esterno al \texttt{makefile}, per preservare la compattezza e la brevità di quest'ultimo. Si veda comunque di seguito il comando per l'import di uno dei sette file: 
+	\vspace{0.3cm}
+
+	La vera e propria invocazione del comando necessario all'import dei file nel database --- \texttt{mongoimport}, del pacchetto \texttt{mongodb-tools} --- è stata delegata in un file esterno al \texttt{makefile}, per preservare la compattezza e la brevità di quest'ultimo. Si veda comunque di seguito come è struturata la chiamata a \texttt{mongoimport} per uno degli otto file: 
 
 	\begin{lstlisting}[language=bash,caption={dettaglio dell'importazione dei dati in MongoDB}]
 		mongoimport -d exams -c rawStudentsPr1013 --type csv --file ../raw/prod_stud_10-11-12-13.csv --headerline
 	\end{lstlisting}
+
+	\vspace{0.3cm}
 
 	Il comando, come ogni chiamata da \texttt{shell}, ha degli argomenti che ne specificano il comportamento. In questo caso, sono:
 
@@ -71,18 +81,99 @@ Nell'illustrare le varie operazioni svolte, per favorire una spiegazione lineare
 		\item \texttt{-c}: la collection nella quale inserire i dati;
 		\item \texttt{-type}: il tipo del file da leggere;
 		\item \texttt{-file}: il riferimento al file;
-		\item \texttt{-headerline}: indica che gli attributi delle istanze sono specificati nella prima riga del file.
+		\item \texttt{--headerline}: indica che gli attributi delle istanze sono specificati nella prima riga del file.
 	\end{itemize}
 
 	A questo punto, nel database \texttt{exams} di MongoDB ci sono otto \textit{collections}, contenenti i \textit{documenti} che rappresentano le istanze dei dati a disposizione.
 
-\section{Aggregazione per Anno Accademico: dati degli studenti}
+\section{Aggregazione per Anno Accademico}
 
-\section{Aggregazione per Anno Accademico: valutazioni dei corsi}
+	Avendo predisposto tutto, si può procedere con la prima lavorazione da fare. \\
+	
+	Si comincia intanto con l'ottenere dei data set \textit{minimali}, uno per le valutazioni dei corsi, l'altro per la produttività degli studenti, condensando in essi le informazioni principali contenute in quello delle prestazioni degli studenti in pochi parametri relativi ad un certo anno accademico. \\
 
-\section{Join dei due insiemi di dati con attributi continui}
+	\subsection{Produttività degli Studenti}
 
-\section{Join dei due insiemi di dati con attributi discreti}
+		L'obiettivo è sintetizzare le informazioni sulla produttività degli studenti nei seguenti attributi:
+
+		\begin{itemize}
+			\item coorte di immatricolazione;
+			\item numero di studenti totali;
+			\item percentuale di studenti laureati;
+			\item valutazione media ottenuta al test di ingresso;
+			\item voto medio ottenuto agli esami;
+			\item ritardo medio con cui è stato dato un esame.
+		\end{itemize}
+
+		Considerando il tipo dei dati a disposizione, occorrerà innanzitutto aggregare le istanze dei vari studenti in modo opportuno. Questo viene fatto utilizzando un modulo Python programmato \textit{ad hoc}, del quale si riporta di seguito una significativa porzione a titolo di esempio: \\
+
+		\lstinputlisting[language=python,firstline=26,lastline=77, caption={mymodules/aggregs.py}]{../prepr/mymodules/aggregs.py}
+
+		\vspace{0.3cm}
+
+		L'oggetto definito nella porzione di codice appena mostrata viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro spposito script Python: \\
+
+		\lstinputlisting[language=python, caption={dataset\_stud\_gen.py}]{../prepr/dataset_stud_gen.py}
+
+		\vspace{0.3cm}
+
+		Questo codice produce una \textit{collection} che contiene esattamente il data set che ci si è prefissati di ottenere, calcolando un ritardo 	approssimativo medio (in semestri), la percentuale di studenti che hanno finito il corso di laurea nell'arco temporale a disposizione e le varie medie 	degli altri attributi.\\
+
+		\begin{tabular}{llllll}
+		\hline
+		Coorte & N. & Laureati {[}\%{]} & Test Ingresso & Voto & Ritardo \\ \hline
+		2010 & 30 & 6.67 & 15.4 & 25.5 & 0.81 \\
+		2011 & 39 & 10.26 & 13.26 & 24.81 & 1.07 \\
+		2012 & 58 & 25.86 & 14.05 & 24.79 & 1.01 \\
+		2013 & 80 & 11.25 & 14.39 & 24.98 & 0.77 \\ \hline
+		\end{tabular}
+
+		\vspace{0.3cm}
+
+		Il lancio di tutte queste operazioni è descritto nella ricetta \texttt{stud\_gen} del \texttt{makefile}.
+
+	\subsection{Valutazione degli Insegnamenti}
+
+		Analogamente a quanto fatto nella sezione immediatamente precedente, per questa famiglia di dati si vuole ottenere una aggregazione che riassuma i seguenti attributi:
+
+		\begin{itemize}
+			\item anno accademico
+			\item numero di valutazioni registrate
+			\item valutazione complessiva media dei corsi
+			\item deviazione standard delle valutazioni
+			\item percentuale delle valutazioni sufficienti
+		\end{itemize}
+
+		In questo caso è tutto più semplice, in quanto i dati relativi alla valutazione dei corsi sono già in forma aggregata: si tratta quindi solo di comprimerli ulteriormente, facendoli rientrare nello schema che ci si è prefissati. A tale proposito, si utilizzerà ancora il modulo \texttt{aggregs.py}, impiegandone stavolta un oggetto diverso:
+
+		\lstinputlisting[language=python,firstline=172,lastline=259, caption={mymodules/aggregs.py}]{../prepr/mymodules/aggregs.py}
+
+		\vspace{0.3cm}
+
+		Dopo aver usato opportunamente l'oggetto \texttt{ParAggregator}, che mantiene nella \textit{chiave primaria} i corsi, occorre aggregare ancora i dati, rendendo l'Anno Accademico l'unico parametro in grado di discriminare una tupla dall'altra.
+
+		\lstinputlisting[language=python, caption={dataset\_eval\_gen.py}]{../prepr/dataset_eval_gen.py}
+
+		\vspace{0.3cm}
+
+		Il lancio combinato di queste porzioni di codice, specificato con la ricetta \texttt{teval\_gen} del \texttt{makefile}, produce un data set di questo tipo:\\
+
+		\begin{tabular}{lllll}
+		\hline
+		A. A. & Val. Media & Std. Dev. Val. & Val. Sufficienti {[}\%{]} & N. \\ \hline
+		2010-2011 & 7.54 & 1.74 & 82.14 & 17 \\
+		2011-2012 & 7.93 & 1.61 & 90.68 & 26 \\
+		2012-2013 & 7.98 & 1.7 & 90.55 & 30 \\
+		... & ... & ... & ... & .. \\ \hline
+		\end{tabular}
+
+		\vspace{0.3cm}
+
+\section{Join dei due insiemi di dati}
+
+	\subsection{Attributi continui}
+
+	\subsection{Attributi discreti}
 
 \section{Sequenze ordinate di esami superati}
 
