@@ -1,4 +1,5 @@
 \chapter{Analisi Associativa}
+\label{ch:ass}
 
 Di seguito verrà descritto il lavoro svolto nell'ambito della ricerca di regole associative. \\
 
@@ -13,7 +14,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
         Una regola associativa è una implicazione del tipo $A \rightarrow B$, con $A$ e $B$ insiemi di item (detti, appunto \textit{itemset}). Il significato di ciò dovrebbe essere palese: data la presenza di $A$ in una istanza del data set, è \textit{fortemente probabile} la presenza di $B$. La valutazione di questa probabilità avviene considerando alcune metriche particolari quali, ad esempio, la \textit{confidenza} o il \textit{lift}. \\
 
         Portando un esempio sul data set oggetto di questa analisi, una tanto probabile quanto banale regola associativa che ci si aspetta di trovare potrà essere del tipo \textit{"Valutazione del corso: ALTA"} $\rightarrow$ \textit{"Voto conseguito: ALTO"}. \\
-        
+
         Quello a cui si mira, però, è riuscire a scoprire qualche altra regola che trascenda il limite dell'ovvio, aprendo così le porte a interpretazioni non immediate dell'insieme di dati su cui si sta lavorando. Per questo motivo, oltre all'aiuto di criteri algoritmici di potatura, occorrerà comunque prevedere un \textit{intervento umano} nel \textit{post processing} delle regole generate.
 
     \subsection{L'algoritmo Apriori di Weka}
@@ -26,7 +27,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
     \end{figure}
 
         Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato che una regola non è altro che una implicazione generata da un partizionamento binario di un itemset frequente, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
-        
+
         In estrema sintesi, l'idea generale è quella di generare una lista di \textit{candidati} semplici --- cioè di itemset che potrebbero essere frequenti --- verificarne il \textit{supporto} e usare quelli idonei per generare altri candidati più complessi. Il principio Apriori, infatti, stabilisce che se un itemset con pochi elementi è infrequente, lo saranno anche tutti gli itemset che lo comprendono. Questo fatto, detto \textit{anti-motonia} del supporto, ci consente di evitare di generare e calcolare la frequenza di ogni possibile itemset, rendendo trattabile quello che sarebbe invece un problema $NP-Completo$. \\
 
         Nel dettaglio dell'analisi da effettuare, l'algoritmo Apriori messo a disposizione dal software Weka accetta in input diversi parametri, che consentono di specificarne il comportamento dell'algoritmo, adattandolo agli scopi che ci si è prefissi. Si veda adesso una configurazione di esempio:\\
@@ -51,7 +52,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
         \end{itemize}
 
         Ovviamente, come si può vedere in Figura \ref{apriori_weka}, sono possibili molte altre personalizzazioni e impostazioni, fatto che rende l'implementazione di Weka dell'algoritmo Apriori estremamente flessibile ed adattabile a molte esigenze. \\
- 
+
 \section{Apriori su dataset aggregato}
 
     Decidere a priori i parametri ottimali per l'algoritmo Apriori --- \footnotesize{gioco di parole non intenzionale }\normalsize --- è da considerarsi impossibile. Pertanto, anche in questo caso l'iter più adatto per ottenere dei risultati che possono essere giudicati interessanti è il banale ma efficace \textit{trial-and-error}. \\
