@@ -112,7 +112,7 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 		\vspace{0.3cm}
 
-		L'oggetto definito nella porzione di codice appena mostrata viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro spposito script Python: \\
+		L'oggetto definito nella porzione di codice appena mostrata viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro apposito script Python: \\
 
 		\lstinputlisting[language=python, caption={dataset\_stud\_gen.py}]{../prepr/dataset_stud_gen.py}
 
@@ -172,7 +172,23 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 \section{Join dei due insiemi di dati}
 
-	\subsection{Attributi continui}
+	Il \textit{join} delle due famiglie di dati è l'operazione più delicata fra quelle di tutto il \textit{preprocessing}. Occorre definire bene gli attributi sui quali definire la relazione, e prestare in generale attenzione ai vari errori che, se commessi, comprometterebbero totalmente il significato del risultato. \\
+
+	\subsection{Join con valutazioni estese e attributi continui}
+
+		Per prima cosa, si è realizzata una \textit{join} fra i due data set aggregando i dati degli studenti \textbf{per esame}, e i dati delle valutazioni dei corsi \textbf{per paragrafo}. Osservando l'albero delle dipendenze specificato nel \texttt{makefile} riportato in \ref{appendix:makefile}, si può notare che sono state prima realizzate le aggregazioni dei singoli data set e, solo successivamente, performata l'operazione di \textit{join} fra di essi. \\
+
+		L'aggregazione dei dati degli studenti avviene in modo del tutto analogo a quanto fatto nella sezione precedente con l'oggetto \texttt{StudAggregator} del modulo Python \texttt{aggregs.py}. \\
+
+		Per quanto riguarda l'aggregazione dei dati delle valutazioni dei corsi, sono state effettuati vari passaggi per arrivare ad aggregare ... descritti in \ref{appendix:teval}. //
+
+		Predisposti opportunamente i due insiemi di dati in due \textit{collection}, la fase di merge è stata portata avanti grazie all'ausilio di un altro modulo Python scritto \textit{ad hoc}: si tratta dell'oggetto \texttt{Merger}, contenuto nel file \texttt{merge.py}, il cui codice è riportato qui sotto:
+
+		\lstinputlisting[language=python, caption={mymodules/merge.py}]{../prepr/mymodules/merge.py}
+
+		Tale oggetto viene utilizzato nello script \texttt{dataset\_merge.py}, delegato in questo modo...
+
+
 
 	\subsection{Attributi discreti}
 
