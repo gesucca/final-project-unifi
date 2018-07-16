@@ -180,16 +180,60 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 		L'aggregazione dei dati degli studenti avviene in modo del tutto analogo a quanto fatto nella sezione precedente con l'oggetto \texttt{StudAggregator} del modulo Python \texttt{aggregs.py}. \\
 
-		Per quanto riguarda l'aggregazione dei dati delle valutazioni dei corsi, sono state effettuati vari passaggi per arrivare ad aggregare ... descritti in \ref{appendix:teval}. //
+		Per quanto riguarda l'aggregazione dei dati delle valutazioni dei corsi, sono state effettuati vari passaggi per arrivare ad aggregare ... descritti in \ref{appendix:teval}. \\
 
 		Predisposti opportunamente i due insiemi di dati in due \textit{collection}, la fase di merge è stata portata avanti grazie all'ausilio di un altro modulo Python scritto \textit{ad hoc}: si tratta dell'oggetto \texttt{Merger}, contenuto nel file \texttt{merge.py}, il cui codice è riportato qui sotto:
 
 		\lstinputlisting[language=python, caption={mymodules/merge.py}]{../prepr/mymodules/merge.py}
 
-		Tale oggetto viene utilizzato nello script \texttt{dataset\_merge.py}, delegato in questo modo...
+		Tale oggetto viene utilizzato nello script \texttt{dataset\_merge.py}. Il \textit{join} avviene, chiaramente, sugli attributi \textbf{Anno Accademico} e \textbf{Corso d'Esame}, trasferendo gli attributi specifici di una collezione direttamente nell'altra in questo modo:
 
+		\lstinputlisting[language=python, caption={dataset\_merge.py}]{../prepr/dataset_merge.py}
 
+		A questo punto, la collezione risultante da queste operazioni ha le caratteristiche cercate. Tuttavia, presenta delle "sbavature" che è conveniente rimuovere prima di impiegarla efficacemente nel \textit{data mining}. Per eliminarle, ci si avvale di un ulteriore modulo Python realizzato per l'occasione, \texttt{cleanings.py}, il cui codice viene omesso in questa sezione per ragioni di brevità\footnote{Tale codice è comunque riportato in \ref{appendix:clean}}. \\
 
+		Tutte queste operazioni sono invocate tramite le seguenti ricette, definite nel \texttt{makefile}:
+		
+		\begin{center}
+			\includegraphics[scale=0.7]{img/join.png}
+		\end{center}
+
+		Concluso quanto appena descritto, si è creato un primo data set utilizzabile. Esso presenta i seguenti attributi, tutti di tipo	\textit{continuo} --- tranne ovviamente le \textit{chiavi primarie} e le istanze considerate per la produttività degli studenti:
+
+		\begin{itemize}
+			\item Anno Accademico
+			\item Hash Docente/i
+			\item Insegnamento
+			\item \textbf{Produttività Studenti}:
+				\subitem N [istanze]
+				\subitem Ritardo >=1sem [percent]
+				\subitem Ritardo [semestre, media]
+				\subitem Voto >= 24 [perc]
+				\subitem Voto [media]
+				\subitem Voto [std dev]
+			\item \textbf{Valutazione degli Aspetti Specifici del Corsi di Studi}:
+				\subitem N [istanze]
+				\subitem Std Dev [media pesata]
+				\subitem Val >= 6 [percent]
+				\subitem Val [media pesata]
+			\item \textbf{Valutazione dell'adeguatezza delle Aule e delle Attrezzature}:
+				\subitem \textit{attributi identici alla valutazione precedente}
+			\item \textbf{Valutazione sul Docente}:
+				\subitem \textit{attributi identici alla valutazione precedente}
+			\item \textbf{Valutazione sulla Disponibilità di Informazioni Aggiuntive}:
+				\subitem \textit{attributi identici alla valutazione precedente}
+			\item \textbf{Valutazione dell'Organizzazione del Corso di Studi}:
+				\subitem \textit{attributi identici alla valutazione precedente}
+			\item \textbf{Valutazione dell'Organizzazione della Didattica}:
+				\subitem \textit{attributi identici alla valutazione precedente}
+			\item \textbf{Soddisfazione degli Studenti riguardo al Corso di Studi}:
+				\subitem \textit{attributi identici alla valutazione precedente}
+		\end{itemize}
+
+		Come si può notare agilmente, il data set presenta un gran numero di attributi, molti fin troppo specifici per poterne estrarre un qualche tipo di informazione generale. Pertanto, è stato deciso aggregare ulteriormente fra loro gli attributi relativi alle valutazioni dei corsi, per sfoltire significativamente la quantità di campi presenti.
+		
+	\subsection{Join con valutazioni aggregate e attributi continui}
+	
 	\subsection{Attributi discreti}
 
 \section{Sequenze ordinate di esami superati}
