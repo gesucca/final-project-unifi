@@ -22,7 +22,7 @@
 \usepackage{listings}
 \usepackage{subfig}
 \usepackage{caption}
-\usepackage[toc, page]{appendix}
+\usepackage[toc]{appendix}\addto{\captionsitalian}{\renewcommand{\appendixtocname}{Appendici}}
 \usepackage{siunitx}
 \usepackage{dtk-logos} % just cause it's cool
 %--------------------------------------------------------------
@@ -79,11 +79,10 @@
 \include{src/prepr}
 \include{src/visual}
 \include{src/cluster}
-\include{src/seq}
 \include{src/ass}
+\include{src/seq}
 \include{src/fine}
 \include{src/bibl}
-\appendix
 \include{src/appendix}
 %--------------------------------------------------------------
 \end{document}
