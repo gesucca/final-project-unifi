@@ -88,7 +88,9 @@ Il dataset è stato fornito in sette diversi file CSV, uno per ogni anno accadem
 	\item \textbf{Quesito}: stringa descrittiva contenente il testo della domanda posta allo studente.
 \end{itemize}
 
-\noindent A ogni tupla, identificata dai valori dei campi precedentemente descritti, corrispondono queste informazioni:
+\noindent  Si notiche ilcampo riguardante il docente ne riporta originariamente nome e cognome per esteso. Per salvaguardarne la privacy, i valori di questo campo sono stati sostituiti con le loro immagini tramite una funzione di \textit{hash}, preservando l'unicità del valore ma nascondendo l'effettiva identità del docente.
+
+A ogni tupla, identificata dai valori dei campi precedentemente descritti, corrispondono queste informazioni:
 
 \begin{itemize}
 	\item \textbf{P1, P2}: $ \{ x \in \mathbb{R} \text{ tale che } 0 \leq x \leq 100 \} $  percentuali rispettivamente di risposte sufficienti ($ \geq 6$) e insufficienti ($ < 6$).

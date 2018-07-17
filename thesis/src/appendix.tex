@@ -1,19 +1,87 @@
 \begin{appendices}
 \label{appendix}
 \chapter{MakeFile e Codice Python}
-bla bla bla
 
-    \section{Makefile}
+    \section{Pulizia delle Collection}
+    \label{appendix:cleanings}
+
+        Modulo Python per la pulizia delle \textit{collection}: \\
+        \lstinputlisting[language=python]{../prepr/mymodules/cleanings.py}
+
+        \vspace{0.8 cm}
+
+        Script che utilizzano il modulo, riferiti nel \texttt{makefile}: \\
+        \lstinputlisting[language=python, caption={dataset\_clean.py}]{../prepr/dataset_clean.py}
+        \lstinputlisting[language=python, caption={teva\_clean.py}]{../prepr/teval_clean.py}
+
+    \section{Aggregazione degli Attributi}
+    \label{appendix:aggregs}
+
+        Modulo Python per l'aggregazione degli attributi: \\
+        \lstinputlisting[language=python]{../prepr/mymodules/aggregs.py}
+
+        \vspace{0.8 cm}
+
+        Script che utilizza il modulo, riferito nel \texttt{makefile}: \\
+        \lstinputlisting[language=python, caption={teval\_aggr.py}]{../prepr/teval_aggr.py}
+        \lstinputlisting[language=python, caption={stud\_aggr.py}]{../prepr/stud_aggr.py}
+
+    \section{Discretizzazione}
+    \label{appendix:discretize}
+
+        Modulo Python per la discretizzazione degli attributi: \\
+        \lstinputlisting[language=python]{../prepr/mymodules/discretize.py}
+
+        \vspace{0.8 cm}
+
+        Script che contiene le dichiarazioni dei \textit{range} di discretizzazione:
+        \lstinputlisting[language=python, caption={PREPR\_PARAMS.py}]{../prepr/PREPR_PARAMS.py}
+
+        \vspace{0.8 cm}
+
+        Script che utilizza il modulo, riferito nel \texttt{makefile}: \\
+        \lstinputlisting[language=python, caption={dataset\_discretize.py}]{../prepr/dataset_discretize.py}
+
+    \section{Join}
+    \label{appendix:merge}
+        Modulo Python per effettuare \textit{join} e \textit{merge} fra due \textit{collection}: \\
+        \lstinputlisting[language=python]{../prepr/mymodules/merge.py}
+
+        \vspace{0.8 cm}
+
+        Script che utilizzano il modulo, riferiti nel \texttt{makefile}: \\
+        \lstinputlisting[language=python, caption={dataset\_merge.py}]{../prepr/dataset_merge.py}
+        \lstinputlisting[language=python, caption={teval\_merge.py}]{../prepr/teval_merge.py}
+
+    \section{Produzione Data Set}
+   
+        \subsection{Minimizzazione degli Attributi sul Data Set Unito}
+        \label{appendix:min}
+
+            Script per l'aggregazione totale della valuazione degli insegnamenti sul data set unito, riferito nel \texttt{makefile}: \\
+            \lstinputlisting[language=python, caption={dataset\_min.py}]{../prepr/dataset_min.py}
+
+        \subsection{Condensazione delle Valutazioni sui Insegnamenti}
+        \label{appendix:eval}
+
+            Script per l'aggregazione della valuazione degli insegnamenti in un data set minimale, riferito nel \texttt{makefile}: \\
+            \lstinputlisting[language=python, caption={dataset\_eval\_gen.py}]{../prepr/dataset_eval_gen.py}
+
+        \subsection{Condensazione della Produttività degli Studenti}
+        \label{appendix:stud}
+
+            Script per l'aggregazione della produttività degli studenti in un data set minimale, riferito nel \texttt{makefile}: \\
+            \lstinputlisting[language=python, caption={dataset\_stud\_gen.py}]{../prepr/dataset_stud_gen.py}
+
+        \subsection{Sequenze Ordinate di Esami Superati}
+        \label{appendix:seq}
+
+            Script per estrarre delle sequenze ordinate di esami superati da ogni studente, in un formato direttamente utilizzabile da Weka: \\
+            \lstinputlisting[language=python, caption={dataset\_stud\_gen.py}]{../prepr/dataset_stud_seq.py}
+
+    \section{MakeFile}
     \label{appendix:makefile}
 	    \lstinputlisting{../makefile.}
         % on windows - miktex, it wants a dot because of reasons
-
-    \section{Script Python per l'aggregazione delle Valutazioni dei Corsi}
-    \label{appendix:teval}
-
-     \section{Script Python per la pulizia delle collection}
-    \label{appendix:clean}
-
-    aaa
 
 \end{appendices}
