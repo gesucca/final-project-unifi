@@ -1,0 +1,18 @@
+Titolo:
+    In italiano il significato deve essere come ha proposto lei, se riesco ad accorciarlo bene
+    In inglese va bene il "mining and analisys" come avevo fatto io, ma il resto deve essere come ha detto lei
+
+Caption (descrizioni...) delle figure:
+    Devono essere perfettamente descrittive
+
+Matrice di correlazione di Pearson
+    Occhio ai valori con zero - esami non passati - non vengono considerati nella misura della correlazione. O altra metrica, oppure considerare solo gli studenti che hanno passato tutti gli esami presi in considerazione.
+
+Esami "difficili":
+    Si può dire (!!!), ma non devono essere affermazioni tipo "è l'esame più difficile" (perché che signfica difficile?)
+
+ Sequenze esami "fuori posto":
+    Bug nella determinazione di cosa è fuori posto: BDSI non dovrebbe esserci, debuggare!
+    A lei gira anche con più istanze. Problema installazione di Weka? Lei ha Weka 64-bit su Java9 e Windows 10.
+    A questo punto, visto che funziona, rifare dataset (totale e per coorti) per rilanciarci GSP e tutto il procedimento che avevo preparato.
+ 
