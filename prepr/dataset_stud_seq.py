@@ -66,181 +66,88 @@ def fix_names(filename):
     with open(filename, 'w') as file:
         file.write(filedata)
 
-# BEWARE: bad code follows (and bad code preceeded, but whatever)
+def add_ids(filename, id):
+    with open(filename, 'r') as file :
+        filedata = file.read()
+
+    id_string = '{'
+
+    for i in range(1, id):
+        id_string = id_string + str(i) + ', '
+
+    id_string = id_string[:-2] # remove last comma
+    id_string = id_string + '}'
+
+    filedata = filedata.replace('{--ADD IDs--}', id_string)
+
+    with open(filename, 'w') as file:
+        file.write(filedata)
+
+
+def init_file(filename):
+    with open(filename, 'w') as the_file:
+        the_file.write('@relation students_career\n')
+        the_file.write('\n')
+        the_file.write('@attribute StudentID {--ADD IDs--}\n')
+        the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
+        the_file.write('\n')
+        the_file.write('@data\n')
+
 
 os.chdir('../datasets')
 
-with open('seq_stud_2010_liceo.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2010_ist_tecn.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2011_liceo.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2011_ist_tecn.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2012_liceo.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2012_ist_tecn.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2013_liceo.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_2013_ist_tecn.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_best.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
-
-with open('seq_stud_worst.arff', 'w') as the_file:
-    the_file.write('@relation students_career\n')
-    the_file.write('\n')
-    the_file.write('@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55}\n')
-    the_file.write('@attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}\n')
-    the_file.write('\n')
-    the_file.write('@data\n')
+init_file('seq_stud_all.arff')
+init_file('seq_stud_2010.arff')
+init_file('seq_stud_2011.arff')
+init_file('seq_stud_2012.arff')
+init_file('seq_stud_2013.arff')
 
 scheme = MongoClient().exams
 coll = scheme['rawStudentsPr1013']
-studentID = {'2010_L': 1, '2010_I': 1, '2011_L': 1, '2011_I': 1, '2012_L': 1, '2012_I': 1, '2013_L': 1, '2013_I': 1, 'laureati': 1, 'peggiori': 1}
+studentID = {'ALL': 1, '2010': 1, '2011': 1, '2012': 1, '2013': 1}
 
 for doc in coll.find():
 
-    # beware of the pruning criterias
     coorte = doc['coorte']
-    scuola = doc['tipo_scuola']
-    crediti = doc['crediti_totali']
-    voto = doc['voto_medio']
 
     lst = datetime_sorted(only_the_dates(doc))
 
-    if crediti >= 60 and coorte == 2010 and 'L' in scuola:
+    for exam in lst:
+            with open('seq_stud_all.arff', 'a') as the_file:
+                the_file.write(str(studentID['ALL']) + ',' + exam + '\n')
+    studentID['ALL'] = studentID['ALL'] +1
+
+    if coorte == 2010:
         for exam in lst:
-            with open('seq_stud_2010_liceo.arff', 'a') as the_file:
-                the_file.write(str(studentID['2010_L']) + ',' + exam + '\n')
+            with open('seq_stud_2010.arff', 'a') as the_file:
+                the_file.write(str(studentID['2010']) + ',' + exam + '\n')
+        studentID['2010'] = studentID['2010'] + 1
 
-        studentID['2010_L'] = studentID['2010_L'] + 1
-
-    if crediti >= 60 and coorte == 2010 and 'T' in scuola:
+    if coorte == 2011:
         for exam in lst:
-            with open('seq_stud_2010_ist_tecn.arff', 'a') as the_file:
-                the_file.write(str(studentID['2010_I']) + ',' + exam + '\n')
+            with open('seq_stud_2011.arff', 'a') as the_file:
+                the_file.write(str(studentID['2011']) + ',' + exam + '\n')
+        studentID['2011'] = studentID['2011'] + 1
 
-        studentID['2010_I'] = studentID['2010_I'] + 1
-
-    if crediti >= 120 and coorte == 2011 and 'L' in scuola:
+    if coorte == 2012:
         for exam in lst:
-            with open('seq_stud_2011_liceo.arff', 'a') as the_file:
-                the_file.write(str(studentID['2011_L']) + ',' + exam + '\n')
+            with open('seq_stud_2012.arff', 'a') as the_file:
+                the_file.write(str(studentID['2012']) + ',' + exam + '\n')
+        studentID['2012'] = studentID['2012'] + 1
 
-        studentID['2011_L'] = studentID['2011_L'] + 1
-
-    if crediti >= 120 and coorte == 2011 and 'T' in scuola:
+    if coorte == 2013:
         for exam in lst:
-            with open('seq_stud_2011_ist_tecn.arff', 'a') as the_file:
-                the_file.write(str(studentID['2011_I']) + ',' + exam + '\n')
+            with open('seq_stud_2013.arff', 'a') as the_file:
+                the_file.write(str(studentID['2013']) + ',' + exam + '\n')
+        studentID['2013'] = studentID['2013'] + 1
 
-        studentID['2011_I'] = studentID['2011_I'] + 1
-
-    if crediti >= 180 and voto >= 26 and coorte == 2012 and 'L' in scuola:
-        for exam in lst:
-            with open('seq_stud_2012_liceo.arff', 'a') as the_file:
-                the_file.write(str(studentID['2012_L']) + ',' + exam + '\n')
-
-        studentID['2012_L'] = studentID['2012_L'] + 1
-
-    if crediti >= 180 and voto >= 26 and coorte == 2012 and 'T' in scuola:
-        for exam in lst:
-            with open('seq_stud_2012_ist_tecn.arff', 'a') as the_file:
-                the_file.write(str(studentID['2012_I']) + ',' + exam + '\n')
-
-        studentID['2012_I'] = studentID['2012_I'] + 1
-
-    if crediti >= 160 and coorte == 2013 and 'L' in scuola:
-        for exam in lst:
-            with open('seq_stud_2013_liceo.arff', 'a') as the_file:
-                the_file.write(str(studentID['2013_L']) + ',' + exam + '\n')
-
-        studentID['2013_L'] = studentID['2013_L'] + 1
-
-    if crediti >= 160 and coorte == 2013 and 'T' in scuola:
-        for exam in lst:
-            with open('seq_stud_2013_ist_tecn.arff', 'a') as the_file:
-                the_file.write(str(studentID['2013_I']) + ',' + exam + '\n')
-
-        studentID['2013_I'] = studentID['2013_I'] + 1
-
-    if crediti == 180 and voto >= 29:
-        for exam in lst:
-            with open('seq_stud_best.arff', 'a') as the_file:
-                the_file.write(str(studentID['laureati']) + ',' + exam + '\n')
-
-        studentID['laureati'] = studentID['laureati'] + 1
-
-    if crediti <= 50:
-        for exam in lst:
-            with open('seq_stud_worst.arff', 'a') as the_file:
-                the_file.write(str(studentID['peggiori']) + ',' + exam + '\n')
-
-        studentID['peggiori'] = studentID['peggiori'] + 1
-
-fix_names('seq_stud_2010_liceo.arff')
-fix_names('seq_stud_2010_ist_tecn.arff')
-fix_names('seq_stud_2011_liceo.arff')
-fix_names('seq_stud_2011_ist_tecn.arff')
-fix_names('seq_stud_2012_liceo.arff')
-fix_names('seq_stud_2012_ist_tecn.arff')
-fix_names('seq_stud_2013_liceo.arff')
-fix_names('seq_stud_2013_ist_tecn.arff')
-fix_names('seq_stud_best.arff')
-fix_names('seq_stud_worst.arff')
+fix_names('seq_stud_all.arff')
+add_ids('seq_stud_all.arff', studentID['ALL'])
+fix_names('seq_stud_2010.arff')
+add_ids('seq_stud_2010.arff', studentID['2010'])
+fix_names('seq_stud_2011.arff')
+add_ids('seq_stud_2011.arff', studentID['2011'])
+fix_names('seq_stud_2012.arff')
+add_ids('seq_stud_2012.arff', studentID['2012'])
+fix_names('seq_stud_2013.arff')
+add_ids('seq_stud_2013.arff', studentID['2013'])
