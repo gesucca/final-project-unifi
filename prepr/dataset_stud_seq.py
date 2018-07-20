@@ -109,37 +109,42 @@ studentID = {'ALL': 1, '2010': 1, '2011': 1, '2012': 1, '2013': 1}
 for doc in coll.find():
 
     coorte = doc['coorte']
+    cfu = int(doc['crediti_totali'])
+
+    min_cfu = 60
 
     lst = datetime_sorted(only_the_dates(doc))
 
-    for exam in lst:
-            with open('seq_stud_all.arff', 'a') as the_file:
-                the_file.write(str(studentID['ALL']) + ',' + exam + '\n')
-    studentID['ALL'] = studentID['ALL'] +1
+    if cfu >= min_cfu:
 
-    if coorte == 2010:
         for exam in lst:
-            with open('seq_stud_2010.arff', 'a') as the_file:
-                the_file.write(str(studentID['2010']) + ',' + exam + '\n')
-        studentID['2010'] = studentID['2010'] + 1
+                with open('seq_stud_all.arff', 'a') as the_file:
+                    the_file.write(str(studentID['ALL']) + ',' + exam + '\n')
+        studentID['ALL'] = studentID['ALL'] +1
 
-    if coorte == 2011:
-        for exam in lst:
-            with open('seq_stud_2011.arff', 'a') as the_file:
-                the_file.write(str(studentID['2011']) + ',' + exam + '\n')
-        studentID['2011'] = studentID['2011'] + 1
+        if coorte == 2010:
+            for exam in lst:
+                with open('seq_stud_2010.arff', 'a') as the_file:
+                    the_file.write(str(studentID['2010']) + ',' + exam + '\n')
+            studentID['2010'] = studentID['2010'] + 1
 
-    if coorte == 2012:
-        for exam in lst:
-            with open('seq_stud_2012.arff', 'a') as the_file:
-                the_file.write(str(studentID['2012']) + ',' + exam + '\n')
-        studentID['2012'] = studentID['2012'] + 1
+        if coorte == 2011:
+            for exam in lst:
+                with open('seq_stud_2011.arff', 'a') as the_file:
+                    the_file.write(str(studentID['2011']) + ',' + exam + '\n')
+            studentID['2011'] = studentID['2011'] + 1
 
-    if coorte == 2013:
-        for exam in lst:
-            with open('seq_stud_2013.arff', 'a') as the_file:
-                the_file.write(str(studentID['2013']) + ',' + exam + '\n')
-        studentID['2013'] = studentID['2013'] + 1
+        if coorte == 2012:
+            for exam in lst:
+                with open('seq_stud_2012.arff', 'a') as the_file:
+                    the_file.write(str(studentID['2012']) + ',' + exam + '\n')
+            studentID['2012'] = studentID['2012'] + 1
+
+        if coorte == 2013:
+            for exam in lst:
+                with open('seq_stud_2013.arff', 'a') as the_file:
+                    the_file.write(str(studentID['2013']) + ',' + exam + '\n')
+            studentID['2013'] = studentID['2013'] + 1
 
 fix_names('seq_stud_all.arff')
 add_ids('seq_stud_all.arff', studentID['ALL'])
