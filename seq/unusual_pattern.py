@@ -1,9 +1,13 @@
 import glob
-import os
-
 from collections import deque
 
-from out_of_place import prepare_list
+
+def prepare_list(line):
+    line = line.split('{')
+    line = deque(line)
+    line.popleft()
+    line.pop()
+    return list(line)
 
 
 def unusual_pattern(filename):
@@ -35,6 +39,6 @@ with open('unusual_pattern.res', 'w') as the_file:
     the_file.write('Non sorted frequent sequences will be printed here.\n')
     the_file.write('\n')
 
-
 for file in glob.glob("*.txt"):
+    print('scannning: ' + file)
     unusual_pattern(file)

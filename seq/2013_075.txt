@@ -1,0 +1,67 @@
+=== Run information ===
+
+Scheme:       weka.associations.GeneralizedSequentialPatterns -S 0.75 -I 0 -F -1
+Relation:     students_career
+Instances:    839
+Attributes:   2
+              StudentID
+              ExamID
+=== Associator model (full training set) ===
+
+GeneralizedSequentialPatterns
+=============================
+
+Number of cycles performed: 3
+Total number of frequent sequences: 39
+
+Frequent Sequences Details (filtered):
+
+- 1-sequences
+
+[1] <{1_ASD}> (58)
+[2] <{1_ADE}> (55)
+[3] <{1_AN1}> (57)
+[4] <{1_PRG}> (56)
+[5] <{1_MDL}> (48)
+[6] <{1_ENG}> (48)
+[7] <{2_1_ALG}> (54)
+[8] <{2_1_MDP}> (51)
+[9] <{2_1_PRC}> (49)
+[10] <{2_2_AN2}> (50)
+[11] <{2_2_BDS}> (52)
+[12] <{2_2_SOP}> (44)
+[13] <{3_1_INC}> (45)
+
+- 2-sequences
+
+[1] <{1_ASD}{1_ADE}> (52)
+[2] <{1_ASD}{1_PRG}> (52)
+[3] <{1_ASD}{2_1_ALG}> (54)
+[4] <{1_ASD}{2_1_MDP}> (51)
+[5] <{1_ASD}{2_1_PRC}> (49)
+[6] <{1_ASD}{2_2_AN2}> (50)
+[7] <{1_ASD}{2_2_BDS}> (52)
+[8] <{1_ASD}{2_2_SOP}> (44)
+[9] <{1_ASD}{3_1_INC}> (45)
+[10] <{1_AN1}{2_1_ALG}> (52)
+[11] <{1_AN1}{2_1_MDP}> (46)
+[12] <{1_AN1}{2_1_PRC}> (47)
+[13] <{1_AN1}{2_2_AN2}> (50)
+[14] <{1_AN1}{2_2_BDS}> (48)
+[15] <{1_PRG}{2_1_ALG}> (48)
+[16] <{1_PRG}{2_1_MDP}> (51)
+[17] <{1_PRG}{2_1_PRC}> (49)
+[18] <{1_PRG}{2_2_AN2}> (47)
+[19] <{1_PRG}{2_2_BDS}> (51)
+[20] <{1_PRG}{2_2_SOP}> (44)
+[21] <{1_PRG}{3_1_INC}> (45)
+
+- 3-sequences
+
+[1] <{1_ASD}{1_PRG}{2_1_ALG}> (45)
+[2] <{1_ASD}{1_PRG}{2_1_MDP}> (47)
+[3] <{1_ASD}{1_PRG}{2_1_PRC}> (45)
+[4] <{1_ASD}{1_PRG}{2_2_AN2}> (45)
+[5] <{1_ASD}{1_PRG}{2_2_BDS}> (47)
+
+

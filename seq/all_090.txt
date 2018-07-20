@@ -1,0 +1,33 @@
+=== Run information ===
+
+Scheme:       weka.associations.GeneralizedSequentialPatterns -S 0.9 -I 0 -F -1
+Relation:     students_career
+Instances:    2159
+Attributes:   2
+              StudentID
+              ExamID
+=== Associator model (full training set) ===
+
+GeneralizedSequentialPatterns
+=============================
+
+Number of cycles performed: 2
+Total number of frequent sequences: 8
+
+Frequent Sequences Details (filtered):
+
+- 1-sequences
+
+[1] <{1_ASD}> (147)
+[2] <{1_ADE}> (137)
+[3] <{1_AN1}> (145)
+[4] <{1_PRG}> (145)
+[5] <{2_1_ALG}> (137)
+[6] <{2_1_PRC}> (132)
+
+- 2-sequences
+
+[1] <{1_ASD}{2_1_ALG}> (134)
+[2] <{1_PRG}{2_1_PRC}> (132)
+
+

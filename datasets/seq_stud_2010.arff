@@ -1,6 +1,6 @@
 @relation students_career
 
-@attribute StudentID {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
+@attribute StudentID {1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
 @attribute ExamID {1_ASD, 1_ADE, 1_AN1, 1_PRG, 1_MDL, 1_ENG, 2_1_ALG, 2_1_MDP, 2_1_CPS, 2_1_PRC, 2_2_AN2, 2_2_FIG, 2_2_BDS, 2_2_SOP, 3_1_REC, 3_1_INC, 3_1_CAZ, 3_2_CAN, 3_2_ITE, 3_2_CES}
 
 @data
@@ -58,8 +58,6 @@
 4,2_1_MDP
 4,2_1_ALG
 4,2_1_PRC
-5,1_ENG
-5,1_ASD
 6,1_ENG
 6,1_AN1
 6,1_PRG
