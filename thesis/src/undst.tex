@@ -6,6 +6,8 @@
     deletekeywords={data,frame,length,as,character},
     keywordstyle=\color{blue},
     commentstyle=\color{gray},
+    numbers=left,
+    stepnumber=1
 }
 
 \chapter{Data Understanding Preliminare}
@@ -35,23 +37,23 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
         Si è quindi optato per utilizzare il software \textbf{R}, in quanto consente d'impiegare efficientemente un gran numero di approfondite tecniche di visualizzazione. Tuttavia, la potenza e la flessibilità offerte da questo tipo di strumento si pagano con la necessita di dedicare un minimo di attenzione all'importazione del data set in quell'ambiente di lavoro. \\
 
-        In senso pratico, questo si traduce nel lanciare del codice analogo \footnotesize{--- non identico: sono stati accorciati i percorsi ---}\normalsize\ a quanto mostrato di seguito prima di poter effettuare qualunque altra operazione.
+        In senso pratico, questo si traduce nel lanciare del codice analogo \footnotesize{--- non identico: sono stati accorciati i percorsi ---}\normalsize\ a quanto mostrato di seguito prima di poter effettuare qualunque altra operazione. \\
 
         \begin{lstlisting}
-        # set the repo root path before importing data!!!
-        setwd("C:/a/path/to/somewhere")
-        students <- read.csv("raw/prod_stud.csv")
+# set the repo root path before importing data!!!
+setwd("C:/a/path/to/somewhere")
+students <- read.csv("raw/prod_stud.csv")
 
-        # gather some info about the imported data set
-        str(students)
+# gather some info about the imported data set
+str(students)
 
-        # ADJUST DATA ATTRIBUTES 
-        # convert "coorte" to nominal by making it a factor 
-        students[, c(1)] <- sapply(students[, c(1)], factor)
+# ADJUST DATA ATTRIBUTES
+# convert "coorte" to nominal by making it a factor
+students[, c(1)] <- sapply(students[, c(1)], factor)
 
-        # ok, let's take a look at it now
-        str(students)
-        summary(students)
+# ok, let's take a look at it now
+str(students)
+summary(students)
         \end{lstlisting}
 
         In ogni caso, dato l’elevato numero degli attributi del data set, è stato necessario prendere delle decisioni relative a cosa visualizzare – e con quale tecnica. Le scelte sono state ovviamente compiute su base intuitiva, a seguito di un’analisi sommaria delle caratteristiche del data set. \\
@@ -69,22 +71,21 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             Lo script \textbf{R} che segue disegna dei grafci di dispersione su coppie di attributi relativi alle prestazioni generali degli studenti. Lo scopo è quello di individuare visivamente delle correlazioni significative fra questi attributi.\\
 
             \begin{lstlisting}
-            colors <- c("blue","red", "green", "orange")
-            coorte_labels <- students[,1]
-            coorte_colors <- colors[as.numeric(coorte_labels)]
-            library(seriation)
-            
-            # general attributes
-            students_subset1 <- students[,-c(1, 6 : 45)]
-            pairs(students_subset1, col = coorte_colors,lower.panel = 	NULL,cex.labelsiris=2, pch=19, cex = 1.2)
-            par(xpd = TRUE)
-            legend(x = 0.05, y = 0.4, cex = 1,legend = 	as.character(levels(coorte_labels)),fill = unique(coorte_colors))
-            par(xpd = NA)
+colors <- c("blue","red", "green", "orange")
+coorte_labels <- students[,1]
+coorte_colors <- colors[as.numeric(coorte_labels)]
+library(seriation)
+
+# general attributes
+students_subset1 <- students[,-c(1, 6 : 45)]
+pairs(students_subset1, col = coorte_colors,lower.panel = 	NULL,cex.labelsiris=2, pch=19, cex = 1.2)
+par(xpd = TRUE)
+legend(x = 0.05, y = 0.4, cex = 1,legend = 	as.character(levels(coorte_labels)),fill = unique(coorte_colors))
+par(xpd = NA)
             \end{lstlisting}
 
             \begin{figure}
-                \centering
-                \caption{grafico di dispersione sugli attributi generali del data set degli studenti}
+                \caption{grafici di dispersione riguardanti attributi generali del data set degli studenti}
                 \label{fig1}
             	\includegraphics[scale=0.33]{img/scatter_plot_1_gen.png}
             \end{figure}
@@ -92,7 +93,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             Come si può vedere sul grafico generato dallo script --- mostrato in Figura \ref{fig1} --- esistono varie correlazioni fra gli attributi considerati. Nel merito, la relazione fra le quantità \textit{crediti totali} e \textit{crediti con voto} è tanto palese quanto banale: il primo ammontare contiene il secondo, e la loro differenza è minima. Appare invece più interessante quello che accade fra altre coppie di attributi:
 
             \begin{itemize}
-                \item punteggio del test di ingresso e valore atteso del voto 
+                \item punteggio del test di ingresso e valore atteso del voto
                 \item quantità di crediti ottenuti e valore atteso del voto
             \end{itemize}
 
@@ -119,20 +120,20 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
             Viste le possibili informazioni che sembra possibile estrarre, si è deciso d'insistere sull’analisi visiva degli attributi \textit{voto medio} e \textit{numero totale di crediti}. Sono stati quindi realizzati dei diagrammi a scatola e baffi con il seguente script \textbf{R}: 
 
             \begin{lstlisting}
-            boxplot(students[,4]~students[,1],data = students,xlab="Total Marked CFU",col=colors)
-            boxplot(students[,5]~students[,1],data = students,xlab="Avg. Exam Score",col=colors)
+boxplot(students[,4]~students[,1],data = students,xlab="Total Marked CFU",col=colors)
+boxplot(students[,5]~students[,1],data = students,xlab="Avg. Exam Score",col=colors)
             \end{lstlisting}
 
             \begin{figure}
                 \centering
-                \caption{diagramma a scatole e baffi sull'attributo "numero totale di crediti"}
+                \caption{diagramma a scatole e baffi relativo all'attributo "numero totale di crediti"}
                 \label{boxplot1}
             	\includegraphics[scale=0.55]{img/box_plot_1.png}
             \end{figure}
 
             \begin{figure}
                 \centering
-                \caption{diagramma a scatole e baffi sull'attributo "voto medio"}
+                \caption{diagramma a scatole e baffi relativo all'attributo "voto medio"}
                 \label{boxplot2}
             	\includegraphics[scale=0.70]{img/box_plot_2.png}
             \end{figure}
@@ -156,24 +157,24 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 Il seguente script \textbf{R} ha generato i grafici di dispersione, le matrici di correlazione e di deviazione standard utilizzate per l’analisi visiva del gruppo di esami del primo anno. Per gli altri gruppi di esami, gli script sono stati molto simili.
 
                 \begin{lstlisting}
-                # general first year exams performances
-                students_subset2 <- students[,-c(1 : 5, 7, 9, 11, 13, 15 : 45)]
-                pairs(students_subset2, col = coorte_colors,lower.panel = NULL,cex.labelsiris=2, 	pch=19, cex = 1.2)
-                par(xpd = TRUE)
-                legend(x = 0.05, y = 0.4, cex = 1,legend = as.character(levels(coorte_labels)),fill 	= unique(coorte_colors))
-                par(xpd = NA)
-                
-                students_scaled <- scale(students_subset2)
-                pimage(students_scaled,ylab="Students",main="Standard Deviations from Mean Mark")
-                
-                matrix <- as.matrix(students_scaled)
-                cm <- cor(t(matrix), method="pearson")
-                pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students", 	ylab="Students",zlim = c(-1,1),col = bluered(50))
+# general first year exams performances
+students_subset2 <- students[,-c(1 : 5, 7, 9, 11, 13, 15 : 45)]
+pairs(students_subset2, col = coorte_colors,lower.panel = NULL,cex.labelsiris=2, 	pch=19, cex = 1.2)
+par(xpd = TRUE)
+legend(x = 0.05, y = 0.4, cex = 1,legend = as.character(levels(coorte_labels)),fill 	= unique(coorte_colors))
+par(xpd = NA)
+
+students_scaled <- scale(students_subset2)
+pimage(students_scaled,ylab="Students",main="Standard Deviations from Mean Mark")
+
+matrix <- as.matrix(students_scaled)
+cm <- cor(t(matrix), method="pearson")
+pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students", 	ylab="Students",zlim = c(-1,1),col = bluered(50))
                 \end{lstlisting}
 
                 \begin{figure}
                     \centering
-                    \caption{grafico di dispersione con attributi relativi agli esami del primo anno}
+                    \caption{grafici di dispersione riguardanti gli attributi relativi agli esami del primo anno}
                     \label{esami1anno_sp}
                 	\includegraphics[scale=0.34]{img/scatter_plot_4_gen.png}
                 \end{figure}
@@ -182,50 +183,50 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione fra le istanze degli studenti, considerando solo i risultati degli esami del primo anno}
+                    \caption{matrice di correlazione fra le istanze degli studenti, considerante i risultati degli esami del primo anno}
                     \label{esami1anno_corr}
                 	\includegraphics[scale=0.35]{img/corr_matrix_1.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{matrice dello scarto quadratico medio dei risultati degli esami del primo anno}
+                    \caption{matrice dello scarto quadratico medio dei risultati degli esami da sostenere il primo anno}
                     \label{esami1anno_stddev}
-                	\includegraphics[scale=0.55]{img/std_dev_matrix_1.png}
+                	\includegraphics[scale=0.60]{img/std_dev_matrix_1.png}
                 \end{figure}
 
-                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone --- vengono considerati simili studenti che hanno fatto \textit{bene} e \textit{male} negli stessi esami, senza contare eventuali \textit{offset} fra le valutazioni. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}. \\
+                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone --- vengono considerati simili studenti che hanno un andamento simile su un gruppo sufficientemente grande di esami, senza contare eventuali \textit{offset} fra le valutazioni. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}. \\
 
-                Osservando invece la Figura \ref{esami1anno_stddev}, si può evidenziare che i colori più tiepidi della deviazione standard per gli esami di \textit{Matematica Discreta e Logica} e \textit{Architetture degli Elaboratori} stanno ad indicare una minore tendenza a discostarsi dal voto medio. Perché studenti di vari anni tendono a convergere verso lo stesso voto in quei due esami? Per rispondere a questa domanda, si veda in Figura \ref{1annosommario} un sommario dell'attributo \textit{data}.
+                Osservando invece la Figura \ref{esami1anno_stddev}, si può evidenziare che i colori più tiepidi della deviazione standard per gli esami di \textit{Matematica Discreta e Logica} e \textit{Architetture degli Elaboratori} stanno ad indicare una minore tendenza a discostarsi dal voto medio. Perché studenti di vari anni tendono a convergere verso lo stesso voto in quei due esami? Per rispondere a questa domanda, si veda in Figura \ref{1annosommario} un sommario dell'attributo \textit{data}. \\
 
                 \begin{figure}
                     \centering
                     \caption{sommario dell'attributo "data" relativo agli esami del primo anno}
                     \label{1annosommario}
-                	\includegraphics[scale=0.75]{img/sommario_1_anno.png}
+                	\includegraphics[scale=0.70]{img/sommario_1_anno.png}
                 \end{figure}
 
-                Gli esami che non sono stati superati dal maggior numero di istanze dell’intero data set --- e che quindi hanno creato maggiore difficoltà agli studenti --- sono Matematica Discreta e Logica e Architetture degli Elaboratori. Si è inoltre notato nella matrice della derivazione standard mostrata in Figura \ref{esami1anno_stddev} che quei due esami presentano una differenza rispetto agli altri. Vale la pena di indagare oltre.
+                Gli esami che non sono stati superati dal maggior numero di istanze dell’intero data set --- e che quindi hanno creato maggiore difficoltà agli studenti --- sono Matematica Discreta e Logica e Architetture degli Elaboratori. Si è inoltre notato nella matrice della derivazione standard mostrata in Figura \ref{esami1anno_stddev} che quei due esami presentano una differenza rispetto agli altri. Vale la pena di indagare oltre. \\
 
                 \begin{figure}
                     \centering
-                    \caption{dettaglio sui voti e C.F.U. di Matematica Discreta e Logica}
+                    \caption{grafico di dispersione fra gli attributi "voto ottenuto a Matematica Discreta e Logica" e "C.F.U. ottenuti nel periodo in esame"}
                     \label{mdl}
-                	\includegraphics[scale=0.5]{img/scatter_plot_5.png}
+                	\includegraphics[scale=0.60]{img/scatter_plot_5.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{dettaglio sui risultati di Matematica Discreta e Logica}
+                    \caption{grafico di dispersione fra gli attributi "voto" e "data di superamento" relativi all'esame di Matematica Discreta e Logica}
                     \label{mdl_2}
-                	\includegraphics[scale=0.5]{img/scatter_plot_9.png}
+                	\includegraphics[scale=0.6]{img/scatter_plot_9.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{dettaglio sulla materia Architetture degli Elaboratori}
+                    \caption{grafico di dispersione fra gli attributi "voto ottenuto a Architetture degli Elaboratori" e "C.F.U. ottenuti nel periodo in esame"}
                     \label{ade}
-                	\includegraphics[scale=0.5]{img/scatter_plot_6.png}
+                	\includegraphics[scale=0.6]{img/scatter_plot_6.png}
                 \end{figure}
 
                 Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza dei Credti Formativi Unitari ottenuti in totale dallo studente ad aumentare proporzionalmente al voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- hanno ottenuto comunque molti C.F.U. senza superare questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
@@ -241,30 +242,30 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
                 \begin{figure}
                     \centering
-                    \caption{grafico di dispersione relativo agli esami di informatica}
+                    \caption{grafici di dispersione relativi agli esami a contenuto prevalentemente informatico}
                     \label{esami_inf}
                 	\includegraphics[scale=0.32]{img/scatter_plot_7_gen.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione relativa agli esami di informatica}
+                    \caption{matrice di correlazione fra gli studenti, considerante i risultati ottenuti negli esami di informatica}
                     \label{esami_inf_corr}
                 	\includegraphics[scale=0.32]{img/corr_matrix_2.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{matrice della deviazione standard relativa agli esami di informatica}
+                    \caption{matrice dello scarto quadratico medio dei risultati degli esami ad argomento informatico}
                     \label{esami_inf_stddev}
-                	\includegraphics[scale=0.32]{img/std_dev_matrix_2.png}
+                	\includegraphics[scale=0.6]{img/std_dev_matrix_2.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{sommario del voto di Informatica Teorica}
+                    \caption{sommario dell'attributo "voto" relativo all'esame di Informatica Teorica}
                     \label{it}
-                	\includegraphics[scale=0.8]{img/it.png}
+                	\includegraphics[scale=0.75]{img/it.png}
                 \end{figure}
 
                 Riguardo agli esami a contenuto prevalentemente informartico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno –-- eccezione fatta per Architetture degli Elaboratori –-- si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. Nel particolare di Informatica Teorica mostrato in Figura \ref{it}, i pochi studenti che lo superano risultano ampiamente sopra la media. \\
@@ -275,30 +276,30 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
                 \begin{figure}
                     \centering
-                    \caption{grafico di dispersione relativo agli esami di matematica}
+                    \caption{grafici di dispersione relativi agli esami ad argomento prevalentemente matematico}
                     \label{esami_mat}
-                	\includegraphics[scale=0.32]{img/scatter_plot_8_gen.png}
+                	\includegraphics[scale=0.38]{img/scatter_plot_8_gen.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione degli esami di matematica}
+                    \caption{matrice di correlazione fra gli studenti, considerante i risultati degli esami di matematica}
                     \label{esami_mat_corr}
                 	\includegraphics[scale=0.32]{img/corr_matrix_3.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{matrice della deviazione standard relativa agli esami di matematica}
+                    \caption{matrice dello scarto quadratico medio dei risultati degli esami a contenuto matematico}
                     \label{esami_mat_stddev}
-                	\includegraphics[scale=0.32]{img/std_dev_matrix_3.png}
+                	\includegraphics[scale=0.6]{img/std_dev_matrix_3.png}
                 \end{figure}
 
-                Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in Figura \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Data la natura del corso, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.
+                Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in Figura \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Date le modalità di esame previste per il corso\footnote{se le prove intermedie scritte risultano sufficienti, si può accettare un voto di 18 senza sostenere la prova orale}, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.\\
 
-                Sulla matrice di correlazione in Figura \ref{esami_mat_corr}, si notano due aspetti interessanti: una fascia di studenti con correlazione nulla e una «casella» di forti correlazioni all’incirca nel centro della matrice. Dei due, il primo è sicuramente il più inusuale. Quale aspetto reale potrebbe generare una osservazione come questa?
+                Sulla matrice di correlazione in Figura \ref{esami_mat_corr}, si notano due aspetti interessanti: una fascia di studenti con correlazione nulla e una «casella» di forti correlazioni all’incirca nel centro della matrice. Dei due, il primo è sicuramente il più inusuale. Quale aspetto reale potrebbe generare una osservazione come questa?\\
 
-                Riguardo alla matrice della deviazione standard in Figura \ref{esami_mat_stddev}, si possono notare le stesse caratteristiche evidenziate per quanto riguarda gli esami a tema principalmente informatico. In questo caso, il ruolo del cattivo non lo interpreta più Informatica Teorica ma è condiviso da Fisica Generale e Calcolo Numerico\footnote{Calcolo Numerico tratta argomenti che trascendono i confini fra l’informatica e la matematica. Si è scelto d'inserirlo in questa partizione, ma è stata una decisione puramente arbitraria.}.
+                Riguardo alla matrice della deviazione standard in Figura \ref{esami_mat_stddev}, si possono notare le stesse caratteristiche evidenziate per quanto riguarda gli esami a tema principalmente informatico. In questo caso, il ruolo del cattivo non lo interpreta più Informatica Teorica ma è condiviso da Fisica Generale e Calcolo Numerico\footnote{Calcolo Numerico tratta argomenti che trascendono i confini fra l’informatica e la matematica. Si è scelto d'inserirlo in questa partizione, ma è stata una decisione puramente arbitraria.}.\\
 
                 Analogamente alla suddivisione precedente, anche per questa partizione di esami non appare interessante proseguire l'analisi con tecniche di \textit{data mining}.
 
@@ -311,7 +312,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
     \section{Data Set: Valutazioni degli Insegnamenti}
 
         Sebbene questa porzione di dati a disposizione sia quella dalla mole più elevata, si è ritenuto che essa possa esprimere la sua maggiore utilità se impiegata insieme all'altro dataset che abbiamo deciso di considerare principale. Questo comporterà ovviamente la necessità di efettuare una \textbf{join} di qualche tipo fra i due insiemi di dati.\\
-        
+
         Inoltre, si ribadisce che si tratta di dati sì aggregati, ma coprenti comunque un ampio spettro di aspetti di ogni corso. Pertanto, effettuare un'analisi approfondita sullo stile di quella fatta sul data set degli studenti darebbe risultati dispersivi e di difficile interpretazione. \\
 
         Ci si riserva quindi di adottare un approccio non convenzionale: ritardare l'analisi visiva di questo data set, effettuandola \textbf{dopo} una massiccia aggregazione eseguita nella fase di \textit{preprocessing}. A questo proposito, rimangono valide le considerazioni espresse per il dataset degli studenti riguardo all'osservare il comportamento di ciascuna \textit{classe di record} --- in questo caso, l'Anno Accademico di riferimento.
