@@ -16,18 +16,14 @@ Una parte fondamentale dell'analisi descritta in questo lavoro è basata sul seg
 	\item \textbf{coorte 2013}: studenti immatricolati nel 2013, carriera registrata fino agli appelli di \textbf{febbraio 2017}
 \end{itemize}
 
-Quindi, si ha a disposizione una finestra temporale di risultati ottenuti negli esami composta approssimativamente come indicato in Figura \ref{1}. \\
-
 \begin{figure}
     \centering
-    \caption{coorti di immatricolazione coperte dal dataset degli studenti}
+    \caption{Anni Accademici coperti dai dati a disposizione nel data set degli studenti}
     \label{1}
-	\includegraphics[scale=0.7]{../raw/stud_comp.png}
+	\includegraphics[scale=0.75]{../raw/stud_comp.png}
 \end{figure}
 
-Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti gli esiti del maggior numero di corsi possibili solo per l'Anno Accademico 2013-2014. \\
-
-Tale aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
+Quindi, si ha a disposizione una finestra temporale di risultati ottenuti negli esami composta approssimativamente come indicato in Figura \ref{1}. Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti gli esiti del maggior numero di corsi possibili solo per l'Anno Accademico 2013-2014. Tale aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
 
 \subsection{Formato e Rappresentazione}
 
@@ -88,7 +84,7 @@ Il dataset è stato fornito in sette diversi file CSV, uno per ogni anno accadem
 	\item \textbf{Quesito}: stringa descrittiva contenente il testo della domanda posta allo studente.
 \end{itemize}
 
-\noindent  Si notiche ilcampo riguardante il docente ne riporta originariamente nome e cognome per esteso. Per salvaguardarne la privacy, i valori di questo campo sono stati sostituiti con le loro immagini tramite una funzione di \textit{hash}, preservando l'unicità del valore ma nascondendo l'effettiva identità del docente.
+\noindent  Si notiche ilcampo riguardante il docente ne riporta originariamente nome e cognome per esteso. Per salvaguardarne la privacy, i valori di questo campo sono stati sostituiti con le loro immagini tramite una funzione di \textit{hash}, preservando l'unicità del valore ma nascondendo l'effettiva identità del docente. \\
 
 A ogni tupla, identificata dai valori dei campi precedentemente descritti, corrispondono queste informazioni:
 

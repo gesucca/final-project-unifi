@@ -23,9 +23,9 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
     \begin{figure}
         \centering
-        \caption{logo del DBMS MongoDB}
+        \caption{logo di MongoDB}
         \label{mongodb_logo}
-    	\includegraphics[scale=0.70]{img/mongodb.png}
+    	\includegraphics[scale=0.65]{img/mongodb.png}
     \end{figure}
 
     La scelta del Data Base Management System è stata quella che ha impattato più di tutte il tipo di lavoro che è stato necessario fare.
@@ -49,22 +49,20 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
         
         "\textbf{MongoDB} \textit{(da "humongous", enorme)} è un DBMS non relazionale, orientato ai documenti. Classificato come un database di tipo \textbf{NoSQL}, MongoDB si allontana dalla struttura tradizionale basata su tabelle dei database relazionali in favore di \textbf{documenti in stile JSON} con schema dinamico (MongoDB chiama il formato BSON), rendendo l'integrazione di dati di alcuni tipi di applicazioni più facile e veloce." \\
 
-        La società MongoDB Inc mette a disposizione liberamente e gratuitamente una buona documentazione in \cite{mongodb}, la quale contiene tutte le informazioni necessarie per utilizzare al meglio il DBMS da loro sviluppato. 
-
-        Oltre alla sua \textit{shell}, MongoDB mette a disposizione delle \textit{API} per i principali linguaggi di programmazione. Questo aspetto è tornato molto utile per specificare le operazioni di \textit{preprocessing} in un linguaggio familiare e più facilmente gestibile del dialetto di Javascript nativo di MongoDB.
+        La società MongoDB Inc mette a disposizione liberamente e gratuitamente una buona documentazione in \cite{mongodb}, la quale contiene tutte le informazioni necessarie per utilizzare al meglio il DBMS da loro sviluppato. Oltre alla sua \textit{shell}, MongoDB mette a disposizione delle \textit{API} per i principali linguaggi di programmazione. Questo aspetto è tornato molto utile per specificare le operazioni di \textit{preprocessing} in un linguaggio familiare e più facilmente gestibile del dialetto di Javascript nativo di MongoDB.
 
 \section{Interazione col DBMS: Python}
 
     \begin{figure}
         \centering
-        \caption{logo del linguaggio di programmazione Python}
+        \caption{logo di Python}
         \label{python_logo}
-    	\includegraphics[scale=0.1]{img/python.png}
+    	\includegraphics[scale=0.12]{img/python.png}
     \end{figure}
 
     A proposito di quando detto alla fine della sezione precedente, il linguaggio scelto è stato \textbf{Python}. Come si può leggere direttamente da \cite{pywiki}:\\
 
-    "\textit{Python} è un linguaggio multi-paradigma, che ha tra i principali obiettivi \textit{dinamicità}, \textit{semplicità} e \textit{flessibilità}. Supporta il paradigma object oriented, la programmazione strutturata e molte caratteristiche di programmazione funzionale e riflessione." \\
+    "\textbf{Python} è un linguaggio multi-paradigma, che ha tra i principali obiettivi \textit{dinamicità}, \textit{semplicità} e \textit{flessibilità}. Supporta il paradigma object oriented, la programmazione strutturata e molte caratteristiche di programmazione funzionale e riflessione." \\
 
     Il linguaggio Python ha una estesa e approfondita documentazione, messa a disposizione direttamente dalla Python Software Foundation in \cite{python}.
 
@@ -72,20 +70,20 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
         \begin{figure}
             \centering
-            \caption{schema riassuntivo del modello di lavoro con \texttt{pymongo}}
+            \caption{schema riassuntivo dell'interazione fra MongoDB e \texttt{pymongo}}
             \label{pymongo_logo}
-    	    \includegraphics[scale=0.75]{img/pymongo.png}
+    	    \includegraphics[scale=0.70]{img/pymongo.png}
         \end{figure}
 
         Una sintetica ma tremendamente efficace descrizione di che cosa è \texttt{pymongo} si può trovare direttamente nella sua documentazione, in \cite{pymongo}:\\
 
-        "PyMongo is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python." \\
+        "\textbf{PyMongo} is a Python distribution containing tools for working with MongoDB, and is the recommended way to work with MongoDB from Python." \\
 
         Che tradotto in italiano sgnifica: \\
 
-        "PyMongo è una distribuzione di Python che contiene degli strumenti per lavorare con MongoDB, ed è la maniera raccomandata per avere a che fare con MongoDB da Python." \\
+        "\textbf{PyMongo} è una distribuzione di Python che contiene degli strumenti per lavorare con MongoDB, ed è la maniera raccomandata per avere a che fare con MongoDB da Python." \\
 
-        In altre parole, \textbf{pymongo} è una libreria per python che fornisce oggetti e metodi per lanciare istruzioni di \textit{Data Definiion}\footnote{Data Definition Language: sottoinsieme di un linguaggio comprendente le istruzioni per definire e manipolare le strutture (in un DBMS relazionale, le \textit{tabelle}, in MongoDB le \textit{collezioni} di documenti). Ad esmepio, in \textbf{SQL} comprende le istruzioni \textbf{create table}, \textbf{alter table}, \ldots} e \textit{Data Manipulation}\footnote{Data Manipulation Language: sottoinsieme di un linguaggio comprendente le istruzioni per manipolare i dati. Ad esmepio, in \textbf{SQL} sono ad esempio \textbf{insert}, \textbf{update}, \ldots}.
+        In altre parole, \texttt{pymongo} è una libreria per python che fornisce oggetti e metodi per lanciare istruzioni di \textit{Data Definiion}\footnote{Data Definition Language: sottoinsieme di un linguaggio comprendente le istruzioni per definire e manipolare le strutture (in un DBMS relazionale, le \textit{tabelle}, in MongoDB le \textit{collezioni} di documenti). Ad esmepio, in \textbf{SQL} comprende le istruzioni \textbf{create table}, \textbf{alter table}, \ldots} e \textit{Data Manipulation}\footnote{Data Manipulation Language: sottoinsieme di un linguaggio comprendente le istruzioni per manipolare i dati. Ad esmepio, in \textbf{SQL} sono ad esempio \textbf{insert}, \textbf{update}, \ldots}.
 
 \section{Organizzazione: GNU Make}
 
@@ -93,12 +91,12 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
         \centering
         \caption{logo della famiglia di software GNU}
         \label{make}
-        \includegraphics[scale=0.15]{img/gnu.png}
+        \includegraphics[scale=0.12]{img/gnu.png}
     \end{figure}
 
     Data la complessità delle operazioni da eseguire, occorre un modo per dare e mantenere una struttura chiara nel lancio degli script necessari a manipolareopportunamente i dati. A questo proposito, è stato scelto il software \texttt{Make}, un'antica \textit{utility} GNU eccezionalmente solida. \\
 
-    Citando direttamente da \cite{make}, "GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.", che in italiano significa: "GNU Make è uno strumento che controlla la generazione di eseguibi ed altri file non sorgenti a partire da del codice sorgente."\\
+    Citando direttamente da \cite{make}, "\textbf{GNU Make} is a tool which controls the generation of executables and other non-source files of a program from the program's source files.", che in italiano significa: "\textbf{GNU Make} è uno strumento che controlla la generazione di eseguibi ed altri file non sorgenti a partire da del codice sorgente."\\
 
     Sebbene lo scopo più comune di Make sia la compilazione di programmi, è perfettamente malleabile per adattarsi a qualunque tipo di applicazione. Sempre da \cite{make} si può leggere qulcosa proprio a questo riguardo: \\
 
@@ -108,7 +106,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
     "Make non è limitato alla compilazione di un programma. Si può usare Make per controllare l'installazione o la disinstallazione di un paccehtto software, generare tabelle di tag, o qualunque altra cosa ci sia bisogno di fare spesso abbastanza da far valere la pena di automatizzarla." \\
 
-    Pertanto, è stato scritto un \texttt{makefile} per automatizzare il lancio dei vari script necessari a realizzare le operazioni di \textit{preprocessing}.
+    Pertanto, è stato scritto un \texttt{makefile} --- mostrato per intero nell'Appendice \ref{appendix:makefile} --- per automatizzare il lancio dei vari script necessari a realizzare le operazioni di \textit{preprocessing}.
 
 \section{Algoritmi di Data Mining: Weka}
 
@@ -116,7 +114,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
             \centering
             \caption{logo di Weka}
             \label{weka}
-    	    \includegraphics[scale=0.75]{img/weka.png}
+    	    \includegraphics[scale=0.65]{img/weka.jpg}
         \end{figure}
 
     Come si può leggere direttamente da \cite{wekawiki}, "\textbf{Weka}, acronimo di \textbf{W}aikato \textbf{E}nvironment for \textbf{K}nowledge \textbf{A}nalysis, è un software per l'apprendimento automatico sviluppato nell'università di Waikato in Nuova Zelanda. È open source e viene distribuito con licenza \textit{GNU General Public License}. Curiosamente la sigla corrisponde al nome di un simpatico animale simile al Kiwi, presente solo nelle isole della Nuova Zelanda." \\
@@ -135,7 +133,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
             \centering
             \caption{logo di R}
             \label{R}
-    	    \includegraphics[scale=0.75]{img/R.png}
+    	    \includegraphics[scale=0.70]{img/R.png}
         \end{figure}
 
         Direttamente dalla pagina Wikipedia relativa al sotware R (in \cite{Rwiki}), "R è un linguaggio di programmazione e un ambiente di sviluppo specifico per l'analisi statistica dei dati. [...] È un software libero in quanto viene distribuito con la licenza GNU GPL, ed è disponibile per diversi sistemi operativi (ad esempio Unix, GNU/Linux, macOS, Microsoft Windows). Il suo linguaggio orientato agli oggetti deriva direttamente dal pacchetto S [...]." \\
@@ -144,9 +142,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
     \subsection{Fogli di Calcolo}
 
-    Per quanto banale possa sembrare, per alcuni dati molto semplici può essere utile non andare a scomodare strumenti troppo complessi, impiegando invece attrezzi dall'utilizzo estremamente semplice, come un foglio di calcolo. \\
-
-    A questo proposito, è stato scelto di utilizzare Calc (\cite{calc}), facente parte della \textit{suite da ufficio} LibreOffice, un progetto open source che is pone come alternativa a Microsoft Office. \\
+    Per quanto banale possa sembrare, per alcuni dati molto semplici può essere utile non andare a scomodare strumenti troppo complessi, impiegando invece attrezzi dall'utilizzo estremamente semplice, come un foglio di calcolo. A questo proposito, è stato scelto di utilizzare Calc (\cite{calc}), facente parte della \textit{suite da ufficio} LibreOffice, un progetto open source che is pone come alternativa a Microsoft Office. \\
 
     Con esso è stato possibile realizzare semplici grafici di data set dalla mole ridotta, senza incorrere nell'\textit{overhead} --- inteso come carico di lavoro necessario a raggiungere un risultato simile --- che avrebbe comportato l'utilizzo di R.
 
@@ -163,11 +159,11 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
     Riassumendo il tutto in pochi, semplici punti, la technology stack è la seguente:
 
     \begin{itemize}
-        \item MongoDB come DBMS
-        \item Python (pymongo) per manipolare i dati su MongoDB
-        \item R e LibreOffice Calc per le tecniche di visualizzazione
-        \item Weka per gli algoritmi di data mining
-        \item TeX Live da Arch Linux come distribuzione \LaTeX
+        \item MongoDB come DBMS;
+        \item Python (pymongo) per manipolare i dati su MongoDB;
+        \item R e LibreOffice Calc per le tecniche di visualizzazione;
+        \item Weka per gli algoritmi di data mining;
+        \item TeX Live da Arch Linux come distribuzione \LaTeX.
     \end{itemize}
 
     Ora che è ben chiaro cosa verrà utilizzato e a che scopo, si è in grado di cominciare finalmente il lavoro sui dati.

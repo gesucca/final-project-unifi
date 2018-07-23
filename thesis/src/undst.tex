@@ -15,15 +15,13 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
     \section{Introduzione al Data Understanding}
 
-        \subsection{Scopo dell'Attività}
+        Perché occorre spendere del tempo per perpetrare un'estesa fase di \textit{data understanding}? \\
 
-            Perché occorre spendere del tempo per perpetrare un'estesa fase di \textit{data understanding}? \\
+        Banalmente, l'obiettivo principale che ci si prefigge è quello di ottenere una chiara visione d'insieme sui dati che si hanno a disposizione. In questo modo, si sarà in grado di prendere decisioni oculate per quanto riguarda il da farsi nei successivi passi di questa analisi. Si prenda ad esempio l'attività di \textit{preprocessing}: sintetizzando al massimo, possiamo dire che si tratta di lavorare dei dati grezzi al fine di renderli adatti a essere processati da certi algoritmi. L'ovvia implicazione è che occorre avere ben chiaro in anticipo quali algoritmi sarà opportuno lanciare, fatto che a sua volta implica la necessità di conoscere quali informazioni si intende estrarre dai dati grezzi a disposizione. \\
 
-            Banalmente, l'obiettivo principale che ci si prefigge è quello di ottenere una chiara visione d'insieme sui dati che si hanno a disposizione. In questo modo, si sarà in grado di prendere decisioni oculate per quanto riguarda il da farsi nei successivi passi di questa analisi. Si prenda ad esempio l'attività di \textit{preprocessing}: sintetizzando al massimo, possiamo dire che si tratta di lavorare dei dati grezzi al fine di renderli adatti a essere processati da certi algoritmi. L'ovvia implicazione è che occorre avere ben chiaro in anticipo quali algoritmi sarà opportuno lanciare, fatto che a sua volta implica la necessità di conoscere quali informazioni si intende estrarre dai dati grezzi a disposizione. \\
+        Questo aspetto rende necessario far precedere a quello che è, usando una metafora nell'ambito meccanico, l'attività di sgrossatura dei dati grezzi una fase di \textit{data understanding}. \\
 
-            Questo aspetto rende necessario far precedere a quello che è, usando una metafora nell'ambito meccanico, l'attività di sgrossatura dei dati grezzi una fase di \textit{data understanding}. \\
-
-            In questa sezione, quindi, si punterà a capire a fondo la natura dei dati al fine d'intuire che cosa sia possibile trarne.
+        In questa sezione, quindi, si punterà a capire a fondo la natura dei dati al fine d'intuire che cosa sia possibile trarne.
 
         \subsection{Metodi e Strumenti}
 
@@ -38,8 +36,6 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
         Si è quindi optato per utilizzare il software \textbf{R}, in quanto consente d'impiegare efficientemente un gran numero di approfondite tecniche di visualizzazione. Tuttavia, la potenza e la flessibilità offerte da questo tipo di strumento si pagano con la necessita di dedicare un minimo di attenzione all'importazione del data set in quell'ambiente di lavoro. \\
 
         In senso pratico, questo si traduce nel lanciare del codice analogo \footnotesize{--- non identico: sono stati accorciati i percorsi ---}\normalsize\ a quanto mostrato di seguito prima di poter effettuare qualunque altra operazione.
-
-        \newpage
 
         \begin{lstlisting}
         # set the repo root path before importing data!!!
@@ -88,9 +84,9 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
             \begin{figure}
                 \centering
-                \caption{grafico di dispersione su attributi generali}
+                \caption{grafico di dispersione sugli attributi generali del data set degli studenti}
                 \label{fig1}
-            	\includegraphics[scale=0.32]{img/scatter_plot_1_gen.png}
+            	\includegraphics[scale=0.33]{img/scatter_plot_1_gen.png}
             \end{figure}
 
             Come si può vedere sul grafico generato dallo script --- mostrato in Figura \ref{fig1} --- esistono varie correlazioni fra gli attributi considerati. Nel merito, la relazione fra le quantità \textit{crediti totali} e \textit{crediti con voto} è tanto palese quanto banale: il primo ammontare contiene il secondo, e la loro differenza è minima. Appare invece più interessante quello che accade fra altre coppie di attributi:
@@ -100,20 +96,20 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
                 \item quantità di crediti ottenuti e valore atteso del voto
             \end{itemize}
 
-            Si ritiene quindi opportuno realizzare dei grafici che abbiano un maggior livello di dettaglio su questi aspetti.
+            Si ritiene quindi opportuno realizzare dei grafici che abbiano un maggior livello di dettaglio su questi aspetti. \\
 
             \begin{figure}
                 \centering
-                \caption{grafico di dispersione su voto medio e test di ingresso}
+                \caption{grafico di dispersione sugli attributi "voto medio" e "test di ingresso"}
                 \label{fig2}
-            	\includegraphics[scale=0.5]{img/scatter_plot_2.png}
+            	\includegraphics[scale=0.80]{img/scatter_plot_2.png}
             \end{figure}
 
             \begin{figure}
                 \centering
-                \caption{grafico di dispersione su voto medio e C.F.U. ottenuti}
+                \caption{grafico di dispersione sugli attributi "voto medio" e "C.F.U. ottenuti"}
                 \label{fig3}
-            	\includegraphics[scale=0.40]{img/scatter_plot_3.png}
+            	\includegraphics[scale=0.62]{img/scatter_plot_3.png}
             \end{figure}
 
             Come risulta dalla Figura \ref{fig2}, si potrebbe speculare che esista una correlazione lineare fra i due attributi: gli studenti che conseguono un punteggio alto nel test di ingresso sono più propensi ad ottenere voti alti negli esami. \\
@@ -129,21 +125,19 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
             \begin{figure}
                 \centering
-                \caption{diagramma a scatole e baffi sull'attributo \textit{numero totale di crediti}}
+                \caption{diagramma a scatole e baffi sull'attributo "numero totale di crediti"}
                 \label{boxplot1}
-            	\includegraphics[scale=0.5]{img/box_plot_1.png}
+            	\includegraphics[scale=0.55]{img/box_plot_1.png}
             \end{figure}
 
             \begin{figure}
                 \centering
-                \caption{diagramma a scatole e baffi sull'attributo \textit{voto medio}}
+                \caption{diagramma a scatole e baffi sull'attributo "voto medio"}
                 \label{boxplot2}
-            	\includegraphics[scale=0.5]{img/scatter_plot_3.png}
+            	\includegraphics[scale=0.70]{img/box_plot_2.png}
             \end{figure}
 
-            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti.
-
-            Nel caso invece del voto medio, rappresentato in Figura \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
+            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti. Nel caso invece del voto medio, rappresentato in Figura \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
 
         \subsection{Prestazioni degli Studenti su Gruppi di Esami}
 
@@ -179,39 +173,39 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
                 \begin{figure}
                     \centering
-                    \caption{grafico di dispersione relativo agli esami del primo anno}
+                    \caption{grafico di dispersione con attributi relativi agli esami del primo anno}
                     \label{esami1anno_sp}
-                	\includegraphics[scale=0.32]{img/scatter_plot_4_gen.png}
+                	\includegraphics[scale=0.34]{img/scatter_plot_4_gen.png}
                 \end{figure}
 
-                Dall’analisi visiva del grafico di dispersione in Figura \ref{esami1anno_sp} non si è stati in grado di concludere molto di concreto. Eppure si ritiene possibile che qualche informazione interessante si possa nascondere dentro l’insieme di dati degli esami del primo anno; occorre scendere nel dettaglio. A questo proposito, sono state realizzate le matrici mostrate nelle Figure \ref{esami1anno_corr} e \ref{esami1anno_stddev}.
+                Dall’analisi visiva del grafico di dispersione in Figura \ref{esami1anno_sp} non si è stati in grado di concludere molto di concreto. Eppure si ritiene possibile che qualche informazione interessante si possa nascondere dentro l’insieme di dati degli esami del primo anno; occorre scendere nel dettaglio. A questo proposito, sono state realizzate le matrici delle Figure \ref{esami1anno_corr} e \ref{esami1anno_stddev}. \\
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione sugli esami del primo anno}
+                    \caption{matrice di correlazione fra le istanze degli studenti, considerando solo i risultati degli esami del primo anno}
                     \label{esami1anno_corr}
-                	\includegraphics[scale=0.32]{img/corr_matrix_1.png}
+                	\includegraphics[scale=0.35]{img/corr_matrix_1.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
-                    \caption{matrice dello scarto quadratico medio sugli esami del primo anno}
+                    \caption{matrice dello scarto quadratico medio dei risultati degli esami del primo anno}
                     \label{esami1anno_stddev}
-                	\includegraphics[scale=0.5]{img/std_dev_matrix_1.png}
+                	\includegraphics[scale=0.55]{img/std_dev_matrix_1.png}
                 \end{figure}
 
-                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}.
+                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone --- vengono considerati simili studenti che hanno fatto \textit{bene} e \textit{male} negli stessi esami, senza contare eventuali \textit{offset} fra le valutazioni. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}. \\
 
                 Osservando invece la Figura \ref{esami1anno_stddev}, si può evidenziare che i colori più tiepidi della deviazione standard per gli esami di \textit{Matematica Discreta e Logica} e \textit{Architetture degli Elaboratori} stanno ad indicare una minore tendenza a discostarsi dal voto medio. Perché studenti di vari anni tendono a convergere verso lo stesso voto in quei due esami? Per rispondere a questa domanda, si veda in Figura \ref{1annosommario} un sommario dell'attributo \textit{data}.
 
                 \begin{figure}
                     \centering
-                    \caption{sommario dell'attributo \textit{data} relativo agli esami del primo anno}
+                    \caption{sommario dell'attributo "data" relativo agli esami del primo anno}
                     \label{1annosommario}
-                	\includegraphics[scale=0.8]{img/sommario_1_anno.png}
+                	\includegraphics[scale=0.75]{img/sommario_1_anno.png}
                 \end{figure}
 
-                Gli esami che non sono stati superati dal maggior numero di istanze dell’intero data set --- e che quindi hanno creato maggiore difficoltà agli studenti --- sono, \footnote{piuttosto comprensibilmente,} Matematica Discreta e Logica e Architetture degli Elaboratori. Si è inoltre notato nella matrice della derivazione standard mostrata in Figura \ref{esami1anno_stddev} che quei due esami presentano una differenza rispetto agli altri. Vale la pena di indagare oltre.
+                Gli esami che non sono stati superati dal maggior numero di istanze dell’intero data set --- e che quindi hanno creato maggiore difficoltà agli studenti --- sono Matematica Discreta e Logica e Architetture degli Elaboratori. Si è inoltre notato nella matrice della derivazione standard mostrata in Figura \ref{esami1anno_stddev} che quei due esami presentano una differenza rispetto agli altri. Vale la pena di indagare oltre.
 
                 \begin{figure}
                     \centering
