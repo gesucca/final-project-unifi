@@ -106,9 +106,9 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 			\item ritardo medio con cui è stato dato un esame.
 		\end{itemize}
 
-		Considerando il tipo dei dati a disposizione, occorrerà innanzitutto aggregare le istanze dei vari studenti in modo opportuno. Questo viene fatto utilizzando un modulo Python programmato \textit{ad hoc}, del quale si riporta il codice nell'Appendice \ref{appendix:aggregs}. L'oggetto \texttt{StudAggregator} definito in tale modulo viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro apposito script Python riportato nell'Appendice \ref{appendix:stud}. \\
-
-		Questo codice produce una \textit{collection} che contiene esattamente il data set che ci si è prefissati di ottenere, calcolando un ritardo 	approssimativo medio (in semestri), la percentuale di studenti che hanno finito il corso di laurea nell'arco temporale a disposizione e le varie medie degli altri attributi.\\
+		Considerando il tipo dei dati a disposizione, occorrerà innanzitutto aggregare le istanze dei vari studenti in modo opportuno. Questo viene fatto utilizzando un modulo Python programmato \textit{ad hoc}, del quale si riporta il codice nell'Appendice \ref{appendix:aggregs}. \\
+		
+		L'oggetto \texttt{StudAggregator} definito in tale modulo viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro apposito script Python riportato nell'Appendice \ref{appendix:stud}. Si è così prodotta una \textit{collection} che contiene esattamente il data set che ci si è prefissati di ottenere, calcolando un ritardo approssimativo medio (in semestri), la percentuale di studenti che hanno finito il corso di laurea nell'arco temporale a disposizione e le varie medie degli altri attributi.\\
 
 		\begin{tabular}{llllll}
 		\hline
@@ -119,9 +119,9 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 		2013 & 80 & 11.25 & 14.39 & 24.98 & 0.77 \\ \hline
 		\end{tabular}
 
-		\vspace{0.3cm}
+		\vspace{0.4cm}
 
-		Il lancio di tutte queste operazioni è descritto nella ricetta \texttt{stud\_gen} del \texttt{makefile}.
+		Il lancio di tutte queste operazioni è specificato nella ricetta \texttt{stud\_gen} del \texttt{makefile}.
 
 	\subsection{Valutazione degli Insegnamenti}
 
@@ -135,7 +135,9 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 			\item percentuale delle valutazioni sufficienti
 		\end{itemize}
 
-		In questo caso è tutto più semplice, in quanto i dati relativi alla valutazione dei corsi sono già in forma aggregata: si tratta quindi solo di comprimerli ulteriormente, facendoli rientrare nello schema che ci si è prefissati. A tale proposito, si utilizzerà ancora il modulo \texttt{aggregs.py}, impiegandone stavolta un oggetto diverso: \texttt{ParAggregator}. Esso mantiene nella \textit{chiave primaria} i corsi, pertanto occorre aggregare ancora i dati, rendendo l'Anno Accademico l'unico parametro in grado di discriminare una tupla dall'altra. Tale operazione viene eseguita con un apposito script, riportato nell'Appendice \ref{appendix:eval}. \\
+		In questo caso è tutto più semplice, in quanto i dati relativi alla valutazione dei corsi sono già in forma aggregata: si tratta quindi solo di comprimerli ulteriormente, facendoli rientrare nello schema che ci si è prefissati. \\
+		
+		A tale proposito, si utilizzerà ancora il modulo \texttt{aggregs.py}, impiegandone stavolta un oggetto diverso: \texttt{ParAggregator}. Esso mantiene nella \textit{chiave primaria} i corsi, pertanto occorre aggregare ancora i dati, rendendo l'Anno Accademico l'unico parametro in grado di discriminare una tupla dall'altra. Tale operazione viene eseguita con un apposito script, riportato nell'Appendice \ref{appendix:eval}. \\
 
 		Il risultato di quanto appena descritto, il cui lancio è stato specificato nella ricetta \texttt{teval\_gen} del \texttt{makefile}, produce un data set di questo tipo:\\
 
@@ -156,15 +158,22 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 	\subsection{Join con valutazioni estese e attributi continui}
 
-		Per prima cosa, si è realizzata una \textit{join} fra i due data set aggregando i dati degli studenti \textbf{per esame}, e i dati delle valutazioni dei corsi \textbf{per paragrafo}. Osservando l'albero delle dipendenze specificato nel \texttt{makefile} --- che, si ripete, si può consultare per intero nell'Appendice \ref{appendix:makefile} --- si può notare che sono state prima realizzate le aggregazioni dei singoli data set e, solo successivamente, performata l'operazione di \textit{join} fra di essi. \\
+		Per prima cosa, si è realizzata una \textit{join} fra i due data set aggregando i dati degli studenti \textbf{per esame}, e i dati delle valutazioni dei corsi \textbf{per paragrafo}. Osservando l'albero delle dipendenze specificato nel \texttt{makefile} e mostrato in Figura \ref{make_join} --- che, si ripete, si può consultare per intero nell'Appendice \ref{appendix:makefile} --- è possibile notare che sono state prima realizzate le aggregazioni dei singoli data set e, solo successivamente, performata l'operazione di \textit{join} fra di essi. \\
 
 		L'aggregazione dei dati degli studenti avviene in modo del tutto analogo a quanto fatto nella sezione precedente con l'oggetto \texttt{StudAggregator} del modulo Python \texttt{aggregs.py}. \\
 
 		Per quanto riguarda l'aggregazione dei dati delle valutazioni dei corsi, sono state effettuati vari passaggi per arrivare a condensare le informazioni nei pochi attributi generali necessari. Tali passaggi sono visibili consultando nell'Appendice \ref{appendix:eval} il codice con cui sono stati realizzati. \\
 
+		\begin{figure}
+			\centering
+			\caption{porzione del \texttt{makefile} che specifica le ricette per eseguire il \textit{join} fra le valutazioni dei corsi e i dati degli studenti}
+			\label{make_join}
+			\includegraphics[scale=0.80]{img/make_join.png}
+		\end{figure} 
+
 		Predisposti opportunamente i due insiemi di dati in due \textit{collection}, la fase di merge è stata portata avanti grazie all'ausilio di un altro modulo Python scritto \textit{ad hoc}: si tratta dell'oggetto \texttt{Merger}, contenuto nel file \texttt{merge.py}, la cui implementazione è visibile nell'Appendice \ref{appendix:merge}. Tale oggetto viene utilizzato nello script \texttt{dataset\_merge.py}. Il \textit{join} avviene, chiaramente, sugli attributi \textbf{Anno Accademico} e \textbf{Corso d'Esame}, trasferendo gli attributi specifici di una collezione direttamente nell'altra. \\
 
-		A questo punto, la collezione risultante da queste operazioni ha le caratteristiche cercate. Tuttavia, presenta delle "sbavature" che è conveniente rimuovere prima di impiegarla efficacemente nel \textit{data mining}. Per eliminarle, ci si avvale di un ulteriore modulo Python realizzato per l'occasione, \texttt{cleanings.py}, riportato per intero nell'Appendice \ref{appendix:clean}. \\
+		A questo punto, la collezione risultante da queste operazioni ha le caratteristiche cercate. Tuttavia, presenta delle "sbavature" che è conveniente rimuovere prima di impiegarla efficacemente nel \textit{data mining}. Per eliminarle, ci si avvale di un ulteriore modulo Python realizzato per l'occasione, \texttt{cleanings.py}, riportato per intero nell'Appendice \ref{appendix:cleanings}. \\
 
 		Concluso quanto appena descritto, si è creato un primo data set utilizzabile. Esso presenta i seguenti attributi, tutti di tipo	\textit{continuo} --- tranne ovviamente le \textit{chiavi primarie} e le istanze considerate per la produttività degli studenti:
 
@@ -208,9 +217,9 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 	
 	\subsection{Attributi discreti}
 
-		Come è stato spigato alla fine della fase di \textit{data understanding}, c'è bisogno di avere una versione \textit{discretizzata} dei data set dei quali è stata appena descritta la produzione. Questo è stato realizzato impiegando un altro modulo Python, \texttt{discretize.py}, la cui implementazione può essere consultata in \ref{appendix:discretize}. \\
+		Come è stato spigato alla fine della fase di \textit{data understanding}, c'è bisogno di avere una versione \textit{discretizzata} dei data set dei quali è stata appena descritta la produzione. Questo è stato realizzato impiegando un altro modulo Python, \texttt{discretize.py}, la cui implementazione può essere consultata nell'Appendice \ref{appendix:discretize}. \\
 
-		I \textit{range} nei quali far rientrare i valori continui degli attrbuti sono stati scelti cercando un giusto compromesso fra rappresentatività e sinteticità. 
+		I \textit{range} nei quali far rientrare i valori continui degli attrbuti sono stati scelti cercando un giusto compromesso fra rappresentatività e sinteticità. Non è stato ovviamente possibile stabilirli a priori: quelli che si possono vedere nella sopra citata appendice sono il risutlato di un processo iterativo del tipo \textit{trial and error}, e sono risultati essere il miglior compromesso cercato.
 
 \section{Sequenze ordinate di esami superati}
 
@@ -221,33 +230,53 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 	\[tr. 1: \{ITEM1,\ ITEM2\} \\
 	tr. 2: \{ITEM3\}\]
 
+	\vspace{0.2cm}
+
 	Dovrà essere rappresentato in questo modo: \\
 
 	\noindent\texttt{1,ITEM1}\\
 	\texttt{1,ITEM2}\\
 	\texttt{2,ITEM3}\\
 
-	Dato che non esistono strumenti di esportazione automatica da MongoDB in grado di creare file di questo tipo, è stato programmato uno script \textit{ad hoc} che, ottenuti i dati degli studenti tramite delle interrogazioni sulla relativa collezione MongoDB, li trasforma in transazioni e li scrive direttametne su un file di testo avente la struttura richiesta. \\
+	Dato che non esistono strumenti di esportazione da MongoDB in grado di creare file di questo tipo, è stato programmato uno script \textit{ad hoc} che, ottenuti i dati degli studenti tramite delle interrogazioni sulla relativa collezione MongoDB, li trasforma in transazioni e li scrive direttametne su un file di testo avente la struttura richiesta. \\
 
 	L'implementazione dello script sopra riferito è contenuta nell'Appendice \ref{appendix:seq}. Come si può notare dal codice, non ci si è limitati a produrre un singolo file contenente l'interezza delle informazioni a disposizione, ma si è provveduto a dividerlo in molte sezioni a seconda di vari criteri. Questo perché \textit{GSP} è un algoritmo che può essere estremamente pesante da eseguire su data set molto grandi: il problema della generazione degli \textit{itemset} frequenti è un problema $Np-Completo$\footnote{Significa che è un problema risolvibile in tempo polinomiale con algoritmi \textit{non deterministici}, cosa che implica la risolvibilità con algoritmi deterministici in tempo esponenziale.}, pertanto considerato intrattabile al crescere della dimensione dei dati di ingresso.\\
 
-	Data la natura dell'analisi che si è prefissati di fare su questo tipo di dati, è risultato utile impiegare un primo, generale criterio di filtraggio: si sono considerate solo le sequenze di esami di studenti che hanno completato almeno un terzo del Corso di Laurea, cioè coloro che hanno conseguito almeno 60 Credifi Formativi Unitari. Questo perché le transazioni contenenti pochi \textit{item} vanno a contribuire all'analisi solo con sequenze corte, diluendo la frequenza di eventuali sequenze più lunghe che possono risultare interessanti. \\
+	Data la natura dell'analisi che si è prefissati di fare su questo tipo di dati, è risultato utile impiegare un primo, generale criterio di filtraggio: \textbf{si sono considerate solo le sequenze di esami di studenti che hanno completato almeno un terzo del Corso di Laurea}, cioè coloro che hanno conseguito almeno 60 Credifi Formativi Unitari. Questo perché le transazioni contenenti pochi \textit{item} vanno a contribuire all'analisi solo con sequenze corte, diluendo la frequenza di eventuali sequenze più lunghe che possono risultare interessanti. \\
 
-	Stabilito questo principio, sono stati creati quindi i seguenti file, realizzati secondo i seguenti ulteriori criteri di divisione:
+	Stabilito questo principio, sono stati creati quindi i seguenti file, realizzati secondo ulteriori criteri di divisione: la \textbf{coorte di immatricolazione} e la \textbf{scuola superiore di provenienza}.
 
 	\begin{itemize}
-		\item ...
+		\item Divisione per coorte di immatricolazione:
+		\subitem \texttt{seq\_stud\_2010.arff}
+		\subitem \texttt{seq\_stud\_2011.arff}
+		\subitem \texttt{seq\_stud\_2012.arff}
+		\subitem \texttt{seq\_stud\_2013.arff}
+		\item Divisione successiva per scuola superiore di provenienza:
+		\subitem \texttt{seq\_stud\_2010\_ist\_tecn.arff}
+		\subitem \texttt{seq\_stud\_2010\_liceo.arff}
+		\subitem \texttt{seq\_stud\_2011\_ist\_tecn.arff}
+		\subitem \texttt{seq\_stud\_2011\_liceo.arff}
+		\subitem \texttt{seq\_stud\_2012\_ist\_tecn.arff}
+		\subitem \texttt{seq\_stud\_2012\_liceo.arff}
+		\subitem \texttt{seq\_stud\_2013\_ist\_tecn.arff}
+		\subitem \texttt{seq\_stud\_2013\_liceo.arff}
 	\end{itemize}
+
+	Inoltre, per puro scrupolo, è stato comunque creato un file contenente la totalità dei dati a disposizione --- fermo restando il criterio di filtraggio preliminare.
 
 \section{Estrazione dei data set preprocessati}
 
 	Ultimata finalmente la preparazione dei data set necessari alle successive analisi, occorre renderli disponibili in un formato che ne consenta una facile fruibilità. Al di là di necessità specifiche --- in particolare, il caso esposto nella sezione precedente ---  è stato scelto di esportare i dati da MongoDB in formato \texttt{csv}, direttamente importabile in Weka e accessibile in pratica da ogni tipo di programma dato che, come per i file \texttt{arff}, si tratta di informazioni codificate come \textit{plain text}. \\ 
 	
-	Questo fine è stato raggiunto abbbastanza agilmente esportando le varie collezioni tramite il comando \texttt{mongoexport}, comeè possibile vedere sotto in una piccola porzione delle ricette del \texttt{makefile} relative a questo compito:
+	Questo fine è stato raggiunto abbbastanza agilmente esportando le varie collezioni tramite il comando \texttt{mongoexport}, comeè possibile vedere in Figura \ref{make_export}, mostrante una piccola porzione delle ricette del \texttt{makefile} relative a questo compito. \\
 
-	\begin{center}
-		\includegraphics[scale=0.42]{img/export.png}
-	\end{center}
+	\begin{figure}
+			\centering
+			\caption{porzione del \texttt{makefile} che specifica le ricette per eseguire il \textit{join} fra le valutazioni dei corsi e i dati degli studenti}
+			\label{make_export}
+		\includegraphics[scale=0.35]{img/export.png}
+	\end{figure}
 
 	Una parte significativa di questa operazione è rappresentata dalla richiesta di \texttt{mongoexport} di una lista degli attributi da esportare come parametro di input. Per evitare di doverla compilare manualmente, è stata utilizzata una \textit{query} sulla base di dati MongoDB per estrarre automaticamente la lista degli attributi dei documenti di tutte le collezioni da esportare.
 
@@ -261,5 +290,7 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 	}
 
 	\lstinputlisting[language=JavaScript,caption={script della shell di MongoDB per ottenere la lista degli attributi dei documenti in una collezione}, numbers=left, stepnumber=1]{../prepr/list_attr.mongosh}
+
+	\vspace{0.3cm}
 
 	Fatto questo, la fase di \textit{preprocessing} può dirsi conclusa. Si andrà quindi a lavorare sui data set prodotti, impiegando finalmente qualche tecnica di \textit{data mining}.
