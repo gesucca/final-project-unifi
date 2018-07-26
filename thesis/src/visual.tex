@@ -23,11 +23,79 @@ A.A. & Val. Media & Std. Dev. Media & \% Val. Suff. & N. Val. \\ \hline
 \end{tabular}
 \end{table}
 
-    \subsection{Panoramica generale sul Data Set}
+    \subsection{Panoramica Generale sulle Valutazioni dei Corsi}
+    \label{visual:eval_gen}
+
+    Per inquadrare subito la situazione e mettere a fuoco con un singolo colpo d'occhio le caratteristiche di ogni Anno Accademico, è stato realizzato l'istogramma mostrato in Figura \ref{eval_gen}. \\
+
+    Come si può facilmente verificare con una rapida osservazione del grafico, l'unico attributo che varia sensibilmente è il numero medio di valutazioni dei corsi registrate. Si nota inoltre che esso ha una tendenza a crescere all'avanzare dell'Anno Accademico. Per quanto riguarda gli altri attributi, rimangono sostanzialmente simili fra tutti gli Anni Accademici, fatta eccezione per la percentuale di valutazioni sufficienti registrata nell'Anno Accademico 2010-2011, leggermente inferiore rispetto agli altri. \\
 
     \begin{figure}
         \centering
-        \caption{istogramma mostrante una panoramica generale su tutti gli attributi generali del dataset descritto in Sezione \ref{prepr:eval_min}}
+        \caption{istogramma mostrante una panoramica generale su tutti gli attributi del dataset descritto in Sezione \ref{prepr:eval_min}}
         \label{eval_gen}
         \includegraphics[scale=0.55]{../visual/eval_3.png}
     \end{figure}
+
+    \subsection{Dettaglio sulla Percentuale di Valutazioni Sufficienti}
+
+    Volendo vedere con un maggior livello di dettaglio l'andamento di quest'ultimo aspetto, è stato realizzato un grafico mostrante l'attributo "percentuale di valutazioni sufficienti" come serie storica attraverso tutti gli Anni Accademici di cui si hanno a disposizione informazioni. Tale grafico, mostrato in Figura \ref{eval_p}, mostra con maggiore chiarezza quanto si è osservato sull'istogramma generale di Figura \ref{eval_gen}. \\
+
+    \begin{figure}
+        \centering
+        \caption{serie storica dell'attributo "percentuale di valutazioni sufficienti" attraverso gli Anni Accademici coperti dal data set delle valutazioni dei corsi}
+        \label{eval_p}
+        \includegraphics[scale=0.56]{../visual/eval_2.png}
+    \end{figure}
+
+\section{Produttività degli Studenti}
+
+    Riguardo ai dati relativi alla produttività degli studenti, il dataset su cui si è lavorato è quello descritto nella Sezione \ref{prepr:stud_min}, che è già stato riportato nella sua interezza in tale sede ma, data la sua piccola dimensione, è comunque ripetuto di seguito per comodità di consultazione. \\
+
+    \begin{tabular}{llllll}
+		\hline
+		Coorte & N. & Laureati {[}\%{]} & Test Ingresso & Voto & Ritardo \\ \hline
+		2010 & 30 & 6.67 & 15.4 & 25.5 & 0.81 \\
+		2011 & 39 & 10.26 & 13.26 & 24.81 & 1.07 \\
+		2012 & 58 & 25.86 & 14.05 & 24.79 & 1.01 \\
+		2013 & 80 & 11.25 & 14.39 & 24.98 & 0.77 \\ \hline
+	\end{tabular}
+
+    \subsection{Panoramica generale sulla Produttività degli Studenti}
+
+    Per quanto riguarda una preliminare analisi generale dell'intero data set, restano valide le considerazioni espresse in Sezione \ref{visual:eval_gen}. Pertanto, è stato generato un istogramma del tutto analogo a quanto fatto tale Sezione, mostrato in Figura \ref{stud_gen}. \\
+
+    In seguito a una analisi visiva del grafico, si può notare come gli attributi che più variano sono il numero di studenti imatricolati in una data coorte e la percentuale di studenti laureati entro la fine del periodo in esame. L'andamento degli studenti immatricolati è considerevolmente simile a quello riscontrato sul numero di valutazione dei corsi registrate, quindi è plausibile supporre una certa correlazione diretta fra i due attributi --- piuttosto banalmente, se ci sono più studenti iscritti, perverranno anche più valutazioni dei corsi.
+
+    \begin{figure}
+        \centering
+        \caption{istogramma mostrante una panoramica generale su tutti gli attributi generali del dataset descritto in Sezione \ref{prepr:stud_min}}
+        \label{stud_gen}
+        \includegraphics[scale=0.50]{../visual/stud_1.png}
+    \end{figure}
+
+    \subsection{Relazione fra Test di Ingresso, Voto Medio e Ritardo}
+
+    Un aspetto curioso sul quale si è voluto fare luce è l'esistenza o meno di una qualche correlazione fra il risutlato conseguito nel test di ingresso e le valutazioni ottenute nei successivi esami di profitto. Avendo a disposizione in questa sede entrambi gli attributi in forma aggregata, è stato realizzato il grafico di Figura \ref{test}. \\
+
+    Si noti che gli attributi considerati non esprimono valori nella stessa scala: il test di ingresso prevede un punteggio massimo di 25, mentre per gli esami di profitto il punteggio massimo previsto è di 31 punti (con il 31 a rappresentare in realtà in 30 con lode). C'è stato perciò bisogno di effettuare una \textit{normalizzazione} di tali attributi, per poterli confrontare direttamente. \\
+
+    \begin{figure}
+        \centering
+        \caption{serie temporale mostrante i valori degli attributi normalizzati "voto medio" e "valutazione media al test di ingresso"}
+        \label{test}
+        \includegraphics[scale=0.45]{../visual/stud_2.png}
+    \end{figure}
+
+    Come si può vedere, pare esserci una correlazione estremamente blanda, ma non risulta così significativa da essere presa in considerazione per ulteriori approfondimenti. Inoltre, si può notare un \textit{offset} abbastanza pronunciato fra i due attributi; concedendoci una speculazione, potrebbe essere dato da un minor impegno degli studenti nel test di ingresso dato dalla sua soglia di sufficienza molto bassa --- 12 punti su 25 --- e dal fatto che il risultato in tale test non impatta in alcun modo la futura carriera accademica. \\
+
+    \begin{figure}
+        \centering
+        \caption{serie temporale mostrante l'andamento dell'attributo "ritardo medio" relativo al superamento degli esami di profitto}
+        \label{ritardo}
+        \includegraphics[scale=0.45]{../visual/stud_3.png}
+    \end{figure}
+
+    La curiosa flessione della valutazione al test di ingresso fra la coorte di studenti immatricolati nel 2011 trova un riscontro nell'andamento del ritardo medio con cui sono stati superati gli esami di profitto rispetto al loro primo appello, come si può vedere dalla Figura \ref{ritardo}. Comunque, si tratta di una correlazione abbastanza debole, pertanto è stato scelto di limitarsi a notarla, senza proseguire nell'analisi. \\
+
+    percentuale laureati
