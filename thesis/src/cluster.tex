@@ -31,7 +31,7 @@
 
         "La tecnica K-Means è semplice: scegliamo inizialmente \textit{K} centroidi iniziali, dove \textit{K} è il numero di cluster desiderati. Ogni punto del data set è assegnato al centroide più vicino, e ogni collezione di punti assegnati a un centrode è un cluster. Il centroide di ogni cluster viene poi ricalcolato, basandosi sui punti che gli sono stati assegnati. Si ripetono questi passi fino a che nessun punto cambia cluster, o i centroidi non cambiano."\\
 
-        Quindi, si tratta di una procedura iterativa che, a partire da un numero fissato di centroidi iniziali, migliora ad ogni passo gli assegnamenti fino a che non si raggiunge una situazione di stabilità. \\
+        Quindi, si tratta di una procedura iterativa che, a partire da un numero fissato di punti iniziali, chiamati centroidi, migliora ad ogni passo gli assegnamenti fino a che non si raggiunge una situazione di stabilità. \\
 
         Le librerie di Weka mettono a disposizione una implementazione di K-Means, che offre di poter configurare un gran numero di parametri (come si può vedere in Figura \ref{kmeans_weka}).
 
@@ -42,14 +42,27 @@
             \includegraphics[scale=0.55]{img/cluster_k_means.png}
         \end{figure}
 
-    \subsection{Algoritmo DBSCAN di Weka}
-        Lorem ecc
+    \subsection{Algoritmo DBSCAN}
+
+        Una algoritmo sostanzialmente diverso dal precedente è DBSCAN, che non si basa sul minimizzare le distanze dal centroide del \textit{cluster}, ma bensì sul raggruppare le istanze del data set in base alla loro \textbf{densità}. \\
+
+        Una informale ma potente descrizione di questo si può leggere in \cite{dispense}:
+
+        "Density-based clustering locates regions of high density that are separated from one another by regions of low density. DBSCAN is a simple and effective density-based clustering algorithm [...]"\\
+
+        Che tradotto significa:\\
+
+        "Le teniche di clustering basate sulla densità individuano regioni dense separate le une dalle altre da regioni meno dense. DBSCAN è un algoritmo di clustering basato sulla densità semplice ed efficace."\\
+
+        Quindi, si può dire che DBSCAN sia un algoritmo che, a differenza di K-Means, non cerca di individuare a quale dei cluster decisi inizialmente appartenga una data istanza, ma individua invece i cluster "naturali" del data set basandosi sulal densità di istanze nelle varie regioni dello spazio multidimensionali definito dagli attributi. \\
+
+        L'implementazione di DBSCAN fornita da Weka, come si può vedere in Figura \ref{dbscan_weka}, è molto basilare, ma totalmente funzionale.
 
         \begin{figure}
             \centering
             \caption{finestra che mostra i parametri impostabili dell'algoritmo DBSCAN}
             \label{dbscan_weka}
-            \includegraphics[scale=0.50]{img/dbscan_weka.png}
+            \includegraphics[scale=0.55]{img/dbscan_weka.png}
         \end{figure}
 
     \subsection{Algoritmo di Clustering Gerarchico}
