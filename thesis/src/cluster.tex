@@ -5,7 +5,7 @@
 
 \section{Introduzione alla Cluster Analysys}
 
-    Impiegando una massiccia astrazione dai dettagli, possiamo descrivere un \textit{clustering} come segue, riportandolo direttamente da \cite{clustering}:\\
+    Volendo spendere poche parole per delineare un quadro generale e impiegando una massiccia astrazione dai dettagli, possiamo descrivere un \textit{clustering} come segue, citando direttamente da \cite{clustering}:\\
 
     "Il \textbf{clustering} o \textbf{analisi dei gruppi} (dal termine inglese \textit{cluster analysis} introdotto da Robert Tryon nel 1939) è un insieme di tecniche di analisi multivariata dei dati volte alla selezione e raggruppamento di elementi omogenei in un insieme di dati."\\
 
@@ -13,9 +13,9 @@
 
     "Le tecniche di clustering si basano su misure relative alla somiglianza tra gli elementi. In molti approcci questa similarità, o meglio, dissimilarità, è concepita in termini di distanza in uno spazio multidimensionale. La bontà delle analisi ottenute dagli algoritmi di clustering dipende molto dalla scelta della metrica, e quindi da come è calcolata la distanza. Gli algoritmi di clustering raggruppano gli elementi sulla base della loro distanza reciproca, e quindi l'appartenenza o meno ad un insieme dipende da quanto l'elemento preso in esame è distante dall'insieme stesso."\\
 
-    La similitudine fra due istanze si intende quindi come una misura di \textbf{distanza} in uno spazio multidimensionale le cui dimensioni sono gli attributi delle istanze stesse.\\
+    Questa breve ma efficace descrizione sommaria fornisce già una sufficiente infarinatura riguardo al tipo di azioni da compiere per ottenere un \textit{clustering}: si tratta infatti di cercare all'interno dei data set in esame dei gruppi di istanze simili fra di loro per qualche criterio --- che vedremo essere delle metriche di distanza in uno spazio multidimensionale definito dagli attributi dei dati.\\
 
-    Questo scritto può essere sufficiente per delineare il quadro generale nel quale si è operato per compiere i passi descritti successivamente. Ovviamente, una trattazione esaustiva sull'argomento necessiterebbe ben altro spazio di quello che si può dedicare in questa tesi di laurea, perciò si rimanda alla consultazione di \cite{dispense} per ulteriori dettagli, qualora quanto sopra riportato non dovesse essere sufficiente per la comprensione di quanto seguirà.
+    Quanto scritto può essere sufficiente per delineare il quadro generale nel quale si è operato per compiere i passi descritti successivamente. Ovviamente, una trattazione esaustiva sull'argomento necessiterebbe ben altro spazio di quello che si può dedicare in questa tesi di laurea, perciò si rimanda alla consultazione di \cite{dispense} per ulteriori dettagli, qualora quanto sopra riportato non dovesse essere sufficiente per la comprensione di quanto seguirà.
 
 \section{Algoritmi di Clustering}
 
@@ -39,7 +39,7 @@
             \centering
             \caption{finestra che mostra i parametri impostabili dell'algoritmo K-Means}
             \label{kmeans_weka}
-            \includegraphics[scale=0.55]{img/cluster_k_means.png}
+            \includegraphics[scale=0.80]{img/cluster_k_means.png}
         \end{figure}
 
     \subsection{Algoritmo DBSCAN}
@@ -65,29 +65,49 @@
             \includegraphics[scale=0.55]{img/dbscan_weka.png}
         \end{figure}
 
-    \subsection{Algoritmo di Clustering Gerarchico}
+\section{Clustering sulle Valutazioni dei Corsi}
+
+    Una prima serie di tentativi di \textit{cluster analysis} è stata fatta sul data set condensato delle valutazioni dei corsi, utilizzando l'algoritmo K-Means.
+
+    \subsection{Lancio di K-Means}
+
+        Adottando un metodo empirico di \textit{trial-and-error}, sono state effettuati innumerevoli lanci di K-Means variando di volta in volta i parametri di input. \\
+
+        Quella che segue è la configurazione che genera il miglior risultato ottenuto:
+
+        \begin{center}
+            \texttt{weka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -V -M -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 5000 -num-slots 1 -S 997}
+        \end{center}
+
+        Nonostante l'elevato numero di parametri a disposizione, in realtà soltanto alcuni hanno influenzato il risultato finale:
+
+        \begin{itemize}
+            \item come metrica è stata scelta la \textbf{distanza Euclidea}\footnote{Si tratta di una metrica che misurala distanza fra due punti di uno spazio multidimensionale come la lunghezza del segmento che li unisce.};
+            \item sono stati imposti due centroidi iniziali scelti casualmente, ottenendo pertanto un partizionamento con due cluster
+        \end{itemize}
+
+        Ai fini del clustering, sono stati considerati soltanto tre attributi: la valutazione complessiva del corso, la deviazione standard delle valutazioni e la percentuali di valutazioni sufficienti.
+
+        \lstinputlisting[caption={Output della console di Weka relativo al lancio di K-Means sul data set delle valutazioni dei corsi}]{../cluster/eval_kmeans.txt}
 
         \begin{figure}
             \centering
-            \caption{finestra che mostra i parametri impostabili dell'algoritmo di clustering gerarchico}
-            \label{hierar_weka}
-            \includegraphics[scale=0.50]{img/hierarch_weka.png}
+            \caption{sezione dello spazio di esistenza del data set delle valutazione dei corsi lungo il piano definito da "valutazione complessiva" e "percentuale di valutazioni sufficienti", con evidenziato per ogni istanza il cluster di appartenenza}
+            \label{eval_kmeans}
+            \includegraphics[scale=1.2]{../cluster/eval_kmeans.png}
         \end{figure}
 
-\section{Clustering sulle Valutazioni dei Corsi}
+        Come si può vedere dalla Figura \ref{eval_kmeans}, il data set è stato diviso in due cluster che appaiono visivamente ben separati.
 
-    \subsection{Lancio di K-Means e analisi dei risultati}
+        \begin{itemize}
+            \item \textbf{Cluster 1} (rosso): A. A. 2013-2014 e 2010-2011
+            \item \textbf{Cluster 0} (blu): gli altri cinque A. A.
+        \end{itemize}
 
     \subsection{Tentativo di utilizzo di DBSCAN}
 
-\section{Clustering sulla Produttività degli Studenti}
-
-    ...
-
-    \subsection{Clustering Gerarchico}
-
 \section{Clustering sulla join dei due data set}
 
-    \subsection{Lancio di $K-Means$}
+    \subsection{Lancio di K-Means}
 
-    \subsection{Analisi dei risultati di $K-Means$}
+    \subsection{Analisi dei risultati di K-Means}

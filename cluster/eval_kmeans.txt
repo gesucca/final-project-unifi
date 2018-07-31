@@ -14,7 +14,6 @@ Test mode:    evaluate on training data
 
 === Clustering model (full training set) ===
 
-
 kMeans
 ======
 
@@ -26,24 +25,19 @@ Initial starting points (random):
 Cluster 0: 7.93,1.61,90.68
 Cluster 1: 7.54,1.74,82.14
 
-
 Final cluster centroids:
-                                                                  Cluster#
-Attribute                                             Full Data          0          1
-                                                          (7.0)      (5.0)      (2.0)
-=====================================================================================
-Valutazione Complessiva [media pesata]                   7.8729      7.974       7.62
-                                                      +/-0.1814  +/-0.0378  +/-0.1131
+                                            Cluster#
+Attribute                                   Full Data      0              1
+                                            (7.0)          (5.0)          (2.0)
+============================================================================
+Val. Compl. [media pesata]                  7.8729         7.974          7.62
+                                            +/-0.1814      +/-0.0378      +/-0.1131
 
-Deviazione Standard Complessiva [media pesata]           1.7386      1.732      1.755
-                                                      +/-0.0672  +/-0.0804  +/-0.0212
+Std. Dev. Compl. [media pesata]             1.7386         1.732          1.755
+                                            +/-0.0672      +/-0.0804       +/-0.0212
 
-Percentuale Valutazioni Sufficienti [media pesata]      88.4543     89.974     84.655
-                                                      +/-3.0188  +/-0.6345  +/-3.5567
-
-
-
-
+Perc. Val. Suff. [media pesata]             88.4543        89.974         84.655
+                                            +/-3.0188      +/-0.6345      +/-3.5567
 
 Time taken to build model (full training data) : 0 seconds
 
@@ -53,4 +47,3 @@ Clustered Instances
 
 0      5 ( 71%)
 1      2 ( 29%)
-
