@@ -67,7 +67,9 @@
 
 \section{Clustering sulle Valutazioni dei Corsi}
 
-    Una prima serie di tentativi di \textit{cluster analysis} è stata fatta sul data set condensato delle valutazioni dei corsi, utilizzando l'algoritmo K-Means.
+    Una prima serie di tentativi di \textit{cluster analysis} è stata fatta sul data set condensato delle valutazioni dei corsi, utilizzando l'algoritmo K-Means. \\
+
+    Si è ben coscienti che una analisi di questo tipo su un data set che contiene solo sette elementi \underline{generalmente} non avrebbe molto senso, ma in questo caso si può considerare come un approfondimento della fase di \textit{data understanding} su questo data set.
 
     \subsection{Lancio di K-Means}
 
@@ -104,10 +106,114 @@
             \item \textbf{Cluster 0} (blu): gli altri cinque A. A.
         \end{itemize}
 
-    \subsection{Tentativo di utilizzo di DBSCAN}
-
 \section{Clustering sulla join dei due data set}
+
+    Quanto segue è la parte fondamentale di questa \textit{cluster analysis}, ovvero lo studio della versione ad attributi continui dell'unione dei due data set iniziali.
 
     \subsection{Lancio di K-Means}
 
+        In modo del tutto analogo a quanto fatto per la precedente attività di clustering, sono state fatte molte prove al fine di raggiungere una configurazione di lancio di K-Means soddisfacente: \\
+
+        \lstinputlisting[caption={Output della console di Weka relativo al lancio di K-Means sul data set risultante dal join delle due collezioni di dati a disposizione}]{../cluster/min_kmeans_2cl.txt}
+
+        Occorre notare varie cose, al fine di comprendere il signficato di quanto è stato ottenuto:
+
+        \begin{itemize}
+            \item la \textbf{somma dell'errore quadro}\footnote{si tratta di una metrica che da una misura di quanto i punti che compongono il cluster siano distanti dal centroide --- in parole estremamente semplici: più è alto, più il cluster è composto da punti sparsi} all'interno dei cluster è molto maggiore di quella ottenuta nell'occasione precedente, ma non si può assolutamente fare un confronto diretto fra le due quantità, sia per la diversa natura dell'indagine che per il diverso numero di istanze tenute in considerazione;
+            \item al fine di semplificare il significato geometrico della metrica di distanza scelta (quella Euclidea), sono stati presi in considerazione ai fini del clustering soltanto gli attributi più caratterizzanti del dataset:
+                \subitem --- Voto medio degli studenti
+                \subitem --- Ritardo medio degli studenti
+                \subitem --- Valutazione media del corso
+            \item sono stati cercati, anche in questo caso, due soli cluster; semanticamente, si può intendere di voler dividere i corsi "migliori", in cui gli studenti hanno prodotto delle buone performance e che la cui didattica ha ricevuto delle buone valutazioni, da quelli "peggiori".
+        \end{itemize}
+
     \subsection{Analisi dei risultati di K-Means}
+
+        Il risultato ottenuto è parzialmente in linea con l'intento che ci si era prefissati. Il cluster identificato da Weka come \textbf{cluster 0}, e colorato di \textbf{blu} nei grafici che verranno mostrati, può essere considerato quello dei corsi miglior. Conseguentemente, il \textit{cluster 1} può essere letto come quello dei corsi peggiori rispetto agli altri e rispetto alle metriche considerate. \\
+
+        Si vada innanzitutto a vedere comesono state raggruppate le istanze del data set nei due cluster, rispetto ai tre attributi caratterizzati (Figure \ref{1}, \ref{2} e \ref{3}). Come si può agilmente notare, la divisione che ci si aspettava di vedere è presente.\\
+
+        \begin{figure}
+            \centering
+            \caption{sezione dello spazio di esistenza del data set delle valutazione dei corsi lungo il piano definito da "voto medio" e "ritardo medio", con evidenziato per ogni istanza il cluster di appartenenza}
+            \label{1}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_attr1.png}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \caption{sezione dello spazio di esistenza del data set delle valutazione dei corsi lungo il piano definito da "ritardo medio" e "valutazione della didattica", con evidenziato per ogni istanza il cluster di appartenenza}
+            \label{2}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_attr2.png}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \caption{sezione dello spazio di esistenza del data set delle valutazione dei corsi lungo il piano definito da "voto medio" e "valutazione della didattica", con evidenziato per ogni istanza il cluster di appartenenza}
+            \label{3}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_attr3.png}
+        \end{figure}
+
+        Volendo ragionare sulla composizione dei due cluster, si è andati a vedere innanzitutto se l'Anno Accademico di riferimento ha un qualche ruolo nella produzione di questo risultato. Come si può osservare nelle Figure \ref{AA1} e \ref{AA2}, la popolazione di entrambi i cluster è abbastanza simile riguardo a questo aspetto. \\
+
+        \begin{figure}
+            \centering
+            \caption{composizione del Cluster 0 riguardo gli Anni Accademici considerati dal data set}
+            \label{AA1}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_AA_cl0.png}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \caption{sezione dello spazio di esistenza del data set delle valutazione dei corsi lungo il piano definito da "voto medio" e "valutazione della didattica", con evidenziato per ogni istanza il cluster di appartenenza}
+            \label{AA2}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_AA_cl1.png}
+        \end{figure}
+
+        Per quanto riguarda invece l'individuare quali corsi --- e di quale anno --- sono finiti in quale cluster, si è innanzitutto osservata la composizione totale dei due cluster. In caso si fosse trattato di una \textit{cluster analysis} su veri e propri \textit{big data}, questo non sarebbe ovviamente stato possibile, ma dato che il data set in esame ha a malapena sessanta istanze, è stato possibile stilare la seguente lista:
+
+        \lstinputlisting{../cluster/min_kmeans_2cl_composition.txt}
+
+        Tuttavia, tale lista non consente di vedere immediatamente alcuna caratteristica fondamentale del clustering in esame. La maggior parte dei corsi, rappresentati da varie istanze secondo l'Anno Accademico di riferimento, è presente sia nel Cluster 0 che nel Cluster 1. Pertanto, è stata realizzata la tabella mostrata in Figura \ref{tabella} per evidenziare quali corsi di esame sono del tutto assenti da quali cluster.
+
+        \begin{figure}
+            \centering
+            \caption{tabella che mostra la composizione dei cluster in riferimento ai corsi di esame}
+            \label{tabella}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_corsi_cluster.png}
+        \end{figure}
+
+        Da tale Figura, si può notare che il Cluster 0, quello dei corsi "buoni", comprende tutte le istanze relative ai corsi di:
+
+        \begin{itemize}
+            \item Algoritmi e Strutture dati
+            \item Interpreti e Compilatori
+            \item Reti di Calcolatori
+        \end{itemize}
+
+        Inoltre, si può vedere che nel Cluster 1, quello dei corsi "meno buoni", sono presenti tutte le istanze dei seguenti corsi:
+
+        \begin{itemize}
+            \item Architetture degli Elaboratori
+            \item Matematica Discreta e Logica
+            \item Programmmazione Concorrente
+        \end{itemize}
+
+        Questa caratteristica richiama fortemente quanto visto nel Capitolo \ref{ch:undst}, ovvero durante la fase di \textit{data understanding}, rafforzando quindi l'ipotesi della bontà dell'analisi che si sta effettuando.
+
+        ...
+
+    \subsection{Tentativo di utilizzo di DBSCAN}
+
+    Come il titolo di questa sezione suggerisce, non è stato possibile utilizzare con profitto l'algoritmo DBSCAN. \\
+
+    Imitando quanto fatto con K-Means, ovvvero limitando il numero di attributi da considerare per il clustering, ci si aspetterebbe che un algoritmo basato sulla densità possa esibire delle buone performance. Per facilitare ulteriormente l'esecuzione di DBSCAN, è stato addirittura scartato l'attributo relativo al ritardo degli studenti. Così facendo, si è ottenuto uno spazio bidimensionale in cui l'algoritmo può facilmente operare - e che si presta bene a una interpretazione visiva. \\
+
+    Invece, non è stato possibile ottenere nessun risultato diverso da un cluster unico, per qualunque valore di epsilon e per qualsiasi numero di punti minimi richiesti. Questo perché evidentemente i punti nel nostro piano di analisi sono addensati tutti in un'unica regione, fatto che possiamo agilmente verificare osservandone un grafico in Figura \ref{dbscan}.
+
+    \begin{figure}
+        \centering
+        \caption{piano sul quale è stato tentato il clustering con l'algoritmo DBSCAN}
+        \label{dbscan}
+        \includegraphics[scale=0.5]{../cluster/dbscan.png}
+    \end{figure}
