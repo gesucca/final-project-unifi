@@ -39,7 +39,7 @@
             \centering
             \caption{finestra che mostra i parametri impostabili dell'algoritmo K-Means}
             \label{kmeans_weka}
-            \includegraphics[scale=0.80]{img/cluster_k_means.png}
+            \includegraphics[scale=0.90]{img/cluster_k_means.png}
         \end{figure}
 
     \subsection{Algoritmo DBSCAN}
@@ -62,14 +62,14 @@
             \centering
             \caption{finestra che mostra i parametri impostabili dell'algoritmo DBSCAN}
             \label{dbscan_weka}
-            \includegraphics[scale=0.55]{img/dbscan_weka.png}
+            \includegraphics[scale=0.70]{img/dbscan_weka.png}
         \end{figure}
 
 \section{Clustering sulle Valutazioni dei Corsi}
 
     Una prima serie di tentativi di \textit{cluster analysis} è stata fatta sul data set condensato delle valutazioni dei corsi, utilizzando l'algoritmo K-Means. \\
 
-    Si è ben coscienti che una analisi di questo tipo su un data set che contiene solo sette elementi \underline{generalmente} non avrebbe molto senso, ma in questo caso si può considerare come un approfondimento della fase di \textit{data understanding} su questo data set.
+    Si è ben coscienti che una analisi di questo tipo su un data set che contiene solo sette elementi \textit{generalmente} non avrebbe molto senso, ma in questo caso si può considerare come un approfondimento della fase di \textit{data understanding} su questo data set.
 
     \subsection{Lancio di K-Means}
 
@@ -160,27 +160,27 @@
             \centering
             \caption{composizione del Cluster 0 riguardo gli Anni Accademici considerati dal data set}
             \label{AA1}
-            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_AA_cl0.png}
+            \includegraphics[scale=0.75]{../cluster/min_kmeans_2cl_AA_cl0.png}
         \end{figure}
 
         \begin{figure}
             \centering
-            \caption{sezione dello spazio di esistenza del data set delle valutazione dei corsi lungo il piano definito da "voto medio" e "valutazione della didattica", con evidenziato per ogni istanza il cluster di appartenenza}
+            \caption{composizione del Cluster 1 riguardo gli Anni Accademici considerati dal data set}
             \label{AA2}
-            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_AA_cl1.png}
+            \includegraphics[scale=0.75]{../cluster/min_kmeans_2cl_AA_cl1.png}
         \end{figure}
 
-        Per quanto riguarda invece l'individuare quali corsi --- e di quale anno --- sono finiti in quale cluster, si è innanzitutto osservata la composizione totale dei due cluster. In caso si fosse trattato di una \textit{cluster analysis} su veri e propri \textit{big data}, questo non sarebbe ovviamente stato possibile, ma dato che il data set in esame ha a malapena sessanta istanze, è stato possibile stilare la seguente lista:
+        Per quanto riguarda invece l'individuare quali corsi --- e di quale anno --- sono finiti in quale cluster, si è innanzitutto osservata la composizione totale dei due cluster. In caso si fosse trattato di una \textit{cluster analysis} su veri e propri \textit{big data}, questo non sarebbe ovviamente stato possibile, ma dato che il data set in esame ha a malapena sessanta istanze, è stato possibile stilare la seguente lista: \\
 
         \lstinputlisting{../cluster/min_kmeans_2cl_composition.txt}
 
-        Tuttavia, tale lista non consente di vedere immediatamente alcuna caratteristica fondamentale del clustering in esame. La maggior parte dei corsi, rappresentati da varie istanze secondo l'Anno Accademico di riferimento, è presente sia nel Cluster 0 che nel Cluster 1. Pertanto, è stata realizzata la tabella mostrata in Figura \ref{tabella} per evidenziare quali corsi di esame sono del tutto assenti da quali cluster.
+        Tuttavia, tale lista non consente di vedere immediatamente alcuna caratteristica fondamentale del clustering in esame. La maggior parte dei corsi, rappresentati da varie istanze secondo l'Anno Accademico di riferimento, è presente sia nel Cluster 0 che nel Cluster 1. Pertanto, è stata realizzata la tabella mostrata in Figura \ref{tabella} per evidenziare quali corsi di esame sono del tutto assenti da quali cluster.\\
 
         \begin{figure}
             \centering
             \caption{tabella che mostra la composizione dei cluster in riferimento ai corsi di esame}
             \label{tabella}
-            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_corsi_cluster.png}
+            \includegraphics[scale=0.65]{../cluster/min_kmeans_2cl_corsi_cluster.png}
         \end{figure}
 
         Da tale Figura, si può notare che il Cluster 0, quello dei corsi "buoni", comprende tutte le istanze relative ai corsi di:
@@ -199,9 +199,30 @@
             \item Programmmazione Concorrente
         \end{itemize}
 
-        Questa caratteristica richiama fortemente quanto visto nel Capitolo \ref{ch:undst}, ovvero durante la fase di \textit{data understanding}, rafforzando quindi l'ipotesi della bontà dell'analisi che si sta effettuando.
+        Questa caratteristica richiama fortemente quanto visto nel Capitolo \ref{ch:undst}, ovvero durante la fase di \textit{data understanding}, rafforzando quindi l'ipotesi della bontà dell'analisi che si sta effettuando. \\
 
-        ...
+        Volendo approfondire ulteriormente l'analisi della composizione dei cluster, nelle Figure \ref{eval}, \ref{ritardo} e \ref{voto} si possono vedere degli istogrammi che mostrano la somma dei tre attributi considerati per realizzare il clustering. Ovviamente, i valori assoluti di tali somme non significano niente, ma è interessante vedere come gli attributi "positivi" --- la valutazione della didattica e il voto medio --- hanno una somma più elevata nel Cluster 0, mentre quello "negativo" --- il ritardo nel dare gli esami --- è molto più accentuato nel Cluster 1.
+
+        \begin{figure}
+            \centering
+            \caption{istogramma che mostra la somma dell'attributo "valutazione della didattica" nei due cluster ottenuti, divisa per Anno Accademico}
+            \label{eval}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_eval.png}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \caption{istogramma che mostra la somma dell'attributo "ritardo medio nel dare gli esami" nei due cluster ottenuti, divisa per Anno Accademico}
+            \label{ritardo}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_ritardo.png}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \caption{istogramma che mostra la somma dell'attributo "voto medio conseguito all'esame" nei due cluster ottenuti, divisa per Anno Accademico}
+            \label{voto}
+            \includegraphics[scale=0.5]{../cluster/min_kmeans_2cl_voto.png}
+        \end{figure}
 
     \subsection{Tentativo di utilizzo di DBSCAN}
 
@@ -215,5 +236,5 @@
         \centering
         \caption{piano sul quale è stato tentato il clustering con l'algoritmo DBSCAN}
         \label{dbscan}
-        \includegraphics[scale=0.5]{../cluster/dbscan.png}
+        \includegraphics[scale=0.85]{../cluster/dbscan.png}
     \end{figure}

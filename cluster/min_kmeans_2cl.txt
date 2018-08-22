@@ -1,7 +1,7 @@
 === Run information ===
 
 Scheme:       weka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -V -M -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 5000 -num-slots 1 -S 7
-Relation:     min-weka.filters.unsupervised.attribute.Remove-R4,10-weka.filters.unsupervised.attribute.Remove-R4,6,8,10-11-weka.filters.unsupervised.attribute.Remove-R2
+Relation:     [...]
 Instances:    54
 Attributes:   5
               Produttivita Studenti - Ritardo [semestre, media]
@@ -12,9 +12,7 @@ Ignored:
               Insegnamento
 Test mode:    evaluate on training data
 
-
 === Clustering model (full training set) ===
-
 
 kMeans
 ======
@@ -29,22 +27,18 @@ Cluster 1: 1.24,23.76,6.88
 
 
 Final cluster centroids:
-                                                                 Cluster#
-Attribute                                            Full Data          0          1
-                                                        (54.0)     (28.0)     (26.0)
-====================================================================================
-Produttivita Studenti - Ritardo [semestre, media]       0.8811     0.5486     1.2392
-                                                     +/-0.5344  +/-0.3351  +/-0.4763
+                                Cluster#
+Attribute                       Full Data  0          1
+                                (54.0)     (28.0)     (26.0)
+===============================================================
+Ritardo [semestre, media]       0.8811     0.5486     1.2392
+                                +/-0.5344  +/-0.3351  +/-0.4763
 
-Produttivita Studenti - Voto [media]                   25.1394    26.0904    24.1154
-                                                     +/-1.5681  +/-1.2664  +/-1.1736
+Voto [media]                    25.1394    26.0904    24.1154
+                                +/-1.5681  +/-1.2664  +/-1.1736
 
-Valutazione Insegnamento - Val [media pesata]           7.8141     8.1118     7.4935
-                                                     +/-0.5734  +/-0.3492  +/-0.5992
-
-
-
-
+Val [media pesata]              7.8141     8.1118     7.4935
+                                +/-0.5734  +/-0.3492  +/-0.5992
 
 Time taken to build model (full training data) : 0 seconds
 
@@ -54,4 +48,3 @@ Clustered Instances
 
 0      28 ( 52%)
 1      26 ( 48%)
-
