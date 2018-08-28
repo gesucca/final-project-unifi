@@ -127,27 +127,46 @@ Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti.
             - omiss. -
         \end{lstlisting}
 
-        Per ogni data set preparato precedentemente, l'algoritmo GSP è stato lanciato tre volte, con tre valori diversi di supporto minimo: $0.33$, $0.50$ e $0.75$; in un caso è stato addirittura tentato il lancio con supporto minimo pari a $0.10$. Questo ha prodotto una elevata mole di sequenze frequenti, che è stata appositamente memorizzata in file di testo (Figura \ref{files}), pronti per essere analizzati dai successivi script. \\
-
-        \begin{figure}
-            \centering
-            \caption{File contenenti i risultati di tutti i lanci dell'algoritmo GSP}
-            \label{files}
-            \includegraphics[scale=0.75]{img/seq_files.png}
-        \end{figure}
+        Per ogni data set preparato precedentemente, l'algoritmo GSP è stato lanciato tre volte, con tre valori diversi di supporto minimo: $0.33$, $0.50$ e $0.75$; in un caso è stato addirittura tentato il lancio con supporto minimo pari a $0.10$. Questo ha prodotto una elevata mole di sequenze frequenti, che è stata appositamente memorizzata in file di testo, pronti per essere analizzati dai successivi script. \\
 
         Come già accennato, la complessità dell'algoritmo GSP ha creato il primo, vero problema relativo all'impiego di \textit{big data}: i tempi di anallisi sulla versione intera del data set preprocessato --- quella che contiene le sequenze di tutte le istanze di studenti a disposizione --- esulano dalla trattabilità. Perciò, per ogni data set preparato, è stato applicato il filtro relativo alla lunghezza della sequenza, scartando tutti gli studenti che non hanno completato almeno un terzo del Corso di Laurea, come già descritto in Sezione ottenuta in Sezione \ref{prepr:seq}. Nonostante questo filtro, i tempi macchina sono stati comunque molto alti per quanto riguarda il data set completo. Per gli altri, invece, si è trattato di computazioni brevi. \\
 
     \subsection{Filtraggio delle Sequenze Inusuali}
 
-    ...
+    L'estrazione dei pattern sequenziali interessanti, cioè quelli che che presentano almeno un'anomalia rispetto all'ordine ideale degli esami, è stata effettuata lanciando da shell lo script riportato in \ref{appendix:unusual} nella stessa directory dei file contenenti i risultati ottenuti con l'algoritmo GSP. \\
+
+    Lo script creato produce un file \textit{plaintext} nominato \texttt{unusual\_patterns.res}, del quale si mostra il brevissimo incipit in Figura \ref{file_unusual}. Tale file semplicemente riporta le righe degli output di GSP che contengono le sequenze con le caratteristiche sopra descritte.
+
+    \begin{figure}
+        \centering
+        \caption{File contenente le sequenze più interessanti estratte dai risultati dell'algoritmo GSP}
+        \label{file_unusual}
+        \includegraphics[scale=0.60]{img/unusual_pattern.png}
+    \end{figure}
 
     \subsection{Sommario degli Esami Non Congruenti}
 
-    ...
+    Il passo finale del procedimento si completa lanciando lo script contenuto nel file \texttt{out\_of\_place.py}, riportato in \ref{appendix:freq}.\\
+
+    Lo script scorre tutte le sequenze del file precedentemente generato, individua quali esami la rendono incongruente con la sequenza ideale e li memorizza, contando quante volte un esame è comparso in un pattern sequenziale frequente che lo vede "fuori posto". \\
+
+    Il suo output consiste, in tutta semplicità, nello stampare la struttura dati che ha memorizzato il conto degli esami --- non prima di aver trasformato il numero grezzo di istanze che contengono gli item, valore privo di significato assoluto, in una più fruibile percentuale rispetto al totale degli esami individuati. \\
+
+    \begin{centering}
+        \texttt{\{ '1\_MDL': 22.16, '1\_ADE': 1.55, '2\_2\_SOP': 0.44, '2\_2\_FIG': 42.72, '2\_1\_MDP': 13.69, '2\_1\_CPS': 1.66, '2\_1\_PRC': 16.39, '2\_1\_ALG': 1.39 \}}
+    \end{centering}
 
 \section{Risultati Finali dell'Analisi}
 
-    Si arriva infine a quello che, abbandonandoci alla suggestiva metafora principale del \textit{data mining}, è il vero oro finalmente estratto dall'intera mole di dati della produttività degli studenti:
+    Come appena visto, si è infine infine arrivati a quello che, abbandonandoci alla suggestiva metafora principale del \textit{data mining}, è il vero oro finalmente estratto dall'intera mole di dati della produttività degli studenti. \\
 
-    ... immagine
+    Con l'ausilio di un foglio di calcolo, le informazioni estratte sono state incanalate nel diagramma a torta mostrato in Figura \ref{fine}. \\
+
+      \begin{figure}
+        \centering
+        \caption{Grafico a torta che riassume la composizione degli esami più spesso rimandati in favore di altri ad essi successivi}
+        \label{fine}
+        \includegraphics[scale=0.80]{../seq/out_of_place.png}
+    \end{figure}
+
+    Grazie al potere espressivo del grafico, si osserva senza difficoltà che l'esame che viene rimandato più spesso è di gran lunga Fisica Generale, fatto del quali si è trovato conferma nelle altre analisi illustrate in questo documento. Per la stessa ragione, non è da considerarsi sorprendente la presenza --- minore, ma comunque massiccia --- di Matematica Discreta e Logica, mentre appaiono più curiosi i dati su Programazione Concorrente e Metodologie di Programazione.
