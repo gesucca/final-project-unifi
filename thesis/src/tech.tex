@@ -3,9 +3,9 @@
 
 La scelta della tecnologia da impiegare è un aspetto fondamentale di ogni progetto, e questo chiaramente non fa eccezione. \\
 
-Molti testi --- fra cui uno dei preferiti dall'autore\footnote{Si tratta di \cite{pragmatic}, un libro estremamente interessante, oltre che essenziale come spunto di riflessione per lo sviluppo personale e professionale di ogni informatico che osi definirsi programmatore.} --- hanno proposto analogie fra gli utensili di un artigiano e gli strumenti software di un qualaunque utlizzatore informatico. Sull'onda di questa metafora, una lima non adatta al tipo di materiale che si intende lavorare non potrà mai garantire risultati eccellenti, indipendentemente dalla bravuta dell'artigiano stesso. \\
+Molti testi --- fra cui uno dei preferiti dall'autore\footnote{Si tratta di \cite{pragmatic}, un libro estremamente interessante, oltre che essenziale come spunto di riflessione per lo sviluppo personale e professionale di ogni informatico che osi definirsi programmatore.} --- hanno proposto analogie fra gli utensili di un artigiano e gli strumenti software di un qualunque utlizzatore informatico. Sull'onda di questa metafora, una lima non adatta al tipo di materiale che si intende lavorare non potrà mai garantire risultati eccellenti, indipendentemente dalla bravuta dell'artigiano stesso. \\
 
-Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizionare negativamente l'esito di un qualaunque lavoro, pertanto occorre prestare particolare attenzione nel decidere quale tecnologia impiegare per raggiungere lo scopo.
+Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizionare negativamente l'esito di un lavoro, pertanto occorre prestare particolare attenzione nel decidere quale tecnologia impiegare per raggiungere lo scopo.
 
 \section{Strumenti Necessari}
 
@@ -28,7 +28,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
     	\includegraphics[scale=0.65]{img/mongodb.png}
     \end{figure}
 
-    La scelta del Data Base Management System è stata quella che ha impattato più di tutte il tipo di lavoro che è stato necessario fare.
+    La scelta del Data Base Management System è stata quella che ha avuto un impatto maggiore sul tipo di lavoro che è stato necessario fare.
 
     \subsection{La scelta di MongoDB}
 
@@ -62,7 +62,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
     A proposito di quando detto alla fine della sezione precedente, il linguaggio scelto è stato \textbf{Python}. Come si può leggere direttamente da \cite{pywiki}:\\
 
-    "\textbf{Python} è un linguaggio multi-paradigma, che ha tra i principali obiettivi \textit{dinamicità}, \textit{semplicità} e \textit{flessibilità}. Supporta il paradigma object oriented, la programmazione strutturata e molte caratteristiche di programmazione funzionale e riflessione." \\
+    "\textbf{Python} è un linguaggio multi-paradigma, che ha tra i principali obiettivi \textit{dinamicità}, \textit{semplicità} e \textit{flessibilità}. Supporta il paradigma object oriented, la programmazione strutturata e molte caratteristiche di programmazione funzionale e \textit{Reflection}." \\
 
     Il linguaggio Python ha una estesa e approfondita documentazione, messa a disposizione direttamente dalla Python Software Foundation in \cite{python}.
 
@@ -83,7 +83,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
         "\textbf{PyMongo} è una distribuzione di Python che contiene degli strumenti per lavorare con MongoDB, ed è la maniera raccomandata per avere a che fare con MongoDB da Python." \\
 
-        In altre parole, \texttt{pymongo} è una libreria per python che fornisce oggetti e metodi per lanciare istruzioni di \textit{Data Definiion}\footnote{Data Definition Language: sottoinsieme di un linguaggio comprendente le istruzioni per definire e manipolare le strutture (in un DBMS relazionale, le \textit{tabelle}, in MongoDB le \textit{collezioni} di documenti). Ad esmepio, in \textbf{SQL} comprende le istruzioni \textbf{create table}, \textbf{alter table}, \ldots} e \textit{Data Manipulation}\footnote{Data Manipulation Language: sottoinsieme di un linguaggio comprendente le istruzioni per manipolare i dati. Ad esmepio, in \textbf{SQL} sono ad esempio \textbf{insert}, \textbf{update}, \ldots}.
+        In altre parole, \texttt{pymongo} è una libreria per Python che fornisce oggetti e metodi per lanciare istruzioni di \textit{Data Definition}\footnote{Data Definition Language: sottoinsieme di un linguaggio comprendente le istruzioni per definire e manipolare le strutture (in un DBMS relazionale, le \textit{tabelle}, in MongoDB le \textit{collezioni} di documenti). Ad esmepio, in \textbf{SQL} comprende le istruzioni \textbf{create table}, \textbf{alter table}, \ldots} e \textit{Data Manipulation}\footnote{Data Manipulation Language: sottoinsieme di un linguaggio comprendente le istruzioni per manipolare i dati. Ad esmepio, in \textbf{SQL} sono ad esempio \textbf{insert}, \textbf{update}, \ldots}.
 
 \section{Organizzazione: GNU Make}
 
@@ -94,9 +94,9 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
         \includegraphics[scale=0.12]{img/gnu.png}
     \end{figure}
 
-    Data la complessità delle operazioni da eseguire, occorre un modo per dare e mantenere una struttura chiara nel lancio degli script necessari a manipolareopportunamente i dati. A questo proposito, è stato scelto il software \texttt{Make}, un'antica \textit{utility} GNU eccezionalmente solida. \\
+    Data la complessità delle operazioni da eseguire, occorre un modo per dare e mantenere una struttura chiara nel lancio degli script necessari a manipolare opportunamente i dati. A questo proposito, è stato scelto il software \texttt{Make}, un'antica \textit{utility} GNU eccezionalmente solida. \\
 
-    Citando direttamente da \cite{make}, "\textbf{GNU Make} is a tool which controls the generation of executables and other non-source files of a program from the program's source files.", che in italiano significa: "\textbf{GNU Make} è uno strumento che controlla la generazione di eseguibi ed altri file non sorgenti a partire da del codice sorgente."\\
+    Citando direttamente da \cite{make}, "\textbf{GNU Make} is a tool which controls the generation of executables and other non-source files of a program from the program's source files.", che in italiano significa: "\textbf{GNU Make} è uno strumento che controlla la generazione di eseguibili ed altri file non sorgenti a partire dal codice sorgente."\\
 
     Sebbene lo scopo più comune di Make sia la compilazione di programmi, è perfettamente malleabile per adattarsi a qualunque tipo di applicazione. Sempre da \cite{make} si può leggere qulcosa proprio a questo riguardo: \\
 
@@ -117,7 +117,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
     	    \includegraphics[scale=0.65]{img/weka.jpg}
         \end{figure}
 
-    Come si può leggere direttamente da \cite{wekawiki}, "\textbf{Weka}, acronimo di \textbf{W}aikato \textbf{E}nvironment for \textbf{K}nowledge \textbf{A}nalysis, è un software per l'apprendimento automatico sviluppato nell'università di Waikato in Nuova Zelanda. È open source e viene distribuito con licenza \textit{GNU General Public License}. Curiosamente la sigla corrisponde al nome di un simpatico animale simile al Kiwi, presente solo nelle isole della Nuova Zelanda." \\
+    Come si può leggere direttamente da \cite{wekawiki}, "\textbf{Weka}, acronimo di \textbf{W}aikato \textbf{E}nvironment for \textbf{K}nowledge \textbf{A}nalysis, è un software per l'apprendimento automatico sviluppato nell'Università di Waikato in Nuova Zelanda. È open source e viene distribuito con licenza \textit{GNU General Public License}. Curiosamente la sigla corrisponde al nome di un simpatico animale simile al Kiwi, presente solo nelle isole della Nuova Zelanda." \\
 
     Sempre secondo \cite{wekawiki}, "Weka è un ambiente software interamente scritto in Java. Un semplice metodo per utilizzare questo software consiste nell'applicare dei metodi di apprendimento automatici (learning methods) ad un set di dati (dataset), e analizzarne il risultato". \\
 
@@ -142,7 +142,7 @@ Appare chiaro che una scelta sbagliata di tecnologie da utilizzare può condizio
 
     \subsection{Fogli di Calcolo}
 
-    Per quanto banale possa sembrare, per alcuni dati molto semplici può essere utile non andare a scomodare strumenti troppo complessi, impiegando invece attrezzi dall'utilizzo estremamente semplice, come un foglio di calcolo. A questo proposito, è stato scelto di utilizzare Calc (\cite{calc}), facente parte della \textit{suite da ufficio} LibreOffice, un progetto open source che is pone come alternativa a Microsoft Office. \\
+    Per quanto banale possa sembrare, per alcuni dati molto semplici può essere utile non andare a scomodare strumenti troppo complessi, impiegando invece attrezzi dall'utilizzo estremamente semplice, come un foglio di calcolo. A questo proposito, è stato scelto di utilizzare Calc (\cite{calc}), facente parte della \textit{suite da ufficio} LibreOffice, un progetto open source che si pone come alternativa a Microsoft Office. \\
 
     Con esso è stato possibile realizzare semplici grafici di data set dalla mole ridotta, senza incorrere nell'\textit{overhead} --- inteso come carico di lavoro necessario a raggiungere un risultato simile --- che avrebbe comportato l'utilizzo di R.
 

@@ -10,20 +10,20 @@ Usando come metafora una lavorazione meccanica, avere ben chiara la natura del m
 Una parte fondamentale dell'analisi descritta in questo lavoro è basata sul seguente data set, che contiene i dati riguardanti la produttività di tre coorti d'immatricolazione di studenti in un periodo di quattro anni. Più nel dettaglio, il dataset si compone di:
 
 \begin{itemize}
-	\item \textbf{coorte 2010}: studenti immatricolati nel 2010, carriera registrata fino agli appelli di \textbf{febbraio 2014}
-	\item \textbf{coorte 2011}: studenti immatricolati nel 2011, carriera registrata fino agli appelli di \textbf{febbraio 2015}
-	\item \textbf{coorte 2012}: studenti immatricolati nel 2012, carriera registrata fino agli appelli di \textbf{febbraio 2016}
-	\item \textbf{coorte 2013}: studenti immatricolati nel 2013, carriera registrata fino agli appelli di \textbf{febbraio 2017}
+	\item \textbf{coorte 2010}: studenti immatricolati nel 2010, carriera registrata fino agli appelli di \textbf{febbraio 2014};
+	\item \textbf{coorte 2011}: studenti immatricolati nel 2011, carriera registrata fino agli appelli di \textbf{febbraio 2015};
+	\item \textbf{coorte 2012}: studenti immatricolati nel 2012, carriera registrata fino agli appelli di \textbf{febbraio 2016};
+	\item \textbf{coorte 2013}: studenti immatricolati nel 2013, carriera registrata fino agli appelli di \textbf{febbraio 2017}.
 \end{itemize}
 
 \begin{figure}
     \centering
     \caption{Anni Accademici coperti dai dati a disposizione sugli studenti}
-    \label{1}
+    \label{1_a}
 	\includegraphics[scale=0.75]{../raw/stud_comp.png}
 \end{figure}
 
-Quindi, si ha a disposizione una finestra temporale di risultati ottenuti negli esami composta approssimativamente come indicato in Figura \ref{1}. Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti gli esiti del maggior numero di corsi possibili solo per l'Anno Accademico 2013-2014. Tale aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
+Quindi, si ha a disposizione una finestra temporale di risultati ottenuti negli esami composta approssimativamente come indicato in Figura \ref{1_a}. Questo fatto porta ovviamente ad avere una mole d'informazioni più addensata nella parte centrale della nostra finestra temporale, avendo idealmente dati riguardanti gli esiti del maggior numero di corsi possibili solo per l'Anno Accademico 2013-2014. Tale aspetto sarà rilevante nell'interpretare i risultati di alcune analisi effettuate in seguito.
 
 \subsection{Formato e Rappresentazione}
 
@@ -43,7 +43,7 @@ Nel dettaglio, per ogni tupla rappresentante uno studente sono presenti le segue
 	\item \textbf{Data} in cui è stato sostenuto quell'esame: $$ \text{data in formato }MM/GG/YYYY $$
 \end{itemize}
 
-Di tutte queste informazioni, solo parte di esse sono state utilizzate in qualche analisi di \textit{data mining}, come si vedrà meglio nelle sezioni successive.
+Di tutte queste informazioni, solo alcune sono state utilizzate in qualche analisi di \textit{data mining}, come si vedrà meglio nelle sezioni successive.
 
 \subsection{Mole di dati}
 
@@ -84,7 +84,7 @@ Il dataset è stato fornito in sette diversi file CSV, uno per ogni anno accadem
 	\item \textbf{Quesito}: stringa descrittiva contenente il testo della domanda posta allo studente.
 \end{itemize}
 
-\noindent  Si notiche ilcampo riguardante il docente ne riporta originariamente nome e cognome per esteso. Per salvaguardarne la privacy, i valori di questo campo sono stati sostituiti con le loro immagini tramite una funzione di \textit{hash}, preservando l'unicità del valore ma nascondendo l'effettiva identità del docente. \\
+\noindent  Si noti che il campo riguardante il docente ne riporta originariamente nome e cognome per esteso. Per salvaguardarne la privacy, i valori di questo campo sono stati sostituiti con le loro immagini tramite una funzione di \textit{hash}, preservando l'unicità del valore ma nascondendo l'effettiva identità del docente. \\
 
 A ogni tupla, identificata dai valori dei campi precedentemente descritti, corrispondono queste informazioni:
 
