@@ -45,7 +45,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \subitem 0 - \textit{confidence}
                 \subitem 1 - \textit{lift}
                 \subitem 2 - \textit{leverage}
-                \subitem 3 - \textit{convction};
+                \subitem 3 - \textit{conviction};
             \item \texttt{-C}: valore minimo della metrica indicata per considerare frequente un itemset;
             \item \texttt{-D}: valore che viene usato per diminuire il supporto ad ogni iterazione dell'algoritmo;
             \item \texttt{-U}: limite superiore del supporto minimo richiesto;
@@ -154,7 +154,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 
         \subsection{Focus sulla Deviazione Standard}
 
-        Nel data set \texttt{min\_d.csv} sono state mantenute informazioni complementari rispetto alle medie pesate dei valori che hanno composto l'aggregazione, quali ad esempio lo scarto quadratico medio di un certo attributo. Gli attributi contenenti questi dati sono stati ignorati nelle due precedenti analisi associative, pertanto è sembrato interessante andate a vedere se esiste una qualche regola fra i seguenti parametri:
+        Nel data set \texttt{min\_d.csv} sono state mantenute informazioni complementari rispetto alle medie pesate dei valori che hanno composto l'aggregazione, quali ad esempio lo scarto quadratico medio di un certo attributo. Gli attributi contenenti questi dati sono stati ignorati nelle due precedenti analisi associative, pertanto è sembrato interessante vedere se esiste una qualche regola fra i seguenti parametri:
 
             \begin{itemize}
                 \item Hash del docente
@@ -168,10 +168,10 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 
             \lstinputlisting{../ass/apriori_min_3.txt}
 
-            Non ci si aspettava di trovare niente di particolarmente significativo riguardo qusti aspetti del data set. Invece, sono comparse due regole associative che possiamo riassumere in una implicazione doppia come segue:
+            Non ci si aspettava di trovare niente di particolarmente significativo riguardo questi aspetti del data set. Invece, sono comparse due regole associative che possiamo riassumere in una implicazione doppia come segue:
 
             \begin{center}
-                \textbf{R1}: Deviazione standard del voto: MOLTO GRANDE $\leftarrow \rightarrow$ Deviazione standard della valutazione dell'insegnamento: GRANDE
+                Deviazione standard del voto: MOLTO GRANDE $\leftarrow \rightarrow$ Deviazione standard della valutazione dell'insegnamento: GRANDE
             \end{center}
 
             Si tratta di una associazione forte, in quanto le due regole che la compongono hanno entrambe una confidenza abbastanza elevata --- R1: 0.8, R2: 0.68 --- ed un valore del lift sì minimo, ma comunque positivo. \\

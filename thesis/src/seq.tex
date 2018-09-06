@@ -1,7 +1,7 @@
 \chapter{Pattern Sequenziali Frequenti}
 \label{ch:seq}
 
-Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti. L'idea generale è quella di estrarre dei \textit{pattern sequenziali} dal data set ottenuto nella fase di \textit{preprocessing} descritta nella Sezione \ref{prepr:seq}, per poi analizzarli ulteriormente con degli script Python realizzati \textit{ad hoc}.
+Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti. L'idea generale è quella di estrarre dei \textit{pattern sequenziali} dal data set ottenuto nella fase di \textit{preprocessing} (descritta nella Sezione \ref{prepr:seq}), per poi analizzarli ulteriormente con degli script Python realizzati \textit{ad hoc}.
 
 \section{Algoritmo GSP}
 
@@ -21,14 +21,14 @@ Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti.
 
     \begin{figure}
         \centering
-        \caption{finestra che mostra i parametri impostabili dell'implementazione di DBSCAN su Weka}
+        \caption{finestra che mostra i parametri impostabili dell'implementazione di GSP su Weka}
         \label{gsp_weka}
         \includegraphics[scale=0.75]{img/gsp.png}
     \end{figure}
 
 \section{Scopo dell'Analisi}
 
-    Questa analisi si basa sull'idea di considerare come \textit{pattern sequenziale} l'ordine in cui ogni studenti ha superato i vari esami del Corso di Laurea, ignorando l'entità del \textit{gap} presente fra il superamento di un esame e l'altro\footnote{Tale elemento, che caratterizza in modo significativo le prestazioni degli studenti, è stato ampiamente considerato nelle analisi descritte negli altri capitoli di questo documento.} e il voto conseguito.\\
+    Questa analisi si basa sull'idea di considerare come \textit{pattern sequenziale} l'ordine in cui ogni studente ha superato i vari esami del Corso di Laurea, ignorando l'entità del \textit{gap} presente fra il superamento di un esame e l'altro\footnote{Tale elemento, che caratterizza in modo significativo le prestazioni degli studenti, è stato ampiamente considerato nelle analisi descritte negli altri capitoli di questo documento.} e il voto conseguito.\\
 
     Avendo ben chiara questa astrazione, lo scopo che ci si è prefissati è quello di confrontare le varie sequenze di esami con una \textit{sequenza ideale}. Data la codifica degli esami riportata in Tabella \ref{exams_code}, si è intesa come tale sequenza ideale la seguente: \\
 
@@ -71,7 +71,7 @@ Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti.
     \label{exams_code}
     \end{table}
 
-    Una volta ottenute le sequenze di esami che compaiono frequentemente nei dati degli studenti \textit{preprocessati}, lo step successivo consiste nell'individuare in esse gli esami che sono più frequentemente \textbf{fuori posto} rispetto alla seuenza ideale precedentemente descritta. Questo ci consente di ampliare la conoscenza di quanto già compreso negli altri capitolo riguardo a quali sono i corsi che creano più difficoltà agli studenti --- o che comunque, in questo specifico caso, vengono rimandati più spesso in favore di altri esami teoricamente successivi ad essi. \\
+    Una volta ottenute le sequenze di esami che compaiono frequentemente nei dati degli studenti \textit{preprocessati}, lo step successivo consiste nell'individuare in esse gli esami che sono più frequentemente \textbf{fuori posto} rispetto alla sequenza ideale precedentemente descritta. Questo ci consente di ampliare la conoscenza di quanto già compreso negli altri capitolo riguardo a quali sono i corsi che creano più difficoltà agli studenti --- o che comunque, in questo specifico caso, vengono rimandati più spesso in favore di altri esami teoricamente successivi ad essi. \\
 
     \subsection{Esempio di Analisi di una Sequenza Frequente}
 
@@ -83,7 +83,7 @@ Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti.
 
     \vspace{0.35cm}
 
-    Il fatto che la sequenza è frequente, significa ovviamente che quello è "un pezzo" della carriera di molti\footnote{Si utilizza la locuzione \textit{molti} grazie alla sua flessibilità, visto che la quantità di istanze necessarie affinché una sequenza diventi frequente cambia a seconda del supporto inserito come criterio di potatura.} studenti. La caratteristica apparente di tale sequenza di esami è che Matematica Discreta e Logica, un esame del primo anno, è stato superato \textit{dopo} Metodologie di Programmazione, un esame del primo semestre del secondo anno. Questa contraddizione è evidente, se confrontaìiamo questa sequenza con quella ideale: significa che molti studenti hanno deviato da quello che è il percorso pianificato.\\
+    Il fatto che la sequenza è frequente, significa ovviamente che quello è "un pezzo" della carriera di molti\footnote{Si utilizza la locuzione \textit{molti} grazie alla sua flessibilità, visto che la quantità di istanze necessarie affinché una sequenza diventi frequente cambia a seconda del supporto inserito come criterio di potatura.} studenti. La caratteristica apparente di tale sequenza di esami è che Matematica Discreta e Logica, un esame del primo anno, è stato superato \textit{dopo} Metodologie di Programmazione, un esame del primo semestre del secondo anno. Questa contraddizione è evidente, se confrontiamo questa sequenza con quella ideale: significa che molti studenti hanno deviato da quello che è il percorso pianificato.\\
 
     Quello che ci si prefigge di fare è, quindi, analizzare in questo senso tutte le sequenze frequenti generate da GSP --- e saranno così tante da rendere impossbile vagliarle tutte come fatto per quella di esempio. Pertanto, come si vedrà, si useranno degli script per automatizzare tale lavro.
 
@@ -129,7 +129,7 @@ Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti.
 
         Per ogni data set preparato precedentemente, l'algoritmo GSP è stato lanciato tre volte, con tre valori diversi di supporto minimo: $0.33$, $0.50$ e $0.75$; in un caso è stato addirittura tentato il lancio con supporto minimo pari a $0.10$. Questo ha prodotto una elevata mole di sequenze frequenti, che è stata appositamente memorizzata in file di testo, pronti per essere analizzati dai successivi script. \\
 
-        Come già accennato, la complessità dell'algoritmo GSP ha creato il primo, vero problema relativo all'impiego di \textit{big data}: i tempi di anallisi sulla versione intera del data set preprocessato --- quella che contiene le sequenze di tutte le istanze di studenti a disposizione --- esulano dalla trattabilità. Perciò, per ogni data set preparato, è stato applicato il filtro relativo alla lunghezza della sequenza, scartando tutti gli studenti che non hanno completato almeno un terzo del Corso di Laurea, come già descritto in Sezione ottenuta in Sezione \ref{prepr:seq}. Nonostante questo filtro, i tempi macchina sono stati comunque molto alti per quanto riguarda il data set completo. Per gli altri, invece, si è trattato di computazioni brevi. \\
+        Come già accennato, la complessità dell'algoritmo GSP ha creato il primo, vero problema relativo all'impiego di \textit{big data}: i tempi di analisi sulla versione intera del data set preprocessato --- quella che contiene le sequenze di tutte le istanze di studenti a disposizione --- esulano dalla trattabilità. Perciò, per ogni data set preparato, è stato applicato il filtro relativo alla lunghezza della sequenza, scartando tutti gli studenti che non hanno completato almeno un terzo del Corso di Laurea, come già descritto in Sezione ottenuta in Sezione \ref{prepr:seq}. Nonostante questo filtro, i tempi macchina sono stati comunque molto alti per quanto riguarda il data set completo. Per gli altri, invece, si è trattato di computazioni brevi. \\
 
     \subsection{Filtraggio delle Sequenze Inusuali}
 
@@ -166,7 +166,7 @@ Questo capitolo descrive un'analisi effettuata sul solo data set degli studenti.
         \centering
         \caption{Grafico a torta che riassume la composizione degli esami più spesso rimandati in favore di altri ad essi successivi}
         \label{fine}
-        \includegraphics[scale=0.80]{../seq/out_of_place.png}
+        \includegraphics[scale=0.85]{../seq/out_of_place.png}
     \end{figure}
 
     Grazie al potere espressivo del grafico, si osserva senza difficoltà che l'esame che viene rimandato più spesso è di gran lunga Fisica Generale, fatto del quali si è trovato conferma nelle altre analisi illustrate in questo documento. Per la stessa ragione, non è da considerarsi sorprendente la presenza --- minore, ma comunque massiccia --- di Matematica Discreta e Logica, mentre appaiono più curiosi i dati su Programazione Concorrente e Metodologie di Programazione.

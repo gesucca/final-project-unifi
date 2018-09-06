@@ -21,7 +21,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
         Banalmente, l'obiettivo principale che ci si prefigge è quello di ottenere una chiara visione d'insieme sui dati che si hanno a disposizione. In questo modo, si sarà in grado di prendere decisioni oculate per quanto riguarda il da farsi nei successivi passi di questa analisi. Si prenda ad esempio l'attività di \textit{preprocessing}: sintetizzando al massimo, possiamo dire che si tratta di lavorare dei dati grezzi al fine di renderli adatti a essere processati da certi algoritmi. L'ovvia implicazione è che occorre avere ben chiaro in anticipo quali algoritmi sarà opportuno lanciare, fatto che a sua volta implica la necessità di conoscere quali informazioni si intende estrarre dai dati grezzi a disposizione. \\
 
-        Questo aspetto rende necessario far precedere a quello che è, usando una metafora nell'ambito meccanico, l'attività di sgrossatura dei dati grezzi una fase di \textit{data understanding}. \\
+        Questo aspetto rende necessario far precedere a quella che è, usando una metafora nell'ambito meccanico, l'attività di sgrossatura dei dati grezzi una fase di \textit{data understanding}. \\
 
         In questa sezione, quindi, si punterà a capire a fondo la natura dei dati al fine d'intuire che cosa sia possibile trarne.
 
@@ -108,7 +108,7 @@ par(xpd = NA)
 
             \begin{figure}
                 \centering
-                \caption{grafico di dispersione sugli attributi "voto medio" e "C.F.U. ottenuti"}
+                \caption{grafico di dispersione sugli attributi "voto medio" e "CFU ottenuti"}
                 \label{fig3}
             	\includegraphics[scale=0.62]{img/scatter_plot_3.png}
             \end{figure}
@@ -183,7 +183,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione fra le istanze degli studenti, considerante i risultati degli esami del primo anno}
+                    \caption{matrice di correlazione fra le istanze degli studenti, le cui righe e colonne rappresentano i vettori composti dai voti sugli esami del primo anno}
                     \label{esami1anno_corr}
                 	\includegraphics[scale=0.35]{img/corr_matrix_1.png}
                 \end{figure}
@@ -195,7 +195,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                 	\includegraphics[scale=0.60]{img/std_dev_matrix_1.png}
                 \end{figure}
 
-                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone --- vengono considerati simili studenti che hanno un andamento simile su un gruppo sufficientemente grande di esami, senza contare eventuali \textit{offset} fra le valutazioni. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Quesrto può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}. \\
+                Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone --- vengono considerati simili studenti che hanno un andamento simile su un gruppo sufficientemente grande di esami, senza contare eventuali \textit{offset} fra le valutazioni. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Questo può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}. \\
 
                 Osservando invece la Figura \ref{esami1anno_stddev}, si può evidenziare che i colori più tiepidi della deviazione standard per gli esami di \textit{Matematica Discreta e Logica} e \textit{Architetture degli Elaboratori} stanno ad indicare una minore tendenza a discostarsi dal voto medio. Perché studenti di vari anni tendono a convergere verso lo stesso voto in quei due esami? Per rispondere a questa domanda, si veda in Figura \ref{1annosommario} un sommario dell'attributo \textit{data}. \\
 
@@ -210,7 +210,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
 
                 \begin{figure}
                     \centering
-                    \caption{grafico di dispersione fra gli attributi "voto ottenuto a Matematica Discreta e Logica" e "C.F.U. ottenuti nel periodo in esame"}
+                    \caption{grafico di dispersione fra gli attributi "voto ottenuto a Matematica Discreta e Logica" e "CFU ottenuti nel periodo in esame"}
                     \label{mdl}
                 	\includegraphics[scale=0.60]{img/scatter_plot_5.png}
                 \end{figure}
@@ -224,12 +224,12 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
 
                 \begin{figure}
                     \centering
-                    \caption{grafico di dispersione fra gli attributi "voto ottenuto a Architetture degli Elaboratori" e "C.F.U. ottenuti nel periodo in esame"}
+                    \caption{grafico di dispersione fra gli attributi "voto ottenuto a Architetture degli Elaboratori" e "CFU ottenuti nel periodo in esame"}
                     \label{ade}
                 	\includegraphics[scale=0.6]{img/scatter_plot_6.png}
                 \end{figure}
 
-                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza dei Credti Formativi Unitari ottenuti in totale dallo studente ad aumentare proporzionalmente al voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- hanno ottenuto comunque molti C.F.U. senza superare questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
+                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza dei Credti Formativi Universitari ottenuti in totale dallo studente ad aumentare proporzionalmente al voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- hanno ottenuto comunque molti CFU senza superare questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
 
                 \begin{itemize}
                     \item chi ha dato l’esame al primo appello del suo anno, ha conseguito un voto alto (si vedano ad esempio gli studenti dell’annata 2010)
@@ -249,7 +249,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione fra gli studenti, considerante i risultati ottenuti negli esami di informatica}
+                    \caption{matrice di correlazione fra gli studenti, le cui righe e colonne rappresentano i vettori composti dai voti sugli esami a contenuto informatico}
                     \label{esami_inf_corr}
                 	\includegraphics[scale=0.32]{img/corr_matrix_2.png}
                 \end{figure}
@@ -261,16 +261,9 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                 	\includegraphics[scale=0.6]{img/std_dev_matrix_2.png}
                 \end{figure}
 
-                \begin{figure}
-                    \centering
-                    \caption{sommario dell'attributo "voto" relativo all'esame di Informatica Teorica}
-                    \label{it}
-                	\includegraphics[scale=0.75]{img/it.png}
-                \end{figure}
+                Riguardo agli esami a contenuto prevalentemente informatico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno, si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. \\
 
-                Riguardo agli esami a contenuto prevalentemente informartico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre una interessante deduzione: con l’avvicinarsi agli esami del terzo anno –-- eccezione fatta per Architetture degli Elaboratori –-- si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. Nel particolare di Informatica Teorica mostrato in Figura \ref{it}, i pochi studenti che lo superano risultano ampiamente sopra la media. \\
-
-                In ogni caso, non appare interessante proseguire sul'analisi con tecniche di \textit{data mining} su questa suddivisione.
+                In ogni caso, non appare interessante proseguire sull'analisi con tecniche di \textit{data mining} su questa suddivisione.
 
             \subsubsection{Esami su argomenti matematici}
 
@@ -283,7 +276,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
 
                 \begin{figure}
                     \centering
-                    \caption{matrice di correlazione fra gli studenti, considerante i risultati degli esami di matematica}
+                    \caption{matrice di correlazione fra gli studenti, le cui righe e colonne rappresentano i vettori composti dai voti sugli esami a contenuto matematico}
                     \label{esami_mat_corr}
                 	\includegraphics[scale=0.32]{img/corr_matrix_3.png}
                 \end{figure}
@@ -295,7 +288,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                 	\includegraphics[scale=0.6]{img/std_dev_matrix_3.png}
                 \end{figure}
 
-                Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in Figura \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Date le modalità di esame previste per il corso\footnote{se le prove intermedie scritte risultano sufficienti, si può accettare un voto di 18 senza sostenere la prova orale}, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.\\
+                Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in Figura \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Date le modalità di esame previste per il corso\footnote{Se le prove intermedie scritte risultano sufficienti, si può accettare un voto di 18 senza sostenere la prova orale.}, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.\\
 
                 Sulla matrice di correlazione in Figura \ref{esami_mat_corr}, si notano due aspetti interessanti: una fascia di studenti con correlazione nulla e una «casella» di forti correlazioni all’incirca nel centro della matrice. Dei due, il primo è sicuramente il più inusuale. Quale aspetto reale potrebbe generare una osservazione come questa?\\
 
@@ -321,7 +314,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
 
         Come risultato ultimo di questa fase, si è stati in grado di decidere il tipo di tecniche di \textit{preprocessing} e \textit{data mining} che sarà opportuno utilizzare per proseguire lo studio di questi dati. \\
 
-        Si prevede di impiegare queste tecniche:
+        Si prevede di utilizzare queste tecniche:
 
         \begin{itemize}
             \item \textit{tecniche di visualizzazione} con focus sulle \textit{classi di record} dei due data set;

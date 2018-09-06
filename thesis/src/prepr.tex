@@ -67,7 +67,7 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 		\vspace{0.3cm}
 
-		La vera e propria invocazione del comando necessario all'import dei file nel database --- \texttt{mongoimport}, del pacchetto \texttt{mongodb-tools} --- è stata delegata in un file esterno al \texttt{makefile}, per preservare la compattezza e la brevità di quest'ultimo. Si veda comunque di seguito come è struturata la chiamata a \texttt{mongoimport} per uno degli otto file: 
+		La vera e propria invocazione del comando necessario all'import dei file nel database --- \texttt{mongoimport}, del pacchetto \texttt{mongodb-tools} --- è stata delegata in un file esterno al \texttt{makefile}, per preservare la compattezza e la brevità di quest'ultimo. Si veda comunque di seguito come è strutturata la chiamata a \texttt{mongoimport} per uno degli otto file:
 
 		\begin{lstlisting}[language=bash,caption={dettaglio dell'importazione dei dati in MongoDB}]
 			mongoimport -d exams -c rawStudentsPr1013 --type csv --file ../raw/prod_stud_10-11-12-13.csv --headerline
@@ -109,11 +109,13 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 		Considerando il tipo dei dati a disposizione, occorrerà innanzitutto aggregare le istanze dei vari studenti in modo opportuno. Questo viene fatto utilizzando un modulo Python programmato \textit{ad hoc}, del quale si riporta il codice nell'Appendice \ref{appendix:aggregs}. \\
 		
-		L'oggetto \texttt{StudAggregator} definito in tale modulo viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro apposito script Python riportato nell'Appendice \ref{appendix:stud}. Si è così prodotta una \textit{collection} che contiene esattamente il data set che ci si è prefissati di ottenere, calcolando un ritardo approssimativo medio (in semestri), la percentuale di studenti che hanno finito il corso di laurea nell'arco temporale a disposizione e le varie medie degli altri attributi.\\
+		L'oggetto \texttt{StudAggregator} definito in tale modulo viene impiegato per realizzare una prima aggregazione per corsi dei risultati dei singoli studenti. Si può usare questo risultato intermedio per ricavare le informazioni prefissate come necessarie, usando un altro apposito script Python riportato nell'Appendice \ref{appendix:stud}. Si è così prodotta una \textit{collection} che contiene esattamente il data set che ci si è prefissati di ottenere, calcolando un ritardo approssimativo medio\footnote{L'attributo esprime la media, espressa \textit{in semestri} della differenza fra la data di superamento di ogni esame e il suo primo appello disponibile.}, la percentuale di studenti che hanno finito il corso di laurea nell'arco temporale a disposizione e le varie medie degli altri attributi.\\
 
-		\begin{tabular}{llllll}
+		\noindent\begin{tabular}{llllll}
 		\hline
-		Coorte & N. & Laureati {[}\%{]} & Test Ingresso & Voto & Ritardo \\ \hline
+		Coorte & N. & Laureati {[}\%{]} & Test Ingr. [0-25] & Voto [18-31] & Ritardo [sem.] \\
+		 &  & & \textit{media} & \textit{media} & \textit{media}\\
+		\hline
 		2010 & 30 & 6.67 & 15.4 & 25.5 & 0.81 \\
 		2011 & 39 & 10.26 & 13.26 & 24.81 & 1.07 \\
 		2012 & 58 & 25.86 & 14.05 & 24.79 & 1.01 \\
@@ -145,10 +147,12 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 		\begin{tabular}{lllll}
 		\hline
-		A. A. & Val. Media & Std. Dev. Val. & Val. Sufficienti {[}\%{]} & N. \\ \hline
-		2010-2011 & 7.54 & 1.74 & 82.14 & 17 \\
-		2011-2012 & 7.93 & 1.61 & 90.68 & 26 \\
-		2012-2013 & 7.98 & 1.7 & 90.55 & 30 \\
+		A. A. & N. & Valutazione [1-10] & Std. Dev. Val. & Val. Sufficienti {[}\%{]} \\
+		& & \textit{media} & \textit{media} & \\
+		\hline
+		2010-2011 & 17 & 7.54 & 1.74 & 82.14  \\
+		2011-2012 & 26 & 7.93 & 1.61 & 90.68 \\
+		2012-2013 & 30 & 7.98 & 1.7 & 90.55 \\
 		... & ... & ... & ... & .. \\ \hline
 		\end{tabular}
 
@@ -171,7 +175,7 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 			\caption{porzione del \texttt{makefile} che specifica le ricette per eseguire il \textit{join} fra le valutazioni dei corsi e i dati degli studenti}
 			\label{make_join}
 			\includegraphics[scale=0.80]{img/make_join.png}
-		\end{figure} 
+		\end{figure}
 
 		Predisposti opportunamente i due insiemi di dati in due \textit{collection}, la fase di merge è stata portata avanti grazie all'ausilio di un altro modulo Python scritto \textit{ad hoc}: si tratta dell'oggetto \texttt{Merger}, contenuto nel file \texttt{merge.py}, la cui implementazione è visibile nell'Appendice \ref{appendix:merge}. Tale oggetto viene utilizzato nello script \texttt{dataset\_merge.py}. Il \textit{join} avviene, chiaramente, sugli attributi \textbf{Anno Accademico} e \textbf{Corso d'Esame}, trasferendo gli attributi specifici di una collezione direttamente nell'altra. \\
 
@@ -190,7 +194,7 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 				\subitem Voto >= 24 \textit{[perc]}
 				\subitem Voto \textit{[media]}
 				\subitem Voto \textit{[std dev]}
-			\item \textbf{Valutazione degli Aspetti Specifici del Corsi di Studi}:
+			\item \textbf{Valutazione degli Aspetti Specifici dell'Insegnamento}:
 				\subitem N \textit{[istanze]}
 				\subitem Std Dev \textit{[media pesata]}
 				\subitem Val >= 6 \textit{[percent]}
@@ -201,7 +205,7 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 				\subitem \textit{attributi identici alla valutazione precedente}
 			\item \textbf{Valutazione sulla Disponibilità di Informazioni Aggiuntive}:
 				\subitem \textit{attributi identici alla valutazione precedente}
-			\item \textbf{Valutazione dell'Organizzazione del Corso di Studi}:
+			\item \textbf{Valutazione dell'Organizzazione dell'Insegnamento}:
 				\subitem \textit{attributi identici alla valutazione precedente}
 			\item \textbf{Valutazione dell'Organizzazione della Didattica}:
 				\subitem \textit{attributi identici alla valutazione precedente}
@@ -213,20 +217,20 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 		
 	\subsection{Join con valutazioni aggregate e attributi continui}
 
-		Lavorando direttamente con uno script Python su sulla collezione appena creata, si è provveduto a ridurre il numero di attributi del data set aggregando fra loro le informazioni riguardanti i singoli paragrafi della valutazione dei corsi (si veda per un maggior dettaglio l'Appendice \ref{appendix:min}). \\
+		Lavorando direttamente con uno script Python sulla collezione appena creata, si è provveduto a ridurre il numero di attributi del data set aggregando fra loro le informazioni riguardanti i singoli paragrafi della valutazione dei corsi (si veda per un maggior dettaglio l'Appendice \ref{appendix:min}). \\
 
 		A seguito di queste operazioni, si è ottenuta una \textit{collection} i cui documenti hanno sei attributi riguardanti la produttività degli studenti e quattro riguardo invece alle valutazioni dei corsi, sempre con \textit{chiave primaria} la tupla $< Anno \ Accademico, Insegnamento >$.
 	
 	\subsection{Attributi discreti}
 
-		Come è stato spigato alla fine della fase di \textit{data understanding}, c'è bisogno di avere una versione \textit{discretizzata} dei data set dei quali è stata appena descritta la produzione. Questo è stato realizzato impiegando un altro modulo Python, \texttt{discretize.py}, la cui implementazione può essere consultata nell'Appendice \ref{appendix:discretize}. \\
+		Come è stato spiegato alla fine della fase di \textit{data understanding}, c'è bisogno di avere una versione \textit{discretizzata} dei data set dei quali è stata appena descritta la produzione. Questo è stato realizzato impiegando un altro modulo Python, \texttt{discretize.py}, la cui implementazione può essere consultata nell'Appendice \ref{appendix:discretize}. \\
 
-		I \textit{range} nei quali far rientrare i valori continui degli attrbuti sono stati scelti cercando un giusto compromesso fra rappresentatività e sinteticità. Non è stato ovviamente possibile stabilirli a priori: quelli che si possono vedere nella sopra citata appendice sono il risutlato di un processo iterativo del tipo \textit{trial and error}, e sono risultati essere il miglior compromesso cercato.
+		I \textit{range} nei quali far rientrare i valori continui degli attrbuti sono stati scelti cercando un giusto compromesso fra rappresentatività e sinteticità. Non è stato ovviamente possibile stabilirli a priori: quelli che si possono vedere nella sopra citata appendice sono il risultato di un processo iterativo del tipo \textit{trial and error}, e sono risultati essere il miglior compromesso cercato.
 
 \section{Sequenze ordinate di esami superati}
 \label{prepr:seq}
 
-	Per utilizzare l'algoritmo \textit{GSP} messo a disposizione dalla suite di software Weka, c'è bisogno che i dati di input siano in un formato ben preciso. si trata del formato \texttt{arff}, il cui acrononomi sta a significare \textit{Attribute Relationship File Format}, cioè, traducendo quasi letteralmente, formato di file con attributi e relazioni. Le informazioni contenute in file di questo tipo sono memorizzate come \textit{plain text}, pertanto possono essere accedute da praticamente qualunque strumento.\\
+	Per utilizzare l'algoritmo \textit{GSP} messo a disposizione dalla suite di software Weka, c'è bisogno che i dati di input siano in un formato ben preciso. Si tratta del formato \texttt{arff}, il cui arconimo sta a significare \textit{Attribute Relationship File Format}, cioè, traducendo quasi letteralmente, formato di file con attributi e relazioni. Le informazioni contenute in file di questo tipo sono memorizzate come \textit{plain text}, pertanto possono essere accedute da praticamente qualunque strumento.\\
 
 	Per dare un'idea della qualità di questo requisito, un data set composto da due transazioni così composte: 
 	
@@ -235,17 +239,19 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 	\vspace{0.2cm}
 
-	Dovrà essere rappresentato in questo modo: \\
+	\noindent dovrà essere rappresentato in questo modo: \\
 
 	\noindent\texttt{1,ITEM1}\\
 	\texttt{1,ITEM2}\\
 	\texttt{2,ITEM3}\\
 
-	Dato che non esistono strumenti di esportazione da MongoDB in grado di creare file di questo tipo, è stato programmato uno script \textit{ad hoc} che, ottenuti i dati degli studenti tramite delle interrogazioni sulla relativa collezione MongoDB, li trasforma in transazioni e li scrive direttametne su un file di testo avente la struttura richiesta. \\
+	\noindent ovvero scomponendo le transazioni in singoli item, indicando per ognuno di essi la transazione di appartenenza secondo il formato: \texttt{TRANSAZIONE, ITEM}. L'ordine degli item nelle transazioni è rappresentato dalla posizione delle righe nel file, ovviamente dall'alto verso il basso. \\
+
+	Dato che non esistono strumenti di esportazione da MongoDB in grado di creare file di questo tipo, è stato programmato uno script \textit{ad hoc} che, ottenuti i dati degli studenti tramite delle interrogazioni sulla relativa collezione MongoDB, li trasforma in transazioni e li scrive direttamente su un file di testo avente la struttura richiesta. \\
 
 	L'implementazione dello script sopra riferito è contenuta nell'Appendice \ref{appendix:seq}. Come si può notare dal codice, non ci si è limitati a produrre un singolo file contenente l'interezza delle informazioni a disposizione, ma si è provveduto a dividerlo in molte sezioni a seconda di vari criteri. Questo perché \textit{GSP} è un algoritmo che può essere estremamente pesante da eseguire su data set molto grandi: il problema della generazione degli \textit{itemset} frequenti è un problema $Np-Completo$\footnote{Significa che è un problema risolvibile in tempo polinomiale con algoritmi \textit{non deterministici}, cosa che implica la risolvibilità con algoritmi deterministici in tempo esponenziale.}, pertanto considerato intrattabile al crescere della dimensione dei dati di ingresso.\\
 
-	Data la natura dell'analisi che si è prefissati di fare su questo tipo di dati, è risultato utile impiegare un primo, generale criterio di filtraggio: \textbf{si sono considerate solo le sequenze di esami di studenti che hanno completato almeno un terzo del Corso di Laurea}, cioè coloro che hanno conseguito almeno 60 Credifi Formativi Unitari. Questo perché le transazioni contenenti pochi \textit{item} vanno a contribuire all'analisi solo con sequenze corte, diluendo la frequenza di eventuali sequenze più lunghe che possono risultare interessanti. \\
+	Data la natura dell'analisi che ci si è prefissati di fare su questo tipo di dati, è risultato utile impiegare un primo, generale criterio di filtraggio: \textbf{si sono considerate solo le sequenze di esami di studenti che hanno completato almeno un terzo del Corso di Laurea}, cioè coloro che hanno conseguito almeno 60 Credifi Formativi Unitari. Questo perché le transazioni contenenti pochi \textit{item} vanno a contribuire all'analisi solo con sequenze corte, diluendo la frequenza di eventuali sequenze più lunghe che possono risultare interessanti. \\
 
 	Stabilito questo principio, sono stati creati quindi i seguenti file, realizzati secondo ulteriori criteri di divisione: la \textbf{coorte di immatricolazione} e la \textbf{scuola superiore di provenienza}.
 
@@ -270,9 +276,9 @@ Nell'illustrare i vari procedimenti, per favorire una spiegazione lineare e il p
 
 \section{Estrazione dei data set preprocessati}
 
-	Ultimata finalmente la preparazione dei data set necessari alle successive analisi, occorre renderli disponibili in un formato che ne consenta una facile fruibilità. Al di là di necessità specifiche --- in particolare, il caso esposto nella sezione precedente ---  è stato scelto di esportare i dati da MongoDB in formato \texttt{csv}, direttamente importabile in Weka e accessibile in pratica da ogni tipo di programma dato che, come per i file \texttt{arff}, si tratta di informazioni codificate come \textit{plain text}. \\ 
+	Ultimata finalmente la preparazione dei data set necessari alle successive analisi, occorre renderli disponibili in un formato che ne consenta una facile fruibilità. Al di là di necessità specifiche --- in particolare, il caso esposto nella sezione precedente ---  è stato scelto di esportare i dati da MongoDB in formato \texttt{csv}, direttamente importabile in Weka e accessibile in pratica da ogni tipo di programma dato che, come per i file \texttt{arff}, si tratta di informazioni codificate come \textit{plain text}. \\
 	
-	Questo fine è stato raggiunto abbbastanza agilmente esportando le varie collezioni tramite il comando \texttt{mongoexport}, comeè possibile vedere in Figura \ref{make_export}, mostrante una piccola porzione delle ricette del \texttt{makefile} relative a questo compito. \\
+	Questo fine è stato raggiunto abbbastanza agilmente esportando le varie collezioni tramite il comando \texttt{mongoexport}, come è possibile vedere in Figura \ref{make_export}, mostrante una piccola porzione delle ricette del \texttt{makefile} relative a questo compito. \\
 
 	\begin{figure}
 			\centering
