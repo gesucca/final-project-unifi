@@ -9,17 +9,19 @@ Il fine è quello di evidenziare elementi che facciano intuire un \textit{trend}
 
 Per la valutazione dei corsi, si lavorerà sul dataset ottenuto come descritto nella Sezione \ref{prepr:eval_min}. Data la sua dimensione molto ristretta, è possibile riportarlo qui sotto per intero:
 
-\begin{table}[]
+\noindent\begin{table}[]
 \begin{tabular}{lllll}
 \hline
-A.A. & Val. Media & Std. Dev. Media & \% Val. Suff. & N. Val. \\ \hline
-2010-2011 & 7.54 & 1.74 & 82.14 & 17 \\
-2011-2012 & 7.93 & 1.61 & 90.68 & 26 \\
-2012-2013 & 7.98 & 1.7 & 90.55 & 30 \\
-2013-2014 & 7.7 & 1.77 & 87.17 & 47 \\
-2014-2015 & 7.94 & 1.77 & 89.36 & 51 \\
-2015-2016 & 8.01 & 1.76 & 89.94 & 49 \\
-2016-2017 & 8.01 & 1.82 & 89.34 & 53 \\ \hline
+A. A. & N. & Valutazione [1-10] & Std. Dev. Val. & Val. Sufficienti {[}\%{]} \\
+& & \textit{media} & \textit{media} & \\
+\hline
+2010-2011 &  17 & 7.54 & 1.74 & 82.14 \\
+2011-2012 &  26 & 7.93 & 1.61 & 90.68 \\
+2012-2013 & 30  & 7.98 & 1.7 & 90.55 \\
+2013-2014 & 47  & 7.7 & 1.77 & 87.17 \\
+2014-2015 &  51 & 7.94 & 1.77 & 89.36 \\
+2015-2016 &  49 & 8.01 & 1.76 & 89.94 \\
+2016-2017 &  53 & 8.01 & 1.82 & 89.34 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -52,9 +54,11 @@ A.A. & Val. Media & Std. Dev. Media & \% Val. Suff. & N. Val. \\ \hline
 
     Riguardo ai dati relativi alla produttività degli studenti, il dataset su cui si è lavorato è quello descritto nella Sezione \ref{prepr:stud_min}. Esso è già stato riportato nella sua interezza in tale sede ma, data la sua piccola dimensione, è comunque ripetuto qui di seguito per comodità di consultazione. \\
 
-    \begin{tabular}{llllll}
+    \noindent\begin{tabular}{llllll}
 		\hline
-		Coorte & N. & Laureati {[}\%{]} & Test Ingresso & Voto & Ritardo \\ \hline
+		Coorte & N. & Laureati {[}\%{]} & Test Ingr. [0-25] & Voto [18-31] & Ritardo [sem.] \\
+		 &  & & \textit{media} & \textit{media} & \textit{media}\\
+		\hline
 		2010 & 30 & 6.67 & 15.4 & 25.5 & 0.81 \\
 		2011 & 39 & 10.26 & 13.26 & 24.81 & 1.07 \\
 		2012 & 58 & 25.86 & 14.05 & 24.79 & 1.01 \\
