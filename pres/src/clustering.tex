@@ -9,8 +9,9 @@
 	\begin{block}{}
 		\begin{itemize}
 			\item<1-> \alert{K-Means} --- others algorithms as been tried, but K-Means gave the best results;
-			\item<2-> \alert{2 clusters} --- deviding teaching courses in \emph{good} ones and \emph{not-so-good} ones;
-			\item<3-> \alert{3 attributes} --- each one express a fundamental aspect of the whole data set: \emph{average exam score, average teaching evaluation} and \emph{average delay}.
+            \item<2-> \alert{Euclidean distance metric} --- straight line distance between two points in an Euclidean Space;
+			\item<3-> \alert{2 clusters} --- deviding teaching courses in \emph{good} ones and \emph{not-so-good} ones;
+			\item<4-> \alert{3 attributes} --- each one express a fundamental aspect of the whole data set: \emph{average exam score, average teaching evaluation} and \emph{average delay}.
 		\end{itemize}
 	\end{block}
 
@@ -67,8 +68,9 @@
 
 \begin{frame}{Cluster Analysis}{How can we find semantic groups among data instances?}
 
-    corsi unicamente nei clsuter, senza contare l'anno
+    Cluster population detail: courses which \emph{all} of their instances belong ina cluster are highlighted
 
+    \vspace{0.2cm}
     \begin{centering}
         \hspace{0.5cm}\includegraphics[scale=0.40]{../cluster/min_kmeans_2cl_corsi_cluster.png}
     \end{centering}
