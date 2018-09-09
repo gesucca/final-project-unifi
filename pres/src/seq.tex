@@ -1,15 +1,26 @@
-%-------------------------------------------------------
-\section{Sequential Patterns}
-%-------------------------------------------------------
-
 \begin{frame}{Frequent Sequential Patterns}{Looking for meaningful frequent patterns in exams sequences}
 
-     \centering\textit{Which exams are "skipped" the most by the students?} \vspace{0,3cm}
-    
+    \centering\textit{Which exams are "skipped" the most by the students?} \vspace{0,3cm}
+
 \begin{block}{Mining process}
 		\begin{itemize}
-			\item<1-> page 123
+			\item<1-> \alert{GSP algorithm} --- Apriori-based algorithm to extract frequent sequential patterns from the \emph{students} data set;
+			\item<2-> \alert{Unusual pattern mining} --- filtering of the GSP output, with the goal of discarding uninteresting (regular) exams patterns;
+			\item<3-> \alert{Out-of-place exams mining} --- extraction of the exams that are passed \emph{after} a later exam.
 		\end{itemize}
 	\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Associative Rules Analysis}{Looking for implications among the dataset's attributes}
+
+    \alert{Example} of a frequent, unusual pattern: \\
+
+	\vspace{0.3cm}
+	\begin{centering}\texttt{Calcolo Numerico, Informatica Teorica, Fisica Generale}\end{centering} \\
+	\vspace{0.3cm}
+
+	\texttt{Fisica Generale} is out of place, for it is a $2^{nd}$ year exam done after some $3^r{d}$ year exams.\\
 
 \end{frame}
