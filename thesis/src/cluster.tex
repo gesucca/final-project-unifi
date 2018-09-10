@@ -33,7 +33,7 @@
 
         Quindi, si tratta di una procedura iterativa che, a partire da un numero fissato di punti iniziali, chiamati centroidi, migliora ad ogni passo gli assegnamenti fino a che non si raggiunge una situazione di stabilità. \\
 
-        Le librerie di Weka mettono a disposizione una implementazione di K-Means, che permette di configurare un gran numero di parametri (come si può vedere in Figura \ref{kmeans_weka}).
+        Le librerie di Weka mettono a disposizione un'implementazione di K-Means, che permette di configurare un gran numero di parametri (come si può vedere in Figura \ref{kmeans_weka}).
 
         \begin{figure}
             \centering
@@ -46,7 +46,7 @@
 
         Una algoritmo sostanzialmente diverso dal precedente è DBSCAN, che non si basa sul minimizzare le distanze dal centroide del \textit{cluster}, ma bensì sul raggruppare le istanze del data set in base alla loro \textbf{densità}. \\
 
-        Una informale ma potente descrizione di questo si può leggere in \cite{dispense}:
+        Un'informale ma potente descrizione di questo si può leggere in \cite{dispense}:
 
         "Density-based clustering locates regions of high density that are separated from one another by regions of low density. DBSCAN is a simple and effective density-based clustering algorithm [...]"\\
 
@@ -69,7 +69,7 @@
 
     Una prima serie di tentativi di \textit{cluster analysis} è stata fatta sul data set condensato delle valutazioni dei corsi, utilizzando l'algoritmo K-Means. \\
 
-    Si è ben coscienti che una analisi di questo tipo su un data set che contiene solo sette elementi \textit{generalmente} non avrebbe molto senso, ma in questo caso si può considerare come un approfondimento della fase di \textit{data understanding} su questo data set.
+    Si è ben coscienti che un'analisi di questo tipo su un data set che contiene solo sette elementi \textit{generalmente} non avrebbe molto senso, ma in questo caso si può considerare come un approfondimento della fase di \textit{data understanding} su questo data set.
 
     \subsection{Lancio di K-Means}
 
@@ -84,7 +84,7 @@
         Nonostante l'elevato numero di parametri a disposizione, in realtà soltanto alcuni hanno influenzato il risultato finale:
 
         \begin{itemize}
-            \item come metrica è stata scelta la \textbf{distanza Euclidea}\footnote{Si tratta di una metrica che misurala distanza fra due punti di uno spazio multidimensionale come la lunghezza del segmento che li unisce.};
+            \item come metrica è stata scelta la \textbf{distanza Euclidea}\footnote{Si tratta di una metrica che misura la distanza fra due punti di uno spazio multidimensionale come la lunghezza del segmento che li unisce.};
             \item sono stati imposti due centroidi iniziali scelti casualmente, ottenendo pertanto un partizionamento con due cluster
         \end{itemize}
 
@@ -124,7 +124,7 @@
                 \subitem --- Voto medio degli studenti
                 \subitem --- Ritardo medio degli studenti
                 \subitem --- Valutazione media del corso
-            \item sono stati cercati, anche in questo caso, due soli cluster; semanticamente, si può intendere di voler dividere i corsi "migliori", in cui gli studenti hanno prodotto delle buone performance e che la cui didattica ha ricevuto delle buone valutazioni, da quelli "peggiori".
+            \item sono stati cercati, anche in questo caso, due soli cluster; semanticamente, si può intendere di voler dividere i corsi "migliori", quelli che hanno ricevuto delle buone valutazioni e in cui gli studenti hanno prodotto delle buone performance, da quelli "peggiori".
         \end{itemize}
 
     \subsection{Analisi dei risultati di K-Means}
@@ -170,7 +170,7 @@
             \includegraphics[scale=0.75]{../cluster/min_kmeans_2cl_AA_cl1.png}
         \end{figure}
 
-        Per quanto riguarda invece l'individuare quali corsi sono finiti in quale cluster, si è innanzitutto osservata la composizione totale dei due cluster. In caso si fosse trattato di una \textit{cluster analysis} su veri e propri \textit{big data}, questo non sarebbe ovviamente stato possibile, ma dato che il data set in esame ha a malapena sessanta istanze, è stato possibile stilare la seguente lista: \\
+        Per quanto riguarda invece l'individuare in quale cluster sia finito ogni corso, si è innanzitutto osservata la composizione totale dei due cluster. In caso si fosse trattato di una \textit{cluster analysis} su veri e propri \textit{big data}, questo non sarebbe ovviamente stato possibile, ma dato che il data set in esame ha a malapena sessanta istanze, è stato possibile stilare la seguente lista: \\
 
         \lstinputlisting{../cluster/min_kmeans_2cl_composition.txt}
 
@@ -228,7 +228,7 @@
 
     Come il titolo di questa sezione suggerisce, non è stato possibile utilizzare con profitto l'algoritmo DBSCAN. \\
 
-    Imitando quanto fatto con K-Means, ovvero limitando il numero di attributi da considerare per il clustering, ci si aspetterebbe che un algoritmo basato sulla densità possa esibire delle buone performance. Per facilitare ulteriormente l'esecuzione di DBSCAN, è stato addirittura scartato l'attributo relativo al ritardo degli studenti. Così facendo, si è ottenuto uno spazio bidimensionale in cui l'algoritmo può facilmente operare - e che si presta bene a una interpretazione visiva. \\
+    Imitando quanto fatto con K-Means, ovvero limitando il numero di attributi da considerare per il clustering, ci si aspetterebbe che un algoritmo basato sulla densità possa esibire delle buone performance. Per facilitare ulteriormente l'esecuzione di DBSCAN, è stato addirittura scartato l'attributo relativo al ritardo degli studenti. Così facendo, si è ottenuto uno spazio bidimensionale in cui l'algoritmo può facilmente operare - e che si presta bene a un'interpretazione visiva. \\
 
     Invece, non è stato possibile ottenere nessun risultato diverso da un cluster unico, per qualunque valore di epsilon e per qualsiasi numero di punti minimi richiesti. Questo perché evidentemente i punti nel nostro piano di analisi sono addensati tutti in un'unica regione, fatto che possiamo agilmente verificare osservandone un grafico in Figura \ref{dbscan}.
 

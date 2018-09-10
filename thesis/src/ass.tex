@@ -11,7 +11,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 
     \subsection{Regole Associative}
 
-        Una regola associativa è una implicazione del tipo $A \rightarrow B$, con $A$ e $B$ insiemi di item (detti, appunto \textit{itemset}). Il significato di ciò dovrebbe essere palese: data la presenza di $A$ in una istanza del data set, è \textit{fortemente probabile} la presenza di $B$. La valutazione di questa probabilità avviene considerando alcune metriche particolari quali, ad esempio, la \textit{confidenza} o il \textit{lift}. \\
+        Una regola associativa è un'implicazione del tipo $A \rightarrow B$, con $A$ e $B$ insiemi di item (detti, appunto \textit{itemset}). Il significato di ciò dovrebbe essere palese: data la presenza di $A$ in una istanza del data set, è \textit{fortemente probabile} la presenza di $B$. La valutazione di questa probabilità avviene considerando alcune metriche particolari quali, ad esempio, la \textit{confidenza} o il \textit{lift}. \\
 
         Portando un esempio sul data set oggetto di questa analisi, una tanto probabile quanto banale regola associativa che ci si aspetta di trovare potrà essere del tipo \textit{"Valutazione del corso: ALTA"} $\rightarrow$ \textit{"Voto conseguito: ALTO"}. \\
 
@@ -27,7 +27,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 	    \includegraphics[scale=1.0]{img/apriori_weka.png}
     \end{figure}
 
-        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato che una regola non è altro che una implicazione generata da un partizionamento binario di un itemset frequente, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
+        Il processo di generazione delle regole associative utilizzato in questa analisi si basa sul \textbf{principio Apriori}. Dato che una regola non è altro che un'implicazione generata da un partizionamento binario di un itemset frequente, il pilastro fondamentale da cui partire per generare le regole è il \textit{mining} degli itemset frequenti. \\
 
         In estrema sintesi, l'idea generale è quella di generare una lista di \textit{candidati} semplici --- cioè di itemset che potrebbero essere frequenti --- verificarne il \textit{supporto} e usare quelli idonei per generare altri candidati più complessi. Il principio Apriori, infatti, stabilisce che se un itemset con pochi elementi è infrequente, lo saranno anche tutti gli itemset che lo comprendono. Questo fatto, detto \textit{anti-motonia} del supporto, ci consente di evitare di generare e calcolare la frequenza di ogni possibile itemset, rendendo trattabile quello che sarebbe invece un problema $NP-Completo$. \\
 
@@ -118,7 +118,7 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
                 \item Voto: $MEDIO-BASSO$ $\leftarrow \rightarrow$ Valutazione insegnamenti: $SUFF.$
             \end{itemize}
 
-            Quelle trovate sono \underline{tutte} implicazioni doppie, il che significa che fra gli attributi esiste una forte correlazione. Messa da parte l'attesa e apparente proporzionalità diretta fra la valutazione del corso e il voto ottenuto all'esame, si può notare l'esistenza di una analoga correlazione fra il ritardo con cui gli studenti hanno superato l'esame e la valutazione del corso.
+            Quelle trovate sono \underline{tutte} implicazioni doppie, il che significa che fra gli attributi esiste una forte correlazione. Messa da parte l'attesa e apparente proporzionalità diretta fra la valutazione del corso e il voto ottenuto all'esame, si può notare l'esistenza di un'analoga correlazione fra il ritardo con cui gli studenti hanno superato l'esame e la valutazione del corso.
 
         \subsection{Focus sul docente}
 
@@ -168,10 +168,10 @@ Come è già stato accennato in precedenza, questo tipo di analisi ha richiesto 
 
             \lstinputlisting{../ass/apriori_min_3.txt}
 
-            Non ci si aspettava di trovare niente di particolarmente significativo riguardo questi aspetti del data set. Invece, sono comparse due regole associative che possiamo riassumere in una implicazione doppia come segue:
+            Non ci si aspettava di trovare niente di particolarmente significativo riguardo questi aspetti del data set. Invece, sono comparse due regole associative che possiamo riassumere in un'implicazione- doppia come segue:
 
             \begin{center}
                 Deviazione standard del voto: MOLTO GRANDE $\leftarrow \rightarrow$ Deviazione standard della valutazione dell'insegnamento: GRANDE
             \end{center}
 
-            Si tratta di una associazione forte, in quanto le due regole che la compongono hanno entrambe una confidenza abbastanza elevata --- R1: 0.8, R2: 0.68 --- ed un valore del lift sì minimo, ma comunque positivo. \\
+            Si tratta di un'associazione forte, in quanto le due regole che la compongono hanno entrambe una confidenza abbastanza elevata --- R1: 0.8, R2: 0.68 --- ed un valore del lift sì minimo, ma comunque positivo. \\
