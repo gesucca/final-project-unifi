@@ -1,15 +1,11 @@
-%-------------------------------------------------------
-\section{Associative Rules}
-%-------------------------------------------------------
-
 \begin{frame}{Associative Rules Analysis}{Looking for implications among the dataset's attributes}
 
- \centering\textit{What is needed for this associative analysis?} \vspace{0,3cm}
+\centering{What do we need to perform an associative analysis?} \vspace{0,4cm}
 
 	\begin{block}{}
 		\begin{itemize}
 			\item<1-> \alert{Discretized data set} --- we need \emph{discrete attributes} in order to find logical implications netween them;
-			\item<2-> \alert{Apriori algorithm} --- it uses an heuristic technique to render a the \emph{candidate generation problem} computable;
+			\item<2-> \alert{Apriori algorithm} --- it uses an heuristic technique to render the \emph{candidate generation problem} computable;
 			\item<3-> \alert{Confidence metric} --- a good choice is \textbf{lift}, as it values a rule ability to predict cases comparing it against the odds of a random prediction.
 		\end{itemize}
 	\end{block}
@@ -20,19 +16,21 @@
 
     Focus on the \alert{teaching course}: mined rules.
 
-    \vspace{0.5cm}
+    \vspace{0.4cm}
     \begin{centering}
-        \hspace{0.5cm}\includegraphics[scale=0.36]{ass2.png}
+        \hspace{0.5cm}\includegraphics[scale=0.40]{ass2.png}
     \end{centering}
 
 \end{frame}
 
 \begin{frame}{Associative Rules Analysis}{Looking for implications among the dataset's attributes}
 
+    \vspace{0.2cm}
     Focus on the \alert{teaching course}: rules performances.
+    \vspace{0.2cm}
 
     \begin{centering}
-        \hspace{0.5cm}\includegraphics[scale=0.36]{../ass/apriori_min_1.png}
+        \includegraphics[scale=0.36]{../ass/apriori_min_1.png}
     \end{centering}
 
 \end{frame}
