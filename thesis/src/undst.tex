@@ -192,7 +192,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                     \centering
                     \caption{matrice dello scarto quadratico medio dei risultati degli esami da sostenere il primo anno}
                     \label{esami1anno_stddev}
-                	\includegraphics[scale=0.60]{img/std_dev_matrix_1.png}
+                	\includegraphics[scale=0.80]{img/std_dev_matrix_1.png}
                 \end{figure}
 
                 Per quanto riguarda invece quanto mostrato in Figura \ref{esami1anno_corr}, come misura di correlazione è stata scelta la \textit{correlazione di Pearson}, ricercando quindi relazioni monotone --- vengono considerati simili studenti che hanno un andamento simile su un gruppo sufficientemente grande di esami, senza contare eventuali \textit{offset} fra le valutazioni. Si nota un accenno di trama in due punti, sintomo di similarità fra due fasce di studenti. Questo può far pensare che potrebbe essere possibile individuarle con algoritmi di \textit{clustering}. \\
@@ -251,14 +251,14 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                     \centering
                     \caption{matrice di correlazione fra gli studenti, le cui righe e colonne rappresentano i vettori composti dai voti sugli esami a contenuto informatico}
                     \label{esami_inf_corr}
-                	\includegraphics[scale=0.32]{img/corr_matrix_2.png}
+                	\includegraphics[scale=0.38]{img/corr_matrix_2.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
                     \caption{matrice dello scarto quadratico medio dei risultati degli esami ad argomento informatico}
                     \label{esami_inf_stddev}
-                	\includegraphics[scale=0.6]{img/std_dev_matrix_2.png}
+                	\includegraphics[scale=0.75]{img/std_dev_matrix_2.png}
                 \end{figure}
 
                 Riguardo agli esami a contenuto prevalentemente informatico, sono state effettuate analoghe analisi visive. Poco è stato notato dal grafico di dispersione in Figura \ref{esami_inf} e dalla matrice di correlazione in Figura \ref{esami_inf_corr}. Invece, dalla matrice della deviazione standard in Figura \ref{esami_inf_stddev} è stato possibile trarre un'interessante deduzione: con l’avvicinarsi agli esami del terzo anno, si nota che il voto conseguito da ogni studente tende a discostarsi sempre meno dalla media. \\
@@ -278,14 +278,14 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                     \centering
                     \caption{matrice di correlazione fra gli studenti, le cui righe e colonne rappresentano i vettori composti dai voti sugli esami a contenuto matematico}
                     \label{esami_mat_corr}
-                	\includegraphics[scale=0.32]{img/corr_matrix_3.png}
+                	\includegraphics[scale=0.38]{img/corr_matrix_3.png}
                 \end{figure}
 
                 \begin{figure}
                     \centering
                     \caption{matrice dello scarto quadratico medio dei risultati degli esami a contenuto matematico}
                     \label{esami_mat_stddev}
-                	\includegraphics[scale=0.6]{img/std_dev_matrix_3.png}
+                	\includegraphics[scale=0.75]{img/std_dev_matrix_3.png}
                 \end{figure}
 
                 Riguardo a questa partizione degli esami, di cui si può vedere un grafico di dispersione generale in Figura \ref{esami_mat}, un aspetto che balza immediatamente alla vista è l’enorme quantità di studenti che ha conseguito 18 ad Analisi 2. Date le modalità di esame previste per il corso\footnote{Se le prove intermedie scritte risultano sufficienti, si può accettare un voto di 18 senza sostenere la prova orale.}, questa non è affatto un'anomalia, pertanto non appare interessante; inoltre, potrebbe addirittura risultare distorcente rispetto ad una ipotetica \textit{cluster analysys}, perciò occorrerebbe considerarla preventivamente.\\
