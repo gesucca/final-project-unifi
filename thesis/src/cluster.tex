@@ -129,6 +129,15 @@
 
     \subsection{Analisi dei risultati di K-Means}
 
+        \begin{figure}
+            \centering
+            \caption{matrice di prossimità, matrice di incidenza e correlazione fra di esse per misurare la contà del clustering effettuato con K-Means}
+            \label{matricidistanze}
+            \includegraphics[scale=0.32]{../pres/cluster5.png}
+        \end{figure}
+
+        Da un punto di vista tecnico, la bontà del risultato può essere misurata con la correlazione fra la \textit{matrice di incidenza} e la \textit{matrice di prossimità}: un valore negativo indica una tendenza delle distanze fra i punti dello stesso cluster ad essere minore di quelle fra punti di cluster diversi. Come si può vedere in Figura \ref{matricidistanze}, nel caso di questo specifico clustering la correlazione fra le due matrici è circa $-0.4$, il che indica i cluster ottenuti sono abbastanza separati. \\
+
         Il risultato ottenuto è parzialmente in linea con l'intento che ci si era prefissati. Il cluster identificato da Weka come \textbf{Cluster $0$}, e colorato di \textbf{blu} nei grafici che verranno mostrati, può essere considerato quello dei corsi migliori. Conseguentemente, il \textit{cluster 1} può essere letto come quello dei corsi peggiori rispetto agli altri e rispetto alle metriche considerate. \\
 
         Si vada innanzitutto a vedere come sono state raggruppate le istanze del data set nei due cluster, rispetto ai tre attributi caratterizzati (Figure \ref{1}, \ref{2} e \ref{3}). Come si può agilmente notare, la divisione che ci si aspettava di vedere è presente.\\
