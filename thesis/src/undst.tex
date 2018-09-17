@@ -13,7 +13,7 @@
 \chapter{Data Understanding Preliminare}
 \label{ch:undst}
 
-La fase che verrà descritta in seguito è fra le più delicate di tutto il processo di \textit{data mining}. Da essa dipende la buona riuscita o meno dell'intera attività di estrazione di informazioni. Come appare quindi naturale, è stata dedicata a essa una particolare attenzione.
+La fase che verrà descritta in seguito è fra le più delicate di tutto il processo di \textit{data mining}. Da essa dipende la buona riuscita o meno dell'intera attività di estrazione di informazioni. Come appare quindi naturale, è stata dedicata ad essa una particolare attenzione.
 
     \section{Introduzione al Data Understanding}
 
@@ -27,7 +27,7 @@ La fase che verrà descritta in seguito è fra le più delicate di tutto il proc
 
         \subsection{Metodi e Strumenti}
 
-            L'attività di \textit{data understanding} può essere svolta in molti modi, non essendoci delle regole fisse che la disciplinano rigidamente. Si può azzardare che le risorse più importanti alle quali si può attingere in questo ambito sono, piuttosto romanticamente, l'intuito e la fantasia dei \textit{data scientist} coinvolti nel progetto. Fuori di metafora, è chiaro che non esistono procedure che indichino univocamente le informazioni che è possibile ricavare su un dato insieme di dati. Perciò, quello che occorre fare è sfruttare dei metodi che riassumano i dati per poterli apprezzare nel loro insieme. \\
+            L'attività di \textit{data understanding} può essere svolta in molti modi, non essendoci delle regole fisse che la disciplinano rigidamente. Si può azzardare che le risorse più importanti alle quali si può attingere in questo ambito sono, piuttosto romanticamente, l'intuito e la fantasia dei \textit{data scientist} coinvolti nel progetto. Fuori di metafora, è chiaro che non esistono procedure che indichino univocamente le informazioni che è possibile ricavare su un certo insieme di dati. Perciò, quello che occorre fare è sfruttare dei metodi che riassumano i dati per poterli apprezzare nel loro insieme. \\
 
             Gli strumenti più adatti per poter ottenere una visione d'insieme sull'intera mole di dati sono, senza ombra di dubbio, le varie \textit{tecniche di visualizzazione} esistenti. Il loro utilizzo è stato permesso da software quali \textbf{R} e \textbf{Weka}, oltre che da più comuni \textit{spreadsheet} forniti da suite di programmi da ufficio. \footnote{Per un maggior dettaglio, si consulti il capitolo riguardo alla \textit{technology stack} impiegata per la realizzazione di questo progetto.}
 
@@ -115,7 +115,7 @@ par(xpd = NA)
 
             Come risulta dalla Figura \ref{fig2}, si potrebbe speculare che esista una correlazione lineare fra i due attributi: gli studenti che conseguono un punteggio alto nel test di ingresso sono più propensi ad ottenere voti alti negli esami. \\
 
-            Per quanto riguarda invece la Figura \ref{fig3}, fra gli studenti che hanno conseguiti tutti i crediti si può notare una consistente densità nella fascia che va circa dal ventidue al ventinove. Si può anche notare una assenza di voti medi inferiori al 22 fra coloro che hanno conseguito più di 100 CFU. Un altro aspetto che potrebbe rivelarsi interessante è che, fra la coorte di studenti del 2013, vari studenti hanno conseguito un solo esame con un voto superiore al 20. \\
+            Per quanto riguarda invece la Figura \ref{fig3}, fra gli studenti che hanno conseguito tutti i crediti si può notare una consistente densità nella fascia che va circa dal ventidue al ventinove. Si può anche notare un'assenza di voti medi inferiori al 22 fra coloro che hanno conseguito più di 100 CFU. Un altro aspetto che potrebbe rivelarsi interessante è che, fra la coorte di studenti del 2013, vari studenti hanno conseguito un solo esame con un voto superiore al 20. \\
 
             Viste le possibili informazioni che sembra possibile estrarre, si è deciso d'insistere sull’analisi visiva degli attributi \textit{voto medio} e \textit{numero totale di crediti}. Sono stati quindi realizzati dei diagrammi a scatola e baffi con il seguente script \textbf{R}: 
 
@@ -138,7 +138,7 @@ boxplot(students[,5]~students[,1],data = students,xlab="Avg. Exam Score",col=col
             	\includegraphics[scale=0.70]{img/box_plot_2.png}
             \end{figure}
 
-            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti. Nel caso invece del voto medio, rappresentato in Figura \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetti alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
+            Riguardo al diagramma in Figura \ref{boxplot1}, si noti come gli immatricolati nelle annate 2010 e 2011 hanno prestazioni molto simili sul fronte dei crediti conseguiti. La coorte 2012 risulta la migliore, avendo addirittura per mediana il massimo ammontare di crediti ottenibili\footnote{non si ignorino però le istanze considerate \textit{outliers} dall’algoritmo!}, mentre gli studenti immatricolati nel 2013 sono stati i meno performanti. Nel caso invece del voto medio, rappresentato in Figura \ref{boxplot2}, si evidenzia solo un leggero peggioramento negli immatricolati nel 2011 rispetto alle altre coorti di studenti. Sono degni di attenzione anche i due \textit{outliers} nella coorte 2013.
 
         \subsection{Prestazioni degli Studenti su Gruppi di Esami}
 
@@ -229,7 +229,7 @@ pimage(cm,main="Correlation Matrix considering 1st Year exams", xlab="Students",
                 	\includegraphics[scale=0.6]{img/scatter_plot_6.png}
                 \end{figure}
 
-                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza dei Credti Formativi Universitari ottenuti in totale dallo studente ad aumentare proporzionalmente al voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- hanno ottenuto comunque molti CFU senza superare questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
+                Si veda il grafico di dispersione specifico per Matematica Discreta e Logica in Figura \ref{mdl}: si riesce a notare una blanda tendenza dei Crediti Formativi Universitari ottenuti in totale dallo studente ad aumentare proporzionalmente al voto ottenuto. C’è inoltre una chiara indicazione che molti studenti –-- con quelli della coorte 2012 a estremizzare questa caratteristica –-- hanno ottenuto comunque molti CFU senza superare questo esame. Inoltre, incrociando il voto conseguito e la data in cui l’esame è stato superato (si veda la Figura \ref{mdl_2}), si riescono a notare due aspetti:
 
                 \begin{itemize}
                     \item chi ha dato l’esame al primo appello del suo anno, ha conseguito un voto alto (si vedano ad esempio gli studenti dell’annata 2010)
