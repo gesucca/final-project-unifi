@@ -49,17 +49,17 @@
 
         \begin{minipage}[c][\textheight][c]{\textwidth}
 
-                  \centering
+                  \centering\vspace*{15pt}
 
-                 {\usebeamerfont{institute}\insertinstitute}\vspace*{30pt}
+                 {\usebeamerfont{institute}\insertinstitute}\vspace*{20pt}
 
-                 {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\vspace*{10pt}
+                 {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\vspace*{15pt}
 
-                 {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}\vspace*{30pt}
+                 {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}\vspace*{25pt}
 
-                 {\usebeamerfont{author}\insertauthor}\vspace*{30pt}
+                 {\usebeamerfont{author}\insertauthor}\vspace*{20pt}
 
-                 {\usebeamerfont{date}\insertdate}\vspace*{\baselineskip}
+                 {\usebeamerfont{date}{12\footnotesize{$^{th}$} October 2018}}\vspace*{\baselineskip}
 
          \end{minipage}
    }
@@ -82,20 +82,20 @@
    }
 
 %----------------------------------------------------------------------------------------------------------------------------------
-  
+
 % add the feather to the background of the titlepage and the final page
 
                   \newcommand{\1}
    {
                   \setbeamertemplate{background}
       {
-                  \hspace{1.0cm}\includegraphics[width=\paperwidth-1.8cm,height=\paperheight]{logo.png}
+                  \hspace{1.50cm}\includegraphics[width=\paperwidth-2.8cm,height=\paperheight]{logo.png}
                   \tikz[overlay] \fill[fill opacity=0.90,fill=white] (0,0) rectangle (-\paperwidth,\paperheight);
        }
     }
 
 %----------------------------------------------------------------------------------------------------------------------------------
-  
+
 % use numbers instead of a picture for the references
 
                   \setbeamertemplate{bibliography item}[text]
