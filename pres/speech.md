@@ -40,8 +40,18 @@ Ad esempio, producendo dei grafici di dispersione riguardo al dataset della *car
 
 Un altro esempio, sempre riguardante i dati degli studenti, può essere questo: una matrice che mostra l'andamento dello *scarto quadratico medio* dei voti ottenuti dagli studenti - le righe - negli *esami del primo anno* - le colonne. Si può notare, ad esempio, come alcuni gruppi di studenti abbiano preso un voto inferiore alla media in ogni esame, così come si può vedere che in alcuni esami i voti tendono a discostarsi meno dalla loro media.
 
-# 6, 7
+# 6
+
+Vediamo subito l'utilizzo di una tecnica di data mining sui soli dati degli studenti.  (seq)
+...
+
+# prepr
 
 Per entrare nel vivo dell'analisi e utilizzare finalmente delle tecniche di data mining, occorre preparare i dati adeguatamente.
 
-Visto che i due dataset a mia disposizione hanno un elemento in comune - il corso di insegnamento - un'idea ovvia è stata quella di effettuare un'operazione di *join*  fra di essi. Il procedimento per realizzare il join è stato quello che ho brevemente riassunto nella slide: ho aggregato le istanze degli studenti rispetto alle informazioni sugli *corsi d'esame* di ogni anno - ricavandone degli attributi come la media dei voti, il ritardo con cui è stato superato ...
+Visto che i due dataset a mia disposizione hanno un elemento in comune - il corso di insegnamento - un'idea ovvia è stata quella di effettuare un'operazione di *join* fra di essi. Il procedimento per realizzare il join è stato quello che ho brevemente riassunto nella slide: ho scartato qualche *outlier* e ho aggregato le istanze degli studenti rispetto ai *corsi d'esame* di ogni anno - condensando quelle informazioni in attributi come ad esempio la media dei voti, o il ritardo con cui è stato superato quell'esame. Fatto questo, le chiavi primarie hanno combaciato, e ho potuto ricavare...
+
+...questo dataset facendo semplicemente un *inner join* fra i due che avevo a disposizione. Da questa struttura, poi, tramite altre operazioni di *preprocessing*, ho reso i dati adatti ad essere usati come input per gli algoritmi di data mining che adesso, finalmente, vedremo.
+
+# 8
+
