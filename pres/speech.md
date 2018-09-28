@@ -1,14 +1,14 @@
 # 0
 
-Quella che sto per presentarvi è una descrizione *estremamente sintetica* del mio lavoro di analisi che ha avuto come oggetto dei dati relativi ad *alcuni aspetti* del CdL triennale in informatica.
+Quella che vi sto per presentare è una descrizione *estremamente sintetica* di un'analisi dei dati relativi ad *alcuni aspetti* del Corso di Laurea triennale in informatica.
 
 Una parte principale di questa analisi è stata, come vedremo, l'attività di *data mining*.
 
 # 1
 
-Come suggerisce la metafora implicita nel nome, fare data mining significa estrarre delle informazioni preziose - quindi, utili - da una grande mole di dati grezzi.
+Come suggerisce la metafora insita nel nome, fare *data mining* significa estrarre delle informazioni preziose - quindi, utili - da una grande mole di dati grezzi.
 
-Il procedimento seguito è, banalmente, quello illustrato dalla slide: si è data una *struttura* ai dati iniziali, rendendoli adatti ad essere dati in input a un *software* che implementa vari algorimi di data mining, per poi disporne l'output in modo da favorirne l'interpretazione.
+Il procedimento che si segue è, banalmente, quello illustrato dalla slide: si è data una *struttura* ai dati iniziali, rendendoli adatti ad essere dati in input a un *software* che implementa vari algorimi di data mining, per poi disporne l'output in modo da favorirne l'interpretazione.
 
 Per realizzare tutto questo, c'è stato bisogno *principalmente* di tre strumenti software:
 
@@ -32,6 +32,8 @@ Riguardo agli *studenti*, per coloro immatricolati dal 2010 al 2013, abbiamo dei
 
 Come si vede dal grafico, i dati degli studenti coprono *non uniformemente* il periodo che va dal 2010 al 2017. Quindi, relativamente a questo lasso di tempo, sono state prese in considerazione le risposte date dagli studenti ai *questionari di valutazione degli insegnamenti*, ovviamente in forma aggregata rispetto ai quesiti per preservare l'anonimato di chi ha espresso le valutazioni.
 
+qualcosa sulla non uniformità dei dati e cosa succede quando si fa una inner join
+
 # 4, 5
 
 Che abbiamo fatto con questi dati? Innanzitutto, li abbiamo studiati nella loro forma iniziale usando varie tecniche di visualizzazione, per capire quali informazioni possono esserne estratte.
@@ -40,12 +42,7 @@ Ad esempio, producendo dei grafici di dispersione riguardo al dataset della *car
 
 Un altro esempio, sempre riguardante i dati degli studenti, può essere questo: una matrice che mostra l'andamento dello *scarto quadratico medio* dei voti ottenuti dagli studenti - le righe - negli *esami del primo anno* - le colonne. Si può notare, ad esempio, come alcuni gruppi di studenti abbiano preso un voto inferiore alla media in ogni esame, così come si può vedere che in alcuni esami i voti tendono a discostarsi meno dalla loro media.
 
-# 6
-
-Vediamo subito l'utilizzo di una tecnica di data mining sui soli dati degli studenti.  (seq)
-...
-
-# prepr
+# 6-7
 
 Per entrare nel vivo dell'analisi e utilizzare finalmente delle tecniche di data mining, occorre preparare i dati adeguatamente.
 
@@ -55,3 +52,7 @@ Visto che i due dataset a mia disposizione hanno un elemento in comune - il cors
 
 # 8
 
+
+
+
+seq: altre cose si potevano fare (raggruppare esami eccetera), ma la particolare implementazione di GSP che era a disposizione non consentiva di
