@@ -52,7 +52,49 @@ Visto che i due dataset a mia disposizione hanno un elemento in comune - il cors
 
 # 8
 
+Cominciamo dal *clustering*: vi mostro, ovviamente, soltanto il risultato più significativo di quella che è stata una lunga serie di tentativi fatti per testare e valutare le varie configurazioni dei vari algoritmi, come suggerisce il buon vecchio metodo *trial-and-error*.
+
+Questo miglior risultato, è stato ottenuto utilizzando l'agorotimo *K-Means*...
+
+...e la *distanza euclidea* come metrica di prossimità fra i vari punti del dataset - è una scelta piuttosto standard, forse banale, ma è risultata la più adeguata.
+
+L'algoritmo K-Means richiede di scegliere a prescindere il numero di cluster in cui partizionare il dataset. Ho scelto una suddivisione in *due cluster*, sia perché è risultata la migliore in termini di valutazione del risultato, sia perché intuitivamente si può sperare che i due cluster trivati rappresentino uno i corsi *migliori* e l'altro i corsi *peggiori*, almeno per quanto riguarda gli attributi considerati.
+
+Riguardo proprio a questi, ho scelto di considerarne tre: *voto medio* conseguito dagli studenti, *valutazione complessiva media* data ai corsi e *ritardo medio* degli studenti nel superare quell'esame rispetto al primo appello disponibile.
+
+# 9
+
+[leggi e descrivi la slide]
+
+Le altre sezioni mostrano *visivamente* un comportamento simile, quindi *a occhio* questo clustering sembra buono.
+
+# 10
+
+Impiegando un appoccio un po' più analitico, sono andato a calcolare la correlazione fra la *matrice delle distanze euclidee* e la *matrice di incidenza* di questo clustering, che viene *negativa*. Che significa? Che la distanza euclidea fra due punti del dataset tende ad essere *bassa* quando essi appartengono allo stesso cluster, e viceversa. Quindi, l'algoritmo K-Means ha raggruppato in questi due cluster dei punti che sono effettivamente vicini fra di loro.
 
 
+# 11
+
+Visto che il clustering è buono, si può andare a vedere quali corsi siano finiti nel cluster dei corsi buoni e quali in quello dei corsi meno buoni. 
+
+La situazione è questa [address the slide]. Non mi sono azzardato a trarre nessuna conclusione, ma posso dire che, per la mia esperienza, alcuni di questo risultati un po' mi sorprendono, mentre altri non mi sorprendono affatto. Un certo istinto di sopravvivenza mi suggerisce caldamente di non commentare oltre, e credo proprio che lo seguirò.
+
+# 12
+
+Passiamo a vedere la *ricerca di regole associative*, cioè di implicazioni fra i valori di alcuni attributi. Anche in questo caso, ho seguito il metodo *trial-and-error*, quindi vi mostro solamente quello che ho giudicato essere il miglior risultato fra i tanti tentativi fatti.
+
+Ho usato ovviamente l'implementazione di Weka dell'algoritmo *Apriori*...
+
+...impostato per usare il *lift* come metrica di confidenza delle regole associative.
+
+C'è stato bisogno di *discretizzare* i valori continui degli attributi considerati, facendoli rientrare in dei *range* sufficientemente ampi per non generare confusione, ma abbastanza definiti come significato - la classica divisione in "BASSO", "MEDIO" e "ALTO" è andata più che bene.
+
+Il focus è stato messo sugli stessi attributi considerati per il clustering, visto che questa scelta in quella sede aveva funzionato.
+
+# 13 
+
+Fra tutte quelle ottenute, ho selezionato le *dieci regole associative migliori*, tutte con ottimi valori di lift e molte con buoni valori di confidenza. Curiosamente, queste dieci regole conbaciano perfettamente in cinque implicazioni doppie, il cui significato va sempre in una direzione: *buone prestazioni agli esami - ritardo basso e voto alto - implicano una buona valutazione del corso*.
+
+#
 
 seq: altre cose si potevano fare (raggruppare esami eccetera), ma la particolare implementazione di GSP che era a disposizione non consentiva di
