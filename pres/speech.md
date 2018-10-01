@@ -11,7 +11,7 @@ Come suggerisce la metafora nel nome, fare *data mining* significa estrarre dell
 
 Il procedimento che solitamente si segue è questo [address the slide]: si da innanzitutta una *struttura* ai dati iniziali, rendendoli adatti ad essere forniti come input al *software* che implementa l'algorimo di data mining che si desidera utilizzare, per poi disporne l'output in modo da favorirne l'interpretazione.
 
-Per realizzare tutto questo, ho avuto bisogno *principalmente* di tre strumenti software:
+Per realizzare tutto questo, ho avuto bisogno *principalmente* di tre [conta sulle dite] strumenti software: 
 
 - un *data base* per manipolare agilmente i dati e dargli la forma che serve;
 - una libreria di implementazioni degli algoritmi per il data mining;
@@ -19,13 +19,20 @@ Per realizzare tutto questo, ho avuto bisogno *principalmente* di tre strumenti 
 
 Andiamo a vedere brevemente le scelte che ho fatto per soddisfare questi tre requisiti.
 
+
 # 2
 
-Per le operazioni di *pre processing* ho scelto MongoDB, un data base *non* relazionale che modella i dati in documenti strutturati secondo la Java Script Object Notation. ... Si tratta di una tecnologia *relativamente nuova* ma *sufficientemente matura*, ed ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
+Come base di dati ho scelto MongoDB, un data base *non* relazionale che modella i dati in documenti strutturati secondo la Java Script Object Notation. 
 
-Per l'utilizzo degli algoritmi di data mining la scelta è ricaduta su Weka, uno strumento che ho già usato nel corso di Data Mining and Orgnaization e che, nonostante alcuni difetti, è risultato adeguato a questo scopo.
+Come sarà chiaro a breve, i dati con cui ho lavorato si potevano gestire efficacemente anche restando nel classico modello relazionale, ma ho preferito comunque utilizzare MongoDB. Si tratta di una tecnologia *relativamente nuova* ma *sufficientemente matura*, ed ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
 
-Infine, per realizzare il *post processing* ho impiegato vari strumenti, privilegiando però l'immediatezza d'uso dei semplici fogli di calcolo rispetto a uno strumento complesso come il linguaggio R.
+[nuova slide]
+
+Per quanto riguarda gli algoritmi di data mining, la scelta è ricaduta sul software Weka: uno strumento che ho già usato nel corso di Data Mining and Orgnaization e che, nonostante abbia alcuni difetti, è comunque uno strumento abbastanza completo ed è risultato adeguato al mio scopo. 
+
+[nuova slide]
+
+Infine, per usare delle tecniche di visualizzazione ho scelto di usare dei banali fogli di calcolo per le operazioni più semplici, mentre per altre più complesse sono andato a scomodare uno strumento più potente, cioè il linguaggio R.
 
 
 # 3
