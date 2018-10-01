@@ -1,28 +1,32 @@
 # 0
 
-Quella che vi sto per presentare è una descrizione *estremamente sintetica* di un'analisi dei dati relativi ad *alcuni aspetti* del Corso di Laurea triennale in informatica.
+Quella che vi sto per presentare è una descrizione *estremamente sintetica* dell'analisi che ho fatto su alcuni dati dati relativi a *qualche aspetto* del Corso di Laurea triennale in informatica.
 
 Una parte principale di questa analisi è stata, come vedremo, l'attività di *data mining*.
 
+
 # 1
 
-Come suggerisce la metafora insita nel nome, fare *data mining* significa estrarre delle informazioni preziose - quindi, utili - da una grande mole di dati grezzi.
+Come suggerisce la metafora nel nome, fare *data mining* significa estrarre delle informazioni preziose - quindi, utili - da una grande mole di dati grezzi.
 
-Il procedimento che si segue è, banalmente, quello illustrato dalla slide: si è data una *struttura* ai dati iniziali, rendendoli adatti ad essere dati in input a un *software* che implementa vari algorimi di data mining, per poi disporne l'output in modo da favorirne l'interpretazione.
+Il procedimento che solitamente si segue è questo [address the slide]: si da innanzitutta una *struttura* ai dati iniziali, rendendoli adatti ad essere forniti come input al *software* che implementa l'algorimo di data mining che si desidera utilizzare, per poi disporne l'output in modo da favorirne l'interpretazione.
 
-Per realizzare tutto questo, c'è stato bisogno *principalmente* di tre strumenti software:
+Per realizzare tutto questo, ho avuto bisogno *principalmente* di tre strumenti software:
 
-- *data base* per manipolare agilmente i dati e dargli la forma che serve;
-- libreria di implementazioni degli algoritmi di data mining;
-- strumenti per la *visualizzazione* di dati;
+- un *data base* per manipolare agilmente i dati e dargli la forma che serve;
+- una libreria di implementazioni degli algoritmi per il data mining;
+- qualche strumento per la *visualizzazione* di dati;
+
+Andiamo a vedere brevemente le scelte che ho fatto per soddisfare questi tre requisiti.
 
 # 2
 
-Per le operazioni di *pre processing* ho scelto MongoDB, un data base *non* relazionale che modella i dati in documenti strutturati secondo la Java Script Object Notation. Si tratta di una tecnologia *relativamente nuova* ma *sufficientemente matura*, ed ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
+Per le operazioni di *pre processing* ho scelto MongoDB, un data base *non* relazionale che modella i dati in documenti strutturati secondo la Java Script Object Notation. ... Si tratta di una tecnologia *relativamente nuova* ma *sufficientemente matura*, ed ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
 
 Per l'utilizzo degli algoritmi di data mining la scelta è ricaduta su Weka, uno strumento che ho già usato nel corso di Data Mining and Orgnaization e che, nonostante alcuni difetti, è risultato adeguato a questo scopo.
 
 Infine, per realizzare il *post processing* ho impiegato vari strumenti, privilegiando però l'immediatezza d'uso dei semplici fogli di calcolo rispetto a uno strumento complesso come il linguaggio R.
+
 
 # 3
 
@@ -34,6 +38,7 @@ Come si vede dal grafico, i dati degli studenti coprono *non uniformemente* il p
 
 qualcosa sulla non uniformità dei dati e cosa succede quando si fa una inner join
 
+
 # 4, 5
 
 Che abbiamo fatto con questi dati? Innanzitutto, li abbiamo studiati nella loro forma iniziale usando varie tecniche di visualizzazione, per capire quali informazioni possono esserne estratte.
@@ -42,6 +47,7 @@ Ad esempio, producendo dei grafici di dispersione riguardo al dataset della *car
 
 Un altro esempio, sempre riguardante i dati degli studenti, può essere questo: una matrice che mostra l'andamento dello *scarto quadratico medio* dei voti ottenuti dagli studenti - le righe - negli *esami del primo anno* - le colonne. Si può notare, ad esempio, come alcuni gruppi di studenti abbiano preso un voto inferiore alla media in ogni esame, così come si può vedere che in alcuni esami i voti tendono a discostarsi meno dalla loro media.
 
+
 # 6-7
 
 Per entrare nel vivo dell'analisi e utilizzare finalmente delle tecniche di data mining, occorre preparare i dati adeguatamente.
@@ -49,6 +55,7 @@ Per entrare nel vivo dell'analisi e utilizzare finalmente delle tecniche di data
 Visto che i due dataset a mia disposizione hanno un elemento in comune - il corso di insegnamento - un'idea ovvia è stata quella di effettuare un'operazione di *join* fra di essi. Il procedimento per realizzare il join è stato quello che ho brevemente riassunto nella slide: ho scartato qualche *outlier* e ho aggregato le istanze degli studenti rispetto ai *corsi d'esame* di ogni anno - condensando quelle informazioni in attributi come ad esempio la media dei voti, o il ritardo con cui è stato superato quell'esame. Fatto questo, le chiavi primarie hanno combaciato, e ho potuto ricavare...
 
 ...questo dataset facendo semplicemente un *inner join* fra i due che avevo a disposizione. Da questa struttura, poi, tramite altre operazioni di *preprocessing*, ho reso i dati adatti ad essere usati come input per gli algoritmi di data mining che adesso, finalmente, vedremo.
+
 
 # 8
 
@@ -71,7 +78,6 @@ Le altre sezioni mostrano *visivamente* un comportamento simile, quindi *a occhi
 # 10
 
 Impiegando un appoccio un po' più analitico, sono andato a calcolare la correlazione fra la *matrice delle distanze euclidee* e la *matrice di incidenza* di questo clustering, che viene *negativa*. Che significa? Che la distanza euclidea fra due punti del dataset tende ad essere *bassa* quando essi appartengono allo stesso cluster, e viceversa. Quindi, l'algoritmo K-Means ha raggruppato in questi due cluster dei punti che sono effettivamente vicini fra di loro.
-
 
 # 11
 
