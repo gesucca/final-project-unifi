@@ -32,7 +32,7 @@ Per quanto riguarda gli algoritmi di data mining, la scelta è ricaduta sul soft
 
 [nuova slide]
 
-Infine, per usare delle tecniche di visualizzazione ho scelto di usare dei banali fogli di calcolo per le operazioni più semplici, mentre per altre più complesse sono andato a scomodare uno strumento più potente, cioè il linguaggio R.
+Infine, per le tecniche di visualizzazione ho scelto di usare dei banali fogli di calcolo per le operazioni più semplici, mentre per quelle più complesse sono andato a scomodare uno strumento più potente, cioè il linguaggio R.
 
 
 # 3
