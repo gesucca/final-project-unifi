@@ -1,13 +1,12 @@
 \begin{frame}{Frequent Sequential Patterns}{Looking for meaningful frequent patterns in exams sequences}
 
-     \vspace{0,1cm}\centering\textit{Which exams are \textcolor{cyan}{skipped} the most by the students?} \vspace{0,1cm}
+     \vspace{0,1cm}\centering\textit{Which exams are \textcolor{cyan}{skipped} the most by the students?} \vspace{0,4cm}
 
-\begin{block}{Mining process}
+\begin{block}{}
 		\begin{itemize}
-			\item<1-> \alert{Deeper preprocessing} --- we need to transform \emph{students} data in a totally different way;\vspace{0.2cm}
+			\item<1-> \alert{Deeper preprocessing} --- We need to transform \emph{students} data in a totally different way;\vspace{0.2cm}
 			\item<2-> \alert{GSP algorithm} --- Apriori-based algorithm to extract \emph{frequent sequential patterns} from preprocessed data;\vspace{0.2cm}
-			\item<3-> \alert{Unusual pattern mining} --- filtering of the GSP output, discarding uninteresting \emph{(regular)} exams patterns;\vspace{0.2cm}
-			\item<4-> \alert{Out-of-place exams mining} --- extraction of the exams that are passed \emph{after} a later exam.
+			\item<3-> \alert{Clever post processing} --- Which of those patterns are \textcolor{cyan}{interesting}? What do they \textcolor{cyan}{mean}?\vspace{0.2cm}
 		\end{itemize}
 	\end{block}
 
