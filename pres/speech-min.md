@@ -1,10 +1,10 @@
-# 0 - introduzione
+# 0 - Introduzione
 
 > Quella che vi sto per presentare è una descrizione dell'analisi che ho fatto su alcuni dati dati relativi a *qualche aspetto* del Corso di Laurea triennale in informatica.
 
 > Una parte principale di questa analisi è stata, come vedremo, l'attività di **data mining**.
 
-# 1 - data mining
+# 1 - Data Mining
 
 > Come suggerisce la metafora nel nome
 
@@ -24,7 +24,7 @@ Ho avuto bisogno *principalmente* di *tre* strumenti software:
 
 > Andiamo a vedere brevemente le scelte che ho fatto per soddisfare questi tre requisiti.
 
-# 2 - technology stack
+# 2 - Technology Stack
 
 **MongoDB**: paradigma *noSQL*, *non* relazionale ma modella i dati in documenti.
 
@@ -36,16 +36,12 @@ Saperlo utilizzare è abilità *utile* e *spendibile* in molti ambiti.
 
 > Ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
 
-___
-
 Algoritmi di data mining: **Weka**. Già usato nel corso *Data Mining and Organization*, qualche difetto ma adeguato.
-
-___
 
 **Visualizzazione**: fogli di calcolo per operazioni semplici...
 > mentre per quelle più complesse sono andato a scomodare uno strumento più potente, cioè il **linguaggio R**.
 
-# 3 - dati grezzi
+# 3 - Dati grezzi
 
 2 famiglie di dati:*studenti* e *insegnamenti*.
 
@@ -56,11 +52,9 @@ ___
 
 Riguardano gli studenti *immatricolati dal 2010 al 2013*, coprono i *quattro Anni Accademici* successivi all’immatricolazione.
 
-___
-
 > Relativamente al lasso di tempo *totale* coperto dai dati degli studenti - dal 2010 al 2017 - mi sono state fornite le risposte ai **questionari di valutazione degli insegnamenti**, ovviamente in *forma aggregata rispetto ai quesiti* per preservare l'anonimato di chi ha espresso le valutazioni.
 
-# 4 - scatter plot
+# 4 - Scatter Plot
 
 > La prima cosa che ho fatto dopo aver ricevuto i dati, è stata *studiarli nella loro forma iniziale* usando varie tecniche di visualizzazione, cercando di intuire qualcosa di utile per direzionare le analisi successive.
 
@@ -73,7 +67,7 @@ Cosa si nota?
 - non ci sono particolari differenze di prestazioni fra le varie coorti di immatricolazione, a parte qualche outlier.
 - *speculare* che ci sia una **correlazione diretta** fra i due attributi
 
-# 5 - matrice std dev
+# 5 - Matrice std. dev.
 
 Altro esempio, sempre riguardo ai **dati degli studenti**
 
@@ -82,7 +76,9 @@ Matrice che mostra l'andamento della **deviazione standard** dei voti ottenuti d
 - *gruppi di studenti* hanno preso un *voto inferiore alla media* in ogni esame (fasce orizzontali blu)
 - in alcuni esami i voti tendono a *discostarsi meno dalla loro media*, (colori meno accesi di determinate fasce).
 
-# 6 - preprocessing
+<div style="page-break-after: always;"></div>
+
+# 6 - Preprocessing
 
 Dopo lo studio sui dati iniziali, ho preparato i dati per il data mining.
 
@@ -97,23 +93,56 @@ Ricavato dataset unico facendo un **inner join** e a partire da quello...
 
 > ...tramite altre operazioni di **preprocessing**, ho reso i dati adatti ad essere usati come input per gli algoritmi di data mining che adesso, finalmente, vedremo.
 
-# 7 - clustering
+# 7 - Clustering
 
 > Vi mostro, ovviamente, soltanto il risultato più significativo di quella che è stata una lunga serie di tentativi fatti per valutare le prestazioni varie configurazioni possibili.
 
 > Questo miglior risultato, è stato ottenuto utilizzando l'agorotimo **K-Means**...
 
-___
-
 > ...e la **distanza euclidea** come metrica di prossimità fra i vari punti del dataset - è una scelta piuttosto standard, forse banale, ma è risultata la più adeguata.
-
-___
 
 K-Means richiede come parametro iniziale il *numero di cluster* in cui partizionare il dataset. **2**, perché:
 
 - miglior scelta in termini di valutazione del risultato
 - > intuitivamente, si può sperare che i due cluster trovati rappresentino uno i corsi **buoni** e l'altro i corsi **meno buoni**, almeno per quanto riguarda gli *attributi* considerati...
 
-___
-
 > ...che sono **questi tre**: *voto medio* all'esame, *ritardo medio* nel superarlo e *valutazione complessiva media* data al corso. Sembrano pochi, ma in realtà sono abbastanza rappresentativi di tutti gli aspetti fondamentali dei dati a nostra disposizione.
+
+<div style="page-break-after: always;"></div>
+
+# 8 - Risultati Clustering
+
+Sezione dei dati lungo il piano *ritardo medio* (ascisse) e *voto medio* (ordinate); i punti ovviamnte sono i corsi di un determinato Anno Accademico.
+
+I due cluster trovati sono abbastanza *polarizzati verso gli estremi buoni* dei due attributi visualizzati:
+
+- cluster blu, voto alto e ritardo basso
+- cluster rosso il contrario
+
+> Le altre sezioni mostrano un comportamento simile, quindi *ad una prima analisi visiva* questo clustering sembra buono.
+
+# 9 - Valutazione Clustering
+
+**Matrice delle distanze euclidee** e **matrice di incidenza** del clustering.
+
+Ispezione visiva: *distanza bassa* fra punti appartenenti allo *stesso cluster*, e viceversa.
+
+Aspetto confermato dalla **correlazione negativa** fra le due matrici.
+
+K-Means ha raggruppato in questi due cluster dei punti che sono effettivamente vicini fra di loro: *il clustering è buono*.
+
+# 10 - Interpretazione Clustering
+
+Cluster dei corsi *meno buoni* (rispetto ai tre attributi considerati):
+
+- materie *più ostiche* per la maggioranza degli studenti
+    - prestazioni peggiori (ritardo alto e voto basso)
+    - valutati più severamente
+
+Specularmente, nell'altro cluster:
+
+- materie *assimilate più agilmente*
+    - prestazioni migliori
+    - valutati più generosamente.
+
+> Questa lettura lascia intuire che ci sia una correlazione fra le prestazioni degli studenti in un certo e la loro valutazione data sul rispettivo corso.
