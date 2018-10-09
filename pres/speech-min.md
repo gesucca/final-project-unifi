@@ -147,7 +147,7 @@ Specularmente, nell'altro cluster:
 
 > Questa lettura lascia intuire che ci sia una correlazione fra le prestazioni degli studenti in un certo e la loro valutazione data sul rispettivo corso.
 
-[//]: # (Printed 'till here!)
+<div style="page-break-after: always;"></div>
 
 # 11 - Regole Associative
 
@@ -164,7 +164,7 @@ Lift molto efficace: se regola *A implica B*, lift è rapporto fra *probabilità
 - Focus sui soliti **tre attributi** rappresentativi
 
 
-# 12 - Regole Associative: ritultati
+# 12 - Regole Associative: risultati
 
 Selezionato le **10 regole migliori** secondo la metrica del lift.
 
@@ -210,13 +210,12 @@ Questa è una *relazione d'ordine parziale* sull'insieme degli esami.
 
 Che osservazioni si possono fare?
 
-> Innegabile che, se un'esame si trova frequentemente fuori posto, presenta delle *difficoltà di qualche tipo* agli studenti.
+> Innegabile che, se un'esame si trova frequentemente fuori posto, presenta delle *difficoltà di qualche tipo* per la maggioranza degli studenti.
 
 Significato esame fuori posto:
 
 - bocciato e superato *solo dopo aver ripetuto il corso*
 - *saltato* in favore di esami più facili, anche se teoricamente successivi
 
-**Fisica** è l'esame più presente nei pattern non ordianti (spesso è proprio *l'ultimo esame* che gli studenti superano).
+**Fisica** è l'esame più presente nei pattern non ordianti (spesso è proprio *l'ultimo esame* che gli studenti superano). Non sblocca vincoli di propedeuticità: forse molti studenti sono *portati ad ignorarlo* fino ad aver completato il resto del corso di laurea.
 
-> Curiosamente, non sblocca alcun vincolo di propedeuticità: che molti studenti siano *portati ad ignorarlo* fino ad aver completato il resto del corso di laurea?
