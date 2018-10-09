@@ -136,13 +136,87 @@ K-Means ha raggruppato in questi due cluster dei punti che sono effettivamente v
 Cluster dei corsi *meno buoni* (rispetto ai tre attributi considerati):
 
 - materie *più ostiche* per la maggioranza degli studenti
-    - prestazioni peggiori (ritardo alto e voto basso)
-    - valutati più severamente
+  - prestazioni peggiori (ritardo alto e voto basso)
+  - valutati più severamente
 
 Specularmente, nell'altro cluster:
 
 - materie *assimilate più agilmente*
-    - prestazioni migliori
-    - valutati più generosamente.
+  - prestazioni migliori
+  - valutati più generosamente.
 
 > Questa lettura lascia intuire che ci sia una correlazione fra le prestazioni degli studenti in un certo e la loro valutazione data sul rispettivo corso.
+
+[//]: # (Printed 'till here!)
+
+# 11 - Regole Associative
+
+*Ricerca di regole associative*, cioè di implicazioni fra i valori di alcuni attributi.
+
+Anche in questo caso metodo *trial-and-error*, quindi risultato migliore ottenuto alla fine di un percorso di vari tentativi.
+
+- Implementazione di **Apriori** di Weka
+- Metrica di confidenza: **lift**
+
+Lift molto efficace: se regola *A implica B*, lift è rapporto fra *probabilità di B dato A* e *probabilità di B indipendentemente da A*.
+
+- **Discretizzazione** degli attributi continui in *range* discreti (BASSO, MEDIO e ALTO)
+- Focus sui soliti **tre attributi** rappresentativi
+
+
+# 12 - Regole Associative: ritultati
+
+Selezionato le **10 regole migliori** secondo la metrica del lift.
+
+> Queste dieci regole combaciano perfettamente in *cinque implicazioni doppie*, e il loro significato va sempre in una direzione: delle *buone prestazioni in un esame* - ritardo basso e voto alto - implicano una *buona valutazione del rispettivo corso*, e viceversa. Perciò, come si sospettava, esiste una correlazione diretta fra questi due aspetti.
+
+# 13 - Pattern Sequenziali Frequenti
+
+> Guardiamo ora l'ultima analisi che ho fatto - forse la più interessante.
+
+Ricerca di *pattern frequenti* fra le *sequenze di esami* superati dagli studenti.
+
+- Preprocessing *ad hoc* su dati degli studenti, costruire le **sequenze ordinate** degli esami superati da ogni studente.
+
+Si sarebbe potuto molto altro, ad esempio:
+
+- raggruppare esami superati nello stesso appello
+- considerare solo sequenze che rispettano un certo **gap** temporale massimo
+
+> Purtroppo,l'implementazione di **GSP** che offre Weka non offre nessuna di queste possibilità, quindi ho creato le sequenze *rispettando solo l'ordine in cui ogni studente ha superato i vari esami*, senza considerare altro.
+
+> Infine, è stata di fondamentale importanza l'interpretazione data ai pattern frequenti ottenuti. L'output di GSP è stato fin troppo generoso: fra tutti quelli frequenti, quali sono i pattern interessanti? Chiaramente, quelli non **ordinati**.
+
+
+# 14 - Pattner Sequenziali Frequenti: pattern interessanti
+
+> Cosa significa che un pattern è *ordinato*?
+
+Lista di tutti i corsi d'esame del CdL, ordinati nella *giusta* sequenza.
+
+Questa è una *relazione d'ordine parziale* sull'insieme degli esami.
+
+> Vediamo un esempio di pattern non ordinato.
+
+# 15 - Pattner Sequenziali Frequenti - pattern non ordinati
+
+*[descrivi il concetto di **esame fuori posto**]*
+
+# 16 - Pattern Sequenziali Frequenti - post processing
+
+> Come ho riassunto le informazioni contenute nei pattern frequenti non ordinati?
+
+> Ho contato quante volte un esame è stato *fuori posto* nei pattern frequenti, e ho creato un **diagramma a torta**.
+
+Che osservazioni si possono fare?
+
+> Innegabile che, se un'esame si trova frequentemente fuori posto, presenta delle *difficoltà di qualche tipo* agli studenti.
+
+Significato esame fuori posto:
+
+- bocciato e superato *solo dopo aver ripetuto il corso*
+- *saltato* in favore di esami più facili, anche se teoricamente successivi
+
+**Fisica** è l'esame più presente nei pattern non ordianti (spesso è proprio *l'ultimo esame* che gli studenti superano).
+
+> Curiosamente, non sblocca alcun vincolo di propedeuticità: che molti studenti siano *portati ad ignorarlo* fino ad aver completato il resto del corso di laurea?
