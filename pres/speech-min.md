@@ -1,6 +1,6 @@
 # 0 - Introduzione
 
-> Quella che vi sto per presentare è una descrizione dell'analisi che ho fatto su alcuni dati dati relativi a *qualche aspetto* del Corso di Laurea triennale in informatica.
+> Quella che sto per presentare, è una descrizione dell'analisi di alcuni dati relativi a *qualche aspetto* del Corso di Laurea triennale in informatica.
 
 > Una parte principale di questa analisi è stata, come vedremo, l'attività di **data mining**.
 
@@ -8,17 +8,17 @@
 
 > Come suggerisce la metafora nel nome
 
-**data mining** = estrarre informazioni *preziose* (**utili**) - da una grande mole di dati grezzi.
+**Data mining** = *estrarre* informazioni *preziose* da una grande mole di dati grezzi.
 
 Procedimento:
 
-- **pre processing** - rendere i dati adatti...
-- > ...ad essere usati come input per gli **algorimi di data mining** che si desidera utilizzare
-- **post processing** infine si dispone l'output in modo da favorirne l'interpretazione.
+- > Si effettua innanzitutto una fase di **pre processing**...
+- > ...per rendere i dati iniziali *adatti* ad essere usati come input per gli **algorimi di data mining** che si desidera utilizzare.
+- > Infine, in quella che è una fase di **post processing**, si dispone l'output in modo da favorirne l'interpretazione.
 
-Ho avuto bisogno *principalmente* di *tre* strumenti software:
+C'è quindi bisogno *principalmente* di **tre** strumenti software:
 
-- **data base**
+- **data base** per strutturare agilmente i dati
 - libreria di **implementazioni di algoritmi per il data mining**
 - software per tecniche di **visualizzazione**
 
@@ -26,82 +26,77 @@ Ho avuto bisogno *principalmente* di *tre* strumenti software:
 
 # 2 - Technology Stack
 
-**MongoDB**: paradigma *noSQL*, *non* relazionale ma modella i dati in documenti.
+**MongoDB** adotta il paradigma *noSQL*: *non* segue il modello relazionale ma *memorizza i dati in documenti*.
 
-> I dati con cui ho lavorato si potevano gestire efficacemente anche restando nel classico modello relazionale...
+I dati con cui ho lavorato si sarebbero potuti *gestire efficacemente anche restando nel classico modello relazionale*.
 
-...ma meglio MongoDB perché è una tecnologia *relativamente nuova* ma *sufficientemente matura*.
-
-Saperlo utilizzare è abilità *utile* e *spendibile* in molti ambiti.
-
-> Ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
+Ho scelto cmq MongoDB, perché è una tecnologia **relativamente nuova** ma **sufficientemente matura**, e saperlo utilizzare è abilità *utile* e *spendibile* in molti ambiti. Ho ritenuto importante sfruttare questo lavoro come occasione per prenderci confidenza.
 
 Algoritmi di data mining: **Weka**. Già usato nel corso *Data Mining and Organization*, qualche difetto ma adeguato.
 
-**Visualizzazione**: fogli di calcolo per operazioni semplici...
-> mentre per quelle più complesse sono andato a scomodare uno strumento più potente, cioè il **linguaggio R**.
+**Visualizzazione**: fogli di calcolo per operazioni semplici, linguaggio R per quelle più complesse.
 
 # 3 - Dati grezzi
 
-2 famiglie di dati:*studenti* e *insegnamenti*.
+**Studenti**: record *anonimi* riguardo alla carriera accademica.
 
-**Studenti**: record *anonimi* riguardo alla carriera accademica
-
-- *attributi generici* (e.g. il voto ottenuto al test di ingresso)
-- *per ogni esame*, la **data** in cui è stato superato e il **voto** conseguito
+- *Attributi generici* (e.g. il voto ottenuto al test di ingresso);
+- *Per ogni esame*, la **data** in cui è stato superato e il **voto** conseguito.
 
 Riguardano gli studenti *immatricolati dal 2010 al 2013*, coprono i *quattro Anni Accademici* successivi all’immatricolazione.
 
-> Relativamente al lasso di tempo *totale* coperto dai dati degli studenti - dal 2010 al 2017 - mi sono state fornite le risposte ai **questionari di valutazione degli insegnamenti**, ovviamente in *forma aggregata rispetto ai quesiti* per preservare l'anonimato di chi ha espresso le valutazioni.
+> Relativamente al lasso di tempo *totale* coperto da questi dati - dal 2010 al 2017 - mi sono state fornite le risposte degli stidenti ai **questionari di valutazione degli insegnamenti**, ovviamente in *forma aggregata rispetto ai quesiti* per preservare l'anonimato di chi ha espresso le valutazioni.
+
+Ho avuto a che fare con queste due famiglie di dati. Come li ho impiegati?
 
 # 4 - Scatter Plot
 
-> La prima cosa che ho fatto dopo aver ricevuto i dati, è stata *studiarli nella loro forma iniziale* usando varie tecniche di visualizzazione, cercando di intuire qualcosa di utile per direzionare le analisi successive.
+> La prima cosa da fare è stata *studiarli nella loro forma iniziale* usando varie **tecniche di visualizzazione**, per cercare di intuire qualcosa di utile per direzionare le analisi successive.
 
-Vediamo alcuni utilizzi di qualche tecnica di visualizzazione.
+Vediamo un paio di esempi di utilizzo di questo genere di tecniche.
 
-Ad esempio, **grafico di dispersione** fra la *media dei voti* (ascisse) degli studenti e il loro *punteggio al test di ingresso* (ordinate).
+**Grafico di dispersione** fra la *media dei voti* (ascisse) degli studenti e il loro *punteggio al test di ingresso* (ordinate).
 
-Cosa si nota?
+Cosa può dirci questo grafico?
 
-- non ci sono particolari differenze di prestazioni fra le varie coorti di immatricolazione, a parte qualche outlier.
-- *speculare* che ci sia una **correlazione diretta** fra i due attributi
+- Non ci sono particolari differenze di prestazioni fra le varie coorti di immatricolazione, a parte qualche outlier;
+- *Speculare* che ci sia una **correlazione diretta** fra i due attributi.
 
-# 5 - Matrice std. dev.
+# 5 - Matrice deviazione standard
 
 Altro esempio, sempre riguardo ai **dati degli studenti**
 
 Matrice che mostra l'andamento della **deviazione standard** dei voti ottenuti dagli studenti negli **esami del primo anno**.
 
-- *gruppi di studenti* hanno preso un *voto inferiore alla media* in ogni esame (fasce orizzontali blu)
-- in alcuni esami i voti tendono a *discostarsi meno dalla loro media*, (colori meno accesi di determinate fasce).
+Cosa possiamo intuire?
+
+- *Gruppi di studenti* hanno preso *voti inferiori alla media* in ogni esame (fasce orizzontali blu);
+- In alcuni esami i voti tendono a *discostarsi meno dalla loro media* (colori di alcune colonne meno accesi).
 
 <div style="page-break-after: always;"></div>
 
 # 6 - Preprocessing
 
-Dopo lo studio sui dati iniziali, ho preparato i dati per il data mining.
+Dopo lo studio sui dati iniziali, li ho preparati per il data mining.
 
-**Studenti**: aggregato le istanze *rispetto ai corsi d'esame* di ogni anno, distillando quelle informazioni in pochi attributi più sintetici, ad esempio:
+**Studenti**: aggregato le istanze *rispetto ai corsi d'esame* di ogni anno, distillando tutte quelle informazioni in pochi attributi più sintetici:
 
-- *media dei voti*
-- *ritardo medio* accusato dagli studenti nel superare l'esame rispetto al primo appello disponibile
+- *Media dei voti*;
+- *Ritardo medio* accusato dagli studenti nel superare l'esame rispetto al primo appello disponibile.
 
 **Insegnamenti**: aggregato ulteriormente le risposte ai quesiti per ridurre il numero di attributi.
 
-Ricavato dataset unico facendo un **inner join** e a partire da quello...
-
-> ...tramite altre operazioni di **preprocessing**, ho reso i dati adatti ad essere usati come input per gli algoritmi di data mining che adesso, finalmente, vedremo.
+> I due dataset aggregati avevano le stesse chiavi, perciò facendo un **inner join**, ho ricavato questo *dataset unico* che ho poi usato come base per creare di volta in volta l'input necessario ai vari algoritmi di data mining - che adesso vedremo.
 
 # 7 - Clustering
 
-> Vi mostro, ovviamente, soltanto il risultato più significativo di quella che è stata una lunga serie di tentativi fatti per valutare le prestazioni varie configurazioni possibili.
+Mostro soltanto il risultato più significativo - lunga serie di tentativi per *valutare le prestazioni* dei vari *algoritmi* e delle loro *configurazioni*.
 
-> Questo miglior risultato, è stato ottenuto utilizzando l'agorotimo **K-Means**...
+- Miglior risultato ottenuto con **K-Means**
+- Metrica di prossimità: **distanza euclidea**
+  > è una scelta piuttosto standard, forse banale, ma è risultata la più adeguata.
 
-> ...e la **distanza euclidea** come metrica di prossimità fra i vari punti del dataset - è una scelta piuttosto standard, forse banale, ma è risultata la più adeguata.
-
-K-Means richiede come parametro iniziale il *numero di cluster* in cui partizionare il dataset. **2**, perché:
+K-Means richiede come parametro iniziale il *numero di cluster* in cui partizionare il dataset. Scelto **2**, perché:
 
 - miglior scelta in termini di valutazione del risultato
 - > intuitivamente, si può sperare che i due cluster trovati rappresentino uno i corsi **buoni** e l'altro i corsi **meno buoni**, almeno per quanto riguarda gli *attributi* considerati...
@@ -112,40 +107,40 @@ K-Means richiede come parametro iniziale il *numero di cluster* in cui partizion
 
 # 8 - Risultati Clustering
 
-Sezione dei dati lungo il piano *ritardo medio* (ascisse) e *voto medio* (ordinate); i punti ovviamnte sono i corsi di un determinato Anno Accademico.
+Sezione dei dati lungo il piano *ritardo medio* (ascisse) e *voto medio* (ordinate); i punti ovviamente sono i corsi di un determinato Anno Accademico.
 
-I due cluster trovati sono abbastanza *polarizzati verso gli estremi buoni* dei due attributi visualizzati:
+I due cluster trovati sono abbastanza **polarizzati verso gli estremi buoni** dei due attributi visualizzati:
 
 - cluster blu, voto alto e ritardo basso
 - cluster rosso il contrario
 
-> Le altre sezioni mostrano un comportamento simile, quindi *ad una prima analisi visiva* questo clustering sembra buono.
+Le altre sezioni mostrano un comportamento simile: si può dire che il *cluster 0* (blu) includa i corsi buoni, mentre l'altro i corsi *meno buoni*.
+
+> Ad una prima *analisi visiva* questo clustering sembra buono.
 
 # 9 - Valutazione Clustering
 
-**Matrice delle distanze euclidee** e **matrice di incidenza** del clustering.
+Approccio più analitico: **matrice delle distanze euclidee** e **matrice di incidenza** del clustering.
 
-Ispezione visiva: *distanza bassa* fra punti appartenenti allo *stesso cluster*, e viceversa.
-
-Aspetto confermato dalla **correlazione negativa** fra le due matrici.
+> Si nota subito che i punti appartenenti allo *stesso cluster* sono *meno distanti* fra loro di quelli che appartengono a due cluster diversi, e questo aspetto è confermato dalla **correlazione** fra le due matrici, che è **negativa**.
 
 K-Means ha raggruppato in questi due cluster dei punti che sono effettivamente vicini fra di loro: *il clustering è buono*.
 
 # 10 - Interpretazione Clustering
 
-Cluster dei corsi *meno buoni* (rispetto ai tre attributi considerati):
+Nel *cluster 1*  corsi *meno buoni* (rispetto ai tre attributi considerati):
 
-- materie *più ostiche* per la maggioranza degli studenti
-  - prestazioni peggiori (ritardo alto e voto basso)
-  - valutati più severamente
+Nel *cluster 1* (rosso) sono finite tutte le istanze delle materie *più ostiche*:
 
-Specularmente, nell'altro cluster:
+- studenti hanno avuto prestazioni peggiori
+- li hanno valutati più severamente
 
-- materie *assimilate più agilmente*
-  - prestazioni migliori
-  - valutati più generosamente.
+Specularmente, nel *cluster 0* (blu), sono andate principalmente le materie *assimilate più agilmente*:
 
-> Questa lettura lascia intuire che ci sia una correlazione fra le prestazioni degli studenti in un certo e la loro valutazione data sul rispettivo corso.
+- studenti con prestazioni migliori
+- valutati più generosamente.
+
+> Questa lettura lascia intuire che ci sia una correlazione fra le prestazioni degli studenti e la valutazione data al rispettivo corso.
 
 <div style="page-break-after: always;"></div>
 
@@ -158,19 +153,20 @@ Anche in questo caso metodo *trial-and-error*, quindi risultato migliore ottenut
 - Implementazione di **Apriori** di Weka
 - Metrica di confidenza: **lift**
 
-Lift molto efficace: se regola *A implica B*, lift è rapporto fra *probabilità di B dato A* e *probabilità di B indipendentemente da A*.
+Lift molto efficace: se esiste una regola del tipo *A implica B*, lift è rapporto fra *probabilità di B dato A* e *probabilità di B indipendentemente da A*.
 
 - **Discretizzazione** degli attributi continui in *range* discreti (BASSO, MEDIO e ALTO)
-- Focus sui soliti **tre attributi** rappresentativi
-
+- Focus sui soliti *tre attributi rappresentativi*
 
 # 12 - Regole Associative: risultati
 
 Selezionato le **10 regole migliori** secondo la metrica del lift.
 
-> Queste dieci regole combaciano perfettamente in *cinque implicazioni doppie*, e il loro significato va sempre in una direzione: delle *buone prestazioni in un esame* - ritardo basso e voto alto - implicano una *buona valutazione del rispettivo corso*, e viceversa. Perciò, come si sospettava, esiste una correlazione diretta fra questi due aspetti.
+> Queste dieci regole combaciano perfettamente in *cinque implicazioni doppie*, e il loro significato va sempre in una direzione: delle *buone prestazioni in un esame* - ritardo basso e voto alto - implicano una *buona valutazione del rispettivo corso*, e viceversa.
 
-# 13 - Pattern Sequenziali Frequenti
+> Perciò, come si sospettava, esiste una correlazione diretta fra questi due aspetti.
+
+# 13 - Pattern Seq. Frequenti
 
 > Guardiamo ora l'ultima analisi che ho fatto - forse la più interessante.
 
@@ -187,35 +183,29 @@ Si sarebbe potuto molto altro, ad esempio:
 
 > Infine, è stata di fondamentale importanza l'interpretazione data ai pattern frequenti ottenuti. L'output di GSP è stato fin troppo generoso: fra tutti quelli frequenti, quali sono i pattern interessanti? Chiaramente, quelli non **ordinati**.
 
+# 14 - Pattner Seq. Frequenti - pattern non ordinati
 
-# 14 - Pattner Sequenziali Frequenti: pattern interessanti
+> Prendiamo ad esempio questo pattern sequenziale frequente.
 
-> Cosa significa che un pattern è *ordinato*?
+[Calcolo Numerico], [Informatica Teorica], [Fisica Generale]
 
-Lista di tutti i corsi d'esame del CdL, ordinati nella *giusta* sequenza.
+> La particolarità in questo pattern è il fatto che *Fisica Generale*, un esame del *secondo anno*, è stato superato successivamente a due esami del *terzo anno*.
 
-Questa è una *relazione d'ordine parziale* sull'insieme degli esami.
+Pattern di questo tipo sono molto interessanti, contengono informazioni preziose.
 
-> Vediamo un esempio di pattern non ordinato.
+Perché un esame può essere frequentemente "fuori posto":
 
-# 15 - Pattner Sequenziali Frequenti - pattern non ordinati
+- bocciato e superato *solo dopo aver ripetuto il corso*
+- *saltato* in favore di esami più facili, anche se teoricamente successivi
 
-*[descrivi il concetto di **esame fuori posto**]*
+> In ogni caso, è innegabile che, se un'esame si trova frequentemente fuori posto, presenta delle *difficoltà di qualche tipo* per la maggioranza degli studenti.
 
-# 16 - Pattern Sequenziali Frequenti - post processing
+# 15 - Pattern Seq. Frequenti - post processing
 
 > Come ho riassunto le informazioni contenute nei pattern frequenti non ordinati?
 
 > Ho contato quante volte un esame è stato *fuori posto* nei pattern frequenti, e ho creato un **diagramma a torta**.
 
-Che osservazioni si possono fare?
+**Fisica** è l'esame più presente nei pattern non ordianti (spesso è proprio *l'ultimo esame* che gli studenti superano).
 
-> Innegabile che, se un'esame si trova frequentemente fuori posto, presenta delle *difficoltà di qualche tipo* per la maggioranza degli studenti.
-
-Significato esame fuori posto:
-
-- bocciato e superato *solo dopo aver ripetuto il corso*
-- *saltato* in favore di esami più facili, anche se teoricamente successivi
-
-**Fisica** è l'esame più presente nei pattern non ordianti (spesso è proprio *l'ultimo esame* che gli studenti superano). Non sblocca vincoli di propedeuticità: forse molti studenti sono *portati ad ignorarlo* fino ad aver completato il resto del corso di laurea.
-
+Le interpretazioni possono essere molte, una può essere questa: non sblocca vincoli di propedeuticità: forse molti studenti sono *portati ad ignorarlo* fino ad aver completato il resto del corso di laurea.
